@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://steppenhj.github.io/WolfRent/sitemap.xml
