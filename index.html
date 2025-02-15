@@ -4,15 +4,19 @@
   <meta charset="UTF-8" />
   <title>US SmallCap Insight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 페이지 내 CSS -->
+  <!-- 간단한 CSS -->
   <style>
-    /* 기본 리셋 및 스타일 */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* 기본 리셋 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Helvetica', 'Arial', sans-serif;
       background-color: #f4f7fa;
       color: #333;
-      padding-bottom: 60px;
+      padding-bottom: 60px; /* 푸터 공간 확보 */
     }
     header {
       background-color: #004080;
@@ -20,8 +24,13 @@
       padding: 1.5rem;
       text-align: center;
     }
-    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.1rem; }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+    }
 
     main {
       max-width: 1200px;
@@ -43,8 +52,11 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       margin-bottom: 1rem;
     }
-    table thead { background-color: #e0e0e0; }
-    table th, table td {
+    table thead {
+      background-color: #e0e0e0;
+    }
+    table th,
+    table td {
       padding: 1rem;
       border: 1px solid #ddd;
       text-align: left;
@@ -53,30 +65,44 @@
     table tr {
       transition: background-color 0.3s ease;
     }
-    table tr:hover { background-color: #f1f1f1; cursor: pointer; }
-    /* 페이지별 행 숨기기 */
-    .page-2 { display: none; }
+    table tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
 
-    /* 하단 페이지 전환 버튼 */
+    /* page-1 vs page-2 */
+    .page-2 {
+      display: none;
+    }
+
+    /* 페이지 버튼 (하단) */
+    .page-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
     .pagination-btn {
       background-color: #004080;
       color: #fff;
       border: none;
       padding: 0.75rem 1.5rem;
-      font-size: 1.2rem;
-      border-radius: 50%;
+      font-size: 1rem;
+      border-radius: 4px;
       cursor: pointer;
-      display: block;
-      margin: 1rem auto;
       transition: background-color 0.3s ease;
     }
-    .pagination-btn:hover { background-color: #003060; }
+    .pagination-btn:hover {
+      background-color: #003060;
+    }
 
     /* 모달 오버레이 및 콘텐츠 */
     .modal-overlay {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.5);
       display: none;
       justify-content: center;
@@ -100,7 +126,9 @@
       transform: translateY(-20px);
       transition: transform 0.3s ease;
     }
-    .modal-overlay.active #stock-detail { transform: translateY(0); }
+    .modal-overlay.active #stock-detail {
+      transform: translateY(0);
+    }
     #close-detail {
       background-color: #004080;
       color: #fff;
@@ -113,14 +141,17 @@
       border-radius: 4px;
       font-size: 0.9rem;
     }
-    #close-detail:hover { background-color: #003060; }
-    /* 상세정보 영역 */
+    #close-detail:hover {
+      background-color: #003060;
+    }
+
+    /* 상세 정보 영역 */
     #detail-info {
       margin-top: 1rem;
       font-size: 0.95rem;
       line-height: 1.4;
     }
-    
+
     footer {
       background-color: #004080;
       color: #fff;
@@ -131,10 +162,16 @@
       width: 100%;
       font-size: 0.9rem;
     }
-    
+
     @media (max-width: 600px) {
-      header h1 { font-size: 1.5rem; }
-      table th, table td { padding: 0.75rem; font-size: 0.85rem; }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      table th,
+      table td {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -147,246 +184,209 @@
 
   <!-- 메인 컨텐츠 -->
   <main>
-    <!-- 주식 리스트 섹션 -->
     <section id="stock-list">
-      <h2>미국 중소형 주식 리스트 (예시)</h2>
+      <h2>미국 중소형 주식 리스트 (페이지별)</h2>
+
       <table>
         <thead>
           <tr>
             <th>티커</th>
             <th>회사명 (영문 / 한글)</th>
-            <th>PER</th>
-            <th>매출 성장률</th>
+            <th>주가</th>
           </tr>
         </thead>
         <tbody>
-          <!-- 첫 페이지: 10개 종목 (클래스 page-1) -->
+          <!-- [1페이지] 10개 종목: 새로 주신 정보 (PLUG ~ LAZR) -->
           <tr class="stock-row page-1"
               data-ticker="PLUG"
-              data-company="Plug Power Inc. / 플러그 파워"
-              data-per="-"
-              data-sales="31%"
-              data-info="Plug Power는 수소 연료전지 솔루션을 선도하며, 청정 에너지 전환을 이끄는 기업입니다.">
+              data-company="플러그 파워(Plug Power Inc)"
+              data-price="$1.76"
+              data-info="플러그 파워는 수소 연료 전지 시스템을 설계·제조하는 미국 기업으로, 물류·운송 분야에 적용되는 청정 에너지 솔루션을 제공합니다.">
             <td>PLUG</td>
-            <td>Plug Power Inc. / 플러그 파워</td>
-            <td>-</td>
-            <td>31%</td>
+            <td>플러그 파워(Plug Power Inc)</td>
+            <td>$1.76</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="FUBO"
-              data-company="fuboTV Inc. / 푸보TV"
-              data-per="-"
-              data-sales="41%"
-              data-info="fuboTV는 실시간 스포츠 및 엔터테인먼트 스트리밍 서비스로 빠르게 성장하고 있는 혁신 기업입니다.">
+              data-company="푸보TV(fuboTV Inc)"
+              data-price="$4.06"
+              data-info="푸보TV는 스포츠 중심의 스트리밍 서비스를 제공하는 미국 기업으로, 다양한 라이브 스포츠 채널과 엔터테인먼트 콘텐츠를 구독자들에게 제공합니다.">
             <td>FUBO</td>
-            <td>fuboTV Inc. / 푸보TV</td>
-            <td>-</td>
-            <td>41%</td>
+            <td>푸보TV(fuboTV Inc)</td>
+            <td>$4.06</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="RKLB"
-              data-company="Rocket Lab USA / 로켓 랩 USA"
-              data-per="-"
-              data-sales="130%"
-              data-info="Rocket Lab USA는 소형 위성 발사 솔루션을 제공하며 우주의 민주화를 선도하고 있습니다.">
+              data-company="로켓 랩 USA(Rocket Lab USA Inc)"
+              data-price="$28.02"
+              data-info="로켓 랩 USA는 소형 위성 발사 서비스를 제공하는 미국의 우주 기업으로, 전 세계 상업·정부 고객들에게 저비용의 발사 솔루션을 제공합니다.">
             <td>RKLB</td>
-            <td>Rocket Lab USA / 로켓 랩 USA</td>
-            <td>-</td>
-            <td>130%</td>
+            <td>로켓 랩 USA(Rocket Lab USA Inc)</td>
+            <td>$28.02</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="SPWR"
-              data-company="SunPower Corporation / 선파워 코퍼레이션"
-              data-per="22"
-              data-sales="45%"
-              data-info="SunPower는 주택 및 상업용 고효율 태양광 솔루션을 제공하며 재생에너지 수요 증가의 혜택을 누리고 있습니다.">
+              data-company="선파워 코퍼레이션(SunPower Corporation)"
+              data-price="$0.1228"
+              data-info="선파워는 고효율 태양광 패널과 에너지 솔루션을 제공하는 미국 기업으로, 주거용·상업용 시장에 청정 에너지를 공급합니다.">
             <td>SPWR</td>
-            <td>SunPower Corporation / 선파워 코퍼레이션</td>
-            <td>22</td>
-            <td>45%</td>
+            <td>선파워 코퍼레이션(SunPower Corporation)</td>
+            <td>$0.1228</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="BLNK"
-              data-company="Blink Charging Co. / 블링크 차징"
-              data-per="-"
-              data-sales="164%"
-              data-info="Blink Charging은 전기차 충전 인프라를 도시 전역으로 확장하며 전기차 혁명을 지원하고 있습니다.">
+              data-company="블링크 차징(Blink Charging Co)"
+              data-price="$1.09"
+              data-info="블링크 차징은 전기차 충전 인프라를 구축·운영하는 미국 기업으로, 공공 및 가정용 충전 솔루션을 제공합니다.">
             <td>BLNK</td>
-            <td>Blink Charging Co. / 블링크 차징</td>
-            <td>-</td>
-            <td>164%</td>
+            <td>블링크 차징(Blink Charging Co)</td>
+            <td>$1.09</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="FOUR"
-              data-company="Shift4 Payments, Inc. / 쉬프트4 페이먼츠"
-              data-per="35"
-              data-sales="57%"
-              data-info="Shift4 Payments는 안전한 디지털 결제 솔루션을 제공하며 꾸준한 성장세를 보이고 있습니다.">
+              data-company="쉬프트4 페이먼츠(Shift4 Payments Inc)"
+              data-price="$121.28"
+              data-info="쉬프트4 페이먼츠는 통합 결제 처리 솔루션을 제공하는 미국 기업으로, 오프라인 상점·온라인 비즈니스를 대상으로 안전한 결제 서비스를 지원합니다.">
             <td>FOUR</td>
-            <td>Shift4 Payments, Inc. / 쉬프트4 페이먼츠</td>
-            <td>35</td>
-            <td>57%</td>
+            <td>쉬프트4 페이먼츠(Shift4 Payments Inc)</td>
+            <td>$121.28</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="UPWK"
-              data-company="Upwork Inc. / 업워크"
-              data-per="78"
-              data-sales="24%"
-              data-info="Upwork는 원격 근무와 프리랜서 시장을 선도하는 플랫폼으로, 긱 경제와 함께 성장하고 있습니다.">
+              data-company="업워크(Upwork Inc)"
+              data-price="$16.14"
+              data-info="업워크는 프리랜서와 클라이언트를 연결하는 온라인 플랫폼을 운영하는 미국 기업으로, 다양한 분야 전문가들이 프로젝트 기반 협업을 할 수 있도록 지원합니다.">
             <td>UPWK</td>
-            <td>Upwork Inc. / 업워크</td>
-            <td>78</td>
-            <td>24%</td>
+            <td>업워크(Upwork Inc)</td>
+            <td>$16.14</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="OPEN"
-              data-company="Opendoor Technologies Inc. / 오픈도어 테크놀로지"
-              data-per="-"
-              data-sales="94%"
-              data-info="Opendoor는 기술 기반 주택 매매 솔루션으로 부동산 시장의 혁신을 이끌고 있습니다.">
+              data-company="오픈도어 테크놀로지(Opendoor Technologies Inc)"
+              data-price="$1.55"
+              data-info="오픈도어는 부동산 매매 플랫폼을 운영하는 미국 기업으로, 주택 매매 과정을 디지털화하여 빠르고 편리한 거래를 지원합니다.">
             <td>OPEN</td>
-            <td>Opendoor Technologies Inc. / 오픈도어 테크놀로지</td>
-            <td>-</td>
-            <td>94%</td>
+            <td>오픈도어 테크놀로지(Opendoor Technologies Inc)</td>
+            <td>$1.55</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="MTTR"
-              data-company="Matterport, Inc. / 매터포트"
-              data-per="-"
-              data-sales="112%"
-              data-info="Matterport는 3D 공간 데이터 솔루션을 제공하며 건축 및 부동산 분야에서 혁신을 주도하고 있습니다.">
+              data-company="매터포트(Matterport Inc)"
+              data-price="$5.25"
+              data-info="매터포트는 3D 공간 데이터 플랫폼을 제공하는 미국 기업으로, 부동산·건축·소매 등 다양한 산업에서 가상 투어와 공간 분석 솔루션을 제공합니다.">
             <td>MTTR</td>
-            <td>Matterport, Inc. / 매터포트</td>
-            <td>-</td>
-            <td>112%</td>
+            <td>매터포트(Matterport Inc)</td>
+            <td>$5.25</td>
           </tr>
           <tr class="stock-row page-1"
               data-ticker="LAZR"
-              data-company="Luminar Technologies, Inc. / 루미나 테크놀로지"
-              data-per="-"
-              data-sales="135%"
-              data-info="Luminar Technologies는 자율주행차용 첨단 라이다 시스템을 개발하여 모빌리티 혁신에 기여하고 있습니다.">
+              data-company="루미나 테크놀로지(Luminar Technologies Inc)"
+              data-price="$6.45"
+              data-info="루미나 테크놀로지는 자율주행 차량용 라이다(LiDAR) 센서를 개발하는 미국 기업으로, 고해상도 3D 센싱 기술을 통해 자율주행차의 안전성과 성능을 향상시키는 데 주력합니다.">
             <td>LAZR</td>
-            <td>Luminar Technologies, Inc. / 루미나 테크놀로지</td>
-            <td>-</td>
-            <td>135%</td>
+            <td>루미나 테크놀로지(Luminar Technologies Inc)</td>
+            <td>$6.45</td>
           </tr>
 
-          <!-- 두번째 페이지: 새로 추가한 10개 종목 (클래스 page-2) -->
+          <!-- [2페이지] 10개 종목: 기존 AMPH, DOLE, YETI, ... -->
           <tr class="stock-row page-2"
               data-ticker="AMPH"
-              data-company="Amphastar Pharmaceuticals / 암파스타 파마슈티컬스"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Amphastar Pharmaceuticals는 혁신적인 신약 개발 및 출시를 주도하는 바이오테크 기업입니다.">
+              data-company="Amphastar Pharmaceuticals Inc. / 암파스타 파마슈티컬스"
+              data-price="$31.02"
+              data-info="Amphastar Pharmaceuticals는 미국에 본사를 둔 바이오제약 회사로, 기술적으로 까다로운 제네릭·독점 주사제, 흡입제, 비강내 제품을 개발·제조·마케팅·판매합니다. 또한 인슐린 활성 제약 성분(API)도 판매합니다.">
             <td>AMPH</td>
-            <td>Amphastar Pharmaceuticals / 암파스타 파마슈티컬스</td>
-            <td>-</td>
-            <td>(추정)</td>
-          </tr>
-          <tr class="stock-row page-2"
-              data-ticker="DPM"
-              data-company="Dundee Precious Metals / 던디 프레셔스 메탈스"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Dundee Precious Metals는 금 가격 상승과 견고한 시장 기반을 바탕으로 성장하고 있는 캐나다 금광업체입니다.">
-            <td>DPM</td>
-            <td>Dundee Precious Metals / 던디 프레셔스 메탈스</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>Amphastar Pharmaceuticals Inc. / 암파스타 파마슈티컬스</td>
+            <td>$31.02</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="DOLE"
               data-company="Dole plc / 돌"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Dole plc는 전 세계 과일 및 농산물 유통 분야에서 안정적인 수익 구조를 자랑하는 기업입니다.">
+              data-price="$13.51"
+              data-info="Dole plc는 아일랜드 더블린에 본사를 둔 글로벌 농업 기업으로, 신선 과일·채소의 조달·가공·마케팅·유통을 담당합니다. 바나나, 파인애플, 베리, 아보카도 등 약 300여 종을 전 세계 75개국에 공급하고 있습니다.">
             <td>DOLE</td>
             <td>Dole plc / 돌</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>$13.51</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="YETI"
-              data-company="Yeti Holdings / 예티 홀딩스"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Yeti Holdings는 프리미엄 아웃도어 제품 제조사로, 강력한 브랜드 인지도와 지속적인 매출 성장을 기록하고 있습니다.">
+              data-company="YETI Holdings Inc. / 예티 홀딩스"
+              data-price="$38.02"
+              data-info="YETI Holdings는 프리미엄 아웃도어 제품(냉각기, 음료용기, 가방 등)을 설계·마케팅·유통하는 미국 기업입니다. 우수한 내구성과 브랜드 인지도 덕분에 아웃도어 애호가들에게 인기가 높습니다.">
             <td>YETI</td>
-            <td>Yeti Holdings / 예티 홀딩스</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>YETI Holdings Inc. / 예티 홀딩스</td>
+            <td>$38.02</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="JEF"
-              data-company="Jefferies Financial Group / 제퍼리스 파이낸셜 그룹"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Jefferies Financial Group은 다양한 금융 서비스를 제공하며 M&amp;A 활동 증가로 수혜가 예상되는 투자은행입니다.">
+              data-company="Jefferies Financial Group Inc. / 제퍼리스 파이낸셜 그룹"
+              data-price="$71.48"
+              data-info="Jefferies Financial Group는 미국의 투자은행으로, 인수합병(M&A), 자본 조달, 리서치 등에서 강점을 보유하며 다양한 산업 분야의 고객에게 금융 서비스를 제공합니다.">
             <td>JEF</td>
-            <td>Jefferies Financial Group / 제퍼리스 파이낸셜 그룹</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>Jefferies Financial Group Inc. / 제퍼리스 파이낸셜 그룹</td>
+            <td>$71.48</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="EVR"
               data-company="Evercore Inc. / 에버코어"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Evercore Inc.는 글로벌 투자은행으로서 활발한 자문 업무와 강력한 성장 잠재력을 보유하고 있습니다.">
+              data-price="$269.31"
+              data-info="Evercore는 글로벌 투자은행으로, 인수합병 자문, 자본 조달, 리서치 등 다양한 금융 서비스를 제공합니다. 독립 자문사로서 고객 이익을 최우선하며, 높은 전문성과 신뢰도를 갖추고 있습니다.">
             <td>EVR</td>
             <td>Evercore Inc. / 에버코어</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>$269.31</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="SF"
               data-company="Stifel Financial Corp. / 스티펠 파이낸셜"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Stifel Financial Corp.은 중형 투자은행으로, IPO 시장 활성화에 따른 이익 증가가 기대됩니다.">
+              data-price="$110.37"
+              data-info="Stifel Financial Corp.는 투자은행·자산운용 서비스를 제공하는 미국의 금융 기업으로, 개인 및 기관 투자자에게 광범위한 금융 솔루션을 제공합니다.">
             <td>SF</td>
             <td>Stifel Financial Corp. / 스티펠 파이낸셜</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>$110.37</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="EWBC"
-              data-company="East West Bancorp / 이스트 웨스트 뱅콥"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="East West Bancorp은 미국과 중국 간 금융 서비스를 연결하며, 금리 인하로 인한 수익성 개선이 예상됩니다.">
+              data-company="East West Bancorp, Inc. / 이스트 웨스트 뱅콥"
+              data-price="$98.57"
+              data-info="East West Bancorp는 미국·아시아 간 금융 서비스를 전문으로 제공하는 상업 은행 지주 회사로, 다양한 개인 및 기업 금융 서비스와 미주-아시아 비즈니스 연결에 강점을 가집니다.">
             <td>EWBC</td>
-            <td>East West Bancorp / 이스트 웨스트 뱅콥</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>East West Bancorp, Inc. / 이스트 웨스트 뱅콥</td>
+            <td>$98.57</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="UAA"
-              data-company="Under Armour / 언더 아머"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Under Armour는 브랜드 재정비와 매출 회복을 통해 스포츠 의류 시장에서 경쟁력을 회복하고 있는 기업입니다.">
+              data-company="Under Armour Inc / 언더 아머"
+              data-price="$7.10"
+              data-info="Under Armour는 스포츠 의류·신발·액세서리 등을 디자인·제조·판매하는 글로벌 스포츠 브랜드로, 혁신 기술과 디자인을 통해 높은 품질의 제품을 제공합니다.">
             <td>UAA</td>
-            <td>Under Armour / 언더 아머</td>
-            <td>-</td>
-            <td>(추정)</td>
+            <td>Under Armour Inc / 언더 아머</td>
+            <td>$7.10</td>
           </tr>
           <tr class="stock-row page-2"
               data-ticker="COLM"
-              data-company="Columbia Sportswear / 콜롬비아 스포츠웨어"
-              data-per="-"
-              data-sales="(추정)"
-              data-info="Columbia Sportswear는 혁신적인 아웃도어 의류와 장비를 통해 시장 확장을 이끌고 있습니다.">
+              data-company="Columbia Sportswear Co. / 콜롬비아 스포츠웨어"
+              data-price="$84.58"
+              data-info="Columbia Sportswear는 아웃도어 의류·신발·장비를 설계·제조·판매하는 미국 기업으로, 등산·낚시·캠핑 등 다양한 아웃도어 활동용 제품을 제공합니다.">
             <td>COLM</td>
-            <td>Columbia Sportswear / 콜롬비아 스포츠웨어</td>
+            <td>Columbia Sportswear Co. / 콜롬비아 스포츠웨어</td>
+            <td>$84.58</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="DPM"
+              data-company="Dundee Precious Metals / 던디 프레셔스 메탈스"
+              data-price="-"
+              data-info="Dundee Precious Metals는 캐나다에 본사를 둔 국제적인 금광업체로, 금과 기타 귀금속의 탐사·개발·생산에 주력하고 있습니다. 불가리아, 나미비아 등지에서 광산을 운영하며, 지속 가능한 채굴과 환경 보호에 집중합니다.">
+            <td>DPM</td>
+            <td>Dundee Precious Metals / 던디 프레셔스 메탈스</td>
             <td>-</td>
-            <td>(추정)</td>
           </tr>
         </tbody>
       </table>
-      <!-- 페이지 전환 버튼 (아래 화살표) -->
-      <button id="toggle-page" class="pagination-btn">↓</button>
+
+      <!-- 페이지 전환 버튼 (하단) -->
+      <div class="page-btns">
+        <button id="page1Btn" class="pagination-btn">1</button>
+        <button id="page2Btn" class="pagination-btn">2</button>
+      </div>
     </section>
 
     <!-- 모달: 기업 상세 정보 -->
@@ -395,74 +395,71 @@
         <button id="close-detail">닫기</button>
         <h2 id="detail-company">회사명</h2>
         <p id="detail-ticker">티커: </p>
-        <p id="detail-per">PER: </p>
-        <p id="detail-sales">매출 성장률: </p>
+        <p id="detail-price">주가: </p>
         <div id="detail-info"></div>
       </section>
     </div>
   </main>
 
+  <!-- 푸터 -->
   <footer>
     <p>© 2025 US SmallCap Insight. All rights reserved.</p>
   </footer>
 
-  <!-- JS 코드 -->
+  <!-- JS -->
   <script>
     // 모달 관련 요소
     const modalOverlay = document.getElementById('modal-overlay');
     const closeDetailBtn = document.getElementById('close-detail');
     const detailCompany = document.getElementById('detail-company');
     const detailTicker = document.getElementById('detail-ticker');
-    const detailPer = document.getElementById('detail-per');
-    const detailSales = document.getElementById('detail-sales');
+    const detailPrice = document.getElementById('detail-price');
     const detailInfo = document.getElementById('detail-info');
 
-    // 테이블 행(종목) 선택
+    // 종목 행
     const stockRows = document.querySelectorAll('.stock-row');
-    
-    // 페이지 전환 버튼
-    const togglePageBtn = document.getElementById('toggle-page');
-    let currentPage = 1; // 초기 페이지 1
 
-    // 모달 열기: 각 행 클릭 시 기업 정보 표시
+    // 페이지 버튼
+    const page1Btn = document.getElementById('page1Btn');
+    const page2Btn = document.getElementById('page2Btn');
+
+    // 초기 상태: page-1 보임, page-2 숨김
+    function showPage1() {
+      document.querySelectorAll('.page-1').forEach(row => row.style.display = 'table-row');
+      document.querySelectorAll('.page-2').forEach(row => row.style.display = 'none');
+    }
+    function showPage2() {
+      document.querySelectorAll('.page-1').forEach(row => row.style.display = 'none');
+      document.querySelectorAll('.page-2').forEach(row => row.style.display = 'table-row');
+    }
+
+    // 페이지 버튼 이벤트
+    page1Btn.addEventListener('click', showPage1);
+    page2Btn.addEventListener('click', showPage2);
+
+    // 최초에 페이지1 표시
+    showPage1();
+
+    // 행 클릭 -> 모달 표시
     stockRows.forEach((row) => {
       row.addEventListener('click', () => {
         const ticker = row.getAttribute('data-ticker');
         const company = row.getAttribute('data-company');
-        const per = row.getAttribute('data-per');
-        const sales = row.getAttribute('data-sales');
+        const price = row.getAttribute('data-price');
         const info = row.getAttribute('data-info');
-        
+
         detailCompany.textContent = company;
         detailTicker.textContent = `티커: ${ticker}`;
-        detailPer.textContent = `PER: ${per}`;
-        detailSales.textContent = `매출 성장률: ${sales}`;
+        detailPrice.textContent = `주가: ${price}`;
         detailInfo.textContent = info;
-        
+
         modalOverlay.classList.add('active');
       });
     });
-    
-    // 모달 닫기 버튼
+
+    // 모달 닫기
     closeDetailBtn.addEventListener('click', () => {
       modalOverlay.classList.remove('active');
-    });
-    
-    // 페이지 전환 로직
-    togglePageBtn.addEventListener('click', () => {
-      if (currentPage === 1) {
-        // 첫 페이지(클래스 page-1) 숨기고, 두번째 페이지(클래스 page-2) 표시
-        document.querySelectorAll('.page-1').forEach(row => row.style.display = 'none');
-        document.querySelectorAll('.page-2').forEach(row => row.style.display = 'table-row');
-        togglePageBtn.textContent = '↑';
-        currentPage = 2;
-      } else {
-        // 두번째 페이지 숨기고 첫 페이지 표시
-        document.querySelectorAll('.page-2').forEach(row => row.style.display = 'none');
-        document.querySelectorAll('.page-1').forEach(row => row.style.display = 'table-row');
-        togglePageBtn.textContent = '↓';
-        currentPage = 1;
-      }
     });
   </script>
 </body>
