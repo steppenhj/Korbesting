@@ -1,89 +1,469 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta name="naver-site-verification" content="b2d3a4712917c16a04606d648d8560c4a6fb1c61" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="울프렌트 (Wolf Rent)는 특별한 순간을 위한 남친 대행 서비스를 제공합니다. 데이트, 하객 동반 등 다양한 서비스를 제공합니다.">
-    <meta name="keywords" content="남친대행, 데이트대행, 하객대행, 이벤트 동반, Wolf Rent">
-    <meta name="author" content="steppenhj">
+  <meta charset="UTF-8" />
+  <title>US SmallCap Insight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 페이지 내 CSS -->
+  <style>
+    /* 기본 리셋 및 스타일 */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      padding-bottom: 60px;
+    }
+    header {
+      background-color: #004080;
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1.1rem; }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #004080;
+      padding-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    /* 테이블 스타일 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    table thead { background-color: #e0e0e0; }
+    table th, table td {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    table tr {
+      transition: background-color 0.3s ease;
+    }
+    table tr:hover { background-color: #f1f1f1; cursor: pointer; }
+    /* 페이지별 행 숨기기 */
+    .page-2 { display: none; }
+
+    /* 하단 페이지 전환 버튼 */
+    .pagination-btn {
+      background-color: #004080;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: block;
+      margin: 1rem auto;
+      transition: background-color 0.3s ease;
+    }
+    .pagination-btn:hover { background-color: #003060; }
+
+    /* 모달 오버레이 및 콘텐츠 */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 99;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    #stock-detail {
+      background: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.active #stock-detail { transform: translateY(0); }
+    #close-detail {
+      background-color: #004080;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    #close-detail:hover { background-color: #003060; }
+    /* 상세정보 영역 */
+    #detail-info {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>울프렌트 (Wolf Rent)</title>
-    <link rel="stylesheet" href="styles.css">
+    footer {
+      background-color: #004080;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      table th, table td { padding: 0.75rem; font-size: 0.85rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>울프렌트 (Wolf Rent)</h1>
-            <div>서비스 생성 과정 중입니다. 이메일로 연락하시면 빠르게 답하겠습니다.</div>
-            <div>chugbunnam@gmail.com</div>
-                당신의 특별한 순간을 위한 남친 대행 서비스</p>
-        </div>
-    </header>
+  <!-- 헤더 -->
+  <header>
+    <h1>US SmallCap Insight</h1>
+    <p>"미국 중소형주, 쉽게 찾고 투자하자!"</p>
+  </header>
 
-    <nav>
-        <ul class="nav-menu">
-            <li><a href="#services">서비스 소개</a></li>
-            <li><a href="#pricing">가격 안내</a></li>
-            <li><a href="#booking">예약하기</a></li>
-            <li><a href="#reviews">고객 후기</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-    </nav>
+  <!-- 메인 컨텐츠 -->
+  <main>
+    <!-- 주식 리스트 섹션 -->
+    <section id="stock-list">
+      <h2>미국 중소형 주식 리스트 (예시)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>티커</th>
+            <th>회사명 (영문 / 한글)</th>
+            <th>PER</th>
+            <th>매출 성장률</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 첫 페이지: 10개 종목 (클래스 page-1) -->
+          <tr class="stock-row page-1"
+              data-ticker="PLUG"
+              data-company="Plug Power Inc. / 플러그 파워"
+              data-per="-"
+              data-sales="31%"
+              data-info="Plug Power는 수소 연료전지 솔루션을 선도하며, 청정 에너지 전환을 이끄는 기업입니다.">
+            <td>PLUG</td>
+            <td>Plug Power Inc. / 플러그 파워</td>
+            <td>-</td>
+            <td>31%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="FUBO"
+              data-company="fuboTV Inc. / 푸보TV"
+              data-per="-"
+              data-sales="41%"
+              data-info="fuboTV는 실시간 스포츠 및 엔터테인먼트 스트리밍 서비스로 빠르게 성장하고 있는 혁신 기업입니다.">
+            <td>FUBO</td>
+            <td>fuboTV Inc. / 푸보TV</td>
+            <td>-</td>
+            <td>41%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="RKLB"
+              data-company="Rocket Lab USA / 로켓 랩 USA"
+              data-per="-"
+              data-sales="130%"
+              data-info="Rocket Lab USA는 소형 위성 발사 솔루션을 제공하며 우주의 민주화를 선도하고 있습니다.">
+            <td>RKLB</td>
+            <td>Rocket Lab USA / 로켓 랩 USA</td>
+            <td>-</td>
+            <td>130%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="SPWR"
+              data-company="SunPower Corporation / 선파워 코퍼레이션"
+              data-per="22"
+              data-sales="45%"
+              data-info="SunPower는 주택 및 상업용 고효율 태양광 솔루션을 제공하며 재생에너지 수요 증가의 혜택을 누리고 있습니다.">
+            <td>SPWR</td>
+            <td>SunPower Corporation / 선파워 코퍼레이션</td>
+            <td>22</td>
+            <td>45%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="BLNK"
+              data-company="Blink Charging Co. / 블링크 차징"
+              data-per="-"
+              data-sales="164%"
+              data-info="Blink Charging은 전기차 충전 인프라를 도시 전역으로 확장하며 전기차 혁명을 지원하고 있습니다.">
+            <td>BLNK</td>
+            <td>Blink Charging Co. / 블링크 차징</td>
+            <td>-</td>
+            <td>164%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="FOUR"
+              data-company="Shift4 Payments, Inc. / 쉬프트4 페이먼츠"
+              data-per="35"
+              data-sales="57%"
+              data-info="Shift4 Payments는 안전한 디지털 결제 솔루션을 제공하며 꾸준한 성장세를 보이고 있습니다.">
+            <td>FOUR</td>
+            <td>Shift4 Payments, Inc. / 쉬프트4 페이먼츠</td>
+            <td>35</td>
+            <td>57%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="UPWK"
+              data-company="Upwork Inc. / 업워크"
+              data-per="78"
+              data-sales="24%"
+              data-info="Upwork는 원격 근무와 프리랜서 시장을 선도하는 플랫폼으로, 긱 경제와 함께 성장하고 있습니다.">
+            <td>UPWK</td>
+            <td>Upwork Inc. / 업워크</td>
+            <td>78</td>
+            <td>24%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="OPEN"
+              data-company="Opendoor Technologies Inc. / 오픈도어 테크놀로지"
+              data-per="-"
+              data-sales="94%"
+              data-info="Opendoor는 기술 기반 주택 매매 솔루션으로 부동산 시장의 혁신을 이끌고 있습니다.">
+            <td>OPEN</td>
+            <td>Opendoor Technologies Inc. / 오픈도어 테크놀로지</td>
+            <td>-</td>
+            <td>94%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="MTTR"
+              data-company="Matterport, Inc. / 매터포트"
+              data-per="-"
+              data-sales="112%"
+              data-info="Matterport는 3D 공간 데이터 솔루션을 제공하며 건축 및 부동산 분야에서 혁신을 주도하고 있습니다.">
+            <td>MTTR</td>
+            <td>Matterport, Inc. / 매터포트</td>
+            <td>-</td>
+            <td>112%</td>
+          </tr>
+          <tr class="stock-row page-1"
+              data-ticker="LAZR"
+              data-company="Luminar Technologies, Inc. / 루미나 테크놀로지"
+              data-per="-"
+              data-sales="135%"
+              data-info="Luminar Technologies는 자율주행차용 첨단 라이다 시스템을 개발하여 모빌리티 혁신에 기여하고 있습니다.">
+            <td>LAZR</td>
+            <td>Luminar Technologies, Inc. / 루미나 테크놀로지</td>
+            <td>-</td>
+            <td>135%</td>
+          </tr>
 
-    <main>
-        <section id="services" class="section">
-            <h2>서비스 소개</h2>
-            <p>울프렌트에서는 데이트 동반, 하객 대행, 이벤트 파트너 등 다양한 남친 역할을 제공합니다.</p>
-        </section>
+          <!-- 두번째 페이지: 새로 추가한 10개 종목 (클래스 page-2) -->
+          <tr class="stock-row page-2"
+              data-ticker="AMPH"
+              data-company="Amphastar Pharmaceuticals / 암파스타 파마슈티컬스"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Amphastar Pharmaceuticals는 혁신적인 신약 개발 및 출시를 주도하는 바이오테크 기업입니다.">
+            <td>AMPH</td>
+            <td>Amphastar Pharmaceuticals / 암파스타 파마슈티컬스</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="DPM"
+              data-company="Dundee Precious Metals / 던디 프레셔스 메탈스"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Dundee Precious Metals는 금 가격 상승과 견고한 시장 기반을 바탕으로 성장하고 있는 캐나다 금광업체입니다.">
+            <td>DPM</td>
+            <td>Dundee Precious Metals / 던디 프레셔스 메탈스</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="DOLE"
+              data-company="Dole plc / 돌"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Dole plc는 전 세계 과일 및 농산물 유통 분야에서 안정적인 수익 구조를 자랑하는 기업입니다.">
+            <td>DOLE</td>
+            <td>Dole plc / 돌</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="YETI"
+              data-company="Yeti Holdings / 예티 홀딩스"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Yeti Holdings는 프리미엄 아웃도어 제품 제조사로, 강력한 브랜드 인지도와 지속적인 매출 성장을 기록하고 있습니다.">
+            <td>YETI</td>
+            <td>Yeti Holdings / 예티 홀딩스</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="JEF"
+              data-company="Jefferies Financial Group / 제퍼리스 파이낸셜 그룹"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Jefferies Financial Group은 다양한 금융 서비스를 제공하며 M&amp;A 활동 증가로 수혜가 예상되는 투자은행입니다.">
+            <td>JEF</td>
+            <td>Jefferies Financial Group / 제퍼리스 파이낸셜 그룹</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="EVR"
+              data-company="Evercore Inc. / 에버코어"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Evercore Inc.는 글로벌 투자은행으로서 활발한 자문 업무와 강력한 성장 잠재력을 보유하고 있습니다.">
+            <td>EVR</td>
+            <td>Evercore Inc. / 에버코어</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="SF"
+              data-company="Stifel Financial Corp. / 스티펠 파이낸셜"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Stifel Financial Corp.은 중형 투자은행으로, IPO 시장 활성화에 따른 이익 증가가 기대됩니다.">
+            <td>SF</td>
+            <td>Stifel Financial Corp. / 스티펠 파이낸셜</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="EWBC"
+              data-company="East West Bancorp / 이스트 웨스트 뱅콥"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="East West Bancorp은 미국과 중국 간 금융 서비스를 연결하며, 금리 인하로 인한 수익성 개선이 예상됩니다.">
+            <td>EWBC</td>
+            <td>East West Bancorp / 이스트 웨스트 뱅콥</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="UAA"
+              data-company="Under Armour / 언더 아머"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Under Armour는 브랜드 재정비와 매출 회복을 통해 스포츠 의류 시장에서 경쟁력을 회복하고 있는 기업입니다.">
+            <td>UAA</td>
+            <td>Under Armour / 언더 아머</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+          <tr class="stock-row page-2"
+              data-ticker="COLM"
+              data-company="Columbia Sportswear / 콜롬비아 스포츠웨어"
+              data-per="-"
+              data-sales="(추정)"
+              data-info="Columbia Sportswear는 혁신적인 아웃도어 의류와 장비를 통해 시장 확장을 이끌고 있습니다.">
+            <td>COLM</td>
+            <td>Columbia Sportswear / 콜롬비아 스포츠웨어</td>
+            <td>-</td>
+            <td>(추정)</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 페이지 전환 버튼 (아래 화살표) -->
+      <button id="toggle-page" class="pagination-btn">↓</button>
+    </section>
 
-        <section id="pricing" class="section">
-            <h2>가격 안내</h2>
-            <ul>
-                <li>시간당 기본 요금: ?원</li>
-                <li>추가 옵션: 상황에 따라 협의</li>
-            </ul>
-        </section>
+    <!-- 모달: 기업 상세 정보 -->
+    <div class="modal-overlay" id="modal-overlay">
+      <section id="stock-detail">
+        <button id="close-detail">닫기</button>
+        <h2 id="detail-company">회사명</h2>
+        <p id="detail-ticker">티커: </p>
+        <p id="detail-per">PER: </p>
+        <p id="detail-sales">매출 성장률: </p>
+        <div id="detail-info"></div>
+      </section>
+    </div>
+  </main>
 
-        <section id="booking" class="section">
-            <h2>예약하기</h2>
-            <form id="booking-form">
-                <label for="date">날짜:</label>
-                <input type="date" id="date" name="date" required>
+  <footer>
+    <p>© 2025 US SmallCap Insight. All rights reserved.</p>
+  </footer>
 
-                <label for="time">시간:</label>
-                <input type="time" id="time" name="time" required>
+  <!-- JS 코드 -->
+  <script>
+    // 모달 관련 요소
+    const modalOverlay = document.getElementById('modal-overlay');
+    const closeDetailBtn = document.getElementById('close-detail');
+    const detailCompany = document.getElementById('detail-company');
+    const detailTicker = document.getElementById('detail-ticker');
+    const detailPer = document.getElementById('detail-per');
+    const detailSales = document.getElementById('detail-sales');
+    const detailInfo = document.getElementById('detail-info');
 
-                <label for="style">남친 스타일:</label>
-                <select id="style" name="style">
-                    <option value="romantic">로맨틱</option>
-                    <option value="friendly">친근한</option>
-                    <option value="charismatic">카리스마</option>
-                </select>
+    // 테이블 행(종목) 선택
+    const stockRows = document.querySelectorAll('.stock-row');
+    
+    // 페이지 전환 버튼
+    const togglePageBtn = document.getElementById('toggle-page');
+    let currentPage = 1; // 초기 페이지 1
 
-                <button type="submit">예약하기</button>
-            </form>
-        </section>
-
-        <section id="reviews" class="section">
-            <h2>고객 후기</h2>
-            <p>"울프렌트를 통해 잊지 못할 순간을 만들었어요!"</p>
-        </section>
-
-        <section id="faq" class="section">
-            <h2>FAQ</h2>
-            <p>자주 묻는 질문에 대한 답변을 확인하세요.</p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 울프렌트 (Wolf Rent). 모든 권리 보유.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    // 모달 열기: 각 행 클릭 시 기업 정보 표시
+    stockRows.forEach((row) => {
+      row.addEventListener('click', () => {
+        const ticker = row.getAttribute('data-ticker');
+        const company = row.getAttribute('data-company');
+        const per = row.getAttribute('data-per');
+        const sales = row.getAttribute('data-sales');
+        const info = row.getAttribute('data-info');
+        
+        detailCompany.textContent = company;
+        detailTicker.textContent = `티커: ${ticker}`;
+        detailPer.textContent = `PER: ${per}`;
+        detailSales.textContent = `매출 성장률: ${sales}`;
+        detailInfo.textContent = info;
+        
+        modalOverlay.classList.add('active');
+      });
+    });
+    
+    // 모달 닫기 버튼
+    closeDetailBtn.addEventListener('click', () => {
+      modalOverlay.classList.remove('active');
+    });
+    
+    // 페이지 전환 로직
+    togglePageBtn.addEventListener('click', () => {
+      if (currentPage === 1) {
+        // 첫 페이지(클래스 page-1) 숨기고, 두번째 페이지(클래스 page-2) 표시
+        document.querySelectorAll('.page-1').forEach(row => row.style.display = 'none');
+        document.querySelectorAll('.page-2').forEach(row => row.style.display = 'table-row');
+        togglePageBtn.textContent = '↑';
+        currentPage = 2;
+      } else {
+        // 두번째 페이지 숨기고 첫 페이지 표시
+        document.querySelectorAll('.page-2').forEach(row => row.style.display = 'none');
+        document.querySelectorAll('.page-1').forEach(row => row.style.display = 'table-row');
+        togglePageBtn.textContent = '↓';
+        currentPage = 1;
+      }
+    });
+  </script>
 </body>
 </html>
