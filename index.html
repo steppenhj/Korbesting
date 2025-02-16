@@ -92,14 +92,22 @@
         justify-content: center;
         gap: 1rem;
       }
+
+      /* 버튼처럼 보이도록 a 태그에 스타일 부여 */
       nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 0.9rem; /* 축소 */
-        transition: color 0.3s;
+        display: inline-block;           /* 내부 패딩 적용 가능 */
+        padding: 0.5rem 1rem;           /* 버튼 형태로 보이도록 여백 */
+        background-color: #fff;         /* 버튼 배경색 */
+        color: #004080;                 /* 텍스트 색상 */
+        border: 1px solid #004080;      /* 테두리 색상 */
+        border-radius: 4px;             /* 살짝 둥근 모서리 */
+        text-decoration: none;          /* 링크 밑줄 제거 */
+        transition: background-color 0.3s, color 0.3s; /* hover 시 부드러운 전환 */
       }
+
       nav ul li a:hover {
-        color: var(--accent-color);
+        background-color: #004080;      /* 버튼에 마우스 올렸을 때 배경색 진하게 */
+        color: #fff;                    /* 글자색 반전 */
       }
       main {
         max-width: 960px; /* 폭 축소 */
