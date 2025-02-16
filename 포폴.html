@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>내 포트폴리오 - US SmallCap Insight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts: Roboto & Open Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- chartjs-plugin-datalabels CDN (차트에 상시 라벨 표시) -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+  <style>
+    html {
+      font-size: 14px; /* 전체 폰트 크기 축소 */
+    }
+    :root {
+      --primary-color: #004080;
+      --secondary-color: #0059b3;
+      --accent-color: #f4f7fa;
+      --light-gray: #e0e0e0;
+      --text-color: #333;
+    }
+    /* 기본 리셋 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
+      color: var(--text-color);
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    header p { font-size: 1rem; }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: var(--accent-color);
+    }
+    main {
+      max-width: 960px; /* 최대 폭 축소 */
+      margin: 1rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+    .portfolio-sections {
+      display: flex;
+      flex-wrap: wrap; 
+      gap: 1rem;
+    }
+    .section-container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      padding: 1rem;
+      flex: 1 1 0;
+    }
+    .portfolio-form {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .portfolio-form label {
+      font-weight: 600;
+      margin-right: 0.2rem;
+      min-width: 60px;
+      text-align: right;
+    }
+    .portfolio-form input[type="number"],
+    .portfolio-form input[type="text"] {
+      width: 80px;
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.3s;
+      font-size: 0.9rem;
+    }
+    .portfolio-form input:focus {
+      border-color: var(--primary-color);
+    }
+    .portfolio-form button {
+      padding: 0.4rem 0.8rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .portfolio-form button:hover {
+      background: #003060;
+    }
+    .chart-container {
+      max-width: 400px; /* 차트 최대 크기 축소 */
+      margin: 0 auto;
+    }
+    .recommendation {
+      background: var(--light-gray);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .stock-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .removeStockBtn {
+      background: #b30000;
+      border: none;
+      color: #fff;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .removeStockBtn:hover {
+      background: #800000;
+    }
+    footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 0.8rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.8rem;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 800px) {
+      .portfolio-sections {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>US SmallCap Insight</h1>
+    <p>"미국 중소형주, 쉽게 찾고 투자하자!"</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">메인 페이지</a></li>
+        <li><a href="포폴.html">포트폴리오</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <h2>내 포트폴리오</h2>
+    <div class="portfolio-sections">
+      <!-- 자산 포트폴리오 섹션 -->
+      <section class="section-container" id="asset-portfolio">
+        <h3>자산 포트폴리오</h3>
+        <p style="font-size: 0.9rem; line-height: 1.4;">
+          <strong>자산 포트폴리오는 재무 건전성의 핵심</strong>입니다.  
+          다양한 자산(현금, 채권, 부동산, 주식, 기타)의 균형을 잘 맞춰두면 
+          시장 변동에 유연하게 대응할 수 있고, 예기치 못한 지출에도 대비할 수 있습니다.
+        </p>
+        <div class="portfolio-form">
+          <label for="cash-input">현금</label>
+          <input type="number" id="cash-input" value="20" min="0" max="100" placeholder="현금 %">
+          
+          <label for="bond-input">채권</label>
+          <input type="number" id="bond-input" value="20" min="0" max="100" placeholder="채권 %">
+          
+          <label for="realEstate-input">부동산</label>
+          <input type="number" id="realEstate-input" value="20" min="0" max="100" placeholder="부동산 %">
+
+          <label for="stock-input">주식</label>
+          <input type="number" id="stock-input" value="30" min="0" max="100" placeholder="주식 %">
+
+          <label for="other-input">기타</label>
+          <input type="number" id="other-input" value="10" min="0" max="100" placeholder="기타 %">
+          
+          <button id="updateAssetChart">차트 업데이트</button>
+        </div>
+        <p style="font-size:0.8rem; color:#666;">(각 항목 합계가 100%가 되어야 합니다.)</p>
+        <div class="chart-container">
+          <canvas id="assetChart"></canvas>
+        </div>
+        <div class="recommendation">
+          <strong>Tip:</strong> 자산 구성 비중은 개인 상황과 시장 환경에 따라 달라질 수 있으니, 
+          전문가와 상의하거나 신중한 리서치 후 결정하세요.
+        </div>
+      </section>
+      
+      <!-- 주식 포트폴리오 섹션 -->
+      <section class="section-container" id="stock-portfolio">
+        <h3>주식 포트폴리오</h3>
+        <p style="font-size: 0.9rem; line-height: 1.4;">
+          <strong>주식 포트폴리오</strong>는 매력적인 기업에 투자해 자산을 불리는 한 가지 방법입니다.  
+          아래에 종목명과 투자 비중(%)을 자유롭게 입력해보세요.  
+          비중 합이 <strong>100%</strong>가 되도록 구성해야 차트가 정상적으로 표시됩니다.
+        </p>
+        
+        <!-- 종목 입력 영역 -->
+        <div class="portfolio-form" style="flex-direction: column; align-items: flex-start;">
+          <div id="stockList"></div>
+          <button id="addStockBtn">종목 추가</button>
+        </div>
+        
+        <button id="updateStockChart" style="margin-bottom: 0.5rem;">차트 업데이트</button>
+        <p style="font-size:0.8rem; color:#666;">(입력한 종목 비중의 합이 100%가 되어야 합니다.)</p>
+        
+        <div class="chart-container">
+          <canvas id="stockChart"></canvas>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <footer>
+    <p>© 2025 US SmallCap Insight. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    // 1) chartjs-plugin-datalabels 등록
+    Chart.register(ChartDataLabels);
+
+    let assetChart, stockChart;
+
+    /* ---------------- 자산 포트폴리오 업데이트 ---------------- */
+    function updateAssetChart() {
+      const cash = Number(document.getElementById("cash-input").value);
+      const bond = Number(document.getElementById("bond-input").value);
+      const realEstate = Number(document.getElementById("realEstate-input").value);
+      const stock = Number(document.getElementById("stock-input").value);
+      const other = Number(document.getElementById("other-input").value);
+      const total = cash + bond + realEstate + stock + other;
+      
+      if (total !== 100) {
+        alert("자산 포트폴리오 항목의 합계가 100%가 되어야 합니다.");
+        return;
+      }
+      
+      const data = [cash, bond, realEstate, stock, other];
+      const labels = ["현금", "채권", "부동산", "주식", "기타"];
+      const backgroundColors = ["#ffd966", "#8fd3f4", "#ffbba8", "#a4deaa", "#dcc6e0"]; 
+      
+      if (assetChart) {
+        // 기존 차트 업데이트
+        assetChart.data.labels = labels;
+        assetChart.data.datasets[0].data = data;
+        assetChart.data.datasets[0].backgroundColor = backgroundColors;
+        assetChart.update();
+      } else {
+        // 차트 생성
+        const ctx = document.getElementById("assetChart").getContext("2d");
+        assetChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: backgroundColors,
+              borderColor: "#fff",
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { position: 'bottom' },
+              title: { display: true, text: '자산 포트폴리오' },
+              // 2) datalabels 옵션
+              datalabels: {
+                display: true,
+                color: '#333',
+                font: { size: 12 },
+                formatter: (value, ctx) => {
+                  const label = ctx.chart.data.labels[ctx.dataIndex];
+                  return label + ': ' + value + '%';
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    /* ---------------- 주식 포트폴리오 동적 항목 추가/삭제 ---------------- */
+    const stockList = document.getElementById("stockList");
+    const addStockBtn = document.getElementById("addStockBtn");
+
+    function createStockItem() {
+      const stockDiv = document.createElement("div");
+      stockDiv.classList.add("stock-item");
+
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.placeholder = "종목명 (예: AAPL)";
+      nameInput.style.width = "120px";
+
+      const percentInput = document.createElement("input");
+      percentInput.type = "number";
+      percentInput.placeholder = "비중 (%)";
+      percentInput.min = 0;
+      percentInput.max = 100;
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "삭제";
+      removeBtn.classList.add("removeStockBtn");
+      removeBtn.addEventListener("click", () => {
+        stockDiv.remove();
+      });
+
+      stockDiv.appendChild(nameInput);
+      stockDiv.appendChild(percentInput);
+      stockDiv.appendChild(removeBtn);
+
+      return stockDiv;
+    }
+
+    // 초기 2개의 종목 입력칸 생성
+    window.addEventListener("DOMContentLoaded", () => {
+      stockList.appendChild(createStockItem());
+      stockList.appendChild(createStockItem());
+    });
+
+    addStockBtn.addEventListener("click", () => {
+      stockList.appendChild(createStockItem());
+    });
+
+    /* ---------------- 주식 포트폴리오 차트 업데이트 ---------------- */
+    function updateStockChart() {
+      const stockItems = stockList.querySelectorAll(".stock-item");
+      const names = [];
+      const values = [];
+
+      stockItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const stockName = inputs[0].value.trim() || "미입력";
+        const stockPercent = Number(inputs[1].value) || 0;
+        names.push(stockName);
+        values.push(stockPercent);
+      });
+
+      const sum = values.reduce((a, b) => a + b, 0);
+      if (sum !== 100) {
+        alert("입력한 종목 비중의 합이 100%가 되어야 합니다.");
+        return;
+      }
+
+      // 랜덤 색상 (종목별로 구분)
+      const backgroundColors = names.map(() => {
+        const r = Math.floor(Math.random() * 200);
+        const g = Math.floor(Math.random() * 200);
+        const b = Math.floor(Math.random() * 200);
+        return `rgb(${r}, ${g}, ${b})`;
+      });
+
+      if (stockChart) {
+        // 기존 차트 업데이트
+        stockChart.data.labels = names;
+        stockChart.data.datasets[0].data = values;
+        stockChart.data.datasets[0].backgroundColor = backgroundColors;
+        stockChart.update();
+      } else {
+        // 차트 생성
+        const ctx = document.getElementById("stockChart").getContext("2d");
+        stockChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: names,
+            datasets: [{
+              data: values,
+              backgroundColor: backgroundColors,
+              borderColor: "#fff",
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { position: 'bottom' },
+              title: { display: true, text: '주식 포트폴리오' },
+              // datalabels 설정
+              datalabels: {
+                display: true,
+                color: '#333',
+                font: { size: 12 },
+                formatter: (value, ctx) => {
+                  const label = ctx.chart.data.labels[ctx.dataIndex];
+                  return label + ': ' + value + '%';
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    // 이벤트 리스너
+    document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
+    document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
+
+    // 초기 자산 차트 표시
+    updateAssetChart();
+    // 주식은 종목 비중 합이 100%가 아니므로, 사용자가 입력 후 버튼을 눌러야 차트 생성
+  </script>
+</body>
+</html>

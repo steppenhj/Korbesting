@@ -1,166 +1,256 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>US SmallCap Insight</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts: Roboto -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    /* 기본 리셋 */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #f4f7fa, #e0e7ef);
-      color: #333;
-      padding-bottom: 60px;
-    }
-    header {
-      background: linear-gradient(135deg, #004080, #0059b3);
-      color: #fff;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.2rem; }
-    /* 헤더 컨테이너: 제목과 검색창 */
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 1.5rem 0 1rem;
-    }
-    .header-container h2 {
-      font-size: 1.8rem;
-      color: #004080;
-    }
-    #search-container {
-      position: relative;
-    }
-    #stock-search {
-      padding: 0.5rem 2.5rem 0.5rem 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    #search-icon {
-      position: absolute;
-      right: 0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      font-size: 1.2rem;
-      color: #888;
-    }
-    main { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-    h3 {
-      margin: 1.5rem 0 0.5rem;
-      font-size: 1.5rem;
-      color: #004080;
-    }
-    /* 테이블 스타일 */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-      margin-bottom: 1rem;
-    }
-    table thead { background-color: #e0e0e0; }
-    table th, table td {
-      padding: 1rem;
-      border: 1px solid #ddd;
-      text-align: left;
-      font-size: 1rem;
-    }
-    table tbody tr:nth-child(odd) { background-color: #f9f9f9; }
-    table tr:hover { background-color: #f1f1f1; cursor: pointer; }
-    /* 섹터별 섹션 */
-    section.sector-section { margin-bottom: 2rem; }
-    /* 모달 오버레이 */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.active { display: flex; opacity: 1; }
-    #stock-detail {
-      background: #fff;
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 800px;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transform: translateY(-20px);
-      transition: transform 0.3s ease;
-    }
-    .modal-overlay.active #stock-detail { transform: translateY(0); }
-    #close-detail {
-      background-color: #004080;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
-    #close-detail:hover { background-color: #003060; }
-    /* 모달 상세정보 및 차트 */
-    #detail-info { margin-top: 1rem; font-size: 1rem; line-height: 1.6; }
-    /* 추가 투자 정보 영역 */
-    #detail-additional {
-      margin-top: 1rem;
-      font-size: 1rem;
-      line-height: 1.6;
-      border-top: 1px solid #ddd;
-      padding-top: 0.5rem;
-    }
-    /* 최신 뉴스 영역: 모달 하단에 배치 */
-    #detail-news {
-      margin-top: 1rem;
-      font-size: 1rem;
-      line-height: 1.6;
-      border-top: 1px solid #ddd;
-      padding-top: 0.5rem;
-    }
-    #stock-chart { margin-top: 1.5rem; max-height: 300px; }
-    footer {
-      background-color: #004080;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      font-size: 0.9rem;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.6rem; }
-      table th, table td { padding: 0.75rem; font-size: 0.9rem; }
-    }
-  </style>
+  <head>
+    <meta charset="UTF-8">
+    <title>US SmallCap Insight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Roboto & Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      html {
+        font-size: 14px; /* 전체 폰트 크기 축소 */
+      }
+      :root {
+        --primary-color: #004080;
+        --secondary-color: #0059b3;
+        --accent-color: #f4f7fa;
+        --light-gray: #e0e0e0;
+        --text-color: #333;
+      }
+      /* 기본 리셋 */
+      * {
+        box-sizing: border-box;
+        margin: 0; 
+        padding: 0;
+      }
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
+        color: var(--text-color);
+        padding-bottom: 60px;
+      }
+      header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      }
+      header h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 2rem; /* 살짝 축소 */
+        margin-bottom: 0.5rem;
+      }
+      header p {
+        font-size: 1rem; /* 축소 */
+      }
+      /* 헤더 컨테이너: 제목과 검색창 */
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem 0; /* 축소 */
+        padding: 0 1rem;
+      }
+      .header-container h2 {
+        font-size: 1.4rem; /* 축소 */
+        color: var(--primary-color);
+        margin: 0;
+      }
+      #search-container {
+        position: relative;
+      }
+      #stock-search {
+        padding: 0.4rem 2rem 0.4rem 0.5rem; /* 축소 */
+        font-size: 0.9rem; /* 축소 */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      #stock-search:focus {
+        border-color: var(--primary-color);
+      }
+      #search-icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-size: 1rem; /* 축소 */
+        color: #888;
+      }
+      /* 네비게이션 바 */
+      nav {
+        margin-top: 0.5rem;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem; /* 축소 */
+        transition: color 0.3s;
+      }
+      nav ul li a:hover {
+        color: var(--accent-color);
+      }
+      main {
+        max-width: 960px; /* 폭 축소 */
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      h3 {
+        margin: 1rem 0 0.5rem;
+        font-size: 1.2rem; /* 축소 */
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.3rem;
+      }
+      /* 테이블 스타일 */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        overflow: hidden;
+        font-size: 0.9rem; /* 전체 테이블 폰트 축소 */
+      }
+      table thead {
+        background-color: var(--light-gray);
+      }
+      table th, table td {
+        padding: 0.8rem; /* 축소 */
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
+      table tr:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      /* 섹터별 섹션 */
+      section.sector-section {
+        margin-bottom: 1.5rem; /* 축소 */
+      }
+      /* 모달 오버레이 */
+      .modal-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .modal-overlay.active {
+        display: flex;
+        opacity: 1;
+      }
+      #stock-detail {
+        background: #fff;
+        padding: 1rem; /* 축소 */
+        border-radius: 8px;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+        font-size: 0.9rem; /* 모달 내부 폰트 축소 */
+      }
+      .modal-overlay.active #stock-detail {
+        transform: translateY(0);
+      }
+      #close-detail {
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        padding: 0.4rem 0.8rem; /* 축소 */
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 0.8rem; /* 축소 */
+        transition: background 0.3s;
+      }
+      #close-detail:hover {
+        background-color: #003060;
+      }
+      /* 모달 상세정보 및 차트 */
+      #detail-info {
+        margin-top: 0.5rem; 
+        line-height: 1.4; 
+      }
+      #detail-additional {
+        margin-top: 0.5rem;
+        line-height: 1.4;
+        border-top: 1px solid #ddd;
+        padding-top: 0.5rem;
+      }
+      #detail-news {
+        margin-top: 0.5rem;
+        line-height: 1.4;
+        border-top: 1px solid #ddd;
+        padding-top: 0.5rem;
+      }
+      #stock-chart {
+        margin-top: 1rem;
+        max-height: 300px;
+      }
+      /* 이벤트 캘린더 */
+      #events-calendar {
+        margin-top: 1rem;
+      }
+      footer {
+        background-color: var(--primary-color);
+        color: #fff;
+        text-align: center;
+        padding: 0.8rem; /* 축소 */
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-size: 0.8rem; /* 축소 */
+        box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+      }
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.6rem;
+        }
+        table th, table td {
+          padding: 0.6rem; /* 더 축소 */
+          font-size: 0.8rem;
+        }
+      }
+    </style>
 </head>
 <body>
   <header>
     <h1>US SmallCap Insight</h1>
     <p>"미국 중소형주, 쉽게 찾고 투자하자!"</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">메인 페이지</a></li>
+        <li><a href="포폴.html">포트폴리오</a></li>
+      </ul>
+    </nav>
   </header>
   
   <main>
@@ -173,7 +263,6 @@
     </div>
     
     <!-- 섹터별 분리 -->
-    
     <!-- Aerospace & Defense -->
     <section class="sector-section" id="sector-aerospace">
       <h3>Aerospace & Defense / 항공우주·국방</h3>
@@ -331,24 +420,61 @@
       </table>
     </section>
     
-    <!-- Healthcare -->
-    <section class="sector-section" id="sector-healthcare">
-      <h3>Healthcare / 헬스케어</h3>
+    <!-- Biotech / 바이오 헬스케어 -->
+    <section class="sector-section" id="sector-biotech">
+      <h3>Biotech / 바이오 헬스케어</h3>
       <table>
         <thead>
           <tr>
             <th>티커</th>
             <th>회사명 (영문 / 한글)</th>
             <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
+            <th>연간 매출 성장률 (2023년 기준)</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="stock-row" data-ticker="AMPH" data-sector="Healthcare / 헬스케어" data-company="Amphastar Pharmaceuticals Inc / 암파스타 파마슈티컬스" data-growth="37%" data-info="Amphastar Pharmaceuticals Inc는 미국에 본사를 둔 바이오제약 회사로, 기술적으로 까다로운 제네릭 및 독점 주사제, 흡입제, 비강내 제품을 개발, 제조, 마케팅 및 판매하며, 인슐린 활성 제약 성분(API)도 판매합니다.">
+          <tr class="stock-row" data-ticker="ARWR" data-sector="Biotech / 바이오 헬스케어" data-company="Arrowhead Pharmaceuticals Inc / 애로우헤드 파마슈티컬스" data-growth="45%" data-info="Arrowhead Pharmaceuticals Inc는 RNA 간섭(RNAi) 기술을 활용하여 다양한 질병의 치료제를 개발하는 바이오 제약 회사로, 특히 간 질환 분야에서 혁신적인 치료법을 연구하고 있습니다.">
+            <td>ARWR</td>
+            <td>Arrowhead Pharmaceuticals Inc / 애로우헤드 파마슈티컬스</td>
+            <td id="price-ARWR">Loading...</td>
+            <td>45%</td>
+          </tr>
+          <tr class="stock-row" data-ticker="GBT" data-sector="Biotech / 바이오 헬스케어" data-company="Global Blood Therapeutics Inc / 글로벌 블러드 테라퓨틱스" data-growth="30%" data-info="Global Blood Therapeutics Inc는 겸상적혈구빈혈증 치료제인 Oxbryta를 개발한 회사로, 혈액 질환 치료제 분야에서 두각을 나타내고 있습니다.">
+            <td>GBT</td>
+            <td>Global Blood Therapeutics Inc / 글로벌 블러드 테라퓨틱스</td>
+            <td id="price-GBT">Loading...</td>
+            <td>30%</td>
+          </tr>
+          <tr class="stock-row" data-ticker="ICVX" data-sector="Biotech / 바이오 헬스케어" data-company="Icosavax Inc / 이카이오스 바이오사이언스" data-growth="25%" data-info="Icosavax Inc는 바이러스 유사 입자(VLP) 기술을 기반으로 백신을 개발하는 회사로, 호흡기 질환 예방을 위한 혁신적인 백신 후보물질을 보유하고 있습니다.">
+            <td>ICVX</td>
+            <td>Icosavax Inc / 이카이오스 바이오사이언스</td>
+            <td id="price-ICVX">Loading...</td>
+            <td>25%</td>
+          </tr>
+          <tr class="stock-row" data-ticker="RVNC" data-sector="Biotech / 바이오 헬스케어" data-company="Revance Therapeutics Inc / 리제너레이션 파마슈티컬스" data-growth="35%" data-info="Revance Therapeutics Inc는 신경독소를 활용한 미용 및 치료용 제품을 개발하는 회사로, 주름 개선 및 만성 질환 치료를 위한 혁신적인 솔루션을 제공합니다.">
+            <td>RVNC</td>
+            <td>Revance Therapeutics Inc / 리제너레이션 파마슈티컬스</td>
+            <td id="price-RVNC">Loading...</td>
+            <td>35%</td>
+          </tr>
+          <tr class="stock-row" data-ticker="SGEN" data-sector="Biotech / 바이오 헬스케어" data-company="Seagen Inc / 시젠" data-growth="40%" data-info="Seagen Inc는 항체-약물 접합체(ADC) 기술을 선도하는 바이오 제약 회사로, 다양한 암 치료제를 개발 및 상용화하고 있습니다.">
+            <td>SGEN</td>
+            <td>Seagen Inc / 시젠</td>
+            <td id="price-SGEN">Loading...</td>
+            <td>40%</td>
+          </tr>
+          <tr class="stock-row" data-ticker="AMPH" data-sector="Biotech / 바이오 헬스케어" data-company="Amphastar Pharmaceuticals Inc / 암파스타 파마슈티컬스" data-growth="37%" data-info="Amphastar Pharmaceuticals Inc는 미국에 본사를 둔 바이오제약 회사로, 기술적으로 까다로운 제네릭 및 독점 주사제, 흡입제, 비강내 제품을 개발, 제조, 마케팅 및 판매하며, 인슐린 활성 제약 성분(API)도 판매합니다.">
             <td>AMPH</td>
             <td>Amphastar Pharmaceuticals Inc / 암파스타 파마슈티컬스</td>
             <td id="price-AMPH">Loading...</td>
             <td>37%</td>
+          </tr>
+          <!-- Recursion Pharmaceuticals 추가 -->
+          <tr class="stock-row" data-ticker="RXRX" data-sector="Biotech / 바이오 헬스케어" data-company="Recursion Pharmaceuticals Inc / 리커전 파마슈티컬스" data-growth="N/A" data-info="Recursion Pharmaceuticals Inc는 인공지능(AI)과 자동화 기술을 활용하여 신약 개발을 혁신하는 임상 단계의 생명공학 기업입니다. 2013년에 설립되어 2021년 나스닥에 상장되었으며, 본사는 유타주 솔트레이크시티에 위치하고 있습니다. 재무 현황: 2023년 9월 30일 기준, 총매출 2,608만 달러, 총 영업비용 1억 2,444만 달러(순손실 기록). 주가 정보: 2025년 2월 15일 기준, 주가 10.53달러, 전일 대비 2.05달러(23.88%) 상승, 최근 6개월 주가 상승률 29.97%. 최근 동향: 2025년 2월 5일, 국제 뇌졸중 컨퍼런스에서 REC-994 임상 2상 데이터 발표.">
+            <td>RXRX</td>
+            <td>Recursion Pharmaceuticals Inc / 리커전 파마슈티컬스</td>
+            <td id="price-RXRX">Loading...</td>
+            <td>N/A</td>
           </tr>
         </tbody>
       </table>
@@ -552,9 +678,17 @@
         </tbody>
       </table>
     </section>
+    
+    <!-- 이벤트 캘린더: 페이지 하단 (모든 티커 이벤트 통합) -->
+    <section class="sector-section" id="sector-events">
+      <h3>이벤트 캘린더</h3>
+      <div id="events-calendar">
+        <p>이 달의 이벤트 로딩 중...</p>
+      </div>
+    </section>
   </main>
   
-  <!-- 모달: 상세 정보, 1년 차트, 추가 투자 정보, 최신 뉴스 -->
+  <!-- 모달: 상세 정보, 1년 차트, 추가 투자 정보, 최신 뉴스 (달력 제외) -->
   <div class="modal-overlay" id="modal-overlay">
     <section id="stock-detail">
       <button id="close-detail">닫기</button>
@@ -564,7 +698,6 @@
       <p id="detail-growth">연간 매출 성장률 (YoY): </p>
       <div id="detail-info"></div>
       <div id="detail-additional"></div>
-      <!-- 최신 뉴스 영역 (맨 아래에 배치) -->
       <div id="detail-news"></div>
       <canvas id="stock-chart"></canvas>
     </section>
@@ -628,6 +761,9 @@
           }, index * 300);
         }
       });
+      
+      // 페이지 하단 이벤트 캘린더 업데이트: 모든 티커 이벤트 가져오기
+      fetchAllEvents();
     });
     
     // 종목 행 클릭 → 모달 표시, 차트, 추가 투자 정보, 최신 뉴스 업데이트
@@ -646,7 +782,6 @@
         detailInfo.textContent = info;
     
         detailAdditional.innerHTML = `<p>추가 데이터 로딩 중...</p>`;
-        // 최신 뉴스 위에 "뉴스:" 제목을 추가
         detailNews.innerHTML = `<h3>뉴스</h3><p>최신 뉴스 로딩 중...</p>`;
     
         modalOverlay.classList.add('active');
@@ -691,7 +826,7 @@
       }
     }
     
-    // Chart.js를 사용하여 차트 생성
+    // Chart.js 차트 생성 (borderColor를 문자열로 수정)
     function initializeChart(ticker, labels, prices) {
       const ctx = stockChartCanvas.getContext('2d');
       if (stockChart) { stockChart.destroy(); }
@@ -702,7 +837,7 @@
           datasets: [{
             label: `${ticker} 1년 종가 추이`,
             data: prices,
-            borderColor: '#004080',
+            borderColor: "#004080",
             backgroundColor: 'rgba(0,64,128,0.1)',
             fill: true,
             tension: 0.3
@@ -771,6 +906,90 @@
       }
     }
     
+    // 이벤트 업데이트: 각 티커의 이벤트 가져오기 (v3/reference/tickers/{ticker}/events API)
+    async function fetchTickerEvents(ticker) {
+      const url = `https://api.polygon.io/v3/reference/tickers/${ticker}/events?apiKey=${polygonApiKey}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+        const jsonData = await response.json();
+        if (jsonData.results && jsonData.results.length > 0) {
+          // 각 이벤트에 해당 티커 추가
+          return jsonData.results.map(ev => ({ ...ev, ticker }));
+        } else {
+          return [];
+        }
+      } catch (error) {
+        console.error("Events API 호출 오류 for", ticker, error);
+        return [];
+      }
+    }
+    
+    // 모든 티커의 이벤트를 가져와서 달력 생성 (페이지 하단 이벤트 캘린더 영역)
+    async function fetchAllEvents() {
+      const tickers = Array.from(stockRows).map(row => row.getAttribute('data-ticker'));
+      try {
+        const eventsArrays = await Promise.all(tickers.map(ticker => fetchTickerEvents(ticker)));
+        const allEvents = eventsArrays.flat();
+        buildCalendar(allEvents);
+      } catch (error) {
+        console.error("전체 이벤트 API 호출 오류:", error);
+        document.getElementById("events-calendar").innerHTML = "<p>이 달에는 이벤트 없음</p>";
+      }
+    }
+    
+    // 달력 생성: 현재 달의 이벤트를 캘린더 형태로 표시 (모든 티커의 이벤트)
+    function buildCalendar(events) {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth(); // 0-indexed
+      // 현재 달 이벤트 필터링
+      const eventsThisMonth = events.filter(ev => {
+        const evDate = new Date(ev.event_date);
+        return evDate.getFullYear() === year && evDate.getMonth() === month;
+      });
+      
+      // 달력 헤더 (요일)
+      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      let calHTML = "<table style='width:100%; border-collapse: collapse;'><thead><tr>";
+      weekdays.forEach(day => {
+        calHTML += `<th style="padding: 0.5rem; border: 1px solid #ddd;">${day}</th>`;
+      });
+      calHTML += "</tr></thead><tbody>";
+      
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      let day = 1;
+      for (let i = 0; i < 6; i++) {
+        calHTML += "<tr>";
+        for (let j = 0; j < 7; j++) {
+          if (i === 0 && j < firstDay) {
+            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
+          } else if (day > daysInMonth) {
+            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
+          } else {
+            let cellEvents = eventsThisMonth.filter(ev => {
+              const evDate = new Date(ev.event_date);
+              return evDate.getDate() === day;
+            });
+            let cellContent = `<div>${day}</div>`;
+            cellEvents.forEach(ev => {
+              // 이벤트 종류와 해당 티커 표시
+              cellContent += `<div style="font-size:0.75rem; color:#004080;">[${ev.ticker}] ${ev.event_type}</div>`;
+            });
+            calHTML += `<td style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: top;">${cellContent}</td>`;
+            day++;
+          }
+        }
+        calHTML += "</tr>";
+        if (day > daysInMonth) break;
+      }
+      calHTML += "</tbody></table>";
+      
+      document.getElementById("events-calendar").innerHTML = calHTML;
+    }
+    
     // 천 단위 콤마 추가 함수
     function formatNumber(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -789,6 +1008,11 @@
           row.style.display = "none";
         }
       });
+    });
+    
+    // DOMContentLoaded 이후, 모든 이벤트 가져오기 (이벤트 캘린더 영역 업데이트)
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchAllEvents();
     });
   </script>
 </body>
