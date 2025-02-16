@@ -10,10 +10,9 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- chartjs-plugin-datalabels CDN (차트에 상시 라벨 표시) -->
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-
   <style>
     html {
-      font-size: 14px; /* 전체 폰트 크기 축소 */
+      font-size: 14px;
     }
     :root {
       --primary-color: #004080;
@@ -46,38 +45,51 @@
       font-size: 2rem;
       margin-bottom: 0.5rem;
     }
-    header p { font-size: 1rem; }
+    header p {
+      font-size: 1rem;
+    }
     nav {
       margin-top: 0.5rem;
     }
     nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
-
-    /* 버튼처럼 보이도록 a 태그에 스타일 부여 */
     nav ul li a {
-    display: inline-block;           /* 내부 패딩 적용 가능 */
-    padding: 0.5rem 1rem;           /* 버튼 형태로 보이도록 여백 */
-    background-color: #fff;         /* 버튼 배경색 */
-    color: #004080;                 /* 텍스트 색상 */
-    border: 1px solid #004080;      /* 테두리 색상 */
-    border-radius: 4px;             /* 살짝 둥근 모서리 */
-    text-decoration: none;          /* 링크 밑줄 제거 */
-    transition: background-color 0.3s, color 0.3s; /* hover 시 부드러운 전환 */
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: #004080;
+      border: 1px solid #004080;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav ul li a:hover {
+      background-color: #004080;
+      color: #fff;
     }
 
-    nav ul li a:hover {
-    background-color: #004080;      /* 버튼에 마우스 올렸을 때 배경색 진하게 */
-    color: #fff;                    /* 글자색 반전 */
-    }
     main {
-      max-width: 960px; /* 최대 폭 축소 */
+      max-width: 960px;
       margin: 1rem auto;
       padding: 0 1rem;
     }
+
+    /* 브라우저에 영구저장 안내 문구 */
+    .save-notice {
+      background: #fff;
+      color: #444;
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid var(--primary-color);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      line-height: 1.4;
+    }
+
     h2 {
       font-size: 1.8rem;
       color: var(--primary-color);
@@ -91,17 +103,21 @@
       padding-bottom: 0.3rem;
       margin-bottom: 1rem;
     }
+
+    /* 가로로 섹션 두 개 나란히 배치 & 높이 줄임 */
     .portfolio-sections {
       display: flex;
-      flex-wrap: wrap; 
+      flex-wrap: nowrap; /* 화면이 충분히 넓으면 같은 줄에 고정 */
       gap: 1rem;
+      align-items: flex-start; /* 상단 정렬 */
     }
     .section-container {
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
       padding: 1rem;
-      flex: 1 1 0;
+      /* 가로 폭 지정 -> 48% 정도면 2개 배치 시 딱 맞음 */
+      width: 48%;
     }
     .portfolio-form {
       display: flex;
@@ -118,8 +134,8 @@
     }
     .portfolio-form input[type="number"],
     .portfolio-form input[type="text"] {
-      width: 80px;
-      padding: 0.4rem;
+      width: 70px;
+      padding: 0.3rem;
       border: 1px solid #ccc;
       border-radius: 4px;
       text-align: center;
@@ -131,7 +147,7 @@
       border-color: var(--primary-color);
     }
     .portfolio-form button {
-      padding: 0.4rem 0.8rem;
+      padding: 0.3rem 0.6rem;
       background: var(--primary-color);
       color: #fff;
       border: none;
@@ -144,7 +160,7 @@
       background: #003060;
     }
     .chart-container {
-      max-width: 400px; /* 차트 최대 크기 축소 */
+      max-width: 350px; /* 가로 폭 축소 */
       margin: 0 auto;
     }
     .recommendation {
@@ -173,6 +189,7 @@
     .removeStockBtn:hover {
       background: #800000;
     }
+
     footer {
       background-color: var(--primary-color);
       color: #fff;
@@ -184,9 +201,13 @@
       font-size: 0.8rem;
       box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
     }
-    @media (max-width: 800px) {
+
+    @media (max-width: 1000px) {
+      .section-container {
+        width: 100%; /* 화면이 작아지면 세로로 쌓이도록 */
+      }
       .portfolio-sections {
-        flex-direction: column;
+        flex-wrap: wrap; /* 세로 배치 전환 */
       }
     }
   </style>
@@ -204,6 +225,13 @@
   </header>
   
   <main>
+    <!-- 로그인 없이 로컬 스토리지에 영구 저장 -->
+    <div class="save-notice">
+      이 포트폴리오는 <strong>로그인 없이도</strong> 현재 사용하는 <strong>브라우저에 영구 저장</strong>됩니다.
+      <br>
+      다시 방문하더라도 입력했던 내역이 유지됩니다.
+    </div>
+
     <h2>내 포트폴리오</h2>
     <div class="portfolio-sections">
       <!-- 자산 포트폴리오 섹션 -->
@@ -272,37 +300,52 @@
   </footer>
   
   <script>
-    // 1) chartjs-plugin-datalabels 등록
+    // chartjs-plugin-datalabels 등록
     Chart.register(ChartDataLabels);
 
     let assetChart, stockChart;
 
-    /* ---------------- 자산 포트폴리오 업데이트 ---------------- */
+    /* ---------------- 로컬 스토리지: 자산 포트폴리오 불러오기 ---------------- */
+    function loadAssetPortfolio() {
+      const stored = localStorage.getItem("assetPortfolio");
+      if (stored) {
+        const asset = JSON.parse(stored);
+        document.getElementById("cash-input").value       = asset.cash;
+        document.getElementById("bond-input").value       = asset.bond;
+        document.getElementById("realEstate-input").value = asset.realEstate;
+        document.getElementById("stock-input").value      = asset.stock;
+        document.getElementById("other-input").value      = asset.other;
+      }
+    }
+
+    /* ---------------- 자산 포트폴리오 업데이트 & 저장 ---------------- */
     function updateAssetChart() {
-      const cash = Number(document.getElementById("cash-input").value);
-      const bond = Number(document.getElementById("bond-input").value);
+      const cash       = Number(document.getElementById("cash-input").value);
+      const bond       = Number(document.getElementById("bond-input").value);
       const realEstate = Number(document.getElementById("realEstate-input").value);
-      const stock = Number(document.getElementById("stock-input").value);
-      const other = Number(document.getElementById("other-input").value);
-      const total = cash + bond + realEstate + stock + other;
+      const stock      = Number(document.getElementById("stock-input").value);
+      const other      = Number(document.getElementById("other-input").value);
+      const total      = cash + bond + realEstate + stock + other;
       
       if (total !== 100) {
         alert("자산 포트폴리오 항목의 합계가 100%가 되어야 합니다.");
         return;
       }
+      // localStorage에 저장
+      const assetData = { cash, bond, realEstate, stock, other };
+      localStorage.setItem("assetPortfolio", JSON.stringify(assetData));
       
-      const data = [cash, bond, realEstate, stock, other];
-      const labels = ["현금", "채권", "부동산", "주식", "기타"];
-      const backgroundColors = ["#ffd966", "#8fd3f4", "#ffbba8", "#a4deaa", "#dcc6e0"]; 
+      // 차트 표시 데이터
+      const data            = [cash, bond, realEstate, stock, other];
+      const labels          = ["현금", "채권", "부동산", "주식", "기타"];
+      const backgroundColors= ["#ffd966", "#8fd3f4", "#ffbba8", "#a4deaa", "#dcc6e0"]; 
       
       if (assetChart) {
-        // 기존 차트 업데이트
         assetChart.data.labels = labels;
         assetChart.data.datasets[0].data = data;
         assetChart.data.datasets[0].backgroundColor = backgroundColors;
         assetChart.update();
       } else {
-        // 차트 생성
         const ctx = document.getElementById("assetChart").getContext("2d");
         assetChart = new Chart(ctx, {
           type: 'pie',
@@ -320,7 +363,6 @@
             plugins: {
               legend: { position: 'bottom' },
               title: { display: true, text: '자산 포트폴리오' },
-              // 2) datalabels 옵션
               datalabels: {
                 display: true,
                 color: '#333',
@@ -336,7 +378,27 @@
       }
     }
 
-    /* ---------------- 주식 포트폴리오 동적 항목 추가/삭제 ---------------- */
+    /* ---------------- 로컬 스토리지: 주식 포트폴리오 불러오기 ---------------- */
+    function loadStockPortfolio() {
+      const stored = localStorage.getItem("stockPortfolio");
+      if (stored) {
+        const stockArray = JSON.parse(stored);
+        stockList.innerHTML = "";
+        stockArray.forEach(item => {
+          const stockDiv = createStockItem();
+          const inputs   = stockDiv.querySelectorAll("input");
+          inputs[0].value = item.name;
+          inputs[1].value = item.percent;
+          stockList.appendChild(stockDiv);
+        });
+      } else {
+        // 최초(저장 없는 경우) 기본 2개 종목 입력칸
+        stockList.appendChild(createStockItem());
+        stockList.appendChild(createStockItem());
+      }
+    }
+
+    /* ---------------- 주식 포트폴리오 동적 항목 생성/삭제 ---------------- */
     const stockList = document.getElementById("stockList");
     const addStockBtn = document.getElementById("addStockBtn");
 
@@ -365,28 +427,21 @@
       stockDiv.appendChild(nameInput);
       stockDiv.appendChild(percentInput);
       stockDiv.appendChild(removeBtn);
-
       return stockDiv;
     }
-
-    // 초기 2개의 종목 입력칸 생성
-    window.addEventListener("DOMContentLoaded", () => {
-      stockList.appendChild(createStockItem());
-      stockList.appendChild(createStockItem());
-    });
 
     addStockBtn.addEventListener("click", () => {
       stockList.appendChild(createStockItem());
     });
 
-    /* ---------------- 주식 포트폴리오 차트 업데이트 ---------------- */
+    /* ---------------- 주식 포트폴리오 차트 업데이트 & 저장 ---------------- */
     function updateStockChart() {
       const stockItems = stockList.querySelectorAll(".stock-item");
-      const names = [];
+      const names  = [];
       const values = [];
 
       stockItems.forEach(item => {
-        const inputs = item.querySelectorAll("input");
+        const inputs    = item.querySelectorAll("input");
         const stockName = inputs[0].value.trim() || "미입력";
         const stockPercent = Number(inputs[1].value) || 0;
         names.push(stockName);
@@ -399,7 +454,14 @@
         return;
       }
 
-      // 랜덤 색상 (종목별로 구분)
+      // localStorage에 저장
+      const stockArray = names.map((name, idx) => ({
+        name,
+        percent: values[idx]
+      }));
+      localStorage.setItem("stockPortfolio", JSON.stringify(stockArray));
+
+      // 차트 표시 데이터
       const backgroundColors = names.map(() => {
         const r = Math.floor(Math.random() * 200);
         const g = Math.floor(Math.random() * 200);
@@ -408,13 +470,11 @@
       });
 
       if (stockChart) {
-        // 기존 차트 업데이트
         stockChart.data.labels = names;
         stockChart.data.datasets[0].data = values;
         stockChart.data.datasets[0].backgroundColor = backgroundColors;
         stockChart.update();
       } else {
-        // 차트 생성
         const ctx = document.getElementById("stockChart").getContext("2d");
         stockChart = new Chart(ctx, {
           type: 'pie',
@@ -432,7 +492,6 @@
             plugins: {
               legend: { position: 'bottom' },
               title: { display: true, text: '주식 포트폴리오' },
-              // datalabels 설정
               datalabels: {
                 display: true,
                 color: '#333',
@@ -448,13 +507,19 @@
       }
     }
 
-    // 이벤트 리스너
-    document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
-    document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
+    // 페이지 로드 시점
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1) 기존 데이터 불러오기
+      loadAssetPortfolio();
+      loadStockPortfolio();
+      // 2) 자산 차트 바로 업데이트
+      updateAssetChart();
+      // (주식 합계가 100%이면 자동으로 updateStockChart() 호출해도 됨)
 
-    // 초기 자산 차트 표시
-    updateAssetChart();
-    // 주식은 종목 비중 합이 100%가 아니므로, 사용자가 입력 후 버튼을 눌러야 차트 생성
+      // 3) 이벤트 리스너
+      document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
+      document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
+    });
   </script>
 </body>
 </html>
