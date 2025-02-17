@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       html {
-        font-size: 16px; /* 전체 폰트 크기 축소 */
+        font-size: 16px;
       }
       :root {
         --primary-color: #004080;
@@ -40,22 +40,22 @@
       }
       header h1 {
         font-family: 'Roboto', sans-serif;
-        font-size: 2rem; /* 살짝 축소 */
+        font-size: 2rem;
         margin-bottom: 0.5rem;
       }
       header p {
-        font-size: 1rem; /* 축소 */
+        font-size: 1rem;
       }
       /* 헤더 컨테이너: 제목과 검색창 */
       .header-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 1rem 0; /* 축소 */
+        margin: 1rem 0;
         padding: 0 1rem;
       }
       .header-container h2 {
-        font-size: 1.4rem; /* 축소 */
+        font-size: 1.4rem;
         color: var(--primary-color);
         margin: 0;
       }
@@ -63,8 +63,8 @@
         position: relative;
       }
       #stock-search {
-        padding: 0.4rem 2rem 0.4rem 0.5rem; /* 축소 */
-        font-size: 0.9rem; /* 축소 */
+        padding: 0.4rem 2rem 0.4rem 0.5rem;
+        font-size: 0.9rem;
         border: 1px solid #ccc;
         border-radius: 4px;
         outline: none;
@@ -79,33 +79,9 @@
         top: 50%;
         transform: translateY(-50%);
         pointer-events: none;
-        font-size: 1rem; /* 축소 */
+        font-size: 1rem;
         color: #888;
       }
-
-      .about-identity {
-        /* 레이아웃 / 배경색 설정 (예시) */
-        background-color: #fff;           /* 배경 흰색 */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 살짝 그림자 */
-        padding: 1rem;                   /* 내부 여백 */
-        margin: 1rem 0;                  /* 위아래 여백 */
-
-        /* 텍스트 스타일 */
-        border-radius: 8px;              /* 모서리를 둥글게 처리 */
-        line-height: 1.5;                /* 줄 간격 */
-      }
-
-      .about-identity h3 {
-        font-size: 1.2rem;               /* 제목 크기 조정 */
-        color: var(--primary-color);     /* 기존 컬러 변수 사용 가능 */
-        margin-bottom: 0.5rem;           /* 제목과 본문 사이 간격 */
-      }
-
-      .about-identity p {
-        font-size: 0.95rem;              /* 본문 폰트 크기 */
-        color: #555;                     /* 글자색 조금 더 연하게 */
-      }
-
       /* 네비게이션 바 */
       nav {
         margin-top: 0.5rem;
@@ -116,31 +92,29 @@
         justify-content: center;
         gap: 1rem;
       }
-
-      /* 버튼처럼 보이도록 a 태그에 스타일 부여 */
+      /* 버튼처럼 보이도록 a 태그 스타일 */
       nav ul li a {
-        display: inline-block;           /* 내부 패딩 적용 가능 */
-        padding: 0.5rem 1rem;           /* 버튼 형태로 보이도록 여백 */
-        background-color: #fff;         /* 버튼 배경색 */
-        color: #004080;                 /* 텍스트 색상 */
-        border: 1px solid #004080;      /* 테두리 색상 */
-        border-radius: 4px;             /* 살짝 둥근 모서리 */
-        text-decoration: none;          /* 링크 밑줄 제거 */
-        transition: background-color 0.3s, color 0.3s; /* hover 시 부드러운 전환 */
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #fff;
+        color: #004080;
+        border: 1px solid #004080;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
       }
-
       nav ul li a:hover {
-        background-color: #004080;      /* 버튼에 마우스 올렸을 때 배경색 진하게 */
-        color: #fff;                    /* 글자색 반전 */
+        background-color: #004080;
+        color: #fff;
       }
       main {
-        max-width: 960px; /* 폭 축소 */
+        max-width: 960px;
         margin: 0 auto;
         padding: 0 1rem;
       }
       h3 {
         margin: 1rem 0 0.5rem;
-        font-size: 1.2rem; /* 축소 */
+        font-size: 1.2rem;
         color: var(--primary-color);
         border-bottom: 2px solid var(--primary-color);
         padding-bottom: 0.3rem;
@@ -154,13 +128,13 @@
         margin-bottom: 1rem;
         border-radius: 6px;
         overflow: hidden;
-        font-size: 0.9rem; /* 전체 테이블 폰트 축소 */
+        font-size: 0.9rem;
       }
       table thead {
         background-color: var(--light-gray);
       }
       table th, table td {
-        padding: 0.8rem; /* 축소 */
+        padding: 0.8rem;
         border: 1px solid #ddd;
         text-align: left;
       }
@@ -174,7 +148,7 @@
       }
       /* 섹터별 섹션 */
       section.sector-section {
-        margin-bottom: 1.5rem; /* 축소 */
+        margin-bottom: 1.5rem;
       }
       /* 모달 오버레이 */
       .modal-overlay {
@@ -195,7 +169,7 @@
       }
       #stock-detail {
         background: #fff;
-        padding: 1rem; /* 축소 */
+        padding: 1rem;
         border-radius: 8px;
         width: 90%;
         max-width: 800px;
@@ -205,7 +179,7 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         transform: translateY(-20px);
         transition: transform 0.3s ease;
-        font-size: 0.9rem; /* 모달 내부 폰트 축소 */
+        font-size: 0.9rem;
       }
       .modal-overlay.active #stock-detail {
         transform: translateY(0);
@@ -214,13 +188,13 @@
         background-color: var(--primary-color);
         color: #fff;
         border: none;
-        padding: 0.4rem 0.8rem; /* 축소 */
+        padding: 0.4rem 0.8rem;
         position: absolute;
         top: 1rem;
         right: 1rem;
         cursor: pointer;
         border-radius: 4px;
-        font-size: 0.8rem; /* 축소 */
+        font-size: 0.8rem;
         transition: background 0.3s;
       }
       #close-detail:hover {
@@ -251,816 +225,1200 @@
       #events-calendar {
         margin-top: 1rem;
       }
+      /* 포트폴리오 영역: 자산 & 주식을 가로 배치 */
+      .portfolio-sections {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .section-container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        padding: 1rem;
+        width: 48%;
+      }
+      .portfolio-form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .portfolio-form label {
+        font-weight: 600;
+        margin-right: 0.2rem;
+        min-width: 60px;
+        text-align: right;
+      }
+      .portfolio-form input[type="number"],
+      .portfolio-form input[type="text"] {
+        width: 70px;
+        padding: 0.3rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: center;
+        outline: none;
+        transition: border-color 0.3s;
+        font-size: 0.9rem;
+      }
+      .portfolio-form input:focus {
+        border-color: var(--primary-color);
+      }
+      .portfolio-form button {
+        padding: 0.3rem 0.6rem;
+        background: var(--primary-color);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background 0.3s;
+      }
+      .portfolio-form button:hover {
+        background: #003060;
+      }
+      .chart-container {
+        max-width: 350px;
+        margin: 0 auto;
+      }
+      .recommendation {
+        background: var(--light-gray);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+      .stock-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .removeStockBtn {
+        background: #b30000;
+        border: none;
+        color: #fff;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+      .removeStockBtn:hover {
+        background: #800000;
+      }
+      /* 하단 정보: 오늘 뉴스 & 우리의 철학 */
+      .bottom-info {
+        max-width: 960px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      .bottom-info > div {
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+      .bottom-info h3 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
+      }
+      .bottom-info p {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+
+      }
       footer {
         background-color: var(--primary-color);
         color: #fff;
         text-align: center;
-        padding: 0.8rem; /* 축소 */
+        padding: 0.8rem;
+        position: fixed;
         bottom: 0;
         width: 100%;
-        font-size: 1rem; /* 축소 */
+        font-size: 1rem;
         box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+      }
+      @media (max-width: 1000px) {
+        .section-container {
+          width: 100%;
+        }
+        .portfolio-sections {
+          flex-wrap: wrap;
+        }
       }
       @media (max-width: 600px) {
         header h1 {
           font-size: 1.6rem;
         }
         table th, table td {
-          padding: 0.6rem; /* 더 축소 */
+          padding: 0.6rem;
           font-size: 0.8rem;
         }
       }
     </style>
-</head>
-<body>
-  <header>
-    <h1>US SmallCap Insight</h1>
-    <p>"미국 중소형주, 쉽게 찾고 투자하자!"</p>
-    <nav>
-      <ul>
-        <li><a href="index.html">메인 페이지</a></li>
-        <li><a href="포폴.html">포트폴리오</a></li>
-      </ul>
-    </nav>
-  </header>
+  </head>
+  <body>
+    <header>
+      <h1>US SmallCap Insight</h1>
+      <p>"미국 중소형주, 쉽게 찾고 투자하자!"</p>
+      <nav>
+        <ul>
+          <li><a href="index.html">메인 페이지</a></li>
+          <li><a href="포폴.html">포트폴리오</a></li>
+          <li><a href="유명인.html">유명인 포트폴리오</a></li>
 
-  <div class="about-identity">
-    <h3>중소형주에 대한 우리의 철학</h3>
-    <p>
-      US SmallCap Insight는 미국 중소형주에 특화된 투자 정보를 제공합니다.<br>
-      투자자들이 쉽고 신뢰할 수 있는 정보를 필요로 한다는 사실을 깊이 인식하여, 현재 시장에서 체계적으로 정리된 중소형주 정보를 찾기 어렵다는 현실을 바꾸고자 이 서비스를 시작하였습니다.<br>
-      우리는 높은 성장 잠재력과 혁신적인 아이디어를 가진 중소형 기업들을 발굴하여, 투자자 여러분께 새로운 기회의 문을 열어드리는 것을 목표로 합니다.<br>
-      진심을 담아, 여러분의 성공적인 투자를 위해 언제나 최선을 다하겠습니다.
-    </p>
-  </div>
-  
-  <main>
-    <div class="header-container">
-      <h2>미국 중소형 주식 리스트</h2>
-      <div id="search-container">
-        <input type="text" id="stock-search" placeholder="티커 또는 회사명 검색">
-        <span id="search-icon">&#128269;</span>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="bottom-info">
+      <div class="today-news">
+        <h3>오늘 뉴스</h3>
+        <p>
+          오늘의 이슈: 트럼프의 관세 인상, 주요 기업의 실적 발표 등 중요한 이슈를 이곳에 업데이트할 예정입니다.<br><br>
+          2025-02-17: 오늘은 FOMC 의사록 발표가 예정되어 있으며...
+        </p>
+      </div>
+
+    <main>
+      <div class="header-container">
+        <h2>미국 중소형 주식 리스트</h2>
+        <div id="search-container">
+          <input type="text" id="stock-search" placeholder="티커 또는 회사명 검색">
+          <span id="search-icon">&#128269;</span>
+        </div>
+      </div>
+      
+      <!-- 섹터별 분리 -->
+      <!-- Aerospace & Defense -->
+      <section class="sector-section" id="sector-aerospace">
+        <h3>Aerospace & Defense / 항공우주·국방</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="RKLB" data-sector="Aerospace & Defense / 항공우주·국방" data-company="Rocket Lab USA Inc / 로켓 랩 USA" data-growth="45%" 
+              data-info="Rocket Lab USA Inc은 우주 분야에서 로켓과 우주선을 제작하는 기업입니다. 이 회사는 민간, 국방 및 상업 시장을 대상으로 신뢰할 수 있는 발사 서비스를 제공합니다.">
+              <td>RKLB</td>
+              <td>Rocket Lab USA Inc / 로켓 랩 USA</td>
+              <td id="price-RKLB">Loading...</td>
+              <td>45%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Communication Services -->
+      <section class="sector-section" id="sector-comm">
+        <h3>Communication Services / 커뮤니케이션 서비스</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="FUBO" data-sector="Communication Services / 커뮤니케이션 서비스" data-company="fuboTV Inc / 푸보TV" data-growth="35%" 
+              data-info="fuboTV Inc는 스포츠를 중심으로 한 라이브 스트리밍 서비스를 제공하는 기업입니다. 고객들은 다양한 스포츠 이벤트와 엔터테인먼트 콘텐츠를 즐길 수 있습니다.">
+              <td>FUBO</td>
+              <td>fuboTV Inc / 푸보TV</td>
+              <td id="price-FUBO">Loading...</td>
+              <td>35%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Consumer Discretionary -->
+      <section class="sector-section" id="sector-consumer-disc">
+        <h3>Consumer Discretionary / 임의소비재</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="YETI" data-sector="Consumer Discretionary / 임의소비재" data-company="YETI Holdings Inc / 예티 홀딩스" data-growth="18%" 
+              data-info="YETI Holdings Inc는 프리미엄 아웃도어 제품을 디자인, 마케팅 및 유통하는 기업입니다.">
+              <td>YETI</td>
+              <td>YETI Holdings Inc / 예티 홀딩스</td>
+              <td id="price-YETI">Loading...</td>
+              <td>18%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="UAA" data-sector="Consumer Discretionary / 임의소비재" data-company="Under Armour Inc / 언더 아머" data-growth="12%" 
+              data-info="Under Armour은 운동복, 신발, 액세서리를 디자인, 제조, 유통하는 글로벌 스포츠 브랜드입니다.">
+              <td>UAA</td>
+              <td>Under Armour Inc / 언더 아머</td>
+              <td id="price-UAA">Loading...</td>
+              <td>12%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="COLM" data-sector="Consumer Discretionary / 임의소비재" data-company="Columbia Sportswear Co / 콜롬비아 스포츠웨어" data-growth="7%" 
+              data-info="Columbia Sportswear Co는 아웃도어 의류 및 장비를 제조, 유통하는 기업입니다.">
+              <td>COLM</td>
+              <td>Columbia Sportswear Co / 콜롬비아 스포츠웨어</td>
+              <td id="price-COLM">Loading...</td>
+              <td>7%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Consumer Staples -->
+      <section class="sector-section" id="sector-consumer-staples">
+        <h3>Consumer Staples / 필수소비재</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="DOLE" data-sector="Consumer Staples / 필수소비재" data-company="Dole plc / 돌" data-growth="15%" 
+              data-info="Dole PLC는 신선한 과일과 채소를 유통하는 기업입니다.">
+              <td>DOLE</td>
+              <td>Dole plc / 돌</td>
+              <td id="price-DOLE">Loading...</td>
+              <td>15%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Financials -->
+      <section class="sector-section" id="sector-financials">
+        <h3>Financials / 금융</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="JEF" data-sector="Financials / 금융" data-company="Jefferies Financial Group Inc / 제퍼리스 파이낸셜 그룹" data-growth="11%" 
+              data-info="Jefferies Financial Group Inc는 종합 투자은행 및 자본 시장 서비스 기업입니다.">
+              <td>JEF</td>
+              <td>Jefferies Financial Group Inc / 제퍼리스 파이낸셜 그룹</td>
+              <td id="price-JEF">Loading...</td>
+              <td>11%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="EVR" data-sector="Financials / 금융" data-company="Evercore Inc / 에버코어" data-growth="6%" 
+              data-info="Evercore는 독립 투자은행으로, 인수합병 및 구조조정 자문 서비스를 제공합니다.">
+              <td>EVR</td>
+              <td>Evercore Inc / 에버코어</td>
+              <td id="price-EVR">Loading...</td>
+              <td>6%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="SF" data-sector="Financials / 금융" data-company="Stifel Financial Corp / 스티펠 파이낸셜" data-growth="9%" 
+              data-info="Stifel Financial은 중견 투자은행으로, 미국 내에서 주로 사업을 운영합니다.">
+              <td>SF</td>
+              <td>Stifel Financial Corp / 스티펠 파이낸셜</td>
+              <td id="price-SF">Loading...</td>
+              <td>9%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="EWBC" data-sector="Financials / 금융" data-company="East West Bancorp Inc / 이스트 웨스트 뱅콥" data-growth="4%" 
+              data-info="East West Bancorp은 미국과 중국을 연결하는 금융 서비스를 제공하는 은행입니다.">
+              <td>EWBC</td>
+              <td>East West Bancorp Inc / 이스트 웨스트 뱅콥</td>
+              <td id="price-EWBC">Loading...</td>
+              <td>4%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="NU" data-sector="Financials / 금융" data-company="Nu Holdings Ltd / 누 홀딩스" data-growth="28%" 
+              data-info="Nu Holdings Ltd는 디지털 뱅킹 서비스를 제공하는 기업입니다.">
+              <td>NU</td>
+              <td>Nu Holdings Ltd / 누 홀딩스</td>
+              <td id="price-NU">Loading...</td>
+              <td>28%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="UPST" data-sector="Financials / 금융" data-company="Upstart Holdings Inc / 업스타트 홀딩스" data-growth="35%" 
+              data-info="Upstart Holdings Inc는 인공지능 대출 플랫폼을 운영하는 기업입니다.">
+              <td>UPST</td>
+              <td>Upstart Holdings Inc / 업스타트 홀딩스</td>
+              <td id="price-UPST">Loading...</td>
+              <td>35%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Biotech / 바이오 헬스케어 -->
+      <section class="sector-section" id="sector-biotech">
+        <h3>Biotech / 바이오 헬스케어</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (2023년 기준)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="ARWR" data-sector="Biotech / 바이오 헬스케어" data-company="Arrowhead Pharmaceuticals Inc / 애로우헤드 파마슈티컬스" data-growth="45%" 
+              data-info="Arrowhead Pharmaceuticals Inc는 바이오테크 기업으로, 유전자 관련 질환 치료제 개발에 주력합니다.">
+              <td>ARWR</td>
+              <td>Arrowhead Pharmaceuticals Inc / 애로우헤드 파마슈티컬스</td>
+              <td id="price-ARWR">Loading...</td>
+              <td>45%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="GBT" data-sector="Biotech / 바이오 헬스케어" data-company="Global Blood Therapeutics Inc / 글로벌 블러드 테라퓨틱스" data-growth="30%" 
+              data-info="Global Blood Therapeutics Inc는 겸상적혈구빈혈증 치료제인 Oxbryta를 개발한 기업입니다.">
+              <td>GBT</td>
+              <td>Global Blood Therapeutics Inc / 글로벌 블러드 테라퓨틱스</td>
+              <td id="price-GBT">Loading...</td>
+              <td>30%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="ICVX" data-sector="Biotech / 바이오 헬스케어" data-company="Icosavax Inc / 이카이오스 바이오사이언스" data-growth="25%" 
+              data-info="Icosavax Inc는 바이러스 유사 입자(VLP) 기술을 활용해 백신을 개발하는 기업입니다.">
+              <td>ICVX</td>
+              <td>Icosavax Inc / 이카이오스 바이오사이언스</td>
+              <td id="price-ICVX">Loading...</td>
+              <td>25%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="RVNC" data-sector="Biotech / 바이오 헬스케어" data-company="Revance Therapeutics Inc / 리제너레이션 파마슈티컬스" data-growth="35%" 
+              data-info="Revance Therapeutics Inc는 신경독소를 활용한 미용 및 치료용 제품을 개발하는 기업입니다.">
+              <td>RVNC</td>
+              <td>Revance Therapeutics Inc / 리제너레이션 파마슈티컬스</td>
+              <td id="price-RVNC">Loading...</td>
+              <td>35%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="SGEN" data-sector="Biotech / 바이오 헬스케어" data-company="Seagen Inc / 시젠" data-growth="40%" 
+              data-info="Seagen Inc는 항체-약물 접합체(ADC) 기술을 선도하는 바이오 제약 기업입니다.">
+              <td>SGEN</td>
+              <td>Seagen Inc / 시젠</td>
+              <td id="price-SGEN">Loading...</td>
+              <td>40%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="AMPH" data-sector="Biotech / 바이오 헬스케어" data-company="Amphastar Pharmaceuticals Inc / 암파스타 파마슈티컬스" data-growth="37%" 
+              data-info="Amphastar Pharmaceuticals Inc는 제네릭 및 독점 주사제 등 바이오의약품을 개발, 제조, 판매하는 기업입니다.">
+              <td>AMPH</td>
+              <td>Amphastar Pharmaceuticals Inc / 암파스타 파마슈티컬스</td>
+              <td id="price-AMPH">Loading...</td>
+              <td>37%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="RXRX" data-sector="Biotech / 바이오 헬스케어" data-company="Recursion Pharmaceuticals Inc / 리커전 파마슈티컬스" data-growth="N/A" 
+              data-info="Recursion Pharmaceuticals Inc는 AI와 자동화 기술을 활용해 신약 개발을 혁신하는 임상 단계 생명공학 기업입니다.">
+              <td>RXRX</td>
+              <td>Recursion Pharmaceuticals Inc / 리커전 파마슈티컬스</td>
+              <td id="price-RXRX">Loading...</td>
+              <td>N/A</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Materials -->
+      <section class="sector-section" id="sector-materials">
+        <h3>Materials / 소재</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="DPM" data-sector="Materials / 소재" data-company="Dundee Precious Metals / 던디 프레셔스 메탈스" data-growth="10%" 
+              data-info="Dundee Precious Metals는 캐나다 기반의 국제 금광업체입니다.">
+              <td>DPM</td>
+              <td>Dundee Precious Metals / 던디 프레셔스 메탈스</td>
+              <td id="price-DPM">Loading...</td>
+              <td>10%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="NEM" data-sector="Materials / 소재" data-company="Newmont Corporation / 뉴몬트" data-growth="8%" 
+              data-info="Newmont Corporation은 세계 최대의 금 생산 기업입니다.">
+              <td>NEM</td>
+              <td>Newmont Corporation / 뉴몬트</td>
+              <td id="price-NEM">Loading...</td>
+              <td>8%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Real Estate -->
+      <section class="sector-section" id="sector-realestate">
+        <h3>Real Estate / 부동산</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="OPEN" data-sector="Real Estate / 부동산" data-company="Opendoor Technologies Inc / 오픈도어 테크놀로지" data-growth="15%" 
+              data-info="Opendoor Technologies Inc는 주거용 부동산을 위한 디지털 플랫폼을 운영하는 기업입니다.">
+              <td>OPEN</td>
+              <td>Opendoor Technologies Inc / 오픈도어 테크놀로지</td>
+              <td id="price-OPEN">Loading...</td>
+              <td>15%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Renewable Energy / Clean Tech -->
+      <section class="sector-section" id="sector-renewable">
+        <h3>Renewable Energy / Clean Tech / 재생에너지·클린테크</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="PLUG" data-sector="Renewable Energy / Clean Tech / 재생에너지·클린테크" data-company="Plug Power Inc / 플러그 파워" data-growth="32%" 
+              data-info="Plug Power는 그린 수소 생태계 구축을 목표로 하는 기업입니다.">
+              <td>PLUG</td>
+              <td>Plug Power Inc / 플러그 파워</td>
+              <td id="price-PLUG">Loading...</td>
+              <td>32%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="SPWR" data-sector="Renewable Energy / Clean Tech / 재생에너지·클린테크" data-company="SunPower Corporation / 선파워 코퍼레이션" data-growth="21%" 
+              data-info="SunPower Corporation은 고효율 태양광 패널과 에너지 솔루션을 제공하는 기업입니다.">
+              <td>SPWR</td>
+              <td>SunPower Corporation / 선파워 코퍼레이션</td>
+              <td id="price-SPWR">Loading...</td>
+              <td>21%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="BLNK" data-sector="Renewable Energy / Clean Tech / 재생에너지·클린테크" data-company="Blink Charging Co / 블링크 차징" data-growth="30%" 
+              data-info="Blink Charging Co는 전기차 충전 인프라 구축 및 운영 기업입니다.">
+              <td>BLNK</td>
+              <td>Blink Charging Co / 블링크 차징</td>
+              <td id="price-BLNK">Loading...</td>
+              <td>30%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Cybersecurity -->
+      <section class="sector-section" id="sector-cyber">
+        <h3>Cybersecurity / 사이버 보안</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="CYBR" data-sector="Cybersecurity / 사이버 보안" data-company="CyberArk Software Ltd. / 사이버아크 소프트웨어" data-growth="31%" 
+              data-info="CyberArk는 특권 계정 보안을 제공하는 사이버 보안 기업입니다.">
+              <td>CYBR</td>
+              <td>CyberArk Software Ltd. / 사이버아크 소프트웨어</td>
+              <td id="price-CYBR">Loading...</td>
+              <td>31%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="TENB" data-sector="Cybersecurity / 사이버 보안" data-company="Tenable Holdings Inc. / 텐어블 홀딩스" data-growth="N/A" 
+              data-info="Tenable은 네트워크 취약점 평가 및 관리 솔루션을 제공하는 기업입니다.">
+              <td>TENB</td>
+              <td>Tenable Holdings Inc. / 텐어블 홀딩스</td>
+              <td id="price-TENB">Loading...</td>
+              <td>N/A</td>
+            </tr>
+            <tr class="stock-row" data-ticker="RPD" data-sector="Cybersecurity / 사이버 보안" data-company="Rapid7 Inc. / 래피드7" data-growth="N/A" 
+              data-info="Rapid7은 보안 취약점 관리 및 침투 테스트 솔루션을 제공하는 기업입니다.">
+              <td>RPD</td>
+              <td>Rapid7 Inc. / 래피드7</td>
+              <td id="price-RPD">Loading...</td>
+              <td>N/A</td>
+            </tr>
+            <tr class="stock-row" data-ticker="QLYS" data-sector="Cybersecurity / 사이버 보안" data-company="Qualys Inc. / 퀄리스" data-growth="N/A" 
+              data-info="Qualys는 클라우드 기반 보안 및 규정 준수 솔루션을 제공하는 기업입니다.">
+              <td>QLYS</td>
+              <td>Qualys Inc. / 퀄리스</td>
+              <td id="price-QLYS">Loading...</td>
+              <td>N/A</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Technology -->
+      <section class="sector-section" id="sector-technology">
+        <h3>Technology / 테크놀로지</h3>
+        <button class="toggle-btn">표시/숨기기</button>
+        <table>
+          <thead>
+            <tr>
+              <th>티커</th>
+              <th>회사명 (영문 / 한글)</th>
+              <th>전일 종가<br>(2025년 2월 14일)</th>
+              <th>연간 매출 성장률 (YoY)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="stock-row" data-ticker="FOUR" data-sector="Technology / 테크놀로지" data-company="Shift4 Payments Inc / 쉬프트4 페이먼츠" data-growth="40%" 
+              data-info="Shift4 Payments Inc는 통합 결제 처리 솔루션을 제공하는 기업입니다.">
+              <td>FOUR</td>
+              <td>Shift4 Payments Inc / 쉬프트4 페이먼츠</td>
+              <td id="price-FOUR">Loading...</td>
+              <td>40%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="UPWK" data-sector="Technology / 테크놀로지" data-company="Upwork Inc / 업워크" data-growth="25%" 
+              data-info="Upwork Inc는 프리랜서와 기업을 연결하는 온라인 마켓플레이스를 운영하는 기업입니다.">
+              <td>UPWK</td>
+              <td>Upwork Inc / 업워크</td>
+              <td id="price-UPWK">Loading...</td>
+              <td>25%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="MTTR" data-sector="Technology / 테크놀로지" data-company="Matterport Inc / 매터포트" data-growth="22%" 
+              data-info="Matterport Inc는 3D 공간 데이터를 디지털 트윈으로 변환하는 플랫폼을 제공하는 기업입니다.">
+              <td>MTTR</td>
+              <td>Matterport Inc / 매터포트</td>
+              <td id="price-MTTR">Loading...</td>
+              <td>22%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="LAZR" data-sector="Technology / 테크놀로지" data-company="Luminar Technologies Inc / 루미나 테크놀로지" data-growth="27%" 
+              data-info="Luminar Technologies Inc는 자율주행 차량용 LiDAR 센서를 개발하는 기업입니다.">
+              <td>LAZR</td>
+              <td>Luminar Technologies Inc / 루미나 테크놀로지</td>
+              <td id="price-LAZR">Loading...</td>
+              <td>27%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="PATH" data-sector="Technology / 테크놀로지" data-company="UiPath Inc / 유아이패스" data-growth="33%" 
+              data-info="UiPath Inc는 RPA 및 자동화 플랫폼을 제공하는 기업입니다.">
+              <td>PATH</td>
+              <td>UiPath Inc / 유아이패스</td>
+              <td id="price-PATH">Loading...</td>
+              <td>33%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="PLTR" data-sector="Technology / 테크놀로지" data-company="Palantir Technologies Inc / 팔란티어 테크놀로지스" data-growth="27%" 
+              data-info="Palantir Technologies Inc는 데이터 분석 플랫폼을 제공하는 기업입니다.">
+              <td>PLTR</td>
+              <td>Palantir Technologies Inc / 팔란티어 테크놀로지스</td>
+              <td id="price-PLTR">Loading...</td>
+              <td>27%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="AI" data-sector="Technology / 테크놀로지" data-company="C3.ai Inc / C3.ai" data-growth="21%" 
+              data-info="C3.ai Inc는 엔터프라이즈 AI 소프트웨어를 제공하는 기업입니다.">
+              <td>AI</td>
+              <td>C3.ai Inc / C3.ai</td>
+              <td id="price-AI">Loading...</td>
+              <td>21%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="VERI" data-sector="Technology / 테크놀로지" data-company="Veritone Inc / 베리톤" data-growth="18%" 
+              data-info="Veritone Inc는 인공지능 컴퓨팅 솔루션을 제공하는 기업입니다.">
+              <td>VERI</td>
+              <td>Veritone Inc / 베리톤</td>
+              <td id="price-VERI">Loading...</td>
+              <td>18%</td>
+            </tr>
+            <tr class="stock-row" data-ticker="AYX" data-sector="Technology / 테크놀로지" data-company="Alteryx Inc / 알테릭스" data-growth="12%" 
+              data-info="Alteryx Inc는 데이터 분석 자동화 플랫폼을 제공하는 기업입니다.">
+              <td>AYX</td>
+              <td>Alteryx Inc / 알테릭스</td>
+              <td id="price-AYX">Loading...</td>
+              <td>12%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- 이벤트 캘린더 -->
+      <section class="sector-section" id="sector-events">
+        <h3>이벤트 캘린더</h3>
+        <div id="events-calendar">
+          <p>이 달의 이벤트 로딩 중...</p>
+        </div>
+      </section>
+    </main>
+    
+    <!-- 하단 정보: 오늘 뉴스 & 우리의 철학 (푸터 바로 위) -->
+      <div class="our-philosophy">
+        <h3>중소형주에 대한 우리의 철학</h3>
+        <p>
+          US SmallCap Insight는 미국 중소형주에 특화된 투자 정보를 제공합니다.<br>
+          투자자들이 쉽고 신뢰할 수 있는 정보를 필요로 한다는 사실을 깊이 인식하여, 현재 시장에서 체계적으로 정리된 중소형주 정보를 찾기 어렵다는 현실을 바꾸고자 이 서비스를 시작하였습니다.<br>
+          우리는 높은 성장 잠재력과 혁신적인 아이디어를 가진 중소형 기업들을 발굴하여, 투자자 여러분께 새로운 기회의 문을 열어드리는 것을 목표로 합니다.<br>
+          진심을 담아, 여러분의 성공적인 투자를 위해 언제나 최선을 다하겠습니다.
+        </p>
       </div>
     </div>
     
-    <!-- 섹터별 분리 -->
-    <!-- Aerospace & Defense -->
-    <section class="sector-section" id="sector-aerospace">
-      <h3>Aerospace & Defense / 항공우주·국방</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="RKLB" data-sector="Aerospace & Defense / 항공우주·국방" data-company="Rocket Lab USA Inc / 로켓 랩 USA" data-growth="45%" data-info="Rocket Lab USA Inc는 소형 위성 발사 서비스를 제공하는 미국의 우주 기업으로, 전 세계 상업 및 정부 고객에게 저비용의 발사 솔루션을 제공합니다.">
-            <td>RKLB</td>
-            <td>Rocket Lab USA Inc / 로켓 랩 USA</td>
-            <td id="price-RKLB">Loading...</td>
-            <td>45%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <!-- 모달: 상세 정보, 1년 차트, 추가 투자 정보, 최신 뉴스 (달력 제외) -->
+    <div class="modal-overlay" id="modal-overlay">
+      <section id="stock-detail">
+        <button id="close-detail">닫기</button>
+        <h2 id="detail-company">회사명</h2>
+        <p id="detail-ticker">티커: </p>
+        <p id="detail-price">전일 종가: </p>
+        <p id="detail-growth">연간 매출 성장률 (YoY): </p>
+        <div id="detail-info"></div>
+        <div id="detail-additional">
+          <!-- 회사 설명 부분은 제거되었습니다. -->
+        </div>
+        <div id="detail-news"></div>
+        <canvas id="stock-chart"></canvas>
+      </section>
+    </div>
     
-    <!-- Communication Services -->
-    <section class="sector-section" id="sector-comm">
-      <h3>Communication Services / 커뮤니케이션 서비스</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="FUBO" data-sector="Communication Services / 커뮤니케이션 서비스" data-company="fuboTV Inc / 푸보TV" data-growth="35%" data-info="fuboTV Inc는 스포츠 중심의 스트리밍 서비스를 제공하는 미국 기업으로, 다양한 라이브 스포츠 채널과 엔터테인먼트 콘텐츠를 구독자들에게 제공합니다.">
-            <td>FUBO</td>
-            <td>fuboTV Inc / 푸보TV</td>
-            <td id="price-FUBO">Loading...</td>
-            <td>35%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <footer>
+      <p>
+        © 2025 US SmallCap Insight. All rights reserved.<br>
+        사업체 지역: 대한민국 대구<br>
+        문의: <a href="mailto:hermann8hesse@gmail.com" style="color:#fff; text-decoration:underline;">hermann8hesse@gmail.com</a><br>
+        아이디어가 있으시면 언제든지 메일로 제안해 주세요!
+      </p>
+    </footer>
     
-    <!-- Consumer Discretionary -->
-    <section class="sector-section" id="sector-consumer-disc">
-      <h3>Consumer Discretionary / 임의소비재</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="YETI" data-sector="Consumer Discretionary / 임의소비재" data-company="YETI Holdings Inc / 예티 홀딩스" data-growth="18%" data-info="YETI Holdings Inc는 프리미엄 아웃도어 제품을 설계, 마케팅 및 유통하는 미국 기업으로, 우수한 내구성과 브랜드 인지도 덕분에 인기가 높습니다.">
-            <td>YETI</td>
-            <td>YETI Holdings Inc / 예티 홀딩스</td>
-            <td id="price-YETI">Loading...</td>
-            <td>18%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="UAA" data-sector="Consumer Discretionary / 임의소비재" data-company="Under Armour Inc / 언더 아머" data-growth="12%" data-info="Under Armour Inc는 스포츠 의류, 신발, 액세서리 등을 디자인, 제조, 판매하는 글로벌 스포츠 브랜드로, 혁신 기술과 디자인을 통해 높은 품질의 제품을 제공합니다.">
-            <td>UAA</td>
-            <td>Under Armour Inc / 언더 아머</td>
-            <td id="price-UAA">Loading...</td>
-            <td>12%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="COLM" data-sector="Consumer Discretionary / 임의소비재" data-company="Columbia Sportswear Co / 콜롬비아 스포츠웨어" data-growth="7%" data-info="Columbia Sportswear Co는 아웃도어 의류, 신발, 장비를 설계, 제조, 판매하는 미국 기업으로, 등산, 낚시, 캠핑 등 다양한 아웃도어 활동용 제품을 제공합니다.">
-            <td>COLM</td>
-            <td>Columbia Sportswear Co / 콜롬비아 스포츠웨어</td>
-            <td id="price-COLM">Loading...</td>
-            <td>7%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Consumer Staples -->
-    <section class="sector-section" id="sector-consumer-staples">
-      <h3>Consumer Staples / 필수소비재</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="DOLE" data-sector="Consumer Staples / 필수소비재" data-company="Dole plc / 돌" data-growth="15%" data-info="Dole plc는 아일랜드 더블린에 본사를 둔 글로벌 농업 기업으로, 신선한 과일 및 채소의 조달, 가공, 마케팅, 유통을 담당하며 전 세계 75개국에 약 300여 종의 제품을 공급합니다.">
-            <td>DOLE</td>
-            <td>Dole plc / 돌</td>
-            <td id="price-DOLE">Loading...</td>
-            <td>15%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Financials -->
-    <section class="sector-section" id="sector-financials">
-      <h3>Financials / 금융</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="JEF" data-sector="Financials / 금융" data-company="Jefferies Financial Group Inc / 제퍼리스 파이낸셜 그룹" data-growth="11%" data-info="Jefferies Financial Group Inc는 미국의 투자은행으로, 인수합병, 자본 조달, 리서치 등에서 강점을 보이며 다양한 산업 분야의 고객에게 금융 서비스를 제공합니다.">
-            <td>JEF</td>
-            <td>Jefferies Financial Group Inc / 제퍼리스 파이낸셜 그룹</td>
-            <td id="price-JEF">Loading...</td>
-            <td>11%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="EVR" data-sector="Financials / 금융" data-company="Evercore Inc / 에버코어" data-growth="6%" data-info="Evercore Inc는 글로벌 투자은행으로, 인수합병 자문, 자본 조달, 리서치 등 다양한 금융 서비스를 제공하며, 독립 자문사로서 고객 이익을 최우선으로 합니다.">
-            <td>EVR</td>
-            <td>Evercore Inc / 에버코어</td>
-            <td id="price-EVR">Loading...</td>
-            <td>6%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="SF" data-sector="Financials / 금융" data-company="Stifel Financial Corp / 스티펠 파이낸셜" data-growth="9%" data-info="Stifel Financial Corp는 미국의 투자은행 및 자산운용 서비스를 제공하는 금융 기업으로, 개인 및 기관 투자자에게 다양한 금융 솔루션을 제공합니다.">
-            <td>SF</td>
-            <td>Stifel Financial Corp / 스티펠 파이낸셜</td>
-            <td id="price-SF">Loading...</td>
-            <td>9%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="EWBC" data-sector="Financials / 금융" data-company="East West Bancorp Inc / 이스트 웨스트 뱅콥" data-growth="4%" data-info="East West Bancorp Inc는 미국과 아시아 간 금융 서비스를 전문으로 제공하는 상업은행 지주 회사로, 다양한 금융 서비스와 미주-아시아 비즈니스 연결에 강점을 가집니다.">
-            <td>EWBC</td>
-            <td>East West Bancorp Inc / 이스트 웨스트 뱅콥</td>
-            <td id="price-EWBC">Loading...</td>
-            <td>4%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="NU" data-sector="Financials / 금융" data-company="Nu Holdings Ltd / 누 홀딩스" data-growth="28%" data-info="Nu Holdings Ltd는 라틴아메리카 지역에서 디지털 금융 서비스를 제공하는 기업으로, 연 매출이 크게 증가하고 있습니다.">
-            <td>NU</td>
-            <td>Nu Holdings Ltd / 누 홀딩스</td>
-            <td id="price-NU">Loading...</td>
-            <td>28%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="UPST" data-sector="Financials / 금융" data-company="Upstart Holdings Inc / 업스타트 홀딩스" data-growth="35%" data-info="Upstart Holdings Inc는 인공지능을 활용한 대출 플랫폼을 운영하는 미국의 금융 기업으로, 전통적인 신용 평가 방식을 혁신하여 대출 승인 과정을 개선하고 있습니다.">
-            <td>UPST</td>
-            <td>Upstart Holdings Inc / 업스타트 홀딩스</td>
-            <td id="price-UPST">Loading...</td>
-            <td>35%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Biotech / 바이오 헬스케어 -->
-    <section class="sector-section" id="sector-biotech">
-      <h3>Biotech / 바이오 헬스케어</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (2023년 기준)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="ARWR" data-sector="Biotech / 바이오 헬스케어" data-company="Arrowhead Pharmaceuticals Inc / 애로우헤드 파마슈티컬스" data-growth="45%" data-info="Arrowhead Pharmaceuticals Inc는 RNA 간섭(RNAi) 기술을 활용하여 다양한 질병의 치료제를 개발하는 바이오 제약 회사로, 특히 간 질환 분야에서 혁신적인 치료법을 연구하고 있습니다.">
-            <td>ARWR</td>
-            <td>Arrowhead Pharmaceuticals Inc / 애로우헤드 파마슈티컬스</td>
-            <td id="price-ARWR">Loading...</td>
-            <td>45%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="GBT" data-sector="Biotech / 바이오 헬스케어" data-company="Global Blood Therapeutics Inc / 글로벌 블러드 테라퓨틱스" data-growth="30%" data-info="Global Blood Therapeutics Inc는 겸상적혈구빈혈증 치료제인 Oxbryta를 개발한 회사로, 혈액 질환 치료제 분야에서 두각을 나타내고 있습니다.">
-            <td>GBT</td>
-            <td>Global Blood Therapeutics Inc / 글로벌 블러드 테라퓨틱스</td>
-            <td id="price-GBT">Loading...</td>
-            <td>30%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="ICVX" data-sector="Biotech / 바이오 헬스케어" data-company="Icosavax Inc / 이카이오스 바이오사이언스" data-growth="25%" data-info="Icosavax Inc는 바이러스 유사 입자(VLP) 기술을 기반으로 백신을 개발하는 회사로, 호흡기 질환 예방을 위한 혁신적인 백신 후보물질을 보유하고 있습니다.">
-            <td>ICVX</td>
-            <td>Icosavax Inc / 이카이오스 바이오사이언스</td>
-            <td id="price-ICVX">Loading...</td>
-            <td>25%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="RVNC" data-sector="Biotech / 바이오 헬스케어" data-company="Revance Therapeutics Inc / 리제너레이션 파마슈티컬스" data-growth="35%" data-info="Revance Therapeutics Inc는 신경독소를 활용한 미용 및 치료용 제품을 개발하는 회사로, 주름 개선 및 만성 질환 치료를 위한 혁신적인 솔루션을 제공합니다.">
-            <td>RVNC</td>
-            <td>Revance Therapeutics Inc / 리제너레이션 파마슈티컬스</td>
-            <td id="price-RVNC">Loading...</td>
-            <td>35%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="SGEN" data-sector="Biotech / 바이오 헬스케어" data-company="Seagen Inc / 시젠" data-growth="40%" data-info="Seagen Inc는 항체-약물 접합체(ADC) 기술을 선도하는 바이오 제약 회사로, 다양한 암 치료제를 개발 및 상용화하고 있습니다.">
-            <td>SGEN</td>
-            <td>Seagen Inc / 시젠</td>
-            <td id="price-SGEN">Loading...</td>
-            <td>40%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="AMPH" data-sector="Biotech / 바이오 헬스케어" data-company="Amphastar Pharmaceuticals Inc / 암파스타 파마슈티컬스" data-growth="37%" data-info="Amphastar Pharmaceuticals Inc는 미국에 본사를 둔 바이오제약 회사로, 기술적으로 까다로운 제네릭 및 독점 주사제, 흡입제, 비강내 제품을 개발, 제조, 마케팅 및 판매하며, 인슐린 활성 제약 성분(API)도 판매합니다.">
-            <td>AMPH</td>
-            <td>Amphastar Pharmaceuticals Inc / 암파스타 파마슈티컬스</td>
-            <td id="price-AMPH">Loading...</td>
-            <td>37%</td>
-          </tr>
-          <!-- Recursion Pharmaceuticals 추가 -->
-          <tr class="stock-row" data-ticker="RXRX" data-sector="Biotech / 바이오 헬스케어" data-company="Recursion Pharmaceuticals Inc / 리커전 파마슈티컬스" data-growth="N/A" data-info="Recursion Pharmaceuticals Inc는 인공지능(AI)과 자동화 기술을 활용하여 신약 개발을 혁신하는 임상 단계의 생명공학 기업입니다. 2013년에 설립되어 2021년 나스닥에 상장되었으며, 본사는 유타주 솔트레이크시티에 위치하고 있습니다. 재무 현황: 2023년 9월 30일 기준, 총매출 2,608만 달러, 총 영업비용 1억 2,444만 달러(순손실 기록). 주가 정보: 2025년 2월 15일 기준, 주가 10.53달러, 전일 대비 2.05달러(23.88%) 상승, 최근 6개월 주가 상승률 29.97%. 최근 동향: 2025년 2월 5일, 국제 뇌졸중 컨퍼런스에서 REC-994 임상 2상 데이터 발표.">
-            <td>RXRX</td>
-            <td>Recursion Pharmaceuticals Inc / 리커전 파마슈티컬스</td>
-            <td id="price-RXRX">Loading...</td>
-            <td>N/A</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Materials -->
-    <section class="sector-section" id="sector-materials">
-      <h3>Materials / 소재</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="DPM" data-sector="Materials / 소재" data-company="Dundee Precious Metals / 던디 프레셔스 메탈스" data-growth="10%" data-info="Dundee Precious Metals는 캐나다에 본사를 둔 국제 금광업체로, 금 및 기타 귀금속의 탐사, 개발, 생산에 주력하며, 지속 가능한 채굴과 환경 보호에 집중합니다.">
-            <td>DPM</td>
-            <td>Dundee Precious Metals / 던디 프레셔스 메탈스</td>
-            <td id="price-DPM">Loading...</td>
-            <td>10%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="NEM" data-sector="Materials / 소재" data-company="Newmont Corporation / 뉴몬트" data-growth="8%" data-info="Newmont Corporation은 세계 최대의 금 채굴업체로, 2023년 Newcrest 인수를 통해 캐나다와 호주 등지에서 금과 구리 매장량을 확대하였습니다.">
-            <td>NEM</td>
-            <td>Newmont Corporation / 뉴몬트</td>
-            <td id="price-NEM">Loading...</td>
-            <td>8%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Real Estate -->
-    <section class="sector-section" id="sector-realestate">
-      <h3>Real Estate / 부동산</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="OPEN" data-sector="Real Estate / 부동산" data-company="Opendoor Technologies Inc / 오픈도어 테크놀로지" data-growth="15%" data-info="Opendoor Technologies Inc는 부동산 매매 플랫폼을 운영하는 미국 기업으로, 주택 매매 과정을 디지털화하여 빠르고 편리한 거래를 지원합니다.">
-            <td>OPEN</td>
-            <td>Opendoor Technologies Inc / 오픈도어 테크놀로지</td>
-            <td id="price-OPEN">Loading...</td>
-            <td>15%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Renewable Energy / Clean Tech -->
-    <section class="sector-section" id="sector-renewable">
-      <h3>Renewable Energy / Clean Tech / 재생에너지·클린테크</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="PLUG" data-sector="Renewable Energy / Clean Tech / 재생에너지·클린테크" data-company="Plug Power Inc / 플러그 파워" data-growth="32%" data-info="Plug Power Inc는 수소 연료 전지 시스템을 설계·제조하는 미국 기업으로, 물류 및 운송 분야에 적용되는 청정 에너지 솔루션을 제공합니다.">
-            <td>PLUG</td>
-            <td>Plug Power Inc / 플러그 파워</td>
-            <td id="price-PLUG">Loading...</td>
-            <td>32%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="SPWR" data-sector="Renewable Energy / Clean Tech / 재생에너지·클린테크" data-company="SunPower Corporation / 선파워 코퍼레이션" data-growth="21%" data-info="SunPower Corporation은 고효율 태양광 패널과 에너지 솔루션을 제공하는 미국 기업으로, 주거 및 상업 시장에 청정 에너지를 공급합니다.">
-            <td>SPWR</td>
-            <td>SunPower Corporation / 선파워 코퍼레이션</td>
-            <td id="price-SPWR">Loading...</td>
-            <td>21%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="BLNK" data-sector="Renewable Energy / Clean Tech / 재생에너지·클린테크" data-company="Blink Charging Co / 블링크 차징" data-growth="30%" data-info="Blink Charging Co는 전기차 충전 인프라를 구축·운영하는 미국 기업으로, 공공 및 가정용 충전 솔루션을 제공합니다.">
-            <td>BLNK</td>
-            <td>Blink Charging Co / 블링크 차징</td>
-            <td id="price-BLNK">Loading...</td>
-            <td>30%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Cybersecurity -->
-    <section class="sector-section" id="sector-cyber">
-      <h3>Cybersecurity / 사이버 보안</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="CYBR" data-sector="Cybersecurity / 사이버 보안" data-company="CyberArk Software Ltd. / 사이버아크 소프트웨어" data-growth="31%" data-info="사이버아크는 이스라엘에 본사를 둔 사이버 보안 기업으로, 특권 계정 보안 분야에서 선도적인 위치를 차지하며, 기업의 중요한 데이터와 시스템 접근을 보호하는 솔루션을 제공합니다.">
-            <td>CYBR</td>
-            <td>CyberArk Software Ltd. / 사이버아크 소프트웨어</td>
-            <td id="price-CYBR">Loading...</td>
-            <td>31%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="TENB" data-sector="Cybersecurity / 사이버 보안" data-company="Tenable Holdings Inc. / 텐어블 홀딩스" data-growth="N/A" data-info="텐어블은 네트워크 취약점 평가 및 관리 솔루션을 제공하는 미국 기업으로, 사이버 노출 지수를 통해 기업 보안 상태를 측정하고 개선할 수 있도록 지원합니다.">
-            <td>TENB</td>
-            <td>Tenable Holdings Inc. / 텐어블 홀딩스</td>
-            <td id="price-TENB">Loading...</td>
-            <td>N/A</td>
-          </tr>
-          <tr class="stock-row" data-ticker="RPD" data-sector="Cybersecurity / 사이버 보안" data-company="Rapid7 Inc. / 래피드7" data-growth="N/A" data-info="래피드7은 보스턴에 본사를 둔 사이버 보안 기업으로, 취약점 관리, 침투 테스트, 사고 대응 등 다양한 보안 솔루션을 제공하며, 클라우드 보안 강화에 주력합니다.">
-            <td>RPD</td>
-            <td>Rapid7 Inc. / 래피드7</td>
-            <td id="price-RPD">Loading...</td>
-            <td>N/A</td>
-          </tr>
-          <tr class="stock-row" data-ticker="QLYS" data-sector="Cybersecurity / 사이버 보안" data-company="Qualys Inc. / 퀄리스" data-growth="N/A" data-info="퀄리스는 클라우드 기반의 보안 및 규정 준수 솔루션을 제공하는 기업으로, 전 세계 고객에게 네트워크 보안, 취약점 관리, 규정 준수 모니터링 서비스를 제공합니다.">
-            <td>QLYS</td>
-            <td>Qualys Inc. / 퀄리스</td>
-            <td id="price-QLYS">Loading...</td>
-            <td>N/A</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Technology -->
-    <section class="sector-section" id="sector-technology">
-      <h3>Technology / 테크놀로지</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>티커</th>
-            <th>회사명 (영문 / 한글)</th>
-            <th>전일 종가<br>(2025년 2월 14일)</th>
-            <th>연간 매출 성장률 (YoY)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="stock-row" data-ticker="FOUR" data-sector="Technology / 테크놀로지" data-company="Shift4 Payments Inc / 쉬프트4 페이먼츠" data-growth="40%" data-info="Shift4 Payments Inc는 통합 결제 처리 솔루션을 제공하는 미국 기업으로, 오프라인 및 온라인 비즈니스를 대상으로 안전한 결제 서비스를 지원합니다.">
-            <td>FOUR</td>
-            <td>Shift4 Payments Inc / 쉬프트4 페이먼츠</td>
-            <td id="price-FOUR">Loading...</td>
-            <td>40%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="UPWK" data-sector="Technology / 테크놀로지" data-company="Upwork Inc / 업워크" data-growth="25%" data-info="Upwork Inc는 프리랜서와 클라이언트를 연결하는 온라인 플랫폼을 운영하는 미국 기업으로, 다양한 분야의 전문가들이 프로젝트 기반 협업을 할 수 있도록 지원합니다.">
-            <td>UPWK</td>
-            <td>Upwork Inc / 업워크</td>
-            <td id="price-UPWK">Loading...</td>
-            <td>25%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="MTTR" data-sector="Technology / 테크놀로지" data-company="Matterport Inc / 매터포트" data-growth="22%" data-info="Matterport Inc는 3D 공간 데이터 플랫폼을 제공하는 미국 기업으로, 부동산, 건축, 소매 등 다양한 산업 분야에서 가상 투어와 공간 분석 솔루션을 제공합니다.">
-            <td>MTTR</td>
-            <td>Matterport Inc / 매터포트</td>
-            <td id="price-MTTR">Loading...</td>
-            <td>22%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="LAZR" data-sector="Technology / 테크놀로지" data-company="Luminar Technologies Inc / 루미나 테크놀로지" data-growth="27%" data-info="Luminar Technologies Inc는 자율주행 차량용 라이다 센서를 개발하는 미국 기업으로, 고해상도 3D 센싱 기술을 통해 자율주행차의 안전성과 성능을 향상시키는 데 주력합니다.">
-            <td>LAZR</td>
-            <td>Luminar Technologies Inc / 루미나 테크놀로지</td>
-            <td id="price-LAZR">Loading...</td>
-            <td>27%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="PATH" data-sector="Technology / 테크놀로지" data-company="UiPath Inc / 유아이패스" data-growth="33%" data-info="UiPath Inc는 로보틱 프로세스 자동화(RPA) 솔루션을 제공하는 미국 기업으로, AI와 머신러닝을 통합한 자동화 플랫폼을 통해 기업의 업무 효율성을 높입니다.">
-            <td>PATH</td>
-            <td>UiPath Inc / 유아이패스</td>
-            <td id="price-PATH">Loading...</td>
-            <td>33%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="PLTR" data-sector="Technology / 테크놀로지" data-company="Palantir Technologies Inc / 팔란티어 테크놀로지스" data-growth="27%" data-info="Palantir Technologies Inc는 데이터 분석 플랫폼을 제공하는 미국 기업으로, 정부 및 상업 부문에서 복잡한 데이터를 분석하여 통찰력을 도출하는 데 주력하고 있습니다.">
-            <td>PLTR</td>
-            <td>Palantir Technologies Inc / 팔란티어 테크놀로지스</td>
-            <td id="price-PLTR">Loading...</td>
-            <td>27%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="AI" data-sector="Technology / 테크놀로지" data-company="C3.ai Inc / C3.ai" data-growth="21%" data-info="C3.ai Inc는 엔터프라이즈 AI 소프트웨어를 제공하는 미국 기업으로, 다양한 산업 분야에서 AI 애플리케이션을 개발하고 배포할 수 있는 플랫폼을 제공합니다.">
-            <td>AI</td>
-            <td>C3.ai Inc / C3.ai</td>
-            <td id="price-AI">Loading...</td>
-            <td>21%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="VERI" data-sector="Technology / 테크놀로지" data-company="Veritone Inc / 베리톤" data-growth="18%" data-info="Veritone Inc는 인공지능 운영 시스템인 aiWARE를 개발한 미국 기업으로, 미디어, 광고, 법률 등 다양한 분야에서 AI 솔루션을 제공합니다.">
-            <td>VERI</td>
-            <td>Veritone Inc / 베리톤</td>
-            <td id="price-VERI">Loading...</td>
-            <td>18%</td>
-          </tr>
-          <tr class="stock-row" data-ticker="AYX" data-sector="Technology / 테크놀로지" data-company="Alteryx Inc / 알테릭스" data-growth="12%" data-info="Alteryx Inc는 데이터 분석 자동화 플랫폼을 제공하는 미국 기업으로, 사용자가 데이터를 준비, 분석, 시각화하여 비즈니스 인사이트를 도출할 수 있도록 지원합니다.">
-            <td>AYX</td>
-            <td>Alteryx Inc / 알테릭스</td>
-            <td id="price-AYX">Loading...</td>
-            <td>12%</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- 이벤트 캘린더: 페이지 하단 (모든 티커 이벤트 통합) -->
-    <section class="sector-section" id="sector-events">
-      <h3>이벤트 캘린더</h3>
-      <div id="events-calendar">
-        <p>이 달의 이벤트 로딩 중...</p>
-      </div>
-    </section>
-  </main>
-  
-  <!-- 모달: 상세 정보, 1년 차트, 추가 투자 정보, 최신 뉴스 (달력 제외) -->
-  <div class="modal-overlay" id="modal-overlay">
-    <section id="stock-detail">
-      <button id="close-detail">닫기</button>
-      <h2 id="detail-company">회사명</h2>
-      <p id="detail-ticker">티커: </p>
-      <p id="detail-price">전일 종가: </p>
-      <p id="detail-growth">연간 매출 성장률 (YoY): </p>
-      <div id="detail-info"></div>
-      <div id="detail-additional"></div>
-      <div id="detail-news"></div>
-      <canvas id="stock-chart"></canvas>
-    </section>
-  </div>
-  
-  <footer>
-    <p>
-      © 2025 US SmallCap Insight. All rights reserved.<br>
-      사업체 지역: 대한민국 대구<br>
-      문의: <a href="mailto:hermann8hesse@gmail.com" style="color:#fff; text-decoration:underline;">hermann8hesse@gmail.com</a><br>
-      아이디어가 있으시면 언제든지 메일로 제안해 주세요!
-    </p>
-  </footer>
-  
-  
-  <!-- JavaScript -->
-  <script>
-    // Polygon API 키 및 전일 기준 날짜
-    const polygonApiKey = "wFORda5lesMUZ96BmvpJ4x4cE3F2PqBt";
-    const previousDate = "2025-02-14";
-    
-    // 캐시: 전일 종가 데이터 저장
-    const priceCache = {};
-    
-    // 모달 관련 요소
-    const modalOverlay = document.getElementById('modal-overlay');
-    const closeDetailBtn = document.getElementById('close-detail');
-    const detailCompany = document.getElementById('detail-company');
-    const detailTicker = document.getElementById('detail-ticker');
-    const detailPrice = document.getElementById('detail-price');
-    const detailGrowth = document.getElementById('detail-growth');
-    const detailInfo = document.getElementById('detail-info');
-    const detailAdditional = document.getElementById('detail-additional');
-    const detailNews = document.getElementById('detail-news');
-    const stockChartCanvas = document.getElementById('stock-chart');
-    let stockChart = null;
-    
-    // 모든 종목 행 선택
-    const stockRows = document.querySelectorAll('.stock-row');
-    
-    // DOMContentLoaded: 전일 종가 업데이트 (호출 간격 300ms 적용)
-    document.addEventListener('DOMContentLoaded', () => {
-      stockRows.forEach((row, index) => {
-        const ticker = row.getAttribute('data-ticker');
-        const priceCell = document.getElementById(`price-${ticker}`);
-        if (priceCache[ticker]) {
-          priceCell.textContent = `$${priceCache[ticker].toFixed(2)}`;
-        } else {
-          setTimeout(() => {
-            const url = `https://api.polygon.io/v1/open-close/${ticker}/${previousDate}?adjusted=true&apiKey=${polygonApiKey}`;
-            fetch(url)
-              .then(resp => resp.json())
-              .then(data => {
-                if (data.status === 'OK' && data.close !== undefined) {
-                  const closePrice = data.close;
-                  priceCache[ticker] = closePrice;
-                  priceCell.textContent = `$${closePrice.toFixed(2)}`;
-                } else {
-                  console.error("Open-Close API error for", ticker, data);
+    <!-- JavaScript -->
+    <script>
+      // Polygon API 키 및 전일 기준 날짜
+      const polygonApiKey = "wFORda5lesMUZ96BmvpJ4x4cE3F2PqBt";
+      const previousDate = "2025-02-14";
+      
+      // 캐시: 전일 종가 데이터 저장
+      const priceCache = {};
+      
+      // 모달 관련 요소
+      const modalOverlay = document.getElementById('modal-overlay');
+      const closeDetailBtn = document.getElementById('close-detail');
+      const detailCompany = document.getElementById('detail-company');
+      const detailTicker = document.getElementById('detail-ticker');
+      const detailPrice = document.getElementById('detail-price');
+      const detailGrowth = document.getElementById('detail-growth');
+      const detailInfo = document.getElementById('detail-info');
+      const detailAdditional = document.getElementById('detail-additional');
+      const detailNews = document.getElementById('detail-news');
+      const stockChartCanvas = document.getElementById('stock-chart');
+      let stockChart = null;
+      
+      // 모든 종목 행 선택
+      const stockRows = document.querySelectorAll('.stock-row');
+      
+      // DOMContentLoaded: 전일 종가 업데이트 (호출 간격 300ms 적용)
+      document.addEventListener('DOMContentLoaded', () => {
+        stockRows.forEach((row, index) => {
+          const ticker = row.getAttribute('data-ticker');
+          const priceCell = document.getElementById(`price-${ticker}`);
+          if (priceCache[ticker]) {
+            priceCell.textContent = `$${priceCache[ticker].toFixed(2)}`;
+          } else {
+            setTimeout(() => {
+              const url = `https://api.polygon.io/v1/open-close/${ticker}/${previousDate}?adjusted=true&apiKey=${polygonApiKey}`;
+              fetch(url)
+                .then(resp => resp.json())
+                .then(data => {
+                  if (data.status === 'OK' && data.close !== undefined) {
+                    const closePrice = data.close;
+                    priceCache[ticker] = closePrice;
+                    priceCell.textContent = `$${closePrice.toFixed(2)}`;
+                  } else {
+                    console.error("Open-Close API error for", ticker, data);
+                    priceCell.textContent = "N/A";
+                  }
+                })
+                .catch(err => {
+                  console.error("API fetch error for", ticker, err);
                   priceCell.textContent = "N/A";
-                }
-              })
-              .catch(err => {
-                console.error("API fetch error for", ticker, err);
-                priceCell.textContent = "N/A";
-              });
-          }, index * 300);
-        }
+                });
+            }, index * 300);
+          }
+        });
+        
+        // 페이지 하단 이벤트 캘린더 업데이트: 모든 티커 이벤트 가져오기
+        fetchAllEvents();
       });
       
-      // 페이지 하단 이벤트 캘린더 업데이트: 모든 티커 이벤트 가져오기
-      fetchAllEvents();
-    });
-    
-    // 종목 행 클릭 → 모달 표시, 차트, 추가 투자 정보, 최신 뉴스 업데이트
-    stockRows.forEach(row => {
-      row.addEventListener('click', () => {
-        const ticker = row.getAttribute('data-ticker');
-        const company = row.getAttribute('data-company');
-        const growth = row.getAttribute('data-growth');
-        const info = row.getAttribute('data-info');
-        const priceText = document.getElementById(`price-${ticker}`).textContent;
-    
-        detailCompany.textContent = company;
-        detailTicker.textContent = `티커: ${ticker}`;
-        detailPrice.textContent = `전일 종가: ${priceText}`;
-        detailGrowth.textContent = `연간 매출 성장률 (YoY): ${growth}`;
-        detailInfo.textContent = info;
-    
-        detailAdditional.innerHTML = `<p>추가 데이터 로딩 중...</p>`;
-        detailNews.innerHTML = `<h3>뉴스</h3><p>최신 뉴스 로딩 중...</p>`;
-    
-        modalOverlay.classList.add('active');
-    
-        fetchOneYearChart(ticker);
-        fetchTickerAdditional(ticker);
-        fetchNews(ticker);
+      // 종목 행 클릭 → 모달 표시, 차트, 추가 투자 정보, 최신 뉴스 업데이트
+      stockRows.forEach(row => {
+        row.addEventListener('click', () => {
+          const ticker = row.getAttribute('data-ticker');
+          const company = row.getAttribute('data-company');
+          const growth = row.getAttribute('data-growth');
+          const info = row.getAttribute('data-info');
+          const priceText = document.getElementById(`price-${ticker}`).textContent;
+      
+          detailCompany.textContent = company;
+          detailTicker.textContent = `티커: ${ticker}`;
+          detailPrice.textContent = `전일 종가: ${priceText}`;
+          detailGrowth.textContent = `연간 매출 성장률 (YoY): ${growth}`;
+          detailInfo.textContent = info;
+      
+          detailAdditional.innerHTML = `<p>추가 데이터 로딩 중...</p>`;
+          detailNews.innerHTML = `<h3>뉴스</h3><p>최신 뉴스 로딩 중...</p>`;
+      
+          modalOverlay.classList.add('active');
+      
+          fetchOneYearChart(ticker);
+          fetchTickerAdditional(ticker);
+          fetchNews(ticker);
+        });
       });
-    });
-    
-    // 모달 닫기
-    closeDetailBtn.addEventListener('click', () => {
-      modalOverlay.classList.remove('active');
-      if (stockChart) { stockChart.destroy(); }
-    });
-    
-    // 1년치 Aggregates 데이터 가져오기 (v2/aggs API)
-    async function fetchOneYearChart(ticker) {
-      const fromDate = "2024-02-16";
-      const toDate = "2025-02-15";
-      const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${fromDate}/${toDate}?apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results) {
-          const labels = jsonData.results.map(item => {
-            const date = new Date(item.t);
-            return date.toLocaleDateString();
-          });
-          const prices = jsonData.results.map(item => item.c);
+      
+      // 모달 닫기
+      closeDetailBtn.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+        if (stockChart) { stockChart.destroy(); }
+      });
+      
+      // 1년치 Aggregates 데이터 가져오기 (v2/aggs API)
+      async function fetchOneYearChart(ticker) {
+        const fromDate = "2024-02-16";
+        const toDate = "2025-02-15";
+        const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${fromDate}/${toDate}?apiKey=${polygonApiKey}`;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+          const jsonData = await response.json();
+          if (jsonData.results) {
+            const labels = jsonData.results.map(item => {
+              const date = new Date(item.t);
+              return date.toLocaleDateString();
+            });
+            const prices = jsonData.results.map(item => item.c);
+            initializeChart(ticker, labels, prices);
+          } else {
+            console.error("Aggregates API 응답에 결과가 없습니다.");
+            initializeChart(ticker, ["No Data"], [0]);
+          }
+        } catch (error) {
+          console.error("Aggregates API 호출 오류:", error);
+          const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+          const prices = labels.map(() => (Math.random()*10+50).toFixed(2));
           initializeChart(ticker, labels, prices);
-        } else {
-          console.error("Aggregates API 응답에 결과가 없습니다.");
-          initializeChart(ticker, ["No Data"], [0]);
         }
-      } catch (error) {
-        console.error("Aggregates API 호출 오류:", error);
-        const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-        const prices = labels.map(() => (Math.random()*10+50).toFixed(2));
-        initializeChart(ticker, labels, prices);
       }
-    }
-    
-    // Chart.js 차트 생성 (borderColor를 문자열로 수정)
-    function initializeChart(ticker, labels, prices) {
-      const ctx = stockChartCanvas.getContext('2d');
-      if (stockChart) { stockChart.destroy(); }
-      stockChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: `${ticker} 1년 종가 추이`,
-            data: prices,
-            borderColor: "#004080",
-            backgroundColor: 'rgba(0,64,128,0.1)',
-            fill: true,
-            tension: 0.3
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: { y: { beginAtZero: false } }
-        }
-      });
-    }
-    
-    // 추가 투자 정보 업데이트 (v3/reference/tickers API)
-    async function fetchTickerAdditional(ticker) {
-      const url = `https://api.polygon.io/v3/reference/tickers/${ticker}?apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results) {
-          const res = jsonData.results;
-          const week52High = res.week_52_high || "N/A";
-          const week52Low = res.week_52_low || "N/A";
-          const peRatio = res.pe_ratio || "N/A";
-          const marketCap = res.market_cap ? formatNumber(res.market_cap) : "N/A";
-          const lastEarningsDate = res.last_earnings_date || "N/A";
-          const eps = res.eps || "N/A";
-          const description = res.description || "N/A";
-          detailAdditional.innerHTML = `
-            <p>52주 최고/최저가: ${week52High} / ${week52Low}</p>
-            <p>PER: ${peRatio}</p>
-            <p>시가총액: ${marketCap} USD</p>
-            <p>최근 실적 발표일: ${lastEarningsDate}, EPS: ${eps}</p>
-            <p>회사 설명: ${description}</p>
-          `;
-        } else {
-          console.error("Ticker Additional API 응답 오류:", jsonData);
-          detailAdditional.innerHTML = `<p>추가 데이터 없음</p>`;
-        }
-      } catch (error) {
-        console.error("Ticker Additional API 호출 오류:", error);
-        detailAdditional.innerHTML = `<p>데이터 로드 오류</p>`;
+      
+      // Chart.js 차트 생성
+      function initializeChart(ticker, labels, prices) {
+        const ctx = stockChartCanvas.getContext('2d');
+        if (stockChart) { stockChart.destroy(); }
+        stockChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: `${ticker} 1년 종가 추이`,
+              data: prices,
+              borderColor: "#004080",
+              backgroundColor: 'rgba(0,64,128,0.1)',
+              fill: true,
+              tension: 0.3
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { y: { beginAtZero: false } }
+          }
+        });
       }
-    }
-    
-    // 최신 뉴스 업데이트 (v2/reference/news API)
-    async function fetchNews(ticker) {
-      const url = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results && jsonData.results.length > 0) {
-          const newsHtml = "<h3>뉴스</h3>" + jsonData.results.slice(0, 3).map(article => {
-            const publishedDate = new Date(article.published_utc).toLocaleDateString();
-            return `<p><strong>${article.title}</strong> (${publishedDate})<br><a href="${article.article_url}" target="_blank">자세히 보기</a></p>`;
-          }).join("");
-          detailNews.innerHTML = newsHtml;
-        } else {
-          detailNews.innerHTML = `<p>최신 뉴스 없음</p>`;
+      
+      // 추가 투자 정보 업데이트 (v3/reference/tickers API) – 회사 설명 부분 제거됨.
+      async function fetchTickerAdditional(ticker) {
+        const url = `https://api.polygon.io/v3/reference/tickers/${ticker}?apiKey=${polygonApiKey}`;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+          const jsonData = await response.json();
+          if (jsonData.results) {
+            const res = jsonData.results;
+            const week52High = res.week_52_high || "N/A";
+            const week52Low = res.week_52_low || "N/A";
+            const peRatio = res.pe_ratio || "N/A";
+            const marketCap = res.market_cap ? formatNumber(res.market_cap) : "N/A";
+            const lastEarningsDate = res.last_earnings_date || "N/A";
+            const eps = res.eps || "N/A";
+            detailAdditional.innerHTML = `
+              <p>52주 최고/최저가: ${week52High} / ${week52Low}</p>
+              <p>PER: ${peRatio}</p>
+              <p>시가총액: ${marketCap} USD</p>
+              <p>최근 실적 발표일: ${lastEarningsDate}, EPS: ${eps}</p>
+            `;
+          } else {
+            console.error("Ticker Additional API 응답 오류:", jsonData);
+            detailAdditional.innerHTML = `<p>추가 데이터 없음</p>`;
+          }
+        } catch (error) {
+          console.error("Ticker Additional API 호출 오류:", error);
+          detailAdditional.innerHTML = `<p>데이터 로드 오류</p>`;
         }
-      } catch (error) {
-        console.error("News API 호출 오류:", error);
-        detailNews.innerHTML = `<p>뉴스 데이터 로드 오류</p>`;
       }
-    }
-    
-    // 이벤트 업데이트: 각 티커의 이벤트 가져오기 (v3/reference/tickers/{ticker}/events API)
-    async function fetchTickerEvents(ticker) {
-      const url = `https://api.polygon.io/v3/reference/tickers/${ticker}/events?apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results && jsonData.results.length > 0) {
-          // 각 이벤트에 해당 티커 추가
-          return jsonData.results.map(ev => ({ ...ev, ticker }));
-        } else {
+      
+      // 최신 뉴스 업데이트 (v2/reference/news API)
+      async function fetchNews(ticker) {
+        const url = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=${polygonApiKey}`;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+          const jsonData = await response.json();
+          if (jsonData.results && jsonData.results.length > 0) {
+            const newsHtml = "<h3>뉴스</h3>" + jsonData.results.slice(0, 3).map(article => {
+              const publishedDate = new Date(article.published_utc).toLocaleDateString();
+              return `<p><strong>${article.title}</strong> (${publishedDate})<br><a href="${article.article_url}" target="_blank">자세히 보기</a></p>`;
+            }).join("");
+            detailNews.innerHTML = newsHtml;
+          } else {
+            detailNews.innerHTML = `<p>최신 뉴스 없음</p>`;
+          }
+        } catch (error) {
+          console.error("News API 호출 오류:", error);
+          detailNews.innerHTML = `<p>뉴스 데이터 로드 오류</p>`;
+        }
+      }
+      
+      // 이벤트 업데이트: 각 티커의 이벤트 가져오기 (v3/reference/tickers/{ticker}/events API)
+      async function fetchTickerEvents(ticker) {
+        const url = `https://api.polygon.io/v3/reference/tickers/${ticker}/events?apiKey=${polygonApiKey}`;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+          const jsonData = await response.json();
+          if (jsonData.results && jsonData.results.length > 0) {
+            return jsonData.results.map(ev => ({ ...ev, ticker }));
+          } else {
+            return [];
+          }
+        } catch (error) {
+          console.error("Events API 호출 오류 for", ticker, error);
           return [];
         }
-      } catch (error) {
-        console.error("Events API 호출 오류 for", ticker, error);
-        return [];
       }
-    }
-    
-    // 모든 티커의 이벤트를 가져와서 달력 생성 (페이지 하단 이벤트 캘린더 영역)
-    async function fetchAllEvents() {
-      const tickers = Array.from(stockRows).map(row => row.getAttribute('data-ticker'));
-      try {
-        const eventsArrays = await Promise.all(tickers.map(ticker => fetchTickerEvents(ticker)));
-        const allEvents = eventsArrays.flat();
-        buildCalendar(allEvents);
-      } catch (error) {
-        console.error("전체 이벤트 API 호출 오류:", error);
-        document.getElementById("events-calendar").innerHTML = "<p>이 달에는 이벤트 없음</p>";
+      
+      // 모든 티커의 이벤트를 가져와서 달력 생성 (페이지 하단 이벤트 캘린더 영역)
+      async function fetchAllEvents() {
+        const tickers = Array.from(stockRows).map(row => row.getAttribute('data-ticker'));
+        try {
+          const eventsArrays = await Promise.all(tickers.map(ticker => fetchTickerEvents(ticker)));
+          const allEvents = eventsArrays.flat();
+          buildCalendar(allEvents);
+        } catch (error) {
+          console.error("전체 이벤트 API 호출 오류:", error);
+          document.getElementById("events-calendar").innerHTML = "<p>이 달에는 이벤트 없음</p>";
+        }
       }
-    }
-    
-    // 달력 생성: 현재 달의 이벤트를 캘린더 형태로 표시 (모든 티커의 이벤트)
-    function buildCalendar(events) {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = now.getMonth(); // 0-indexed
-      // 현재 달 이벤트 필터링
-      const eventsThisMonth = events.filter(ev => {
-        const evDate = new Date(ev.event_date);
-        return evDate.getFullYear() === year && evDate.getMonth() === month;
-      });
       
-      // 달력 헤더 (요일)
-      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      let calHTML = "<table style='width:100%; border-collapse: collapse;'><thead><tr>";
-      weekdays.forEach(day => {
-        calHTML += `<th style="padding: 0.5rem; border: 1px solid #ddd;">${day}</th>`;
-      });
-      calHTML += "</tr></thead><tbody>";
-      
-      const firstDay = new Date(year, month, 1).getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      
-      let day = 1;
-      for (let i = 0; i < 6; i++) {
-        calHTML += "<tr>";
-        for (let j = 0; j < 7; j++) {
-          if (i === 0 && j < firstDay) {
-            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
-          } else if (day > daysInMonth) {
-            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
-          } else {
-            let cellEvents = eventsThisMonth.filter(ev => {
-              const evDate = new Date(ev.event_date);
-              return evDate.getDate() === day;
-            });
-            let cellContent = `<div>${day}</div>`;
-            cellEvents.forEach(ev => {
-              // 이벤트 종류와 해당 티커 표시
-              cellContent += `<div style="font-size:0.75rem; color:#004080;">[${ev.ticker}] ${ev.event_type}</div>`;
-            });
-            calHTML += `<td style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: top;">${cellContent}</td>`;
-            day++;
+      // 달력 생성: 현재 달의 이벤트를 캘린더 형태로 표시
+      function buildCalendar(events) {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth();
+        const eventsThisMonth = events.filter(ev => {
+          const evDate = new Date(ev.event_date);
+          return evDate.getFullYear() === year && evDate.getMonth() === month;
+        });
+        
+        const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        let calHTML = "<table style='width:100%; border-collapse: collapse;'><thead><tr>";
+        weekdays.forEach(day => {
+          calHTML += `<th style="padding: 0.5rem; border: 1px solid #ddd;">${day}</th>`;
+        });
+        calHTML += "</tr></thead><tbody>";
+        
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        let day = 1;
+        for (let i = 0; i < 6; i++) {
+          calHTML += "<tr>";
+          for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDay) {
+              calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
+            } else if (day > daysInMonth) {
+              calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
+            } else {
+              let cellEvents = eventsThisMonth.filter(ev => {
+                const evDate = new Date(ev.event_date);
+                return evDate.getDate() === day;
+              });
+              let cellContent = `<div>${day}</div>`;
+              cellEvents.forEach(ev => {
+                cellContent += `<div style="font-size:0.75rem; color:#004080;">[${ev.ticker}] ${ev.event_type}</div>`;
+              });
+              calHTML += `<td style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: top;">${cellContent}</td>`;
+              day++;
+            }
           }
+          calHTML += "</tr>";
+          if (day > daysInMonth) break;
         }
-        calHTML += "</tr>";
-        if (day > daysInMonth) break;
+        calHTML += "</tbody></table>";
+        
+        document.getElementById("events-calendar").innerHTML = calHTML;
       }
-      calHTML += "</tbody></table>";
       
-      document.getElementById("events-calendar").innerHTML = calHTML;
-    }
-    
-    // 천 단위 콤마 추가 함수
-    function formatNumber(num) {
-      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-    
-    // 검색 기능: 입력된 티커 또는 회사명을 포함하는 행만 표시
-    const stockSearchInput = document.getElementById('stock-search');
-    stockSearchInput.addEventListener('input', () => {
-      const query = stockSearchInput.value.trim().toLowerCase();
-      stockRows.forEach(row => {
-        const ticker = row.getAttribute('data-ticker').toLowerCase();
-        const company = row.getAttribute('data-company').toLowerCase();
-        if (ticker.includes(query) || company.includes(query)) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
+      // 천 단위 콤마 추가 함수
+      function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      
+      // 검색 기능: 입력된 티커 또는 회사명을 포함하는 행만 표시
+      const stockSearchInput = document.getElementById('stock-search');
+      stockSearchInput.addEventListener('input', () => {
+        const query = stockSearchInput.value.trim().toLowerCase();
+        stockRows.forEach(row => {
+          const ticker = row.getAttribute('data-ticker').toLowerCase();
+          const company = row.getAttribute('data-company').toLowerCase();
+          if (ticker.includes(query) || company.includes(query)) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
       });
-    });
-    
-    // DOMContentLoaded 이후, 모든 이벤트 가져오기 (이벤트 캘린더 영역 업데이트)
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchAllEvents();
-    });
-  </script>
-</body>
+      
+      // 로컬 스토리지: 자산 포트폴리오 불러오기
+      function loadAssetPortfolio() {
+        const stored = localStorage.getItem("assetPortfolio");
+        if (stored) {
+          const asset = JSON.parse(stored);
+          document.getElementById("cash-input").value       = asset.cash;
+          document.getElementById("bond-input").value       = asset.bond;
+          document.getElementById("realEstate-input").value = asset.realEstate;
+          document.getElementById("stock-input").value      = asset.stock;
+          document.getElementById("other-input").value      = asset.other;
+        }
+      }
+      
+      // 자산 포트폴리오 업데이트 & 저장
+      function updateAssetChart() {
+        const cash       = Number(document.getElementById("cash-input").value);
+        const bond       = Number(document.getElementById("bond-input").value);
+        const realEstate = Number(document.getElementById("realEstate-input").value);
+        const stock      = Number(document.getElementById("stock-input").value);
+        const other      = Number(document.getElementById("other-input").value);
+        const total      = cash + bond + realEstate + stock + other;
+        
+        if (total !== 100) {
+          alert("자산 포트폴리오 항목의 합계가 100%가 되어야 합니다.");
+          return;
+        }
+        // 저장
+        const assetData = { cash, bond, realEstate, stock, other };
+        localStorage.setItem("assetPortfolio", JSON.stringify(assetData));
+        
+        const data = [cash, bond, realEstate, stock, other];
+        const labels = ["현금", "채권", "부동산", "주식", "기타"];
+        const backgroundColors = ["#ffd966", "#8fd3f4", "#ffbba8", "#a4deaa", "#dcc6e0"]; 
+        
+        if (assetChart) {
+          assetChart.data.labels = labels;
+          assetChart.data.datasets[0].data = data;
+          assetChart.data.datasets[0].backgroundColor = backgroundColors;
+          assetChart.update();
+        } else {
+          const ctx = document.getElementById("assetChart").getContext("2d");
+          assetChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: labels,
+              datasets: [{
+                data: data,
+                backgroundColor: backgroundColors,
+                borderColor: "#fff",
+                borderWidth: 2
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { position: 'bottom' },
+                title: { display: true, text: '자산 포트폴리오' },
+                datalabels: {
+                  display: true,
+                  color: '#333',
+                  font: { size: 12 },
+                  formatter: (value, ctx) => {
+                    const label = ctx.chart.data.labels[ctx.dataIndex];
+                    return label + ': ' + value + '%';
+                  }
+                }
+              }
+            }
+          });
+        }
+      }
+      
+      // 로컬 스토리지: 주식 포트폴리오 불러오기
+      function loadStockPortfolio() {
+        const stored = localStorage.getItem("stockPortfolio");
+        if (stored) {
+          const stockArray = JSON.parse(stored);
+          stockList.innerHTML = "";
+          stockArray.forEach(item => {
+            const stockDiv = createStockItem();
+            const inputs = stockDiv.querySelectorAll("input");
+            inputs[0].value = item.name;
+            inputs[1].value = item.percent;
+            stockList.appendChild(stockDiv);
+          });
+        } else {
+          stockList.appendChild(createStockItem());
+          stockList.appendChild(createStockItem());
+        }
+      }
+      
+      // 주식 포트폴리오 항목 생성/삭제
+      const stockList = document.getElementById("stockList");
+      const addStockBtn = document.getElementById("addStockBtn");
+      
+      function createStockItem() {
+        const stockDiv = document.createElement("div");
+        stockDiv.classList.add("stock-item");
+      
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.placeholder = "종목명 (예: AAPL)";
+        nameInput.style.width = "120px";
+      
+        const percentInput = document.createElement("input");
+        percentInput.type = "number";
+        percentInput.placeholder = "비중 (%)";
+        percentInput.min = 0;
+        percentInput.max = 100;
+      
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "삭제";
+        removeBtn.classList.add("removeStockBtn");
+        removeBtn.addEventListener("click", () => {
+          stockDiv.remove();
+        });
+      
+        stockDiv.appendChild(nameInput);
+        stockDiv.appendChild(percentInput);
+        stockDiv.appendChild(removeBtn);
+        return stockDiv;
+      }
+      
+      addStockBtn.addEventListener("click", () => {
+        stockList.appendChild(createStockItem());
+      });
+      
+      // 주식 포트폴리오 차트 업데이트 & 저장
+      function updateStockChart() {
+        const stockItems = stockList.querySelectorAll(".stock-item");
+        const names = [];
+        const values = [];
+      
+        stockItems.forEach(item => {
+          const inputs = item.querySelectorAll("input");
+          const stockName = inputs[0].value.trim() || "미입력";
+          const stockPercent = Number(inputs[1].value) || 0;
+          names.push(stockName);
+          values.push(stockPercent);
+        });
+      
+        const sum = values.reduce((a, b) => a + b, 0);
+        if (sum !== 100) {
+          alert("입력한 종목 비중의 합이 100%가 되어야 합니다.");
+          return;
+        }
+      
+        const stockArray = names.map((name, idx) => ({
+          name,
+          percent: values[idx]
+        }));
+        localStorage.setItem("stockPortfolio", JSON.stringify(stockArray));
+      
+        const backgroundColors = names.map(() => {
+          const r = Math.floor(Math.random() * 200);
+          const g = Math.floor(Math.random() * 200);
+          const b = Math.floor(Math.random() * 200);
+          return `rgb(${r}, ${g}, ${b})`;
+        });
+      
+        if (stockChart) {
+          stockChart.data.labels = names;
+          stockChart.data.datasets[0].data = values;
+          stockChart.data.datasets[0].backgroundColor = backgroundColors;
+          stockChart.update();
+        } else {
+          const ctx = document.getElementById("stockChart").getContext("2d");
+          stockChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: names,
+              datasets: [{
+                data: values,
+                backgroundColor: backgroundColors,
+                borderColor: "#fff",
+                borderWidth: 2
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { position: 'bottom' },
+                title: { display: true, text: '주식 포트폴리오' },
+                datalabels: {
+                  display: true,
+                  color: '#333',
+                  font: { size: 12 },
+                  formatter: (value, ctx) => {
+                    const label = ctx.chart.data.labels[ctx.dataIndex];
+                    return label + ': ' + value + '%';
+                  }
+                }
+              }
+            }
+          });
+        }
+      }
+      
+      document.addEventListener("DOMContentLoaded", () => {
+        loadAssetPortfolio();
+        loadStockPortfolio();
+        updateAssetChart();
+        document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
+        document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
+      });
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        fetchAllEvents();
+      });
+
+      document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const parent = btn.closest('.sector-section');
+          const table = parent.querySelector('table');
+          if (table.style.display === 'none') {
+            table.style.display = '';  // 기본 display
+          } else {
+            table.style.display = 'none';
+          }
+        });
+      });
+
+    </script>
+  </body>
 </html>

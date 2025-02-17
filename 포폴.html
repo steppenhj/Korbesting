@@ -71,13 +71,11 @@
       background-color: #004080;
       color: #fff;
     }
-
     main {
       max-width: 960px;
       margin: 1rem auto;
       padding: 0 1rem;
     }
-
     /* 브라우저에 영구저장 안내 문구 */
     .save-notice {
       background: #fff;
@@ -89,7 +87,6 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
       line-height: 1.4;
     }
-
     h2 {
       font-size: 1.8rem;
       color: var(--primary-color);
@@ -103,20 +100,18 @@
       padding-bottom: 0.3rem;
       margin-bottom: 1rem;
     }
-
-    /* 가로로 섹션 두 개 나란히 배치 & 높이 줄임 */
+    /* 포트폴리오 영역: 자산 & 주식을 가로 배치 */
     .portfolio-sections {
       display: flex;
-      flex-wrap: nowrap; /* 화면이 충분히 넓으면 같은 줄에 고정 */
+      flex-wrap: nowrap;
       gap: 1rem;
-      align-items: flex-start; /* 상단 정렬 */
+      align-items: flex-start;
     }
     .section-container {
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
       padding: 1rem;
-      /* 가로 폭 지정 -> 48% 정도면 2개 배치 시 딱 맞음 */
       width: 48%;
     }
     .portfolio-form {
@@ -160,7 +155,7 @@
       background: #003060;
     }
     .chart-container {
-      max-width: 350px; /* 가로 폭 축소 */
+      max-width: 350px;
       margin: 0 auto;
     }
     .recommendation {
@@ -189,7 +184,73 @@
     .removeStockBtn:hover {
       background: #800000;
     }
-
+    /* 나만의 투자 원칙 체크리스트 */
+    .investment-checklist {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin: 2rem auto 1rem;
+      border-radius: 8px;
+      max-width: 960px;
+    }
+    .investment-checklist h3 {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.3rem;
+    }
+    .investment-checklist ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .investment-checklist li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 0.8rem 0;
+    }
+    .investment-checklist li:last-child {
+      border-bottom: none;
+    }
+    /* 체크박스 크기 확대 */
+    .investment-checklist input[type="checkbox"] {
+      width: 1.5em;
+      height: 1.5em;
+      transform: scale(1.2);
+      margin-left: 10px;
+    }
+    .checklist-add {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .checklist-add input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .checklist-add button {
+      padding: 0.5rem 1rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .checklist-add button:hover {
+      background: #003060;
+    }
+    /* 하단 정보 (푸터 위) - 체크리스트 영역만 표시 */
+    .bottom-info {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
     footer {
       background-color: var(--primary-color);
       color: #fff;
@@ -200,13 +261,21 @@
       font-size: 1rem;
       box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
     }
-
     @media (max-width: 1000px) {
       .section-container {
-        width: 100%; /* 화면이 작아지면 세로로 쌓이도록 */
+        width: 100%;
       }
       .portfolio-sections {
-        flex-wrap: wrap; /* 세로 배치 전환 */
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      table th, table td {
+        padding: 0.6rem;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -219,15 +288,15 @@
       <ul>
         <li><a href="index.html">메인 페이지</a></li>
         <li><a href="포폴.html">포트폴리오</a></li>
+        <li><a href="유명인.html">유명인 포트폴리오</a></li>
       </ul>
     </nav>
   </header>
   
   <main>
-    <!-- 로그인 없이 로컬 스토리지에 영구 저장 -->
+    <!-- 로그인 없이 로컬 스토리지에 영구 저장 안내 -->
     <div class="save-notice">
-      이 포트폴리오는 <strong>로그인 없이도</strong> 현재 사용하는 <strong>브라우저에 영구 저장</strong>됩니다.
-      <br>
+      이 페이지는 <strong>로그인 없이도</strong> 현재 사용하는 <strong>브라우저에 영구 저장</strong>됩니다.<br>
       다시 방문하더라도 입력했던 내역이 유지됩니다.
     </div>
 
@@ -238,8 +307,7 @@
         <h3>자산 포트폴리오</h3>
         <p style="font-size: 0.9rem; line-height: 1.4;">
           <strong>자산 포트폴리오는 재무 건전성의 핵심</strong>입니다.  
-          다양한 자산(현금, 채권, 부동산, 주식, 기타)의 균형을 잘 맞춰두면 
-          시장 변동에 유연하게 대응할 수 있고, 예기치 못한 지출에도 대비할 수 있습니다.
+          다양한 자산(현금, 채권, 부동산, 주식, 기타)의 균형을 잘 맞추면 시장 변동에 유연하게 대응할 수 있고, 예기치 못한 지출에도 대비할 수 있습니다.
         </p>
         <div class="portfolio-form">
           <label for="cash-input">현금</label>
@@ -264,8 +332,7 @@
           <canvas id="assetChart"></canvas>
         </div>
         <div class="recommendation">
-          <strong>Tip:</strong> 자산 구성 비중은 개인 상황과 시장 환경에 따라 달라질 수 있으니, 
-          전문가와 상의하거나 신중한 리서치 후 결정하세요.
+          <strong>Tip:</strong> 자산 구성 비중은 개인 상황과 시장 환경에 따라 달라질 수 있으니, 전문가와 상의하거나 신중한 리서치 후 결정하세요.
         </div>
       </section>
       
@@ -275,7 +342,7 @@
         <p style="font-size: 0.9rem; line-height: 1.4;">
           <strong>주식 포트폴리오</strong>는 매력적인 기업에 투자해 자산을 불리는 한 가지 방법입니다.  
           아래에 종목명과 투자 비중(%)을 자유롭게 입력해보세요.  
-          비중 합이 <strong>100%</strong>가 되도록 구성해야 차트가 정상적으로 표시됩니다.
+          비중 합이 <strong>100%</strong>가 되어야 차트가 정상적으로 표시됩니다.
         </p>
         
         <!-- 종목 입력 영역 -->
@@ -292,6 +359,24 @@
         </div>
       </section>
     </div>
+    
+    <!-- 나만의 투자 원칙 체크리스트 (푸터 위에 위치) -->
+    <div class="bottom-info">
+      <div class="investment-checklist">
+        <h3>나만의 투자 원칙 체크리스트</h3>
+        <ul id="checklist">
+          <!-- 기본 예시 항목 -->
+          <li>
+            <span>예시: 재무 건전성이 높은 기업</span>
+            <input type="checkbox" class="check-input">
+          </li>
+        </ul>
+        <div class="checklist-add">
+          <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
+          <button id="addChecklistItemBtn">추가</button>
+        </div>
+      </div>
+    </div>
   </main>
   
   <footer>
@@ -303,7 +388,7 @@
     </p>
   </footer>
   
-  
+  <!-- JavaScript: 포트폴리오 및 체크리스트 기능 -->
   <script>
     // chartjs-plugin-datalabels 등록
     Chart.register(ChartDataLabels);
@@ -397,7 +482,6 @@
           stockList.appendChild(stockDiv);
         });
       } else {
-        // 최초(저장 없는 경우) 기본 2개 종목 입력칸
         stockList.appendChild(createStockItem());
         stockList.appendChild(createStockItem());
       }
@@ -427,6 +511,7 @@
       removeBtn.classList.add("removeStockBtn");
       removeBtn.addEventListener("click", () => {
         stockDiv.remove();
+        saveChecklist(); // 체크리스트와 별개이지만, 필요시 재저장
       });
 
       stockDiv.appendChild(nameInput);
@@ -446,7 +531,7 @@
       const values = [];
 
       stockItems.forEach(item => {
-        const inputs    = item.querySelectorAll("input");
+        const inputs = item.querySelectorAll("input");
         const stockName = inputs[0].value.trim() || "미입력";
         const stockPercent = Number(inputs[1].value) || 0;
         names.push(stockName);
@@ -459,14 +544,12 @@
         return;
       }
 
-      // localStorage에 저장
       const stockArray = names.map((name, idx) => ({
         name,
         percent: values[idx]
       }));
       localStorage.setItem("stockPortfolio", JSON.stringify(stockArray));
 
-      // 차트 표시 데이터
       const backgroundColors = names.map(() => {
         const r = Math.floor(Math.random() * 200);
         const g = Math.floor(Math.random() * 200);
@@ -512,19 +595,362 @@
       }
     }
 
-    // 페이지 로드 시점
+    /* ---------------- 체크리스트: 저장 및 불러오기 기능 ---------------- */
+    const CHECKLIST_KEY = "investmentChecklist";
+
+    function loadChecklist() {
+      const stored = localStorage.getItem(CHECKLIST_KEY);
+      const checklistEl = document.getElementById("checklist");
+      checklistEl.innerHTML = "";
+      if (stored) {
+        const items = JSON.parse(stored);
+        items.forEach(item => {
+          const li = document.createElement("li");
+          li.innerHTML = `<span>${item.text}</span><input type="checkbox" class="check-input" ${item.checked ? "checked" : ""}>`;
+          // 체크박스 변경 시 저장 업데이트
+          li.querySelector("input").addEventListener("change", saveChecklist);
+          checklistEl.appendChild(li);
+        });
+      } else {
+        // 기본 예시 항목
+        const li = document.createElement("li");
+        li.innerHTML = `<span>예시: 재무 건전성이 높은 기업</span><input type="checkbox" class="check-input">`;
+        li.querySelector("input").addEventListener("change", saveChecklist);
+        checklistEl.appendChild(li);
+        saveChecklist();
+      }
+    }
+
+    function saveChecklist() {
+      const checklistEl = document.getElementById("checklist");
+      const items = [];
+      checklistEl.querySelectorAll("li").forEach(li => {
+        const text = li.querySelector("span").innerText;
+        const checked = li.querySelector("input").checked;
+        items.push({ text, checked });
+      });
+      localStorage.setItem(CHECKLIST_KEY, JSON.stringify(items));
+    }
+
+    document.getElementById("addChecklistItemBtn").addEventListener("click", function(){
+      const input = document.getElementById("newChecklistItem");
+      const text = input.value.trim();
+      if(text !== ""){
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${text}</span><input type="checkbox" class="check-input">`;
+        li.querySelector("input").addEventListener("change", saveChecklist);
+        document.getElementById("checklist").appendChild(li);
+        input.value = "";
+        saveChecklist();
+      }
+    });
+
     document.addEventListener("DOMContentLoaded", () => {
-      // 1) 기존 데이터 불러오기
       loadAssetPortfolio();
       loadStockPortfolio();
-      // 2) 자산 차트 바로 업데이트
+      loadChecklist();
       updateAssetChart();
-      // (주식 합계가 100%이면 자동으로 updateStockChart() 호출해도 됨)
-
-      // 3) 이벤트 리스너
       document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
       document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchAllEvents();
+    });
+
+    // 모달 및 이벤트 관련 스크립트
+    const stockRows = document.querySelectorAll('.stock-row');
+    stockRows.forEach(row => {
+      row.addEventListener('click', () => {
+        const ticker = row.getAttribute('data-ticker');
+        const company = row.getAttribute('data-company');
+        const growth = row.getAttribute('data-growth');
+        const info = row.getAttribute('data-info');
+        const priceText = document.getElementById(`price-${ticker}`).textContent;
+    
+        detailCompany.textContent = company;
+        detailTicker.textContent = `티커: ${ticker}`;
+        detailPrice.textContent = `전일 종가: ${priceText}`;
+        detailGrowth.textContent = `연간 매출 성장률 (YoY): ${growth}`;
+        detailInfo.textContent = info;
+    
+        detailAdditional.innerHTML = `<p>추가 데이터 로딩 중...</p>`;
+        detailNews.innerHTML = `<h3>뉴스</h3><p>최신 뉴스 로딩 중...</p>`;
+    
+        modalOverlay.classList.add('active');
+    
+        fetchOneYearChart(ticker);
+        fetchTickerAdditional(ticker);
+        fetchNews(ticker);
+      });
+    });
+    
+    closeDetailBtn.addEventListener('click', () => {
+      modalOverlay.classList.remove('active');
+      if (stockChart) { stockChart.destroy(); }
+    });
+    
+    async function fetchOneYearChart(ticker) {
+      const fromDate = "2024-02-16";
+      const toDate = "2025-02-15";
+      const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${fromDate}/${toDate}?apiKey=${polygonApiKey}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+        const jsonData = await response.json();
+        if (jsonData.results) {
+          const labels = jsonData.results.map(item => {
+            const date = new Date(item.t);
+            return date.toLocaleDateString();
+          });
+          const prices = jsonData.results.map(item => item.c);
+          initializeChart(ticker, labels, prices);
+        } else {
+          console.error("Aggregates API 응답에 결과가 없습니다.");
+          initializeChart(ticker, ["No Data"], [0]);
+        }
+      } catch (error) {
+        console.error("Aggregates API 호출 오류:", error);
+        const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+        const prices = labels.map(() => (Math.random()*10+50).toFixed(2));
+        initializeChart(ticker, labels, prices);
+      }
+    }
+    
+    function initializeChart(ticker, labels, prices) {
+      const ctx = stockChartCanvas.getContext('2d');
+      if (stockChart) { stockChart.destroy(); }
+      stockChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: `${ticker} 1년 종가 추이`,
+            data: prices,
+            borderColor: "#004080",
+            backgroundColor: 'rgba(0,64,128,0.1)',
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { y: { beginAtZero: false } }
+        }
+      });
+    }
+    
+    async function fetchTickerAdditional(ticker) {
+      const url = `https://api.polygon.io/v3/reference/tickers/${ticker}?apiKey=${polygonApiKey}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+        const jsonData = await response.json();
+        if (jsonData.results) {
+          const res = jsonData.results;
+          const week52High = res.week_52_high || "N/A";
+          const week52Low = res.week_52_low || "N/A";
+          const peRatio = res.pe_ratio || "N/A";
+          const marketCap = res.market_cap ? formatNumber(res.market_cap) : "N/A";
+          const lastEarningsDate = res.last_earnings_date || "N/A";
+          const eps = res.eps || "N/A";
+          detailAdditional.innerHTML = `
+            <p>52주 최고/최저가: ${week52High} / ${week52Low}</p>
+            <p>PER: ${peRatio}</p>
+            <p>시가총액: ${marketCap} USD</p>
+            <p>최근 실적 발표일: ${lastEarningsDate}, EPS: ${eps}</p>
+          `;
+        } else {
+          console.error("Ticker Additional API 응답 오류:", jsonData);
+          detailAdditional.innerHTML = `<p>추가 데이터 없음</p>`;
+        }
+      } catch (error) {
+        console.error("Ticker Additional API 호출 오류:", error);
+        detailAdditional.innerHTML = `<p>데이터 로드 오류</p>`;
+      }
+    }
+    
+    async function fetchNews(ticker) {
+      const url = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=${polygonApiKey}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+        const jsonData = await response.json();
+        if (jsonData.results && jsonData.results.length > 0) {
+          const newsHtml = "<h3>뉴스</h3>" + jsonData.results.slice(0, 3).map(article => {
+            const publishedDate = new Date(article.published_utc).toLocaleDateString();
+            return `<p><strong>${article.title}</strong> (${publishedDate})<br><a href="${article.article_url}" target="_blank">자세히 보기</a></p>`;
+          }).join("");
+          detailNews.innerHTML = newsHtml;
+        } else {
+          detailNews.innerHTML = `<p>최신 뉴스 없음</p>`;
+        }
+      } catch (error) {
+        console.error("News API 호출 오류:", error);
+        detailNews.innerHTML = `<p>뉴스 데이터 로드 오류</p>`;
+      }
+    }
+    
+    async function fetchTickerEvents(ticker) {
+      const url = `https://api.polygon.io/v3/reference/tickers/${ticker}/events?apiKey=${polygonApiKey}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
+        const jsonData = await response.json();
+        if (jsonData.results && jsonData.results.length > 0) {
+          return jsonData.results.map(ev => ({ ...ev, ticker }));
+        } else {
+          return [];
+        }
+      } catch (error) {
+        console.error("Events API 호출 오류 for", ticker, error);
+        return [];
+      }
+    }
+    
+    async function fetchAllEvents() {
+      const tickers = Array.from(stockRows).map(row => row.getAttribute('data-ticker'));
+      try {
+        const eventsArrays = await Promise.all(tickers.map(ticker => fetchTickerEvents(ticker)));
+        const allEvents = eventsArrays.flat();
+        buildCalendar(allEvents);
+      } catch (error) {
+        console.error("전체 이벤트 API 호출 오류:", error);
+        document.getElementById("events-calendar").innerHTML = "<p>이 달에는 이벤트 없음</p>";
+      }
+    }
+    
+    function buildCalendar(events) {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const eventsThisMonth = events.filter(ev => {
+        const evDate = new Date(ev.event_date);
+        return evDate.getFullYear() === year && evDate.getMonth() === month;
+      });
+      
+      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      let calHTML = "<table style='width:100%; border-collapse: collapse;'><thead><tr>";
+      weekdays.forEach(day => {
+        calHTML += `<th style="padding: 0.5rem; border: 1px solid #ddd;">${day}</th>`;
+      });
+      calHTML += "</tr></thead><tbody>";
+      
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      let day = 1;
+      for (let i = 0; i < 6; i++) {
+        calHTML += "<tr>";
+        for (let j = 0; j < 7; j++) {
+          if (i === 0 && j < firstDay) {
+            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
+          } else if (day > daysInMonth) {
+            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
+          } else {
+            let cellEvents = eventsThisMonth.filter(ev => {
+              const evDate = new Date(ev.event_date);
+              return evDate.getDate() === day;
+            });
+            let cellContent = `<div>${day}</div>`;
+            cellEvents.forEach(ev => {
+              cellContent += `<div style="font-size:0.75rem; color:#004080;">[${ev.ticker}] ${ev.event_type}</div>`;
+            });
+            calHTML += `<td style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: top;">${cellContent}</td>`;
+            day++;
+          }
+        }
+        calHTML += "</tr>";
+        if (day > daysInMonth) break;
+      }
+      calHTML += "</tbody></table>";
+      
+      document.getElementById("events-calendar").innerHTML = calHTML;
+    }
+    
+    function formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
+    const stockSearchInput = document.getElementById('stock-search');
+    stockSearchInput.addEventListener('input', () => {
+      const query = stockSearchInput.value.trim().toLowerCase();
+      stockRows.forEach(row => {
+        const ticker = row.getAttribute('data-ticker').toLowerCase();
+        const company = row.getAttribute('data-company').toLowerCase();
+        if (ticker.includes(query) || company.includes(query)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    });
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      loadAssetPortfolio();
+      loadStockPortfolio();
+      loadChecklist();
+      updateAssetChart();
+      document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
+      document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchAllEvents();
+    });
+  </script>
+  
+  <!-- 체크리스트 추가 스크립트 -->
+  <script>
+    // 체크리스트 항목 추가 버튼 이벤트
+    document.getElementById("addChecklistItemBtn").addEventListener("click", function(){
+      const input = document.getElementById("newChecklistItem");
+      const text = input.value.trim();
+      if(text !== ""){
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${text}</span><input type="checkbox" class="check-input">`;
+        li.querySelector("input").addEventListener("change", saveChecklist);
+        document.getElementById("checklist").appendChild(li);
+        input.value = "";
+        saveChecklist();
+      }
+    });
+    
+    // 로컬 스토리지에서 체크리스트 항목 불러오기
+    function loadChecklist() {
+      const stored = localStorage.getItem("investmentChecklist");
+      const checklistEl = document.getElementById("checklist");
+      checklistEl.innerHTML = "";
+      if (stored) {
+        const items = JSON.parse(stored);
+        items.forEach(item => {
+          const li = document.createElement("li");
+          li.innerHTML = `<span>${item.text}</span><input type="checkbox" class="check-input" ${item.checked ? "checked" : ""}>`;
+          li.querySelector("input").addEventListener("change", saveChecklist);
+          checklistEl.appendChild(li);
+        });
+      } else {
+        // 기본 항목 추가 (선택 사항)
+        const li = document.createElement("li");
+        li.innerHTML = `<span>예시: 재무 건전성이 높은 기업</span><input type="checkbox" class="check-input">`;
+        li.querySelector("input").addEventListener("change", saveChecklist);
+        checklistEl.appendChild(li);
+        saveChecklist();
+      }
+    }
+    
+    // 체크리스트 항목들을 Local Storage에 저장
+    function saveChecklist() {
+      const checklistEl = document.getElementById("checklist");
+      const items = [];
+      checklistEl.querySelectorAll("li").forEach(li => {
+        const text = li.querySelector("span").innerText;
+        const checked = li.querySelector("input").checked;
+        items.push({ text, checked });
+      });
+      localStorage.setItem("investmentChecklist", JSON.stringify(items));
+    }
   </script>
 </body>
 </html>
