@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>내 포트폴리오 - US SmallCap Insight</title>
+  <title>포트폴리오 다이어리- US SmallCap Insight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts: Roboto & Open Sans -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
@@ -61,14 +61,14 @@
       display: inline-block;
       padding: 0.5rem 1rem;
       background-color: #fff;
-      color: #004080;
-      border: 1px solid #004080;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
       border-radius: 4px;
       text-decoration: none;
       transition: background-color 0.3s, color 0.3s;
     }
     nav ul li a:hover {
-      background-color: #004080;
+      background-color: var(--primary-color);
       color: #fff;
     }
     main {
@@ -100,19 +100,67 @@
       padding-bottom: 0.3rem;
       margin-bottom: 1rem;
     }
-    /* 포트폴리오 영역: 자산 & 주식을 가로 배치 */
+    /* 포트폴리오 영역: 섹션들을 세로로 배치 */
     .portfolio-sections {
       display: flex;
-      flex-wrap: nowrap;
+      flex-direction: column;
       gap: 1rem;
-      align-items: flex-start;
+      justify-content: flex-start;
     }
+    /* 섹션 컨테이너는 기존 스타일 그대로 */
     .section-container {
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
       padding: 1rem;
-      width: 48%;
+      width: 100%;
+    }
+    /* 각 섹션 내부를 좌측(입력폼)과 우측(그래프)으로 나누기 위한 flex 컨테이너 */
+    .portfolio-section-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .left-content {
+      flex: 1;
+    }
+    .right-chart {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    /* 자산 포트폴리오 동적 항목 */
+    .asset-item {
+      display: flex;
+      align-items: left;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .asset-item input[type="text"],
+    .asset-item input[type="text"]::placeholder,
+    .asset-item input[type="number"] {
+      /* 금액 입력 필드의 type을 text로 변경 */
+      padding: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      width: 100px;
+    }
+    .asset-item button {
+      padding: 0.3rem 0.6rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .asset-item button:hover {
+      background: #800000;
     }
     .portfolio-form {
       display: flex;
@@ -120,26 +168,6 @@
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 1rem;
-    }
-    .portfolio-form label {
-      font-weight: 600;
-      margin-right: 0.2rem;
-      min-width: 60px;
-      text-align: right;
-    }
-    .portfolio-form input[type="number"],
-    .portfolio-form input[type="text"] {
-      width: 70px;
-      padding: 0.3rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      text-align: center;
-      outline: none;
-      transition: border-color 0.3s;
-      font-size: 0.9rem;
-    }
-    .portfolio-form input:focus {
-      border-color: var(--primary-color);
     }
     .portfolio-form button {
       padding: 0.3rem 0.6rem;
@@ -155,8 +183,12 @@
       background: #003060;
     }
     .chart-container {
-      max-width: 350px;
-      margin: 0 auto;
+      margin: 0;
+    }
+    /* 기본 캔버스 높이 (동적으로 조절할 예정) */
+    canvas {
+      width: 100%;
+      height: 300px;
     }
     .recommendation {
       background: var(--light-gray);
@@ -166,39 +198,47 @@
       text-align: center;
       font-size: 0.8rem;
     }
+    /* 주식 포트폴리오 */
     .stock-item {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.5rem;
     }
-    .removeStockBtn {
-      background: #b30000;
-      border: none;
-      color: #fff;
+    .stock-item input[type="text"],
+    .stock-item input[type="text"]::placeholder,
+    .stock-item input[type="number"] {
+      padding: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      width: 120px;
+    }
+    .stock-item button {
       padding: 0.3rem 0.6rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.8rem;
     }
-    .removeStockBtn:hover {
+    .stock-item button:hover {
       background: #800000;
     }
-    /* 나만의 투자 원칙 체크리스트 */
+    /* 하단 정보 영역: 체크리스트, 자산 목표, 투자 일지 */
+    .bottom-info {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
     .investment-checklist {
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       padding: 1rem;
-      margin: 2rem auto 1rem;
+      margin-bottom: 1rem;
       border-radius: 8px;
-      max-width: 960px;
-    }
-    .investment-checklist h3 {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 0.3rem;
     }
     .investment-checklist ul {
       list-style: none;
@@ -214,7 +254,6 @@
     .investment-checklist li:last-child {
       border-bottom: none;
     }
-    /* 체크박스 크기 확대 */
     .investment-checklist input[type="checkbox"] {
       width: 1.5em;
       height: 1.5em;
@@ -245,11 +284,81 @@
     .checklist-add button:hover {
       background: #003060;
     }
-    /* 하단 정보 (푸터 위) - 체크리스트 영역만 표시 */
-    .bottom-info {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    /* 자산 목표 영역 (흰색 배경 컨테이너 추가) */
+    .asset-goal {
+      margin-bottom: 1rem;
+    }
+    .asset-goal-container {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    /* 자산 목표 진행바 스타일 */
+    #assetGoalProgress {
+      margin-top: 1rem;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .progress {
+      height: 20px;
+      background-color: var(--primary-color);
+      width: 0%;
+      transition: width 0.5s;
+      text-align: center;
+      color: #fff;
+      line-height: 20px;
+      font-size: 0.9rem;
+    }
+    /* 투자 일지 */
+    .investment-diary {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .investment-diary textarea {
+      width: 100%;
+      height: 150px;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    .investment-diary button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .investment-diary button:hover {
+      background: #003060;
+    }
+    .diary-entry {
+      border-top: 1px solid #ddd;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+    }
+    .diary-entry time {
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    .diary-entry .diary-text {
+      flex: 1;
+      margin: 0 8px;
     }
     footer {
       background-color: var(--primary-color);
@@ -273,10 +382,6 @@
       header h1 {
         font-size: 1.6rem;
       }
-      table th, table td {
-        padding: 0.6rem;
-        font-size: 0.8rem;
-      }
     }
   </style>
 </head>
@@ -288,94 +393,147 @@
       <ul>
         <li><a href="index.html">메인 페이지</a></li>
         <li><a href="포폴.html">포트폴리오</a></li>
-        <li><a href="유명인.html">유명인 포트폴리오</a></li>
-        <li><a href="커뮤니티.html">커뮤니티</a></li>
+        <li><a href="전문가분석.html">전문가 분석</a></li>
+        <li><a href="유명인포폴.html">인기 포트폴리오</a></li>
       </ul>
     </nav>
   </header>
   
   <main>
-    <!-- 로그인 없이 로컬 스토리지에 영구 저장 안내 -->
+    <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
     <div class="save-notice">
       이 페이지는 <strong>로그인 없이도</strong> 현재 사용하는 <strong>브라우저에 영구 저장</strong>됩니다.<br>
       다시 방문하더라도 입력했던 내역이 유지됩니다.
     </div>
 
-    <h2>내 포트폴리오</h2>
+    <h2>포트폴리오 다이어리</h2>
+    <div class="recommendation">
+      <strong>Tip:</strong> 입력한 금액의 비중이 자동으로 계산됩니다.<br>
+      모두 입력한 후 새로고침을 한 번 하세요.
+    </div>
     <div class="portfolio-sections">
-      <!-- 자산 포트폴리오 섹션 -->
+      <!-- [자산 포트폴리오] 동적 항목 영역 -->
       <section class="section-container" id="asset-portfolio">
         <h3>자산 포트폴리오</h3>
-        <p style="font-size: 0.9rem; line-height: 1.4;">
-          <strong>자산 포트폴리오는 재무 건전성의 핵심</strong>입니다.  
-          다양한 자산(현금, 채권, 부동산, 주식, 기타)의 균형을 잘 맞추면 시장 변동에 유연하게 대응할 수 있고, 예기치 못한 지출에도 대비할 수 있습니다.
+        <p style="font-size:0.9rem; line-height: 1.4;">
+          다양한 자산(예: 현금, 채권, 부동산, 주식, 기타)의 투자 금액을 입력하세요.<br>
+          입력한 금액을 바탕으로 자동으로 각 항목의 비율이 계산되어 차트로 표시됩니다.
         </p>
-        <div class="portfolio-form">
-          <label for="cash-input">현금</label>
-          <input type="number" id="cash-input" value="20" min="0" max="100" placeholder="현금 %">
+          <h3>왜 자산 포트폴리오가 중요한가?</h3>
+          <p style="font-size:1rem; line-height:1.6;">
+            많은 사람들이 <strong>주식 포트폴리오</strong>에만 집중하지만, 사실 <strong>자산 포트폴리오</strong>가 장기적인 재무 안정성을 결정짓는 핵심 요소입니다.
+            투자에서 가장 중요한 것은 <strong>수익률뿐만 아니라 리스크 관리</strong>입니다. 
+          </p>
           
-          <label for="bond-input">채권</label>
-          <input type="number" id="bond-input" value="20" min="0" max="100" placeholder="채권 %">
-          
-          <label for="realEstate-input">부동산</label>
-          <input type="number" id="realEstate-input" value="20" min="0" max="100" placeholder="부동산 %">
-
-          <label for="stock-input">주식</label>
-          <input type="number" id="stock-input" value="30" min="0" max="100" placeholder="주식 %">
-
-          <label for="other-input">기타</label>
-          <input type="number" id="other-input" value="10" min="0" max="100" placeholder="기타 %">
-          
-          <button id="updateAssetChart">차트 업데이트</button>
-        </div>
-        <p style="font-size:0.8rem; color:#666;">(각 항목 합계가 100%가 되어야 합니다.)</p>
-        <div class="chart-container">
-          <canvas id="assetChart"></canvas>
-        </div>
-        <div class="recommendation">
-          <strong>Tip:</strong> 자산 구성 비중은 개인 상황과 시장 환경에 따라 달라질 수 있으니, 전문가와 상의하거나 신중한 리서치 후 결정하세요.
+          <h4 style="color:#004080; margin-top:1rem;">1. 단일 투자보다 리스크를 줄여줍니다.</h4>
+          <p style="font-size:0.95rem; line-height:1.6;">
+            주식만 보유하고 있다면 시장 변동성에 크게 영향을 받을 수 있습니다. 하지만 현금, 채권, 부동산, 금과 같은 
+            <strong>다양한 자산을 함께 보유하면 변동성을 줄이고 안정적인 성장</strong>을 기대할 수 있습니다.
+          </p>
+        
+          <h4 style="color:#004080; margin-top:1rem;">2. 자산 배분이 곧 수익률을 결정합니다.</h4>
+          <p style="font-size:0.95rem; line-height:1.6;">
+            미국 예일대의 연구에 따르면 <strong>포트폴리오의 장기 수익률은 개별 종목 선택보다 자산 배분이 더 큰 영향을 미친다</strong>는 결과가 있습니다.
+            즉, 어떤 주식을 선택하느냐보다 <strong>어떤 자산을 얼마만큼 배분하느냐</strong>가 더 중요합니다.
+          </p>
+        
+          <h4 style="color:#004080; margin-top:1rem;">3. 위기 상황에서 더 큰 차이를 만듭니다.</h4>
+          <p style="font-size:0.95rem; line-height:1.6;">
+            2008년 금융 위기, 2020년 코로나 팬데믹 등 <strong>시장 충격이 발생할 때마다</strong> 주식 시장은 크게 하락했습니다. 
+            하지만 채권, 금, 부동산을 함께 보유한 투자자들은 이러한 위기를 훨씬 더 안정적으로 버텨냈습니다.
+            결국 <strong>자산 포트폴리오를 잘 구성하면 위기에 강한 투자 전략</strong>을 만들 수 있습니다.
+          </p>
+        
+          <h4 style="color:#004080; margin-top:1rem;">4. 자산 포트폴리오가 곧 당신의 재정 설계입니다.</h4>
+          <p style="font-size:0.95rem; line-height:1.6;">
+            단기적인 주식 수익률에 일희일비하지 말고, <strong>장기적인 재정 목표</strong>를 생각해야 합니다. 
+            부동산을 통해 주거 안정성을 확보하고, 채권을 통해 고정적인 현금 흐름을 만들고, 주식을 통해 성장성을 추구하는 것이 
+            <strong>현명한 투자자의 전략</strong>입니다.
+          </p>
+        
+        <div class="portfolio-section-content">
+          <div class="left-content">
+            <!-- 동적 자산 항목들이 들어갈 영역 -->
+            <div id="assetItemsContainer"></div>
+            <div class="portfolio-form">
+              <button id="addAssetItemBtn">자산 항목 추가</button>
+            </div>
+          </div>
+          <div class="right-chart">
+            <div class="chart-container">
+              <canvas id="assetChart"></canvas>
+            </div>
+          </div>
         </div>
       </section>
       
-      <!-- 주식 포트폴리오 섹션 -->
+      <!-- [주식 포트폴리오] 동적 항목 영역 -->
       <section class="section-container" id="stock-portfolio">
         <h3>주식 포트폴리오</h3>
-        <p style="font-size: 0.9rem; line-height: 1.4;">
-          <strong>주식 포트폴리오</strong>는 매력적인 기업에 투자해 자산을 불리는 한 가지 방법입니다.  
-          아래에 종목명과 투자 비중(%)을 자유롭게 입력해보세요.  
-          비중 합이 <strong>100%</strong>가 되어야 차트가 정상적으로 표시됩니다.
+        <p style="font-size:0.9rem; line-height: 1.4;">
+          투자할 종목의 이름과 투자 금액을 입력하세요.<br>
+          입력한 금액의 총합을 기준으로 각 종목의 비율이 자동으로 계산되어 차트로 표시됩니다.
         </p>
-        
-        <!-- 종목 입력 영역 -->
-        <div class="portfolio-form" style="flex-direction: column; align-items: flex-start;">
-          <div id="stockList"></div>
-          <button id="addStockBtn">종목 추가</button>
-        </div>
-        
-        <button id="updateStockChart" style="margin-bottom: 0.5rem;">차트 업데이트</button>
-        <p style="font-size:0.8rem; color:#666;">(입력한 종목 비중의 합이 100%가 되어야 합니다.)</p>
-        
-        <div class="chart-container">
-          <canvas id="stockChart"></canvas>
+        <div class="portfolio-section-content">
+          <div class="left-content">
+            <div class="portfolio-form" style="flex-direction: column; align-items: flex-start;">
+              <div id="stockList"></div>
+              <button id="addStockBtn">종목 추가</button>
+            </div>
+          </div>
+          <div class="right-chart">
+            <div class="chart-container">
+              <canvas id="stockChart"></canvas>
+            </div>
+          </div>
         </div>
       </section>
     </div>
     
-    <!-- 나만의 투자 원칙 체크리스트 (푸터 위에 위치) -->
+    <!-- 하단 정보: 체크리스트, 자산 목표, 투자 일지 -->
     <div class="bottom-info">
-      <div class="investment-checklist">
-        <h3>나만의 투자 원칙 체크리스트</h3>
-        <ul id="checklist">
-          <!-- 기본 예시 항목 -->
-          <li>
-            <span>예시: 재무 건전성이 높은 기업</span>
-            <input type="checkbox" class="check-input">
-          </li>
-        </ul>
-        <div class="checklist-add">
-          <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
-          <button id="addChecklistItemBtn">추가</button>
+    <!-- 나만의 투자 원칙 체크리스트 -->
+    <div class="investment-checklist">
+      <h3>나만의 투자 원칙 체크리스트</h3>
+      <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
+        새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
+      </p>
+      <ul id="checklist">
+        <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
+      </ul>
+      <div class="checklist-add">
+        <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
+        <button id="addChecklistItemBtn">추가</button>
+      </div>
+    </div>
+
+      <!-- 나의 자산 목표 영역 (흰색 배경 컨테이너 추가) -->
+      <div class="asset-goal">
+        <div class="asset-goal-container">
+          <h3>나의 자산 목표</h3>
+          <p>목표 자산 금액을 입력하세요:</p>
+          <div class="asset-goal-form">
+            <!-- type 변경: number -> text -->
+            <input type="text" id="assetGoalInput" placeholder="예: 10000000">
+            <button id="saveAssetGoalBtn">저장</button>
+          </div>
+          <div id="assetGoalDisplay"></div>
+          <!-- 진행바를 표시할 영역 -->
+          <div id="assetGoalProgress"></div>
         </div>
+      </div>
+      
+      <!-- 투자 일지 영역 -->
+      <div class="investment-diary">
+        <h3>투자 일지</h3>
+        <textarea id="investmentDiary" placeholder="오늘의 투자 일지를 작성하세요..."></textarea>
+        <button id="saveDiaryBtn">저장</button>
+        <div id="diaryEntries"></div>
+      </div>
+      
+      <!-- 데이터 초기화 버튼 (추가 기능) -->
+      <div style="text-align:center; margin-top:1rem;">
+        <button id="resetDataBtn" style="background:#800000;"><strong>데이터 초기화</strong></button>
       </div>
     </div>
   </main>
@@ -389,188 +547,163 @@
     </p>
   </footer>
   
-  <!-- JavaScript: 포트폴리오 및 체크리스트 기능 -->
+  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지 기능 -->
   <script>
     // chartjs-plugin-datalabels 등록
     Chart.register(ChartDataLabels);
-
+    
     let assetChart, stockChart;
-
-    /* ---------------- 로컬 스토리지: 자산 포트폴리오 불러오기 ---------------- */
-    function loadAssetPortfolio() {
-      const stored = localStorage.getItem("assetPortfolio");
-      if (stored) {
-        const asset = JSON.parse(stored);
-        document.getElementById("cash-input").value       = asset.cash;
-        document.getElementById("bond-input").value       = asset.bond;
-        document.getElementById("realEstate-input").value = asset.realEstate;
-        document.getElementById("stock-input").value      = asset.stock;
-        document.getElementById("other-input").value      = asset.other;
-      }
+    
+    // 실시간으로 1000단위 쉼표를 추가하는 함수
+    function addCommaFormatting(inputElement) {
+      inputElement.addEventListener('input', function() {
+        // 현재 커서 위치 보존은 복잡하므로, 여기서는 단순하게 값 전체를 포맷팅하여 끝으로 커서를 이동합니다.
+        let numericValue = inputElement.value.replace(/,/g, '');
+        if(numericValue === '') {
+          inputElement.value = '';
+          return;
+        }
+        let num = parseFloat(numericValue);
+        if(isNaN(num)) return;
+        let formattedValue = num.toLocaleString('en-US');
+        inputElement.value = formattedValue;
+        inputElement.selectionStart = inputElement.selectionEnd = inputElement.value.length;
+      });
     }
-
-    /* ---------------- 자산 포트폴리오 업데이트 & 저장 ---------------- */
-    function updateAssetChart() {
-      const cash       = Number(document.getElementById("cash-input").value);
-      const bond       = Number(document.getElementById("bond-input").value);
-      const realEstate = Number(document.getElementById("realEstate-input").value);
-      const stock      = Number(document.getElementById("stock-input").value);
-      const other      = Number(document.getElementById("other-input").value);
-      const total      = cash + bond + realEstate + stock + other;
-      
-      if (total !== 100) {
-        alert("자산 포트폴리오 항목의 합계가 100%가 되어야 합니다.");
-        return;
-      }
-      // localStorage에 저장
-      const assetData = { cash, bond, realEstate, stock, other };
-      localStorage.setItem("assetPortfolio", JSON.stringify(assetData));
-      
-      // 차트 표시 데이터
-      const data            = [cash, bond, realEstate, stock, other];
-      const labels          = ["현금", "채권", "부동산", "주식", "기타"];
-      const backgroundColors= ["#ffd966", "#8fd3f4", "#ffbba8", "#a4deaa", "#dcc6e0"]; 
-      
-      if (assetChart) {
-        assetChart.data.labels = labels;
-        assetChart.data.datasets[0].data = data;
-        assetChart.data.datasets[0].backgroundColor = backgroundColors;
-        assetChart.update();
-      } else {
-        const ctx = document.getElementById("assetChart").getContext("2d");
-        assetChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: labels,
-            datasets: [{
-              data: data,
-              backgroundColor: backgroundColors,
-              borderColor: "#fff",
-              borderWidth: 2
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: { position: 'bottom' },
-              title: { display: true, text: '자산 포트폴리오' },
-              datalabels: {
-                display: true,
-                color: '#333',
-                font: { size: 12 },
-                formatter: (value, ctx) => {
-                  const label = ctx.chart.data.labels[ctx.dataIndex];
-                  return label + ': ' + value + '%';
-                }
-              }
-            }
-          }
-        });
-      }
+    
+    /* ---------- 동적 캔버스 사이즈 조절 함수 (수정됨) ---------- */
+    function adjustChartSize(canvasId, itemCount) {
+      const canvas = document.getElementById(canvasId);
+      // 기본 사이즈와 항목 당 추가 픽셀 (필요에 따라 조정)
+      const baseSize = 300;
+      const extraPerItem = 30; 
+      const newSize = baseSize + itemCount * extraPerItem;
+      // 캔버스의 실제 사이즈와 스타일 모두 변경
+      canvas.height = newSize;
+      canvas.width = newSize;
+      canvas.style.height = newSize + "px";
+      canvas.style.width = newSize + "px";
     }
-
-    /* ---------------- 로컬 스토리지: 주식 포트폴리오 불러오기 ---------------- */
-    function loadStockPortfolio() {
-      const stored = localStorage.getItem("stockPortfolio");
-      if (stored) {
-        const stockArray = JSON.parse(stored);
-        stockList.innerHTML = "";
-        stockArray.forEach(item => {
-          const stockDiv = createStockItem();
-          const inputs   = stockDiv.querySelectorAll("input");
-          inputs[0].value = item.name;
-          inputs[1].value = item.percent;
-          stockList.appendChild(stockDiv);
-        });
-      } else {
-        stockList.appendChild(createStockItem());
-        stockList.appendChild(createStockItem());
-      }
-    }
-
-    /* ---------------- 주식 포트폴리오 동적 항목 생성/삭제 ---------------- */
-    const stockList = document.getElementById("stockList");
-    const addStockBtn = document.getElementById("addStockBtn");
-
-    function createStockItem() {
-      const stockDiv = document.createElement("div");
-      stockDiv.classList.add("stock-item");
-
+    
+    /* ---------- 자산 포트폴리오 기능 ---------- */
+    function createAssetItem(asset = {name:"", amount:0}) {
+      const div = document.createElement("div");
+      div.classList.add("asset-item");
+      
       const nameInput = document.createElement("input");
       nameInput.type = "text";
-      nameInput.placeholder = "종목명 (예: AAPL)";
-      nameInput.style.width = "120px";
-
-      const percentInput = document.createElement("input");
-      percentInput.type = "number";
-      percentInput.placeholder = "비중 (%)";
-      percentInput.min = 0;
-      percentInput.max = 100;
-
+      nameInput.placeholder = "자산명";
+      nameInput.value = asset.name || "";
+      nameInput.addEventListener("input", updateAssetChart);
+      
+      const amountInput = document.createElement("input");
+      // 금액 입력 필드: type을 text로 변경
+      amountInput.type = "text";
+      amountInput.placeholder = "금액";
+      amountInput.value = asset.amount || 0;
+      amountInput.min = 0;
+      amountInput.addEventListener("input", updateAssetChart);
+      addCommaFormatting(amountInput);
+      
       const removeBtn = document.createElement("button");
       removeBtn.textContent = "삭제";
-      removeBtn.classList.add("removeStockBtn");
       removeBtn.addEventListener("click", () => {
-        stockDiv.remove();
-        saveChecklist(); // 체크리스트와 별개이지만, 필요시 재저장
+        div.remove();
+        saveAssetPortfolio();
+        updateAssetChart();
       });
-
-      stockDiv.appendChild(nameInput);
-      stockDiv.appendChild(percentInput);
-      stockDiv.appendChild(removeBtn);
-      return stockDiv;
+      
+      div.appendChild(nameInput);
+      div.appendChild(amountInput);
+      div.appendChild(removeBtn);
+      return div;
     }
-
-    addStockBtn.addEventListener("click", () => {
-      stockList.appendChild(createStockItem());
-    });
-
-    /* ---------------- 주식 포트폴리오 차트 업데이트 & 저장 ---------------- */
-    function updateStockChart() {
-      const stockItems = stockList.querySelectorAll(".stock-item");
-      const names  = [];
-      const values = [];
-
-      stockItems.forEach(item => {
+    
+    function loadAssetPortfolio() {
+      const container = document.getElementById("assetItemsContainer");
+      container.innerHTML = "";
+      const stored = localStorage.getItem("assetPortfolio");
+      let assets = [];
+      if(stored) {
+        assets = JSON.parse(stored);
+      } else {
+        // 기본 항목 (금액은 0)
+        assets = [
+          {name: "현금", amount: 0},
+          {name: "채권", amount: 0},
+          {name: "부동산", amount: 0},
+          {name: "주식", amount: 0},
+          {name: "기타", amount: 0}
+        ];
+        localStorage.setItem("assetPortfolio", JSON.stringify(assets));
+      }
+      assets.forEach(asset => container.appendChild(createAssetItem(asset)));
+    }
+    
+    function saveAssetPortfolio() {
+      const container = document.getElementById("assetItemsContainer");
+      const assetItems = container.querySelectorAll(".asset-item");
+      const assets = [];
+      assetItems.forEach(item => {
         const inputs = item.querySelectorAll("input");
-        const stockName = inputs[0].value.trim() || "미입력";
-        const stockPercent = Number(inputs[1].value) || 0;
-        names.push(stockName);
-        values.push(stockPercent);
+        const name = inputs[0].value.trim();
+        const amount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        assets.push({ name, amount });
       });
-
-      const sum = values.reduce((a, b) => a + b, 0);
-      if (sum !== 100) {
-        alert("입력한 종목 비중의 합이 100%가 되어야 합니다.");
+      localStorage.setItem("assetPortfolio", JSON.stringify(assets));
+    }
+    
+    function updateAssetChart() {
+      const container = document.getElementById("assetItemsContainer");
+      const assetItems = container.querySelectorAll(".asset-item");
+      const names = [];
+      const amounts = [];
+      assetItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const name = inputs[0].value.trim() || "미입력";
+        const amount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        names.push(name);
+        amounts.push(amount);
+      });
+      saveAssetPortfolio();
+      
+      const total = amounts.reduce((a,b) => a+b, 0);
+      const ctx = document.getElementById("assetChart").getContext("2d");
+      
+      adjustChartSize("assetChart", names.length);
+      
+      // 라벨 폰트 크기를 동적으로 결정 (항목이 많으면 작게)
+      let labelFontSize = names.length > 5 ? Math.max(10, 14 - (names.length - 5)) : 14;
+      
+      if(total === 0){
+        ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height);
+        ctx.font = "16px sans-serif";
+        ctx.fillStyle = "#333";
+        ctx.fillText("데이터가 없습니다.", 50, 150);
+        updateAssetGoalProgress(); // 진행바도 초기화
         return;
       }
-
-      const stockArray = names.map((name, idx) => ({
-        name,
-        percent: values[idx]
-      }));
-      localStorage.setItem("stockPortfolio", JSON.stringify(stockArray));
-
+      
       const backgroundColors = names.map(() => {
         const r = Math.floor(Math.random() * 200);
         const g = Math.floor(Math.random() * 200);
         const b = Math.floor(Math.random() * 200);
         return `rgb(${r}, ${g}, ${b})`;
       });
-
-      if (stockChart) {
-        stockChart.data.labels = names;
-        stockChart.data.datasets[0].data = values;
-        stockChart.data.datasets[0].backgroundColor = backgroundColors;
-        stockChart.update();
+      
+      if(assetChart) {
+        assetChart.data.labels = names;
+        assetChart.data.datasets[0].data = amounts;
+        assetChart.data.datasets[0].backgroundColor = backgroundColors;
+        assetChart.options.plugins.datalabels.font.size = labelFontSize;
+        assetChart.update();
       } else {
-        const ctx = document.getElementById("stockChart").getContext("2d");
-        stockChart = new Chart(ctx, {
+        assetChart = new Chart(ctx, {
           type: 'pie',
           data: {
             labels: names,
             datasets: [{
-              data: values,
+              data: amounts,
               backgroundColor: backgroundColors,
               borderColor: "#fff",
               borderWidth: 2
@@ -578,16 +711,167 @@
           },
           options: {
             responsive: true,
+            layout: { padding: 20 },
+            plugins: {
+              legend: { position: 'bottom' },
+              title: { display: true, text: '자산 포트폴리오' },
+              datalabels: {
+                display: true,
+                color: '#fff',
+                font: { size: 12, weight: 'bold' },
+                formatter: (value, ctx) => {
+                  const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                  const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
+                  const label = ctx.chart.data.labels[ctx.dataIndex];
+                  return label + ': ' + percentage + '%';
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      updateAssetGoalProgress(); // 자산 변경 시 진행바 갱신
+    }
+    
+    document.getElementById("addAssetItemBtn").addEventListener("click", () => {
+      const container = document.getElementById("assetItemsContainer");
+      container.appendChild(createAssetItem());
+    });
+    
+    /* ---------- 주식 포트폴리오 기능 ---------- */
+    function createStockItem(stock = {name:"", amount:0}) {
+      const stockDiv = document.createElement("div");
+      stockDiv.classList.add("stock-item");
+      
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.placeholder = "종목명 (예: AAPL)";
+      nameInput.value = stock.name || "";
+      nameInput.addEventListener("input", updateStockChart);
+      
+      const amountInput = document.createElement("input");
+      // type 변경: number -> text
+      amountInput.type = "text";
+      amountInput.placeholder = "금액";
+      amountInput.min = 0;
+      amountInput.value = stock.amount || 0;
+      amountInput.addEventListener("input", updateStockChart);
+      addCommaFormatting(amountInput);
+      
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "삭제";
+      removeBtn.addEventListener("click", () => {
+        stockDiv.remove();
+        saveStockPortfolio();
+        updateStockChart();
+      });
+      
+      stockDiv.appendChild(nameInput);
+      stockDiv.appendChild(amountInput);
+      stockDiv.appendChild(removeBtn);
+      return stockDiv;
+    }
+    
+    function loadStockPortfolio() {
+      const stockList = document.getElementById("stockList");
+      stockList.innerHTML = "";
+      const stored = localStorage.getItem("stockPortfolio");
+      let stocks = [];
+      if(stored) {
+        stocks = JSON.parse(stored);
+      } else {
+        // 기본적으로 두 개의 항목 생성
+        stocks = [{name:"", amount:0}, {name:"", amount:0}];
+        localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
+      }
+      stocks.forEach(stock => {
+        stockList.appendChild(createStockItem({name: stock.name, amount: stock.amount}));
+      });
+    }
+    
+    function saveStockPortfolio() {
+      const stockList = document.getElementById("stockList");
+      const stockItems = stockList.querySelectorAll(".stock-item");
+      const stocks = [];
+      stockItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const name = inputs[0].value.trim();
+        const amount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        stocks.push({ name, amount });
+      });
+      localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
+    }
+    
+    function updateStockChart() {
+      const stockList = document.getElementById("stockList");
+      const stockItems = stockList.querySelectorAll(".stock-item");
+      const names = [];
+      const amounts = [];
+      stockItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const stockName = inputs[0].value.trim() || "미입력";
+        const stockAmount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        names.push(stockName);
+        amounts.push(stockAmount);
+      });
+      saveStockPortfolio();
+      
+      const total = amounts.reduce((a, b) => a + b, 0);
+      const ctx = document.getElementById("stockChart").getContext("2d");
+      
+      adjustChartSize("stockChart", names.length);
+      
+      let labelFontSize = names.length > 5 ? Math.max(10, 14 - (names.length - 5)) : 14;
+      
+      if(total === 0) {
+        ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height);
+        ctx.font = "16px sans-serif";
+        ctx.fillStyle = "#333";
+        ctx.fillText("데이터가 없습니다.", 50, 150);
+        return;
+      }
+      
+      const backgroundColors = names.map(() => {
+        const r = Math.floor(Math.random() * 200);
+        const g = Math.floor(Math.random() * 200);
+        const b = Math.floor(Math.random() * 200);
+        return `rgb(${r}, ${g}, ${b})`;
+      });
+      
+      if(stockChart) {
+        stockChart.data.labels = names;
+        stockChart.data.datasets[0].data = amounts;
+        stockChart.data.datasets[0].backgroundColor = backgroundColors;
+        stockChart.options.plugins.datalabels.font.size = labelFontSize;
+        stockChart.update();
+      } else {
+        stockChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: names,
+            datasets: [{
+              data: amounts,
+              backgroundColor: backgroundColors,
+              borderColor: "#fff",
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            layout: { padding: 20 },
             plugins: {
               legend: { position: 'bottom' },
               title: { display: true, text: '주식 포트폴리오' },
               datalabels: {
                 display: true,
-                color: '#333',
-                font: { size: 12 },
+                color: '#fff',
+                font: { size: 12, weight: 'bold' },
                 formatter: (value, ctx) => {
+                  const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                  const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
                   const label = ctx.chart.data.labels[ctx.dataIndex];
-                  return label + ': ' + value + '%';
+                  return label + ': ' + percentage + '%';
                 }
               }
             }
@@ -595,10 +879,14 @@
         });
       }
     }
-
-    /* ---------------- 체크리스트: 저장 및 불러오기 기능 ---------------- */
+    
+    document.getElementById("addStockBtn").addEventListener("click", () => {
+      const stockList = document.getElementById("stockList");
+      stockList.appendChild(createStockItem());
+    });
+    
+    /* ---------- 체크리스트 기능 ---------- */
     const CHECKLIST_KEY = "investmentChecklist";
-
     function loadChecklist() {
       const stored = localStorage.getItem(CHECKLIST_KEY);
       const checklistEl = document.getElementById("checklist");
@@ -608,20 +896,18 @@
         items.forEach(item => {
           const li = document.createElement("li");
           li.innerHTML = `<span>${item.text}</span><input type="checkbox" class="check-input" ${item.checked ? "checked" : ""}>`;
-          // 체크박스 변경 시 저장 업데이트
           li.querySelector("input").addEventListener("change", saveChecklist);
           checklistEl.appendChild(li);
         });
       } else {
-        // 기본 예시 항목
+        // 기본 항목 추가
         const li = document.createElement("li");
-        li.innerHTML = `<span>예시: 재무 건전성이 높은 기업</span><input type="checkbox" class="check-input">`;
+        li.innerHTML = `<span>예시: PEG가 1 이하인 기업 (피터 린치)</span><input type="checkbox" class="check-input">`;
         li.querySelector("input").addEventListener("change", saveChecklist);
         checklistEl.appendChild(li);
         saveChecklist();
       }
     }
-
     function saveChecklist() {
       const checklistEl = document.getElementById("checklist");
       const items = [];
@@ -632,279 +918,6 @@
       });
       localStorage.setItem(CHECKLIST_KEY, JSON.stringify(items));
     }
-
-    document.getElementById("addChecklistItemBtn").addEventListener("click", function(){
-      const input = document.getElementById("newChecklistItem");
-      const text = input.value.trim();
-      if(text !== ""){
-        const li = document.createElement("li");
-        li.innerHTML = `<span>${text}</span><input type="checkbox" class="check-input">`;
-        li.querySelector("input").addEventListener("change", saveChecklist);
-        document.getElementById("checklist").appendChild(li);
-        input.value = "";
-        saveChecklist();
-      }
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-      loadAssetPortfolio();
-      loadStockPortfolio();
-      loadChecklist();
-      updateAssetChart();
-      document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
-      document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchAllEvents();
-    });
-
-    // 모달 및 이벤트 관련 스크립트
-    const stockRows = document.querySelectorAll('.stock-row');
-    stockRows.forEach(row => {
-      row.addEventListener('click', () => {
-        const ticker = row.getAttribute('data-ticker');
-        const company = row.getAttribute('data-company');
-        const growth = row.getAttribute('data-growth');
-        const info = row.getAttribute('data-info');
-        const priceText = document.getElementById(`price-${ticker}`).textContent;
-    
-        detailCompany.textContent = company;
-        detailTicker.textContent = `티커: ${ticker}`;
-        detailPrice.textContent = `전일 종가: ${priceText}`;
-        detailGrowth.textContent = `연간 매출 성장률 (YoY): ${growth}`;
-        detailInfo.textContent = info;
-    
-        detailAdditional.innerHTML = `<p>추가 데이터 로딩 중...</p>`;
-        detailNews.innerHTML = `<h3>뉴스</h3><p>최신 뉴스 로딩 중...</p>`;
-    
-        modalOverlay.classList.add('active');
-    
-        fetchOneYearChart(ticker);
-        fetchTickerAdditional(ticker);
-        fetchNews(ticker);
-      });
-    });
-    
-    closeDetailBtn.addEventListener('click', () => {
-      modalOverlay.classList.remove('active');
-      if (stockChart) { stockChart.destroy(); }
-    });
-    
-    async function fetchOneYearChart(ticker) {
-      const fromDate = "2024-02-16";
-      const toDate = "2025-02-15";
-      const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${fromDate}/${toDate}?apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results) {
-          const labels = jsonData.results.map(item => {
-            const date = new Date(item.t);
-            return date.toLocaleDateString();
-          });
-          const prices = jsonData.results.map(item => item.c);
-          initializeChart(ticker, labels, prices);
-        } else {
-          console.error("Aggregates API 응답에 결과가 없습니다.");
-          initializeChart(ticker, ["No Data"], [0]);
-        }
-      } catch (error) {
-        console.error("Aggregates API 호출 오류:", error);
-        const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-        const prices = labels.map(() => (Math.random()*10+50).toFixed(2));
-        initializeChart(ticker, labels, prices);
-      }
-    }
-    
-    function initializeChart(ticker, labels, prices) {
-      const ctx = stockChartCanvas.getContext('2d');
-      if (stockChart) { stockChart.destroy(); }
-      stockChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: `${ticker} 1년 종가 추이`,
-            data: prices,
-            borderColor: "#004080",
-            backgroundColor: 'rgba(0,64,128,0.1)',
-            fill: true,
-            tension: 0.3
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: { y: { beginAtZero: false } }
-        }
-      });
-    }
-    
-    async function fetchTickerAdditional(ticker) {
-      const url = `https://api.polygon.io/v3/reference/tickers/${ticker}?apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results) {
-          const res = jsonData.results;
-          const week52High = res.week_52_high || "N/A";
-          const week52Low = res.week_52_low || "N/A";
-          const peRatio = res.pe_ratio || "N/A";
-          const marketCap = res.market_cap ? formatNumber(res.market_cap) : "N/A";
-          const lastEarningsDate = res.last_earnings_date || "N/A";
-          const eps = res.eps || "N/A";
-          detailAdditional.innerHTML = `
-            <p>52주 최고/최저가: ${week52High} / ${week52Low}</p>
-            <p>PER: ${peRatio}</p>
-            <p>시가총액: ${marketCap} USD</p>
-            <p>최근 실적 발표일: ${lastEarningsDate}, EPS: ${eps}</p>
-          `;
-        } else {
-          console.error("Ticker Additional API 응답 오류:", jsonData);
-          detailAdditional.innerHTML = `<p>추가 데이터 없음</p>`;
-        }
-      } catch (error) {
-        console.error("Ticker Additional API 호출 오류:", error);
-        detailAdditional.innerHTML = `<p>데이터 로드 오류</p>`;
-      }
-    }
-    
-    async function fetchNews(ticker) {
-      const url = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results && jsonData.results.length > 0) {
-          const newsHtml = "<h3>뉴스</h3>" + jsonData.results.slice(0, 3).map(article => {
-            const publishedDate = new Date(article.published_utc).toLocaleDateString();
-            return `<p><strong>${article.title}</strong> (${publishedDate})<br><a href="${article.article_url}" target="_blank">자세히 보기</a></p>`;
-          }).join("");
-          detailNews.innerHTML = newsHtml;
-        } else {
-          detailNews.innerHTML = `<p>최신 뉴스 없음</p>`;
-        }
-      } catch (error) {
-        console.error("News API 호출 오류:", error);
-        detailNews.innerHTML = `<p>뉴스 데이터 로드 오류</p>`;
-      }
-    }
-    
-    async function fetchTickerEvents(ticker) {
-      const url = `https://api.polygon.io/v3/reference/tickers/${ticker}/events?apiKey=${polygonApiKey}`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP 오류: ${response.status}`);
-        const jsonData = await response.json();
-        if (jsonData.results && jsonData.results.length > 0) {
-          return jsonData.results.map(ev => ({ ...ev, ticker }));
-        } else {
-          return [];
-        }
-      } catch (error) {
-        console.error("Events API 호출 오류 for", ticker, error);
-        return [];
-      }
-    }
-    
-    async function fetchAllEvents() {
-      const tickers = Array.from(stockRows).map(row => row.getAttribute('data-ticker'));
-      try {
-        const eventsArrays = await Promise.all(tickers.map(ticker => fetchTickerEvents(ticker)));
-        const allEvents = eventsArrays.flat();
-        buildCalendar(allEvents);
-      } catch (error) {
-        console.error("전체 이벤트 API 호출 오류:", error);
-        document.getElementById("events-calendar").innerHTML = "<p>이 달에는 이벤트 없음</p>";
-      }
-    }
-    
-    function buildCalendar(events) {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = now.getMonth();
-      const eventsThisMonth = events.filter(ev => {
-        const evDate = new Date(ev.event_date);
-        return evDate.getFullYear() === year && evDate.getMonth() === month;
-      });
-      
-      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      let calHTML = "<table style='width:100%; border-collapse: collapse;'><thead><tr>";
-      weekdays.forEach(day => {
-        calHTML += `<th style="padding: 0.5rem; border: 1px solid #ddd;">${day}</th>`;
-      });
-      calHTML += "</tr></thead><tbody>";
-      
-      const firstDay = new Date(year, month, 1).getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      
-      let day = 1;
-      for (let i = 0; i < 6; i++) {
-        calHTML += "<tr>";
-        for (let j = 0; j < 7; j++) {
-          if (i === 0 && j < firstDay) {
-            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
-          } else if (day > daysInMonth) {
-            calHTML += "<td style='padding: 0.5rem; border: 1px solid #ddd;'></td>";
-          } else {
-            let cellEvents = eventsThisMonth.filter(ev => {
-              const evDate = new Date(ev.event_date);
-              return evDate.getDate() === day;
-            });
-            let cellContent = `<div>${day}</div>`;
-            cellEvents.forEach(ev => {
-              cellContent += `<div style="font-size:0.75rem; color:#004080;">[${ev.ticker}] ${ev.event_type}</div>`;
-            });
-            calHTML += `<td style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: top;">${cellContent}</td>`;
-            day++;
-          }
-        }
-        calHTML += "</tr>";
-        if (day > daysInMonth) break;
-      }
-      calHTML += "</tbody></table>";
-      
-      document.getElementById("events-calendar").innerHTML = calHTML;
-    }
-    
-    function formatNumber(num) {
-      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-    
-    const stockSearchInput = document.getElementById('stock-search');
-    stockSearchInput.addEventListener('input', () => {
-      const query = stockSearchInput.value.trim().toLowerCase();
-      stockRows.forEach(row => {
-        const ticker = row.getAttribute('data-ticker').toLowerCase();
-        const company = row.getAttribute('data-company').toLowerCase();
-        if (ticker.includes(query) || company.includes(query)) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
-      });
-    });
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      loadAssetPortfolio();
-      loadStockPortfolio();
-      loadChecklist();
-      updateAssetChart();
-      document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
-      document.getElementById("updateStockChart").addEventListener("click", updateStockChart);
-    });
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchAllEvents();
-    });
-  </script>
-  
-  <!-- 체크리스트 추가 스크립트 -->
-  <script>
-    // 체크리스트 항목 추가 버튼 이벤트
     document.getElementById("addChecklistItemBtn").addEventListener("click", function(){
       const input = document.getElementById("newChecklistItem");
       const text = input.value.trim();
@@ -918,40 +931,174 @@
       }
     });
     
-    // 로컬 스토리지에서 체크리스트 항목 불러오기
-    function loadChecklist() {
-      const stored = localStorage.getItem("investmentChecklist");
-      const checklistEl = document.getElementById("checklist");
-      checklistEl.innerHTML = "";
-      if (stored) {
-        const items = JSON.parse(stored);
-        items.forEach(item => {
-          const li = document.createElement("li");
-          li.innerHTML = `<span>${item.text}</span><input type="checkbox" class="check-input" ${item.checked ? "checked" : ""}>`;
-          li.querySelector("input").addEventListener("change", saveChecklist);
-          checklistEl.appendChild(li);
-        });
+    /* ---------- 자산 목표 기능 ---------- */
+    function loadAssetGoal() {
+      const savedGoal = localStorage.getItem("assetGoal");
+      const display = document.getElementById("assetGoalDisplay");
+      if (savedGoal) {
+        // 숫자에 콤마 추가: toLocaleString() 사용
+        display.textContent = "현재 목표: " + Number(savedGoal).toLocaleString() + " 원";
       } else {
-        // 기본 항목 추가 (선택 사항)
-        const li = document.createElement("li");
-        li.innerHTML = `<span>예시: 재무 건전성이 높은 기업</span><input type="checkbox" class="check-input">`;
-        li.querySelector("input").addEventListener("change", saveChecklist);
-        checklistEl.appendChild(li);
-        saveChecklist();
+        display.textContent = "자산 목표가 설정되지 않았습니다.";
       }
+      updateAssetGoalProgress();
     }
     
-    // 체크리스트 항목들을 Local Storage에 저장
-    function saveChecklist() {
-      const checklistEl = document.getElementById("checklist");
-      const items = [];
-      checklistEl.querySelectorAll("li").forEach(li => {
-        const text = li.querySelector("span").innerText;
-        const checked = li.querySelector("input").checked;
-        items.push({ text, checked });
-      });
-      localStorage.setItem("investmentChecklist", JSON.stringify(items));
+    document.getElementById("saveAssetGoalBtn").addEventListener("click", () => {
+      const input = document.getElementById("assetGoalInput");
+      const goal = input.value.replace(/,/g, "").trim();
+      if (goal === "" || isNaN(goal)) {
+        alert("유효한 금액을 입력하세요.");
+        return;
+      }
+      localStorage.setItem("assetGoal", goal);
+      loadAssetGoal();
+      alert("자산 목표가 저장되었습니다.");
+    });
+    
+    // 자산 진행바 업데이트 함수: 현재 자산 합계와 목표 금액을 비교해 진행률을 표시합니다.
+    function updateAssetGoalProgress() {
+      const savedGoal = localStorage.getItem("assetGoal");
+      const progressContainer = document.getElementById("assetGoalProgress");
+      progressContainer.innerHTML = "";
+      if (!savedGoal) {
+        return;
+      }
+      const goal = Number(savedGoal);
+      
+      // 자산 포트폴리오 총합 계산 (저장된 자산 데이터를 사용)
+      const storedAssets = localStorage.getItem("assetPortfolio");
+      let totalAsset = 0;
+      if (storedAssets) {
+        const assets = JSON.parse(storedAssets);
+        assets.forEach(asset => {
+          totalAsset += Number(asset.amount) || 0;
+        });
+      }
+      
+      const percentage = Math.min(100, ((totalAsset / goal) * 100).toFixed(2));
+      
+      // 진행 상황 정보 표시
+      const info = document.createElement("p");
+      info.textContent = `현재 자산: ${totalAsset.toLocaleString()} 원 / 목표: ${goal.toLocaleString()} 원`;
+      progressContainer.appendChild(info);
+      
+      // 진행바 요소 생성
+      const progressBar = document.createElement("div");
+      progressBar.classList.add("progress-bar");
+      const progress = document.createElement("div");
+      progress.classList.add("progress");
+      progress.style.width = percentage + "%";
+      progress.textContent = percentage + "%";
+      progressBar.appendChild(progress);
+      progressContainer.appendChild(progressBar);
     }
+    
+    /* ---------- 투자 일지 기능 ---------- */
+    function loadDiaryEntries() {
+      const diaryEntriesContainer = document.getElementById("diaryEntries");
+      diaryEntriesContainer.innerHTML = "";
+      const storedEntries = localStorage.getItem("investmentDiaryEntries");
+      if (storedEntries) {
+        const entries = JSON.parse(storedEntries);
+        entries.forEach((entry, index) => {
+          const div = document.createElement("div");
+          div.className = "diary-entry";
+          div.setAttribute("data-index", index);
+          const timeElem = document.createElement("time");
+          timeElem.textContent = entry.date;
+          div.appendChild(timeElem);
+          const textElem = document.createElement("span");
+          textElem.className = "diary-text";
+          textElem.textContent = entry.text;
+          div.appendChild(textElem);
+          
+          // 수정 버튼
+          const editBtn = document.createElement("button");
+          editBtn.textContent = "수정";
+          editBtn.style.marginLeft = "8px";
+          editBtn.addEventListener("click", () => {
+            const newText = prompt("수정할 내용을 입력하세요", entry.text);
+            if(newText !== null && newText.trim() !== ""){
+              entry.text = newText.trim();
+              updateDiaryEntries(entries);
+            }
+          });
+          div.appendChild(editBtn);
+          
+          // 삭제 버튼
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "삭제";
+          deleteBtn.style.marginLeft = "4px";
+          deleteBtn.addEventListener("click", () => {
+            if(confirm("정말 삭제하시겠습니까?")){
+              entries.splice(index, 1);
+              updateDiaryEntries(entries);
+            }
+          });
+          div.appendChild(deleteBtn);
+          
+          diaryEntriesContainer.appendChild(div);
+        });
+      }
+    }
+    function updateDiaryEntries(entries) {
+      localStorage.setItem("investmentDiaryEntries", JSON.stringify(entries));
+      loadDiaryEntries();
+    }
+    document.getElementById("saveDiaryBtn").addEventListener("click", () => {
+      const diaryTextarea = document.getElementById("investmentDiary");
+      const diaryText = diaryTextarea.value.trim();
+      if(diaryText === ""){
+        alert("투자 일지를 작성해주세요.");
+        return;
+      }
+      const now = new Date();
+      const entry = {
+        date: now.toLocaleString(),
+        text: diaryText
+      };
+      let entries = [];
+      const storedEntries = localStorage.getItem("investmentDiaryEntries");
+      if(storedEntries){
+        entries = JSON.parse(storedEntries);
+      }
+      entries.push(entry);
+      localStorage.setItem("investmentDiaryEntries", JSON.stringify(entries));
+      diaryTextarea.value = "";
+      loadDiaryEntries();
+      alert("투자 일지가 저장되었습니다.");
+    });
+    
+    /* ---------- 데이터 초기화 기능 ---------- */
+    document.getElementById("resetDataBtn").addEventListener("click", () => {
+      if(confirm("모든 데이터를 초기화 하시겠습니까?")) {
+        localStorage.removeItem("assetPortfolio");
+        localStorage.removeItem("stockPortfolio");
+        localStorage.removeItem(CHECKLIST_KEY);
+        localStorage.removeItem("assetGoal");
+        localStorage.removeItem("investmentDiaryEntries");
+        location.reload();
+      }
+    });
+    
+    /* ---------- 초기 로드 ---------- */
+    document.addEventListener("DOMContentLoaded", () => {
+      loadAssetPortfolio();
+      loadStockPortfolio();
+      loadChecklist();
+      loadAssetGoal();
+      loadDiaryEntries();
+      
+      updateAssetChart();
+      updateStockChart();
+      
+      // 자산 목표 입력 필드에도 실시간 쉼표 포맷팅 적용
+      addCommaFormatting(document.getElementById("assetGoalInput"));
+      
+      // 별도 업데이트 버튼이 있다면 이벤트 연결 (현재는 자동 업데이트)
+      // document.getElementById("updateAssetChart").addEventListener("click", updateAssetChart);
+    });
   </script>
 </body>
 </html>

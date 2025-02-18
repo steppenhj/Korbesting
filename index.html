@@ -13,39 +13,67 @@
         font-size: 16px;
       }
       :root {
-        --primary-color: #004080;
-        --secondary-color: #0059b3;
-        --accent-color: #f4f7fa;
-        --light-gray: #e0e0e0;
-        --text-color: #333;
-      }
-      /* 기본 리셋 */
-      * {
-        box-sizing: border-box;
-        margin: 0; 
-        padding: 0;
-      }
-      body {
-        font-family: 'Roboto', sans-serif;
-        background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
-        color: var(--text-color);
-        padding-bottom: 60px;
-      }
-      header {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: #fff;
-        padding: 1rem;
-        text-align: center;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      }
-      header h1 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
+      --primary-color: #004080;
+      --secondary-color: #0059b3;
+      --accent-color: #f4f7fa;
+      --light-gray: #e0e0e0;
+      --text-color: #333;
+    }
+    /* 기본 리셋 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
+      color: var(--text-color);
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1rem;
+    }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav ul li a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav ul li a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    main {
+      max-width: 960px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+    }
       /* 헤더 컨테이너: 제목과 검색창 */
       .header-container {
         display: flex;
@@ -82,36 +110,7 @@
         font-size: 1rem;
         color: #888;
       }
-      /* 네비게이션 바 */
-      nav {
-        margin-top: 0.5rem;
-      }
-      nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-      }
-      /* 버튼처럼 보이도록 a 태그 스타일 */
-      nav ul li a {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background-color: #fff;
-        color: #004080;
-        border: 1px solid #004080;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      nav ul li a:hover {
-        background-color: #004080;
-        color: #fff;
-      }
-      main {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
+    
       h3 {
         margin: 1rem 0 0.5rem;
         font-size: 1.2rem;
@@ -341,7 +340,6 @@
         color: #fff;
         text-align: center;
         padding: 0.8rem;
-        position: fixed;
         bottom: 0;
         width: 100%;
         font-size: 1rem;
@@ -374,9 +372,9 @@
         <ul>
           <li><a href="index.html">메인 페이지</a></li>
           <li><a href="포폴.html">포트폴리오</a></li>
-          <li><a href="유명인.html">유명인 포트폴리오</a></li>
-          <li><a href="커뮤니티.html">커뮤니티</a></li>
-        </ul>
+          <li><a href="전문가분석.html">전문가 분석</a></li>
+          <li><a href="유명인포폴.html">인기 포트폴리오</a></li>
+      </ul>
       </nav>
     </header>
 
