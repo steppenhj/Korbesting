@@ -448,8 +448,7 @@
       <nav>
         <ul>
           <li><a href="index.html">메인 페이지</a></li>
-          <li><a href="포폴.html">포트폴리오</a></li>
-          <li><a href="전문가분석.html">전문가 분석</a></li>
+          <li><a href="포폴.html">다이어리</a></li>
           <li><a href="유명인포폴.html">인기 포트폴리오</a></li>
       </ul>
       </nav>
@@ -1385,6 +1384,44 @@
         fetchAllEvents();
       });
 
-    </script>
+
+      document.addEventListener("DOMContentLoaded", function () {
+      function setupToggle(sectionId) {
+        const sectorTitle = document.querySelector(`#${sectionId} h3`);
+        const dataTable = document.querySelector(`#${sectionId} table`);
+
+        // 화살표 추가
+        const toggleArrow = document.createElement("span");
+        toggleArrow.innerHTML = " ▼";
+        toggleArrow.style.cursor = "pointer";
+        sectorTitle.appendChild(toggleArrow);
+
+        // 초기 테이블 숨김 처리
+        dataTable.style.display = "none";
+
+        toggleArrow.addEventListener("click", function () {
+          if (dataTable.style.display === "none") {
+            dataTable.style.display = "table";
+            toggleArrow.innerHTML = " ▲";
+          } else {
+            dataTable.style.display = "none";
+            toggleArrow.innerHTML = " ▼";
+          }
+        });
+      }
+
+      setupToggle("sector-aerospace");
+      setupToggle("sector-comm");
+      setupToggle("sector-consumer-disc");
+      setupToggle("sector-consumer-staples");
+      setupToggle("sector-financials");
+      setupToggle("sector-biotech");
+      setupToggle("sector-materials");
+      setupToggle("sector-realestate");
+      setupToggle("sector-cyber");
+      setupToggle("sector-technology");
+      setupToggle("sector-renewable");
+    });
+  </script>
   </body>
 </html>
