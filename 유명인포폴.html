@@ -2,107 +2,114 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>US SmallCap Insight</title>
+    <title>Korbesting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 구글 폰트 & 차트.js 및 플러그인 -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
     <style>
         html {
             font-size: 16px;
         }
         :root {
-      --primary-color: #004080;
-      --secondary-color: #0059b3;
-      --accent-color: #f4f7fa;
-      --light-gray: #e0e0e0;
-      --text-color: #333;
-    }
-    /* 기본 리셋 */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
-      color: var(--text-color);
-      padding-bottom: 60px;
-    }
-    header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    header h1 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1rem;
-    }
-    nav {
-      margin-top: 0.5rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    nav ul li a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: #fff;
-      color: var(--primary-color);
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    nav ul li a:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    main {
-      max-width: 960px;
-      margin: 1rem auto;
-      padding: 0 1rem;
-    }
+            --primary-color: #004080;
+            --secondary-color: #0059b3;
+            --accent-color: #f4f7fa;
+            --light-gray: #e0e0e0;
+            --text-color: #333;
+        }
+        /* 기본 리셋 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
+            color: var(--text-color);
+            padding-bottom: 60px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1rem;
+        }
+        nav {
+            margin-top: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        nav ul li a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #fff;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        main {
+            max-width: 960px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+        }
         /* 브라우저에 영구저장 안내 문구 */
         .save-notice {
-      background: #fff;
-      color: #444;
-      font-size: 0.9rem;
-      padding: 0.6rem 1rem;
-      margin-bottom: 0.5rem;
-      border-left: 4px solid var(--primary-color);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      line-height: 1.4;
-    }
+            background: #fff;
+            color: #444;
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            line-height: 1.4;
+        }
         .chart-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
         }
-        .chart-box h2{
-            font-size: 20px;
-            text-align: center;
-        }
-        .chart-box p{
-            margin: 0;
-            text-align: left !important;
-        }
         .chart-box {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 400px;
+            transition: transform 0.3s;
+        }
+        .chart-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .chart-box h2 {
+            font-size: 20px;
+            text-align: center;
+        }
+        .chart-box p {
+            margin: 0;
+            text-align: left !important;
         }
         canvas {
             width: 250px;
@@ -111,7 +118,6 @@
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        
         footer {
             background-color: var(--primary-color);
             color: #fff;
@@ -122,11 +128,103 @@
             font-size: 1rem;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
         }
+
+        /* ============================= */
+        /* 모달 스타일 */
+        /* ============================= */
+        .modal {
+            display: none; /* 기본 숨김 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;         /* 가로 길이 늘림 */
+            max-width: 1000px;  /* 최대 1000px */
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+        }
+        /* 모달 내부 설명 */
+        .modal-description {
+            margin-bottom: 20px;
+        }
+        /* 모달 내부 차트 크기 (너무 크게 느껴지면 조절) */
+        #modalChart {
+            width: 500px !important;
+            height: 500px !important;
+            margin: 0 auto;
+            display: block;
+        }
+        .container {
+        max-width: 1500px;
+        margin: 40px auto;
+        padding: 0 20px;
+        }
+ /* .about 섹션: 전체 텍스트를 왼쪽 정렬하고 패딩을 추가 */
+.about {
+    text-align: left;
+    background: white;
+    padding: 40px 20px;
+    border-radius: 8px;
+    /* 필요에 따라 max-width를 제거하거나 조정 */
+    max-width: 100%;
+}
+
+/* ul 스타일: 고정 폭 대신 전체 폭 사용, 좌측 여백 추가 */
+.section ul {
+    width: 100%;
+    list-style: none;
+    padding-left: 20px;
+    margin: 0 auto 20px auto;
+}
+
+/* li 스타일: 불필요한 고정 폭 제거 및 자연스러운 간격 부여 */
+.section li {
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* 제목 등 다른 텍스트 요소도 왼쪽 정렬 */
+.section h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.section h2{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 15px;
+
+}
+.section p {
+    text-align: center;
+}
+
     </style>
 </head>
 <body>
     <header>
-        <h1>US SmallCap Insight</h1>
+        <h1>Korbesting</h1>
         <p>"미국 중소형주, 쉽게 찾고 투자하자!"</p>
         <nav>
             <ul>
@@ -138,32 +236,31 @@
         </nav>
     </header>
     <main>
-               <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
-               <div class="save-notice">
-                이 페이지는 <strong>로그인 없이도</strong> 현재 사용하는 <strong>브라우저에 영구 저장</strong>됩니다.<br>
-                다시 방문하더라도 입력했던 내역이 유지됩니다.
-              </div>
+        <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
+        <div class="save-notice">
+            본 페이지는 <strong>SEC 13F 공시</strong>를 기반으로 구성되며, 헤지펀드 및 주요 투자 기관들의 최신 포트폴리오 정보를 제공합니다. 해당 데이터는 매 분기마다 업데이트되며, 투자 트렌드 및 종목 변화를 신속하게 반영합니다.
+        </div>
     </main>
- 
 
+    <!-- 차트 목록 -->
     <div class="chart-container">
         <div class="chart-box">
             <h2>BERKSHIRE HATHAWAY INC</h2>
             <p>CEO: 워런 버핏 (Warren Buffett)</p>
             <p>투자 성향: 장기 투자</p>
-            <p>사업 분야: 보험, 철도, 에너지, 가구, 화학제품 등</p>               
+            <p>사업 분야: 보험, 철도, 에너지, 가구, 화학제품 등</p>
             <canvas id="chart1"></canvas>
         </div>
         <div class="chart-box">
             <h2>DUQUESNE FAMILY OFFICE</h2>
-            <p>CEO: 스티븐 드라쿠담일러 (Stanley Druckenmiller)</p>
+            <p>CEO: 스탠리 드라켄밀러(Stanley Druckenmiller)</p>
             <p>투자 성향: 장기 투자, 다각화된 포트폴리오</p>
             <p>사업 분야: 헤지펀드 운영, 투자 관리, 금융서비스 제공 등</p>
             <canvas id="chart2"></canvas>
         </div>
         <div class="chart-box">
             <h2>Bridgewater Associates</h2>
-            <p>CEO: 레이 달리오(Raymond Dalio)</p>
+            <p>CEO: 레이 달리오(Ray Dalio)</p>
             <p>투자 성향: 장기 투자, 다각화된 포트폴리오, 위험 배분</p>
             <p>사업 분야: 헤지펀드 운영, 자산운용, 경제적 자문 등</p>
             <canvas id="chart3"></canvas>
@@ -204,78 +301,285 @@
             <canvas id="chart8"></canvas>
         </div>
     </div>
+    <div class="container">
+        <section class="section about">
+          <h1>주요 기관 및 인물 투자 동향</h1>
+          <h2>매그니피센트 7 투자 및 기술주 비중 조정</h2>
+          <ul>
+            <li>
+              <strong>기술주 비중 조정:</strong> 스탠리 드러켄밀러는 2024년 4분기 동안 기술주 비중을 7% 줄이고 헬스케어 섹터 비중을 6% 늘렸습니다.
+              <em>(2025년 2월 18일 발표)</em>
+            </li>
+            <li>
+              <strong>엔비디아(NVIDIA) 투자:</strong> 드러켄밀러는 엔비디아를 선제적으로 매수한 후, 2024년 3분기에 모든 주식을 매각했습니다.
+              <em>(2025년 2월 18일 확인)</em>
+            </li>
+            <li>
+              <strong>테슬라(Tesla) 투자 변화:</strong> 레이 달리오는 테슬라를 매도했으나, 짐 시몬스는 테슬라 비중을 늘렸습니다.
+              <em>(2025년 2월 16일 발표)</em>
+            </li>
+          </ul>
+          <hr>
+          <h2>주요 투자자들의 포트폴리오 변화</h2>
+          <ul>
+            <li>
+              <strong>워렌 버핏:</strong> 셰브론 비중을 크게 늘리고 버라이즌을 매도했습니다.
+              <em>(2025년 2월 14일 보고)</em>
+            </li>
+            <li>
+              <strong>마이클 버리:</strong> 알파벳, 메타 플랫폼, 디스커버리 주식을 매수하고 애플 주식에 대한 풋옵션 계약을 체결했습니다.
+              <em>(2025년 2월 16일 발표)</em>
+            </li>
+            <li>
+              <strong>스탠리 드러켄밀러:</strong> 헬스케어 주식 비중 확대 및 신규 매수 종목 분석이 보고되었습니다.
+              <em>(2025년 2월 16일, 2월 18일 보고)</em>
+            </li>
+          </ul>
+          <hr>
+          <h2>섹터별 투자 동향</h2>
+          <ul>
+            <li>
+              <strong>헬스케어 섹터 강화:</strong> 드러켄밀러가 헬스케어 섹터 비중을 늘렸습니다.
+              <em>(2025년 2월 18일 확인)</em>
+            </li>
+            <li>
+              <strong>에너지 섹터 관심:</strong> 셰브론의 비중 증가가 보고되었습니다.
+              <em>(2025년 2월 14일 보고)</em>
+            </li>
+            <li>
+              <strong>기술 섹터 조정:</strong> 기술주 비중이 감소했습니다.
+              <em>(2025년 2월 18일 발표)</em>
+            </li>
+          </ul>
+          <p>위 내용은 최신 투자 동향을 반영합니다.</p>
+        </section>
+      </div>
+      
 
     <footer>
         <p>
-            © 2025 US SmallCap Insight. All rights reserved.<br>
+            © 2025 Korbesting. All rights reserved.<br>
             사업체 지역: 대한민국 대구<br>
             문의: <a href="mailto:hermann8hesse@gmail.com" style="color:#fff; text-decoration:underline;">hermann8hesse@gmail.com</a><br>
             아이디어가 있으시면 언제든지 메일로 제안해 주세요!
         </p>
     </footer>
 
+    <!-- 모달 구조 -->
+    <div id="chartModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-description"></div>
+        <canvas id="modalChart"></canvas>
+      </div>
+    </div>
+
     <script>
+        // 차트별 데이터
         const chartData = [
-            [28.12, 16.84, 11.19, 9.32, 6.43, 28.10],
-            [15.17, 7.18, 5.48, 5.33, 5.26, 61.58],
-            [22.12, 5.5, 4.23, 3.14, 2.15, 62.86],
-            [15.89, 11.88, 11.78, 11.5, 11.39, 11.23, 26.33],
-            [80.64, 6.04, 4.04, 1.83, 1.68, 5.77],
-            [38.14, 16, 14.27, 12.9, 5.49, 13.2],
-            [19.19, 18.25, 14.01, 12.69, 12.66, 11.79, 11.41],
-            [31.59, 20.26, 15.77, 14.96, 13.94, 3.06, 0.42]
+            [28.12, 16.84, 11.19, 9.32, 6.43, 28.10],  // 1번 (버크셔)
+            [15.17, 7.18, 5.48, 5.33, 5.26, 61.58],    // 2번
+            [22.12, 5.5, 4.23, 3.14, 2.15, 62.86],     // 3번
+            [15.89, 11.88, 11.78, 11.5, 11.39, 11.23, 26.33], // 4번
+            [80.64, 6.04, 4.04, 1.83, 1.68, 5.77],     // 5번
+            [38.14, 16, 14.27, 12.9, 5.49, 13.2],      // 6번
+            [19.19, 18.25, 14.01, 12.69, 12.66, 11.79, 11.41], // 7번
+            [31.59, 20.26, 15.77, 14.96, 13.94, 3.06, 0.42]    // 8번
         ];
+        // 차트별 라벨
         const chartLabels = [
-            ["AAPL", "AXP", "BAC", "KO", "CVX", "기타"], // 1번 그래프
-            ["NTRA", "COHR", "WWD", "TEVA", "CPNG", "기타"],   // 2번 그래프
-            ["SPY", "IVV", "IEMG", "GOOGL", "NVDA", "기타"],   // 3번 그래프
-            ["BN", "QSR", "CMG", "HHH", "GOOG", "NKE", "기타"],      // 4번 그래프
-            ["TMUS", "NVDA", "SYM", "WBTN", "LMND", "기타"],         // 5번 그래프
-            ["MDGL", "PPTA", "AAMI", "BHC", "NG", "기타"],      // 6번 그래프
-            ["XLE", "META", "SMH", "QQQ", "VTV", "SPY", "기타"],     // 7번 그래프
-            ["HTZ", "UP", "IWM", "HYG", "SPY", "GB", "기타"]          // 8번 그래프
+            ["AAPL", "AXP", "BAC", "KO", "CVX", "기타"],    // 1번
+            ["NTRA", "COHR", "WWD", "TEVA", "CPNG", "기타"], // 2번
+            ["SPY", "IVV", "IEMG", "GOOGL", "NVDA", "기타"], // 3번
+            ["BN", "QSR", "CMG", "HHH", "GOOG", "NKE", "기타"], // 4번
+            ["TMUS", "NVDA", "SYM", "WBTN", "LMND", "기타"], // 5번
+            ["MDGL", "PPTA", "AAMI", "BHC", "NG", "기타"],   // 6번
+            ["XLE", "META", "SMH", "QQQ", "VTV", "SPY", "기타"], // 7번
+            ["HTZ", "UP", "IWM", "HYG", "SPY", "GB", "기타"]    // 8번
         ];
-        // 더 많은 색상을 추가하여 차트별 색상 겹침 방지
+        // 색상
         const chartColors = [
             "#ff6384", "#36a2eb", "#ffcd56", "#4bc0c0", "#9966ff", "#ff9f40", "#c9cbcf"
         ];
 
+        // 모달에서 보여줄 "자세한 내용" (버크셔만 예시로 자세히, 나머지는 직접 작성하거나 빈 문자열로)
+        const chartDetails = [
+            // 0: 버크셔 해서웨이
+            `
+                <h3>버크셔 해서웨이 (Berkshire Hathaway Inc.)</h3>
+                <p>
+                    버크셔 해서웨이는 워런 버핏(Warren Buffett)이 이끄는 투자 지주회사로서,
+                    보험, 철도, 에너지, 유통, 금융 등 다양한 사업 분야를 포괄하고 있습니다.
+                    오랫동안 가치 투자의 아이콘으로 여겨져 왔으며, 장기적으로 안정적인
+                    수익을 추구하는 투자자들에게 주목받고 있습니다.
+                </p>
+                <p>
+                    <strong>주요 종목:</strong> AAPL, AXP, BAC, KO, CVX 등<br>
+                    <strong>투자 성향:</strong> 장기 투자 (가치투자, 집중투자 등)<br>
+                    <strong>특징:</strong> 주주총회 때마다 ‘버크셔 해서웨이 주주총회’가 큰 행사로 주목받습니다.
+                </p>
+            `,
+            // 1~7: 나머지 회사들은 사용자가 추후 직접 채우기
+            `<h3>듀케인 패밀리 오피스 (Duquesne Family Office)</h3><p>Duquesne Family Office는 전설적인 헤지펀드 매니저 스탠리 드라켄밀러가 운영하는 패밀리 오피스로, 거시경제 분석을 기반으로 한 투자 전략을 펼칩니다. 드라켄밀러는 조지 소로스와 함께 ‘영국 파운드화 공격’으로 유명한 인물이며, 뛰어난 시장 예측력과 유연한 투자 방식으로 주목받고 있습니다.
+</p>
+                <p>
+                    <strong>주요 종목:</strong> NTRA, COHR, WWD, TEVA, CPNG 등<br>
+                    <strong>투자 성향:</strong> 매크로 투자, 유동적 포트폴리오 조정<br>
+                    <strong>특징:</strong> 헤지펀드를 폐쇄한 후 개인 자산을 운용하는 패밀리 오피스 형태로 운영됨
+                </p>`,
+            `<h3>브릿지워터 어소시에이츠 (Bridgewater Associates)</h3><p> Bridgewater Associates는 세계 최대 규모의 헤지펀드 중 하나로, 글로벌 거시경제 데이터를 분석하여 투자 결정을 내리는 ‘올웨더(All Weather)’ 전략으로 유명합니다. 레이 달리오는 경제 사이클과 리스크 관리를 중시하며, 금융 시장의 흐름을 분석하는 철학적 접근법으로 유명합니다.</p>
+                <p>
+                    <strong>주요 종목:</strong> SPY, IVV, IEMG, GOOGL, NVDA 등<br>
+                    <strong>투자 성향:</strong> 거시경제 분석 기반의 퀀트 투자<br>
+                    <strong>특징:</strong> 독창적인 투자 철학과 조직 문화(‘아이디어 성격’ 강조)
+                </p>`,
+            `<h3>퍼싱 스퀘어 캐피털 매니지먼트 (Pershing Square Capital Management)</h3><p>Pershing Square Capital Management는 빌 애크먼이 운영하는 액티비스트 헤지펀드로, 기업의 지배구조를 개선하고 장기적인 가치를 끌어올리는 전략을 펼칩니다. 빌 애크먼은 공격적인 투자 스타일로 유명하며, 기업 경영진과 직접 협상하는 방식의 투자 활동을 진행합니다.</p>
+                <p>
+                    <strong>주요 종목:</strong> BN, QSR, CMG, HHH, GOOG, NKE 등<br>
+                    <strong>투자 성향:</strong> 가치투자, 액티비스트 투자<br>
+                    <strong>특징:</strong> 공매도 투자에도 적극적이며, 대중적인 논란을 일으킨 투자 사례(예: 발레안트 제약)도 있음
+                </p>`,
+            `<h3>소프트뱅크 그룹 (SoftBank Group)</h3><p>SoftBank Group은 일본의 거대 투자 기업으로, 기술 및 스타트업에 집중 투자하는 Vision Fund를 운영하며 글로벌 기술 기업에 대한 공격적인 투자를 진행합니다. 손정의는 미래 혁신 기술에 대한 강한 신념을 바탕으로 장기적인 성장을 추구하는 전략을 고수합니다.</p>
+                <p>
+                    <strong>주요 종목:</strong> TMUS, NVDA, SYM, WBTN, LMND 등<br>
+                    <strong>투자 성향:</strong> 혁신 기술 중심의 벤처 투자<br>
+                    <strong>특징:</strong> 우버, ARM, 알리바바 등 주요 글로벌 기업에 대규모 투자
+                </p>`,
+            `<h3>폴슨 앤 컴퍼니 (PAULSON & COMPANY INC)</h3><p>PAULSON & COMPANY INC는 헤지펀드 업계에서 ‘서브프라임 모기지 사태’를 예측하고 공매도를 통해 큰 수익을 거둔 존 폴슨이 운영하는 투자 회사입니다. 주로 특수 상황(Special Situation) 및 이벤트 드리븐(Event-Driven) 투자 전략을 활용합니다.</p>
+                <p>
+                    <strong>주요 종목:</strong> MDGL, PPTA, AAMI, BHC, NG 등<br>
+                    <strong>투자 성향:</strong> 이벤트 드리븐, 가치투자<br>
+                    <strong>특징:</strong> 2008년 금융 위기 당시 공매도를 통해 수십억 달러의 수익을 거둔 투자자로 유명
+                </p>`,
+            `<h3>사우디 중앙은행 (SAUDI CENTRAL BANK)</h3><p>사우디아라비아 중앙은행(Saudi Central Bank, SAMA)은 국가의 금융 안정성과 경제 성장 지원을 목표로 하는 기관입니다. 외환 보유액 관리, 금융 규제 및 통화 정책을 통해 사우디 경제를 조율하는 역할을 합니다.</p>
+                <p>
+                    <strong>주요 종목:</strong> XLE, META, SMH, QQQ, VTV, SPY 등<br>
+                    <strong>투자 성향:</strong> 안정적인 국가 자산 운용<br>
+                    <strong>특징:</strong> 중동 지역에서 가장 영향력 있는 중앙은행 중 하나
+                </p>`,
+            `<h3>나이트헤드 캐피털 매니지먼트 (KNIGHTHEAD CAPITAL MANAGEMENT, LLC)</h3><p> Knighthead Capital Management는 부실채권(Distressed Debt) 및 특수 상황 투자에 중점을 두는 헤지펀드로, 기업 구조조정과 파산 절차에서 기회를 찾는 전략을 사용합니다.</p>
+                <p>
+                    <strong>주요 종목:</strong> HTZ, UP, IWM, HYG, SPY, GB 등<br>
+                    <strong>투자 성향:</strong> 이벤트 드리븐, 딥 밸류 투자<br>
+                    <strong>특징:</strong> 위기 상황에서 기회를 포착하는 역발상 투자 방식
+                </p>`
+        ];
+
+        // ----------------------------------------------
+        // 1) 각 차트 생성 (작은 차트)
+        // ----------------------------------------------
         chartData.forEach((data, index) => {
-        const ctx = document.getElementById(`chart${index + 1}`).getContext('2d');
-        new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: chartLabels[index], // 각 차트에 맞는 라벨 적용
-                datasets: [{
-                    data: data,
-                    backgroundColor: chartColors.slice(0, data.length), // 색상 배열 적용
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            font: { size: 12 },
-                            boxWidth: 10
-                        }
-                    },
-                    datalabels: {
-                        color: '#fff',
-                        font: { size: 12, weight: 'bold' }, // 폰트 크기 조정
-                        formatter: (value, context) => {
-                            let total = data.reduce((acc, v) => acc + v, 0);
-                            let percentage = ((value / total) * 100).toFixed(1);
-                            return `${chartLabels[index][context.dataIndex]}\n${percentage}%`; // 종목명 + 퍼센트 표시
+            const ctx = document.getElementById(`chart${index + 1}`).getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: chartLabels[index],
+                    datasets: [{
+                        data: data,
+                        backgroundColor: chartColors.slice(0, data.length),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { size: 12 },
+                                boxWidth: 10
+                            }
+                        },
+                        datalabels: {
+                            color: '#fff',
+                            font: { size: 12, weight: 'bold' },
+                            formatter: (value, context) => {
+                                let total = data.reduce((acc, v) => acc + v, 0);
+                                let percentage = ((value / total) * 100).toFixed(1);
+                                return `${chartLabels[index][context.dataIndex]}\n${percentage}%`;
+                            }
                         }
                     }
-                }
-            },
-            plugins: [ChartDataLabels]
+                },
+                plugins: [ChartDataLabels]
+            });
+            // 각 차트 캔버스에 data-chart-index 속성 부여
+            document.getElementById(`chart${index + 1}`).setAttribute('data-chart-index', index);
         });
-    });
+
+        // ----------------------------------------------
+        // 2) 모달 관련 처리
+        // ----------------------------------------------
+        const modal = document.getElementById('chartModal');
+        const modalDescription = document.querySelector('.modal-description');
+        const modalCanvas = document.getElementById('modalChart');
+        let modalChartInstance = null;
+
+        // 차트를 클릭했을 때 모달 열기
+        document.querySelectorAll('.chart-box canvas').forEach(canvas => {
+            canvas.addEventListener('click', function() {
+                const chartIndex = parseInt(this.getAttribute('data-chart-index'));
+
+                // 모달 설명 업데이트 (해당 차트 인덱스에 맞는 텍스트를 삽입)
+                modalDescription.innerHTML = chartDetails[chartIndex];
+
+                // 모달 열기
+                modal.style.display = 'block';
+
+                // 모달 차트가 이미 생성되어 있으면 제거
+                if (modalChartInstance) {
+                    modalChartInstance.destroy();
+                }
+
+                // 모달에 표시할 큰 차트 생성
+                const ctx = modalCanvas.getContext('2d');
+                modalChartInstance = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: chartLabels[chartIndex],
+                        datasets: [{
+                            data: chartData[chartIndex],
+                            backgroundColor: chartColors.slice(0, chartData[chartIndex].length),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: { size: 14 },
+                                    boxWidth: 12
+                                }
+                            },
+                            datalabels: {
+                                color: '#fff',
+                                font: { size: 14, weight: 'bold' },
+                                formatter: (value, context) => {
+                                    let total = chartData[chartIndex].reduce((acc, v) => acc + v, 0);
+                                    let percentage = ((value / total) * 100).toFixed(1);
+                                    return `${chartLabels[chartIndex][context.dataIndex]}\n${percentage}%`;
+                                }
+                            }
+                        }
+                    },
+                    plugins: [ChartDataLabels]
+                });
+            });
+        });
+
+        // 모달 닫기 버튼
+        document.querySelector('.close').addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // 모달 바깥을 클릭해도 닫히도록
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
