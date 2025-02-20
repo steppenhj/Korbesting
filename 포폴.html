@@ -76,7 +76,7 @@
       margin: 1rem auto;
       padding: 0 1rem;
     }
-    /* 브라우저에 영구저장 안내 문구 */
+    /* 브라우저에 영구 저장 안내 문구 */
     .save-notice {
       background: #fff;
       color: #444;
@@ -417,6 +417,161 @@
         font-size: 1.6rem;
       }
     }
+    /* --- 달력 모달 및 섹션 스타일 추가 --- */
+    .calendar-section {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    #calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-top: 0.5rem;
+    }
+    .calendar-day {
+      padding: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      min-height: 50px;
+      position: relative;
+    }
+    .calendar-day:hover {
+      background-color: #f4f7fa;
+    }
+    .calendar-day .day-number {
+      font-weight: bold;
+    }
+    .calendar-day .memo-text {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.75rem;
+      color: var(--secondary-color);
+      word-break: break-word;
+    }
+    .calendar-day.has-memo {
+      border: 2px solid var(--secondary-color);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal.active {
+      display: block;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .modal-content h4 {
+      margin-bottom: 10px;
+    }
+    .modal-content textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    .modal-content button {
+      padding: 0.4rem 0.8rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+    .modal-content button.cancel-btn {
+      background: #b30000;
+    }
+    /* --- 가계부 섹션 스타일 --- */
+    .account-book {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .account-book h3 {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+    .account-book-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+    }
+    .account-book-form input,
+    .account-book-form select,
+    .account-book-form button {
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .account-book-form input:focus,
+    .account-book-form select:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+    .account-book-form button {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .account-book-form button:hover {
+      background: #003060;
+    }
+    .account-book-summary {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .account-book-entries table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .account-book-entries th,
+    .account-book-entries td {
+      padding: 0.6rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    .account-book-entries tr:nth-child(odd) {
+      background: #f9f9f9;
+    }
+    .account-book-entries button.delete-entry {
+      padding: 0.2rem 0.5rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .account-book-entries button.delete-entry:hover {
+      background: #800000;
+    }
   </style>
 </head>
 <body>
@@ -425,7 +580,7 @@
     <p>"미국 중소형주, 쉽게 찾고 투자하자!"</p>
     <nav>
       <ul>
-        <li><a href="index.html">메인 페이지</a></li>
+        <li><a href="index.html">뉴스&주식</a></li>
         <li><a href="포폴.html">다이어리</a></li>
         <li><a href="유명인포폴.html">인기 포트폴리오</a></li>
       </ul>
@@ -493,7 +648,7 @@
       </section>
     </div>
     
-    <!-- 하단 정보: 체크리스트, 자산 목표, 투자 일지 -->
+    <!-- 하단 정보: 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 -->
     <div class="bottom-info">
       <!-- 나만의 투자 원칙 체크리스트 -->
       <div class="investment-checklist">
@@ -532,6 +687,34 @@
         <div id="diaryEntries"></div>
       </div>
       
+      <!-- 달력 메모 섹션 (모달로 메모 입력) -->
+      <div class="calendar-section">
+        <h3>달력 메모</h3>
+        <div id="calendar"></div>
+      </div>
+      
+      <!-- 가계부 섹션 -->
+      <div class="account-book">
+        <h3>가계부</h3>
+        <div class="account-book-form">
+          <input type="date" id="ab-date">
+          <select id="ab-type">
+            <option value="income">수입</option>
+            <option value="expense">지출</option>
+          </select>
+          <input type="text" id="ab-category" placeholder="카테고리">
+          <input type="text" id="ab-amount" placeholder="금액">
+          <input type="text" id="ab-description" placeholder="설명 (선택)">
+          <button id="ab-addBtn">추가</button>
+        </div>
+        <div class="account-book-summary" id="ab-summary">
+          <!-- 총 수입/지출/잔액 표시 -->
+        </div>
+        <div class="account-book-entries" id="ab-entries">
+          <!-- 가계부 항목 목록 테이블 -->
+        </div>
+      </div>
+      
       <!-- 데이터 초기화 버튼 (추가 기능) -->
       <div style="text-align:center; margin-top:1rem;">
         <button id="resetDataBtn" style="background:#800000;"><strong>데이터 초기화</strong></button>
@@ -548,7 +731,19 @@
     </p>
   </footer>
   
-  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지 기능 -->
+  <!-- 달력 메모 모달 -->
+  <div id="memoModal" class="modal">
+    <div class="modal-content">
+      <h4 id="modalTitle">메모 입력</h4>
+      <textarea id="modalTextarea" placeholder="메모를 입력하세요"></textarea>
+      <div style="text-align: right;">
+        <button id="saveModalBtn">저장</button>
+        <button id="cancelModalBtn" class="cancel-btn">취소</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 기능 -->
   <script>
     // chartjs-plugin-datalabels 등록
     Chart.register(ChartDataLabels);
@@ -1047,7 +1242,6 @@
           
           const deleteBtn = document.createElement("button");
           deleteBtn.textContent = "삭제";
-          // 투자 일지의 삭제 버튼은 delete-btn 클래스로 스타일 적용
           deleteBtn.classList.add("delete-btn");
           deleteBtn.addEventListener("click", () => {
             if(confirm("정말 삭제하시겠습니까?")){
@@ -1097,6 +1291,8 @@
         localStorage.removeItem(CHECKLIST_KEY);
         localStorage.removeItem("assetGoal");
         localStorage.removeItem("investmentDiaryEntries");
+        localStorage.removeItem("calendarMemos");
+        localStorage.removeItem("accountBookEntries");
         location.reload();
       }
     });
@@ -1113,6 +1309,216 @@
       updateStockChart();
       
       addCommaFormatting(document.getElementById("assetGoalInput"));
+    });
+    
+    /* ---------- 달력 메모 기능 ---------- */
+    let selectedCalendarDate = null;
+    function initCalendar() {
+      const calendarEl = document.getElementById("calendar");
+      if (!calendarEl) return;
+      calendarEl.innerHTML = "";
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const firstDay = new Date(year, month, 1);
+      const startDay = firstDay.getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      let memos = localStorage.getItem("calendarMemos");
+      memos = memos ? JSON.parse(memos) : {};
+      // 요일 헤더 추가
+      const weekdays = ['일','월','화','수','목','금','토'];
+      weekdays.forEach(dayName => {
+        const headerCell = document.createElement("div");
+        headerCell.textContent = dayName;
+        headerCell.style.fontWeight = "bold";
+        calendarEl.appendChild(headerCell);
+      });
+      // 시작 요일 전 빈 셀 추가
+      for (let i = 0; i < startDay; i++) {
+        const blankCell = document.createElement("div");
+        calendarEl.appendChild(blankCell);
+      }
+      // 날짜 셀 생성
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = year + "-" + String(month+1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+        const dayCell = document.createElement("div");
+        dayCell.classList.add("calendar-day");
+        dayCell.dataset.date = dateStr;
+        // 날짜 번호
+        const dayNumber = document.createElement("span");
+        dayNumber.classList.add("day-number");
+        dayNumber.textContent = d;
+        dayCell.appendChild(dayNumber);
+        // 저장된 메모가 있으면 메모 일부 표시 (최대 10자)
+        if (memos[dateStr] && memos[dateStr].trim() !== "") {
+          const memoSpan = document.createElement("span");
+          memoSpan.classList.add("memo-text");
+          let text = memos[dateStr];
+          if(text.length > 10) text = text.substring(0,10) + "...";
+          memoSpan.textContent = text;
+          dayCell.appendChild(memoSpan);
+          dayCell.classList.add("has-memo");
+        }
+        dayCell.addEventListener("click", () => {
+          openMemoModal(dateStr, memos[dateStr] || "");
+        });
+        calendarEl.appendChild(dayCell);
+      }
+    }
+    
+    function openMemoModal(dateStr, memoText) {
+      selectedCalendarDate = dateStr;
+      document.getElementById("modalTitle").textContent = "메모 입력 (" + dateStr + ")";
+      document.getElementById("modalTextarea").value = memoText;
+      document.getElementById("memoModal").classList.add("active");
+    }
+    
+    function closeMemoModal() {
+      document.getElementById("memoModal").classList.remove("active");
+      selectedCalendarDate = null;
+    }
+    
+    document.getElementById("saveModalBtn").addEventListener("click", () => {
+      if(!selectedCalendarDate) return;
+      let memos = localStorage.getItem("calendarMemos");
+      memos = memos ? JSON.parse(memos) : {};
+      memos[selectedCalendarDate] = document.getElementById("modalTextarea").value;
+      localStorage.setItem("calendarMemos", JSON.stringify(memos));
+      closeMemoModal();
+      initCalendar();
+      alert("메모가 저장되었습니다.");
+    });
+    
+    document.getElementById("cancelModalBtn").addEventListener("click", () => {
+      closeMemoModal();
+    });
+    
+    window.addEventListener("click", (e) => {
+      const modal = document.getElementById("memoModal");
+      if(e.target === modal) {
+        closeMemoModal();
+      }
+    });
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      initCalendar();
+    });
+    
+    /* ---------- 가계부 기능 ---------- */
+    const ACCOUNT_BOOK_KEY = "accountBookEntries";
+    
+    function loadAccountBookEntries() {
+      const stored = localStorage.getItem(ACCOUNT_BOOK_KEY);
+      return stored ? JSON.parse(stored) : [];
+    }
+    
+    function saveAccountBookEntries(entries) {
+      localStorage.setItem(ACCOUNT_BOOK_KEY, JSON.stringify(entries));
+    }
+    
+    function renderAccountBook() {
+      const entries = loadAccountBookEntries();
+      const tableContainer = document.getElementById("ab-entries");
+      tableContainer.innerHTML = "";
+      if(entries.length === 0) {
+        tableContainer.innerHTML = "<p>등록된 가계부 항목이 없습니다.</p>";
+      } else {
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        thead.innerHTML = "<tr><th>날짜</th><th>구분</th><th>카테고리</th><th>금액</th><th>설명</th><th>삭제</th></tr>";
+        table.appendChild(thead);
+        const tbody = document.createElement("tbody");
+        entries.forEach((entry, index) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${entry.date}</td>
+            <td>${entry.type === "income" ? "수입" : "지출"}</td>
+            <td>${entry.category}</td>
+            <td>${Number(entry.amount).toLocaleString()} 원</td>
+            <td>${entry.description}</td>
+            <td><button class="delete-entry" data-index="${index}">삭제</button></td>
+          `;
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        tableContainer.appendChild(table);
+      }
+      updateAccountBookSummary();
+    }
+    
+    function updateAccountBookSummary() {
+      const entries = loadAccountBookEntries();
+      let totalIncome = 0, totalExpense = 0;
+      entries.forEach(entry => {
+        const amt = Number(entry.amount);
+        if(entry.type === "income") {
+          totalIncome += amt;
+        } else {
+          totalExpense += amt;
+        }
+      });
+      const net = totalIncome - totalExpense;
+      const summaryDiv = document.getElementById("ab-summary");
+      summaryDiv.innerHTML = `
+        <p>총 수입: ${totalIncome.toLocaleString()} 원</p>
+        <p>총 지출: ${totalExpense.toLocaleString()} 원</p>
+        <p><strong>잔액: ${net.toLocaleString()} 원</strong></p>
+      `;
+    }
+    
+    document.getElementById("ab-addBtn").addEventListener("click", () => {
+      const dateInput = document.getElementById("ab-date");
+      const typeSelect = document.getElementById("ab-type");
+      const categoryInput = document.getElementById("ab-category");
+      const amountInput = document.getElementById("ab-amount");
+      const descriptionInput = document.getElementById("ab-description");
+      
+      const date = dateInput.value;
+      const type = typeSelect.value;
+      const category = categoryInput.value.trim();
+      const amount = amountInput.value.replace(/,/g, "").trim();
+      const description = descriptionInput.value.trim();
+      
+      if(!date || !category || !amount || isNaN(amount)) {
+        alert("날짜, 카테고리, 금액은 필수 항목입니다. 금액은 숫자여야 합니다.");
+        return;
+      }
+      
+      const newEntry = { date, type, category, amount, description };
+      const entries = loadAccountBookEntries();
+      entries.push(newEntry);
+      saveAccountBookEntries(entries);
+      
+      // 초기화
+      dateInput.value = new Date().toISOString().split("T")[0];
+      typeSelect.value = "income";
+      categoryInput.value = "";
+      amountInput.value = "";
+      descriptionInput.value = "";
+      
+      renderAccountBook();
+    });
+    
+    // 가계부 항목 삭제 이벤트 (이벤트 위임)
+    document.getElementById("ab-entries").addEventListener("click", (e) => {
+      if(e.target.classList.contains("delete-entry")) {
+        const index = e.target.getAttribute("data-index");
+        const entries = loadAccountBookEntries();
+        if(confirm("해당 항목을 삭제하시겠습니까?")) {
+          entries.splice(index, 1);
+          saveAccountBookEntries(entries);
+          renderAccountBook();
+        }
+      }
+    });
+    
+    // 초기 가계부 입력 필드 기본값 (날짜는 오늘)
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateInput = document.getElementById("ab-date");
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.value = today;
+      addCommaFormatting(document.getElementById("ab-amount"));
+      renderAccountBook();
     });
   </script>
 </body>
