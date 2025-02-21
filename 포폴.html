@@ -439,6 +439,10 @@
       font-size: 1rem;
       box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
     }
+    /* 전체 문서에서 수평 오버플로우 방지 */
+html, body {
+  overflow-x: hidden;
+}
     @media (max-width: 1000px) {
       .section-container {
         width: 100%;
@@ -447,11 +451,46 @@
         flex-wrap: wrap;
       }
     }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-    }
+ 
+/* 모바일 기기(최대 600px)에서 레이아웃 조정 */
+@media (max-width: 600px) {
+  /* 헤더 텍스트 크기 조정 */
+  header h1 {
+    font-size: 1.6rem;
+  }
+  
+  /* main 영역의 패딩을 줄여 화면 폭에 맞춤 */
+  main {
+    padding: 0 0.5rem;
+  }
+  
+  /* 포트폴리오 섹션에서 좌우 여백 없이 세로 배치로 변경 */
+  .portfolio-section-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* 차트 캔버스가 화면에 꽉 차도록 */
+  .chart-container canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* 달력 내비게이션 버튼 및 텍스트의 레이아웃 재조정 */
+  .calendar-navigation {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  /* 체크리스트 및 기타 컨텐츠의 폰트 크기 조정 (원하는 경우) */
+  .investment-checklist,
+  .asset-goal-container,
+  .investment-diary,
+  .account-book {
+    font-size: 0.9rem;
+  }
+}
     .calendar-section {
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
