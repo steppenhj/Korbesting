@@ -1,0 +1,6 @@
+{
+    "watch": ["C:/YoungDexter/*.html"],
+    "ext": "html",
+    "exec": "node generate-sitemap.js"
+  }
+  

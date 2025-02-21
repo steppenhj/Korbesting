@@ -7,4 +7,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://wolfrent.netlify.app/sitemap.xml
+Sitemap: https://korvesting.netlify.app/sitemap.xml

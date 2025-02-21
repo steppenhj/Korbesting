@@ -2,19 +2,66 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>포트폴리오 다이어리- US SmallCap Insight</title>
+  <!-- 페이지 제목(Title)에 사이트명 + 페이지 명시 -->
+  <title>포트폴리오 다이어리 - Korbesting</title>
+
+  <!-- SEO: 문서 요약(Description) -->
+  <meta name="description" content="자산 목표 설정, 투자 일지, 달력, 가계부 기능 등을 제공하는 포트폴리오 다이어리 페이지입니다. Korbesting에서 간편하게 포트폴리오를 관리해보세요.">
+
+  <!-- SEO: 키워드 (네이버가 아직 일부 활용 가능) -->
+  <meta name="keywords" content="포트폴리오, 다이어리, 자산관리, 투자일지, 가계부, Korbesting">
+
+  <!-- 검색엔진 크롤링 허용 -->
+  <meta name="robots" content="index,follow">
+
+  <!-- 반응형 웹 설정 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 사이트 검증 메타 (네이버, 구글) -->
+  <meta name="naver-site-verification" content="507f9a5aef40cffc2aa057dd8a66dcea910ccf86" />
+  <meta name="google-site-verification" content="GhGj63W7kkc-78a0BTXjR-_TRE8ml771kQOtegBKhHs" />
+
+  <!-- Open Graph (OG) 메타 태그: SNS 공유 시 미리보기 정보 -->
+  <meta property="og:title" content="포트폴리오 다이어리 - Korbesting" />
+  <meta property="og:description" content="자산 목표 설정, 투자 일지, 달력, 가계부 기능 등을 제공하는 포트폴리오 다이어리 페이지입니다." />
+  <meta property="og:image" content="https://korvesting.netlify.app/images/og-image.jpg" />
+  <meta property="og:url" content="https://korvesting.netlify.app/포폴.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="포트폴리오 다이어리 - Korbesting">
+  <meta name="twitter:description" content="자산 목표 설정, 투자 일지, 달력, 가계부 기능 등을 제공하는 포트폴리오 다이어리 페이지입니다.">
+  <meta name="twitter:image" content="https://korvesting.netlify.app/images/og-image.jpg">
+
+  <!-- JSON-LD 구조화 데이터: WebPage 정보 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "포트폴리오 다이어리 - Korbesting",
+    "url": "https://korvesting.netlify.app/포폴.html",
+    "description": "자산 목표 설정, 투자 일지, 달력, 가계부 기능 등을 제공하는 포트폴리오 다이어리 페이지.",
+    "inLanguage": "ko",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Korbesting",
+      "url": "https://korvesting.netlify.app"
+    }
+  }
+  </script>
+
   <!-- Google Fonts: Roboto & Open Sans -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
+  
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- chartjs-plugin-datalabels CDN (차트에 상시 라벨 표시) -->
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-  <meta name="naver-site-verification" content="507f9a5aef40cffc2aa057dd8a66dcea910ccf86" />
-  <meta name="google-site-verification" content="GhGj63W7kkc-78a0BTXjR-_TRE8ml771kQOtegBKhHs" />
-
   <style>
+    /* ----- 이하 기존 CSS 유지 (내용 동일) ----- */
     html {
       font-size: 16px;
     }
@@ -25,7 +72,6 @@
       --light-gray: #e0e0e0;
       --text-color: #333;
     }
-    /* 기본 리셋 */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -80,7 +126,6 @@
       margin: 1rem auto;
       padding: 0 1rem;
     }
-    /* 브라우저에 영구 저장 안내 문구 */
     .save-notice {
       background: #fff;
       color: #444;
@@ -104,7 +149,6 @@
       padding-bottom: 0.3rem;
       margin-bottom: 1rem;
     }
-    /* 포트폴리오 영역: 섹션들을 세로로 배치 */
     .portfolio-sections {
       display: flex;
       flex-direction: column;
@@ -112,7 +156,6 @@
       justify-content: flex-start;
       margin-top: 7px;
     }
-    /* 섹션 컨테이너는 기존 스타일 그대로 */
     .section-container {
       background: #fff;
       border-radius: 8px;
@@ -120,7 +163,6 @@
       padding: 1rem;
       width: 100%;
     }
-    /* 각 섹션 내부를 좌측(입력폼)과 우측(그래프)으로 나누기 위한 flex 컨테이너 */
     .portfolio-section-content {
       display: flex;
       justify-content: space-between;
@@ -137,7 +179,6 @@
       justify-content: flex-end;
       align-items: center;
     }
-    /* 자산 포트폴리오 동적 항목 */
     .asset-item {
       display: flex;
       align-items: left;
@@ -145,7 +186,6 @@
       margin-bottom: 0.5rem;
     }
     .asset-item input[type="text"],
-    .asset-item input[type="text"]::placeholder,
     .asset-item input[type="number"] {
       padding: 0.3rem;
       border: 1px solid #ccc;
@@ -201,7 +241,6 @@
       text-align: center;
       font-size: 0.8rem;
     }
-    /* 주식 포트폴리오 */
     .stock-item {
       display: flex;
       align-items: center;
@@ -209,7 +248,6 @@
       margin-bottom: 0.5rem;
     }
     .stock-item input[type="text"],
-    .stock-item input[type="text"]::placeholder,
     .stock-item input[type="number"] {
       padding: 0.3rem;
       border: 1px solid #ccc;
@@ -230,7 +268,6 @@
     .stock-item button:hover {
       background: #800000;
     }
-    /* 하단 정보 영역: 체크리스트, 자산 목표, 투자 일지 */
     .bottom-info {
       max-width: 960px;
       margin: 2rem auto;
@@ -287,13 +324,11 @@
     .checklist-add button:hover {
       background: #003060;
     }
-    /* 체크컨트롤 그룹: 삭제 버튼과 체크박스를 옆으로 붙여서 배치 */
     .check-controls {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-    /* 삭제 버튼 디자인: 자산 항목 삭제 버튼과 동일하게 */
     .check-controls .delete-checklist-btn {
       padding: 0.3rem 0.6rem;
       background: #b30000;
@@ -309,7 +344,6 @@
     .check-controls .check-input {
       margin-left: 0;
     }
-    /* 투자 일지 삭제 버튼: 수정 버튼과 동일한 크기로 조절 */
     .investment-diary button.delete-btn {
       padding: 0.5rem 1rem;
       background: #b30000;
@@ -322,7 +356,6 @@
     .investment-diary button.delete-btn:hover {
       background: #800000;
     }
-    /* 자산 목표 영역 (흰색 배경 컨테이너 추가) */
     .asset-goal {
       margin-bottom: 1rem;
     }
@@ -332,7 +365,6 @@
       padding: 1rem;
       border-radius: 8px;
     }
-    /* 자산 목표 진행바 스타일 */
     #assetGoalProgress {
       margin-top: 1rem;
     }
@@ -353,7 +385,6 @@
       line-height: 20px;
       font-size: 0.9rem;
     }
-    /* 투자 일지 */
     .investment-diary {
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -421,7 +452,6 @@
         font-size: 1.6rem;
       }
     }
-    /* --- 달력 모달 및 섹션 스타일 추가 --- */
     .calendar-section {
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
@@ -501,7 +531,6 @@
     .modal-content button.cancel-btn {
       background: #b30000;
     }
-    /* --- 가계부 섹션 스타일 --- */
     .account-book {
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -747,14 +776,14 @@
     </div>
   </div>
   
-  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 기능 -->
+  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 기능 (기존 동일) -->
   <script>
+    /* ---- 이하 자바스크립트 부분은 기존 코드와 동일 ---- */
     // chartjs-plugin-datalabels 등록
     Chart.register(ChartDataLabels);
-    
+
     let assetChart, stockChart;
     
-    // 1000단위 쉼표 자동 추가 함수
     function addCommaFormatting(inputElement) {
       inputElement.addEventListener('input', function() {
         let numericValue = inputElement.value.replace(/,/g, '');
@@ -770,7 +799,6 @@
       });
     }
     
-    /* ---------- 동적 캔버스 사이즈 조절 함수 ---------- */
     function adjustChartSize(canvasId, itemCount) {
       const canvas = document.getElementById(canvasId);
       const baseSize = 300;
@@ -782,7 +810,6 @@
       canvas.style.width = newSize + "px";
     }
     
-    /* ---------- 자산 포트폴리오 기능 ---------- */
     function createAssetItem(asset = {name:"", amount:0}) {
       const div = document.createElement("div");
       div.classList.add("asset-item");
@@ -935,7 +962,6 @@
       container.appendChild(createAssetItem());
     });
     
-    /* ---------- 주식 포트폴리오 기능 ---------- */
     function createStockItem(stock = {name:"", amount:0}) {
       const stockDiv = document.createElement("div");
       stockDiv.classList.add("stock-item");
@@ -1081,7 +1107,6 @@
       stockList.appendChild(createStockItem());
     });
     
-    /* ---------- 체크리스트 기능 ---------- */
     const CHECKLIST_KEY = "investmentChecklist";
     function loadChecklist() {
       const stored = localStorage.getItem(CHECKLIST_KEY);
@@ -1156,7 +1181,6 @@
       }
     });
     
-    /* ---------- 자산 목표 기능 ---------- */
     function loadAssetGoal() {
       const savedGoal = localStorage.getItem("assetGoal");
       const display = document.getElementById("assetGoalDisplay");
@@ -1213,7 +1237,6 @@
       progressContainer.appendChild(progressBar);
     }
     
-    /* ---------- 투자 일지 기능 ---------- */
     function loadDiaryEntries() {
       const diaryEntriesContainer = document.getElementById("diaryEntries");
       diaryEntriesContainer.innerHTML = "";
@@ -1287,7 +1310,6 @@
       alert("투자 일지가 저장되었습니다.");
     });
     
-    /* ---------- 데이터 초기화 기능 ---------- */
     document.getElementById("resetDataBtn").addEventListener("click", () => {
       if(confirm("모든 데이터를 초기화 하시겠습니까?")) {
         localStorage.removeItem("assetPortfolio");
@@ -1301,7 +1323,6 @@
       }
     });
     
-    /* ---------- 초기 로드 ---------- */
     document.addEventListener("DOMContentLoaded", () => {
       loadAssetPortfolio();
       loadStockPortfolio();
@@ -1315,7 +1336,6 @@
       addCommaFormatting(document.getElementById("assetGoalInput"));
     });
     
-    /* ---------- 달력 메모 기능 ---------- */
     let selectedCalendarDate = null;
     function initCalendar() {
       const calendarEl = document.getElementById("calendar");
@@ -1329,7 +1349,6 @@
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       let memos = localStorage.getItem("calendarMemos");
       memos = memos ? JSON.parse(memos) : {};
-      // 요일 헤더 추가
       const weekdays = ['일','월','화','수','목','금','토'];
       weekdays.forEach(dayName => {
         const headerCell = document.createElement("div");
@@ -1337,23 +1356,19 @@
         headerCell.style.fontWeight = "bold";
         calendarEl.appendChild(headerCell);
       });
-      // 시작 요일 전 빈 셀 추가
       for (let i = 0; i < startDay; i++) {
         const blankCell = document.createElement("div");
         calendarEl.appendChild(blankCell);
       }
-      // 날짜 셀 생성
       for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = year + "-" + String(month+1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
         const dayCell = document.createElement("div");
         dayCell.classList.add("calendar-day");
         dayCell.dataset.date = dateStr;
-        // 날짜 번호
         const dayNumber = document.createElement("span");
         dayNumber.classList.add("day-number");
         dayNumber.textContent = d;
         dayCell.appendChild(dayNumber);
-        // 저장된 메모가 있으면 메모 일부 표시 (최대 10자)
         if (memos[dateStr] && memos[dateStr].trim() !== "") {
           const memoSpan = document.createElement("span");
           memoSpan.classList.add("memo-text");
@@ -1408,18 +1423,14 @@
       initCalendar();
     });
     
-    /* ---------- 가계부 기능 ---------- */
     const ACCOUNT_BOOK_KEY = "accountBookEntries";
-    
     function loadAccountBookEntries() {
       const stored = localStorage.getItem(ACCOUNT_BOOK_KEY);
       return stored ? JSON.parse(stored) : [];
     }
-    
     function saveAccountBookEntries(entries) {
       localStorage.setItem(ACCOUNT_BOOK_KEY, JSON.stringify(entries));
     }
-    
     function renderAccountBook() {
       const entries = loadAccountBookEntries();
       const tableContainer = document.getElementById("ab-entries");
@@ -1493,7 +1504,6 @@
       entries.push(newEntry);
       saveAccountBookEntries(entries);
       
-      // 초기화
       dateInput.value = new Date().toISOString().split("T")[0];
       typeSelect.value = "income";
       categoryInput.value = "";
@@ -1503,7 +1513,6 @@
       renderAccountBook();
     });
     
-    // 가계부 항목 삭제 이벤트 (이벤트 위임)
     document.getElementById("ab-entries").addEventListener("click", (e) => {
       if(e.target.classList.contains("delete-entry")) {
         const index = e.target.getAttribute("data-index");
@@ -1516,7 +1525,6 @@
       }
     });
     
-    // 초기 가계부 입력 필드 기본값 (날짜는 오늘)
     document.addEventListener("DOMContentLoaded", () => {
       const dateInput = document.getElementById("ab-date");
       const today = new Date().toISOString().split("T")[0];

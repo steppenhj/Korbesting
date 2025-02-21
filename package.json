@@ -1,0 +1,17 @@
+{
+  "name": "youngdexter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "watch": "nodemon"
+  },
+  "dependencies": {
+    "sitemap": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "prettier": "^3.0.0",
+    "prettier-plugin-xml": "^0.1.0"
+  }
+}

@@ -2,17 +2,66 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8">
-    <title>Korbesting - 매일 업데이트되는 최신 뉴스</title>
+    <!-- 페이지 제목(Title)에 핵심 키워드와 브랜드명 함께 배치 -->
+    <title>Korbesting - 최신 미국 주식 & 증시 뉴스 매일 업데이트</title>
+
+    <!-- 문서 요약(Description) -->
+    <meta name="description" content="Korbesting - 매일 업데이트되는 미국 주식 & 증시 뉴스. 증시/기업 뉴스, 테크/IT, 글로벌 경제 뉴스까지 한눈에 확인하세요.">
+
+    <!-- Naver 등에서 활용될 수 있는 키워드 -->
+    <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Korbesting">
+
+    <!-- 검색 엔진 크롤링 허용 -->
+    <meta name="robots" content="index,follow">
+
+    <!-- 반응형 웹 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts: Roboto & Open Sans -->
+
+    <!-- 구글 폰트 -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap"
       rel="stylesheet"
     >
 
+    <!-- 사이트 검증 메타 (네이버, 구글) -->
     <meta name="naver-site-verification" content="507f9a5aef40cffc2aa057dd8a66dcea910ccf86" />
     <meta name="google-site-verification" content="GhGj63W7kkc-78a0BTXjR-_TRE8ml771kQOtegBKhHs" />
 
+
+    <!-- Open Graph Meta Tags (SNS 공유 시 미리보기용) -->
+    <meta property="og:title" content="Korbesting - 최신 미국 주식 & 증시 뉴스 매일 업데이트" />
+    <meta property="og:description" content="미국 주식 & 증시 뉴스부터 개인 다이어리, 유명인 포트폴리오까지, Korbesting에서 다양한 기능을 만나보세요." />
+    <meta property="og:image" content="https://korvesting.netlify.app/images/og-image.jpg" />
+    <meta property="og:url" content="https://korvesting.netlify.app/index.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Korbesting",
+        "url": "https://korvesting.netlify.app",
+        "description": "매일 업데이트되는 미국 주식 & 증시 뉴스, 개인 다이어리, 유명인 포트폴리오까지 제공.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Korbesting",
+          "url": "https://korvesting.netlify.app",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://korvesting.netlify.app/images/logo.png"
+          }
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://korvesting.netlify.app/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+      </script>
+      
+
+    <!-- 기본 스타일 -->
     <style>
       html {
         font-size: 16px;
@@ -24,7 +73,6 @@
         --light-gray: #e0e0e0;
         --text-color: #333;
       }
-      /* 기본 리셋 */
       * {
         box-sizing: border-box;
         margin: 0;
@@ -79,14 +127,12 @@
         margin: 1rem auto;
         padding: 0 1rem;
       }
-
-      /* 뉴스 섹션 디자인 */
       .news-section {
         background-color: #fff;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         padding: 2rem;
         border-radius: 8px;
-        margin-bottom: 1.5rem; /* 섹션 간 간격 */
+        margin-bottom: 1.5rem;
       }
       .news-section h2 {
         font-family: 'Roboto', sans-serif;
@@ -97,7 +143,6 @@
         display: inline-block;
         padding-bottom: 0.4rem;
       }
-      /* 뉴스 카드 스타일 */
       .news-card {
         background: #f9f9f9;
         border-radius: 6px;
@@ -119,7 +164,6 @@
         font-size: 0.8rem;
         color: #777;
       }
-
       footer {
         background-color: var(--primary-color);
         color: #fff;
@@ -135,11 +179,12 @@
         text-decoration: underline;
       }
     </style>
+
   </head>
   <body>
     <header>
       <h1>Korbesting</h1>
-      <p>매일매일 업데이트되는 최신 뉴스를 만나보세요!</p>
+      <p>매일매일 업데이트되는 최신 미국 주식 뉴스를 만나보세요!</p>
       <nav>
         <ul>
           <li><a href="index.html">투데이 뉴스</a></li>
@@ -150,114 +195,136 @@
     </header>
 
     <main>
+
       <!-- 1. 증시/기업 뉴스 섹션 -->
       <section class="news-section">
         <h2>증시/기업 뉴스</h2>
 
-        <div class="news-card">
-          <h3>뉴욕증시 하락 마감</h3>
-          <p>
+        <!-- 뉴스 카드: NewsArticle 구조화 데이터 예시 -->
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">뉴욕증시 하락 마감</h3>
+          <p itemprop="articleBody">
             다우존스 산업평균지수는 전일 대비 1.01% 하락한 44,176.65로 마감했습니다.
             <br>S&P500 지수는 0.43% 내린 6,117.52, 나스닥 종합지수는 0.47% 하락한 19,962.36을 기록했습니다.
             <br>월마트 실적 전망 부진이 주요인으로 지목되었습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#ny-market-close">
+        </article>
 
-        <div class="news-card">
-          <h3>월마트 주가 하락</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">월마트 주가 하락</h3>
+          <p itemprop="articleBody">
             월마트(Walmart)가 예상보다 부진한 실적 전망을 발표한 후 주가가 8% 하락했습니다.
             <br>이는 소매업계 전반에도 부정적인 영향을 끼쳤습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#walmart">
+        </article>
 
-        <div class="news-card">
-          <h3>팔란티어 주가 추가 하락</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">팔란티어 주가 추가 하락</h3>
+          <p itemprop="articleBody">
             팔란티어 테크놀로지스(Palantir Technologies)는 국방부 예산 삭감 가능성 보도로 인해
             전일 대비 5.2% 하락했습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#palantir">
+        </article>
 
-        <div class="news-card">
-          <h3>알리바바 주가 상승</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">알리바바 주가 상승</h3>
+          <p itemprop="articleBody">
             알리바바(Alibaba Group)는 예상치를 상회하는 분기 실적 발표 후 주가가 10% 상승했습니다.
             <br>전자상거래 시장 회복세에 대한 기대감도 함께 반영되었습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#alibaba">
+        </article>
 
-        <div class="news-card">
-          <h3>카바나 실적 발표</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">카바나 실적 발표</h3>
+          <p itemprop="articleBody">
             중고차 판매업체 카바나(Carvana)는 기대 이상의 실적을 발표했지만 차량당 수익 감소로 인해
             주가는 9% 하락했습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#carvana">
+        </article>
       </section>
 
       <!-- 2. 테크/IT 뉴스 섹션 -->
       <section class="news-section">
         <h2>테크/IT 뉴스</h2>
 
-        <div class="news-card">
-          <h3>테슬라, 완전 자율주행 ‘로보택시’ 시범 운영 발표</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">테슬라, 완전 자율주행 ‘로보택시’ 시범 운영 발표</h3>
+          <p itemprop="articleBody">
             테슬라가 미국 주요 대도시에서 완전 자율주행 기반 로보택시 시범 서비스를 시작한다고 발표했습니다.
             <br>일론 머스크 CEO는 “이 기술이 모빌리티 혁신의 새 지평을 열 것”이라며 강한 자신감을 보였습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#tesla-robotaxi">
+        </article>
 
-        <div class="news-card">
-          <h3>마이크로소프트, AI 통합 ‘차세대 오피스 365’ 공개</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">마이크로소프트, AI 통합 ‘차세대 오피스 365’ 공개</h3>
+          <p itemprop="articleBody">
             마이크로소프트가 워드·엑셀·파워포인트 등 오피스 프로그램에 AI 어시스턴트를 내장한 
             ‘차세대 오피스 365’ 버전을 발표했습니다.
             <br>사용자는 음성 명령과 간단한 키워드만으로 문서 작성·편집이 가능하며, 자동 보고서 요약 기능도 추가될 예정입니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#microsoft-office365">
+        </article>
 
-        <div class="news-card">
-          <h3>메타(전 페이스북), 혼합현실 헤드셋 ‘메타 리얼’ 티저 공개</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">메타(전 페이스북), 혼합현실 헤드셋 ‘메타 리얼’ 티저 공개</h3>
+          <p itemprop="articleBody">
             메타가 VR·AR 통합 플랫폼을 지향하는 ‘메타 리얼(Meta Real)’ 헤드셋을 곧 선보일 것이라며 
             짧은 티저 영상을 공개했습니다.
             <br>업계는 이번 기기가 메타버스 생태계 확장의 핵심이 될지 주목하고 있습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#meta-real">
+        </article>
 
-        <div class="news-card">
-          <h3>넷플릭스, 광고형 구독 모델 유럽·아시아로 확대</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">넷플릭스, 광고형 구독 모델 유럽·아시아로 확대</h3>
+          <p itemprop="articleBody">
             넷플릭스가 광고 기반 구독 플랜을 전 세계적으로 확대합니다. 
             <br>특히 유럽·아시아 국가에서 경쟁력 제고가 목표라고 밝혔습니다.
             <br>기존 유료 구독자 이탈에 대한 우려도 있지만, 넷플릭스 측은 “새로운 수익 모델과 이용자 저변 확대가 가능할 것”이라며 긍정적인 입장입니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#netflix-ad-plan">
+        </article>
       </section>
 
       <!-- 3. 글로벌 경제 뉴스 섹션 -->
       <section class="news-section">
         <h2>글로벌 경제 뉴스</h2>
 
-        <div class="news-card">
-          <h3>중국, 부동산 규제 완화…글로벌 경제 회복에 긍정적 영향 기대</h3>
-          <p>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">중국, 부동산 규제 완화…글로벌 경제 회복에 긍정적 영향 기대</h3>
+          <p itemprop="articleBody">
             중국 정부가 내수 경기 부양을 위해 부동산 대출 규제를 완화하겠다고 발표했습니다.
             <br>전문가들은 “중국 부동산 시장이 회복되면 철강·소재·건설 등 연관 업종에도 
             긍정적인 파급 효과를 줄 것”으로 전망했습니다.
           </p>
-          <span class="news-date">2025년 2월 21일</span>
-        </div>
+          <span class="news-date" itemprop="datePublished" content="2025-02-21">2025년 2월 21일</span>
+          <meta itemprop="author" content="Korbesting">
+          <meta itemprop="url" content="https://example.com/index.html#china-economy">
+        </article>
       </section>
 
     </main>
