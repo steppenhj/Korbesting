@@ -720,11 +720,18 @@
         <div id="diaryEntries"></div>
       </div>
       
-      <!-- 달력 메모 섹션 (모달로 메모 입력) -->
-      <div class="calendar-section">
-        <h3>달력 메모</h3>
-        <div id="calendar"></div>
-      </div>
+<!-- 달력 메모 섹션 -->
+<div class="calendar-section">
+  <h3>달력 메모</h3>
+  <!-- 달력 내비게이션 헤더 -->
+  <div class="calendar-navigation" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <button id="prevMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">이전 달</button>
+    <span id="currentMonthDisplay" style="font-size: 1.2rem; font-weight: bold;"></span>
+    <button id="nextMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">다음 달</button>
+  </div>
+  <div id="calendar"></div>
+</div>
+
       
       <!-- 가계부 섹션 -->
       <div class="account-book">
@@ -1336,92 +1343,153 @@
       addCommaFormatting(document.getElementById("assetGoalInput"));
     });
     
-    let selectedCalendarDate = null;
-    function initCalendar() {
-      const calendarEl = document.getElementById("calendar");
-      if (!calendarEl) return;
-      calendarEl.innerHTML = "";
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = now.getMonth();
-      const firstDay = new Date(year, month, 1);
-      const startDay = firstDay.getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      let memos = localStorage.getItem("calendarMemos");
-      memos = memos ? JSON.parse(memos) : {};
-      const weekdays = ['일','월','화','수','목','금','토'];
-      weekdays.forEach(dayName => {
-        const headerCell = document.createElement("div");
-        headerCell.textContent = dayName;
-        headerCell.style.fontWeight = "bold";
-        calendarEl.appendChild(headerCell);
+
+  // 전역 변수: 현재 표시할 연도와 월 (월은 0부터 시작하므로 1은 2월을 의미)
+  let currentYear = 2025;
+  let currentMonth = 1; // 0: 1월, 1: 2월, ... 11: 12월
+
+  // 페이지 로드 시 저장된 연도/월 복원 후 달력 렌더링
+  document.addEventListener("DOMContentLoaded", () => {
+    const storedYear = localStorage.getItem("calendarCurrentYear");
+    const storedMonth = localStorage.getItem("calendarCurrentMonth");
+    if (storedYear !== null && storedMonth !== null) {
+      currentYear = Number(storedYear);
+      currentMonth = Number(storedMonth);
+    }
+    updateCalendarHeader();
+    renderCalendar();
+  });
+
+  // 달력 헤더 업데이트: 현재 연도와 월 표시
+  function updateCalendarHeader() {
+    const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
+    document.getElementById("currentMonthDisplay").textContent = currentYear + "년 " + monthNames[currentMonth];
+  }
+
+  // 달력 렌더링: currentYear와 currentMonth를 기준으로 달력 그리기
+  function renderCalendar() {
+    const calendarEl = document.getElementById("calendar");
+    if (!calendarEl) return;
+    calendarEl.innerHTML = "";
+
+    // 해당 월의 첫 날과 시작 요일, 일 수 계산
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const startDay = firstDay.getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    // 저장된 메모 불러오기
+    let memos = localStorage.getItem("calendarMemos");
+    memos = memos ? JSON.parse(memos) : {};
+
+    // 요일 헤더 추가
+    const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+    weekdays.forEach(dayName => {
+      const headerCell = document.createElement("div");
+      headerCell.textContent = dayName;
+      headerCell.style.fontWeight = "bold";
+      calendarEl.appendChild(headerCell);
+    });
+
+    // 첫 날 이전 빈 칸 추가
+    for (let i = 0; i < startDay; i++) {
+      const blankCell = document.createElement("div");
+      calendarEl.appendChild(blankCell);
+    }
+
+    // 날짜 셀 생성
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateStr = currentYear + "-" + String(currentMonth + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+      const dayCell = document.createElement("div");
+      dayCell.classList.add("calendar-day");
+      dayCell.dataset.date = dateStr;
+
+      const dayNumber = document.createElement("span");
+      dayNumber.classList.add("day-number");
+      dayNumber.textContent = d;
+      dayCell.appendChild(dayNumber);
+
+      // 메모가 있으면 간단히 표시 (10자 이상이면 ... 처리)
+      if (memos[dateStr] && memos[dateStr].trim() !== "") {
+        const memoSpan = document.createElement("span");
+        memoSpan.classList.add("memo-text");
+        let text = memos[dateStr];
+        if (text.length > 10) text = text.substring(0, 10) + "...";
+        memoSpan.textContent = text;
+        dayCell.appendChild(memoSpan);
+        dayCell.classList.add("has-memo");
+      }
+
+      // 클릭 시 메모 모달 열기
+      dayCell.addEventListener("click", () => {
+        openMemoModal(dateStr, memos[dateStr] || "");
       });
-      for (let i = 0; i < startDay; i++) {
-        const blankCell = document.createElement("div");
-        calendarEl.appendChild(blankCell);
-      }
-      for (let d = 1; d <= daysInMonth; d++) {
-        const dateStr = year + "-" + String(month+1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
-        const dayCell = document.createElement("div");
-        dayCell.classList.add("calendar-day");
-        dayCell.dataset.date = dateStr;
-        const dayNumber = document.createElement("span");
-        dayNumber.classList.add("day-number");
-        dayNumber.textContent = d;
-        dayCell.appendChild(dayNumber);
-        if (memos[dateStr] && memos[dateStr].trim() !== "") {
-          const memoSpan = document.createElement("span");
-          memoSpan.classList.add("memo-text");
-          let text = memos[dateStr];
-          if(text.length > 10) text = text.substring(0,10) + "...";
-          memoSpan.textContent = text;
-          dayCell.appendChild(memoSpan);
-          dayCell.classList.add("has-memo");
-        }
-        dayCell.addEventListener("click", () => {
-          openMemoModal(dateStr, memos[dateStr] || "");
-        });
-        calendarEl.appendChild(dayCell);
-      }
+
+      calendarEl.appendChild(dayCell);
     }
-    
-    function openMemoModal(dateStr, memoText) {
-      selectedCalendarDate = dateStr;
-      document.getElementById("modalTitle").textContent = "메모 입력 (" + dateStr + ")";
-      document.getElementById("modalTextarea").value = memoText;
-      document.getElementById("memoModal").classList.add("active");
+  }
+
+  // 이전/다음 버튼 클릭 이벤트 및 값 저장
+  document.getElementById("prevMonthBtn").addEventListener("click", () => {
+    if (currentMonth === 0) {
+      currentMonth = 11;
+      currentYear--;
+    } else {
+      currentMonth--;
     }
-    
-    function closeMemoModal() {
-      document.getElementById("memoModal").classList.remove("active");
-      selectedCalendarDate = null;
+    localStorage.setItem("calendarCurrentYear", currentYear);
+    localStorage.setItem("calendarCurrentMonth", currentMonth);
+    updateCalendarHeader();
+    renderCalendar();
+  });
+
+  document.getElementById("nextMonthBtn").addEventListener("click", () => {
+    if (currentMonth === 11) {
+      currentMonth = 0;
+      currentYear++;
+    } else {
+      currentMonth++;
     }
-    
-    document.getElementById("saveModalBtn").addEventListener("click", () => {
-      if(!selectedCalendarDate) return;
-      let memos = localStorage.getItem("calendarMemos");
-      memos = memos ? JSON.parse(memos) : {};
-      memos[selectedCalendarDate] = document.getElementById("modalTextarea").value;
-      localStorage.setItem("calendarMemos", JSON.stringify(memos));
+    localStorage.setItem("calendarCurrentYear", currentYear);
+    localStorage.setItem("calendarCurrentMonth", currentMonth);
+    updateCalendarHeader();
+    renderCalendar();
+  });
+
+  // 메모 모달 관련 기능
+  let selectedCalendarDate = null;
+  function openMemoModal(dateStr, memoText) {
+    selectedCalendarDate = dateStr;
+    document.getElementById("modalTitle").textContent = "메모 입력 (" + dateStr + ")";
+    document.getElementById("modalTextarea").value = memoText;
+    document.getElementById("memoModal").classList.add("active");
+  }
+
+  function closeMemoModal() {
+    document.getElementById("memoModal").classList.remove("active");
+    selectedCalendarDate = null;
+  }
+
+  document.getElementById("saveModalBtn").addEventListener("click", () => {
+    if (!selectedCalendarDate) return;
+    let memos = localStorage.getItem("calendarMemos");
+    memos = memos ? JSON.parse(memos) : {};
+    memos[selectedCalendarDate] = document.getElementById("modalTextarea").value;
+    localStorage.setItem("calendarMemos", JSON.stringify(memos));
+    closeMemoModal();
+    renderCalendar();
+    alert("메모가 저장되었습니다.");
+  });
+
+  document.getElementById("cancelModalBtn").addEventListener("click", () => {
+    closeMemoModal();
+  });
+
+  window.addEventListener("click", (e) => {
+    const modal = document.getElementById("memoModal");
+    if (e.target === modal) {
       closeMemoModal();
-      initCalendar();
-      alert("메모가 저장되었습니다.");
-    });
-    
-    document.getElementById("cancelModalBtn").addEventListener("click", () => {
-      closeMemoModal();
-    });
-    
-    window.addEventListener("click", (e) => {
-      const modal = document.getElementById("memoModal");
-      if(e.target === modal) {
-        closeMemoModal();
-      }
-    });
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      initCalendar();
-    });
+    }
+  });
     
     const ACCOUNT_BOOK_KEY = "accountBookEntries";
     function loadAccountBookEntries() {
