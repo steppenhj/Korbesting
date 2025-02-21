@@ -337,5 +337,31 @@
         아이디어가 있으시면 언제든지 메일로 제안해 주세요!
       </p>
     </footer>
+
+    <script>
+      // 개발자 도구(F12) 및 소스 보기(Ctrl+U) 차단
+      document.addEventListener("keydown", function(event) {
+          if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s")) {
+              event.preventDefault();
+              alert("소스 코드 보기가 비활성화되었습니다.");
+          }
+          if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
+              event.preventDefault();
+              alert("개발자 도구 접근이 제한되었습니다.");
+          }
+      });
+
+      // 우클릭 차단
+      document.addEventListener("contextmenu", function(event) {
+          event.preventDefault();
+      });
+      //난독화
+      function getSecretKey() {
+          return "my-secret-key";
+      }
+      console.log(getSecretKey());
+
+
+    </script>
   </body>
 </html>
