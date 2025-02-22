@@ -350,6 +350,13 @@
             <p>사업 분야: 금융 서비스, 통신 서비스, 에너지 등</p>
             <canvas id="chart8"></canvas>
         </div>
+        <div class="chart-box">
+            <h2>FIDELITY NATIONAL FINANCIAL, INC.</h2>
+            <p>CEO: 아비게일 피에르폰트 존슨 (Abigail Pierrepont Johnson)</p>
+            <p>투자 성향: 장기 투자</p>
+            <p>사업 분야: 금융 서비스 등</p>
+            <canvas id="chart9"></canvas>
+        </div>
     </div>
     <div class="container">
         <section class="section about">
@@ -431,21 +438,23 @@
             [15.17, 7.18, 5.48, 5.33, 5.26, 4.37, 57.21],    // 2번
             [22.12, 5.5, 4.23, 3.14, 2.15, 2.15, 60.71],     // 3번
             [15.89, 11.88, 11.78, 11.5, 11.39, 11.23, 26.33], // 4번
-            [80.64, 6.04, 4.04, 1.83, 1.68, 1.17, 4.6],     // 5번
-            [38.14, 16, 14.27, 12.9, 5.49, 3.83, 9.87],      // 6번
+            [80.64, 6.04, 4.04, 1.83, 1.68, 1.17, 4.6],       // 5번
+            [38.14, 16, 14.27, 12.9, 5.49, 3.83, 9.87],        // 6번
             [19.19, 18.25, 14.01, 12.69, 12.66, 11.79, 11.41], // 7번
-            [31.59, 20.26, 15.77, 14.96, 13.94, 3.06, 0.42]    // 8번
+            [31.59, 20.26, 15.77, 14.96, 13.94, 3.06, 0.42],   // 8번
+            [89.08, 3.12, 1.63, 1.30, 0.68, 0.56, 3.63]        // 9번 (FIDELITY NATIONAL FINANCIAL, INC.)
         ];
         // 차트별 라벨
         const chartLabels = [
             ["AAPL", "AXP", "BAC", "KO", "CVX", "OXY", "기타"],    // 1번
-            ["NTRA", "COHR", "WWD", "TEVA", "CPNG", "PM", "기타"], // 2번
-            ["SPY", "IVV", "IEMG", "GOOGL", "NVDA", "META", "기타"], // 3번
-            ["BN", "QSR", "CMG", "HHH", "GOOG", "NKE", "기타"], // 4번
-            ["TMUS", "NVDA", "SYM", "WBTN", "LMND", "INTR", "기타"], // 5번
-            ["MDGL", "PPTA", "AAMI", "BHC", "NG", "THRY", "기타"],   // 6번
-            ["XLE", "META", "SMH", "QQQ", "VTV", "SPY", "기타"], // 7번
-            ["HTZ", "UP", "IWM", "HYG", "SPY", "GB", "기타"]    // 8번
+            ["NTRA", "COHR", "WWD", "TEVA", "CPNG", "PM", "기타"],   // 2번
+            ["SPY", "IVV", "IEMG", "GOOGL", "NVDA", "META", "기타"],  // 3번
+            ["BN", "QSR", "CMG", "HHH", "GOOG", "NKE", "기타"],       // 4번
+            ["TMUS", "NVDA", "SYM", "WBTN", "LMND", "INTR", "기타"],   // 5번
+            ["MDGL", "PPTA", "AAMI", "BHC", "NG", "THRY", "기타"],     // 6번
+            ["XLE", "META", "SMH", "QQQ", "VTV", "SPY", "기타"],      // 7번
+            ["HTZ", "UP", "IWM", "HYG", "SPY", "GB", "기타"],         // 8번
+            ["FG", "ALIT", "CCAP", "PSFE", "PM", "UPS", "기타"]         // 9번 (FIDELITY NATIONAL FINANCIAL, INC.)
         ];
         // 색상
         const chartColors = [
@@ -469,7 +478,7 @@
                     <strong>특징:</strong> 주주총회 때마다 ‘버크셔 해서웨이 주주총회’가 큰 행사로 주목받습니다.
                 </p>
             `,
-            // 1~7: 나머지 회사들은 사용자가 추후 직접 채우기
+            // 1: 듀케인 패밀리 오피스
             `<h3>듀케인 패밀리 오피스 (Duquesne Family Office)</h3><p>Duquesne Family Office는 전설적인 헤지펀드 매니저 스탠리 드라켄밀러가 운영하는 패밀리 오피스로, 거시경제 분석을 기반으로 한 투자 전략을 펼칩니다. 드라켄밀러는 조지 소로스와 함께 ‘영국 파운드화 공격’으로 유명한 인물이며, 뛰어난 시장 예측력과 유연한 투자 방식으로 주목받고 있습니다.
 </p>
                 <p>
@@ -477,42 +486,59 @@
                     <strong>투자 성향:</strong> 매크로 투자, 유동적 포트폴리오 조정<br>
                     <strong>특징:</strong> 헤지펀드를 폐쇄한 후 개인 자산을 운용하는 패밀리 오피스 형태로 운영됨
                 </p>`,
+            // 2: 브릿지워터 어소시에이츠
             `<h3>브릿지워터 어소시에이츠 (Bridgewater Associates)</h3><p> Bridgewater Associates는 세계 최대 규모의 헤지펀드 중 하나로, 글로벌 거시경제 데이터를 분석하여 투자 결정을 내리는 ‘올웨더(All Weather)’ 전략으로 유명합니다. 레이 달리오는 경제 사이클과 리스크 관리를 중시하며, 금융 시장의 흐름을 분석하는 철학적 접근법으로 유명합니다.</p>
                 <p>
                     <strong>주요 종목:</strong> SPY, IVV, IEMG, GOOGL, NVDA 등<br>
                     <strong>투자 성향:</strong> 거시경제 분석 기반의 퀀트 투자<br>
                     <strong>특징:</strong> 독창적인 투자 철학과 조직 문화(‘아이디어 성격’ 강조)
                 </p>`,
+            // 3: 퍼싱 스퀘어 캐피털 매니지먼트
             `<h3>퍼싱 스퀘어 캐피털 매니지먼트 (Pershing Square Capital Management)</h3><p>Pershing Square Capital Management는 빌 애크먼이 운영하는 액티비스트 헤지펀드로, 기업의 지배구조를 개선하고 장기적인 가치를 끌어올리는 전략을 펼칩니다. 빌 애크먼은 공격적인 투자 스타일로 유명하며, 기업 경영진과 직접 협상하는 방식의 투자 활동을 진행합니다.</p>
                 <p>
                     <strong>주요 종목:</strong> BN, QSR, CMG, HHH, GOOG, NKE 등<br>
                     <strong>투자 성향:</strong> 가치투자, 액티비스트 투자<br>
                     <strong>특징:</strong> 공매도 투자에도 적극적이며, 대중적인 논란을 일으킨 투자 사례(예: 발레안트 제약)도 있음
                 </p>`,
+            // 4: 소프트뱅크 그룹
             `<h3>소프트뱅크 그룹 (SoftBank Group)</h3><p>SoftBank Group은 일본의 거대 투자 기업으로, 기술 및 스타트업에 집중 투자하는 Vision Fund를 운영하며 글로벌 기술 기업에 대한 공격적인 투자를 진행합니다. 손정의는 미래 혁신 기술에 대한 강한 신념을 바탕으로 장기적인 성장을 추구하는 전략을 고수합니다.</p>
                 <p>
                     <strong>주요 종목:</strong> TMUS, NVDA, SYM, WBTN, LMND 등<br>
                     <strong>투자 성향:</strong> 혁신 기술 중심의 벤처 투자<br>
                     <strong>특징:</strong> 우버, ARM, 알리바바 등 주요 글로벌 기업에 대규모 투자
                 </p>`,
+            // 5: 폴슨 앤 컴퍼니
             `<h3>폴슨 앤 컴퍼니 (PAULSON & COMPANY INC)</h3><p>PAULSON & COMPANY INC는 헤지펀드 업계에서 ‘서브프라임 모기지 사태’를 예측하고 공매도를 통해 큰 수익을 거둔 존 폴슨이 운영하는 투자 회사입니다. 주로 특수 상황(Special Situation) 및 이벤트 드리븐(Event-Driven) 투자 전략을 활용합니다.</p>
                 <p>
                     <strong>주요 종목:</strong> MDGL, PPTA, AAMI, BHC, NG 등<br>
                     <strong>투자 성향:</strong> 이벤트 드리븐, 가치투자<br>
                     <strong>특징:</strong> 2008년 금융 위기 당시 공매도를 통해 수십억 달러의 수익을 거둔 투자자로 유명
                 </p>`,
+            // 6: 사우디 중앙은행
             `<h3>사우디 중앙은행 (SAUDI CENTRAL BANK)</h3><p>사우디아라비아 중앙은행(Saudi Central Bank, SAMA)은 국가의 금융 안정성과 경제 성장 지원을 목표로 하는 기관입니다. 외환 보유액 관리, 금융 규제 및 통화 정책을 통해 사우디 경제를 조율하는 역할을 합니다.</p>
                 <p>
                     <strong>주요 종목:</strong> XLE, META, SMH, QQQ, VTV, SPY 등<br>
                     <strong>투자 성향:</strong> 안정적인 국가 자산 운용<br>
                     <strong>특징:</strong> 중동 지역에서 가장 영향력 있는 중앙은행 중 하나
                 </p>`,
-            `<h3>나이트헤드 캐피털 매니지먼트 (KNIGHTHEAD CAPITAL MANAGEMENT, LLC)</h3><p> Knighthead Capital Management는 부실채권(Distressed Debt) 및 특수 상황 투자에 중점을 두는 헤지펀드로, 기업 구조조정과 파산 절차에서 기회를 찾는 전략을 사용합니다.</p>
+            // 7: 나이트헤드 캐피털 매니지먼트
+            `<h3>나이트헤드 캐피털 매니지먼트 (KNIGHTHEAD CAPITAL MANAGEMENT, LLC)</h3><p>Knighthead Capital Management는 부실채권(Distressed Debt) 및 특수 상황 투자에 중점을 두는 헤지펀드로, 기업 구조조정과 파산 절차에서 기회를 찾는 전략을 사용합니다.</p>
                 <p>
                     <strong>주요 종목:</strong> HTZ, UP, IWM, HYG, SPY, GB 등<br>
                     <strong>투자 성향:</strong> 이벤트 드리븐, 딥 밸류 투자<br>
                     <strong>특징:</strong> 위기 상황에서 기회를 포착하는 역발상 투자 방식
-                </p>`
+                </p>`,
+            // 8: FIDELITY NATIONAL FINANCIAL, INC. (수정된 내용)
+            `<h3>FIDELITY NATIONAL FINANCIAL, INC.</h3>
+            <p>
+                Fidelity National Financial, Inc.는 미국 내 부동산 거래 및 보험 서비스 분야에서 주요한 역할을 하는 기업으로, 타이틀 보험(title insurance), 부동산 결제 서비스, 금융 솔루션 등을 제공합니다. 또한, 자산 운용 및 금융 서비스 사업을 다각화하여 지속적인 성장을 추구하고 있습니다.
+            </p>
+            <p>
+                <strong>주요 종목:</strong> FG, ALIT, CCAP, PSFE, PM, UPS, 기타<br>
+                <strong>투자 비중:</strong> FG: 89.08%, ALIT: 3.12%, CCAP: 1.63%, PSFE: 1.30%, PM: 0.68%, UPS: 0.56%, 기타: 3.63%<br>
+                <strong>투자 성향:</strong> 장기 안정적 성장, 금융 및 부동산 관련 투자 확대<br>
+                <strong>특징:</strong> 부동산 및 금융 산업 중심의 투자 포트폴리오를 구성하며, 장기적인 가치 성장을 추구하는 전략을 사용.
+            </p>`
         ];
 
         // ----------------------------------------------
