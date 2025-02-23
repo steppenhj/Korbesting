@@ -165,6 +165,15 @@
       padding: 1rem;
       width: 100%;
     }
+    /* 토글을 위한 헤더와 내용 영역 */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-content {
+      display: block;
+    }
     .portfolio-section-content {
       display: flex;
       justify-content: space-between;
@@ -346,15 +355,19 @@
     .check-controls .check-input {
       margin-left: 0;
     }
+    /* 투자 일지 버튼 (수정, 삭제)를 다른 섹션과 동일하게 */
+    .investment-diary button.edit-btn,
     .investment-diary button.delete-btn {
-      padding: 0.5rem 1rem;
+      padding: 0.3rem 0.6rem;
       background: #b30000;
       color: #fff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
     }
+    .investment-diary button.edit-btn:hover,
     .investment-diary button.delete-btn:hover {
       background: #800000;
     }
@@ -386,6 +399,9 @@
       color: #fff;
       line-height: 20px;
       font-size: 0.9rem;
+    }
+    .section-container{
+      margin-bottom: 1rem;
     }
     .investment-diary {
       background: #fff;
@@ -442,15 +458,15 @@
       box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
     }
     /* 전체 문서에서 수평 오버플로우 방지 */
-html, body {
-  overflow-x: hidden;
-}
-/* 모든 입력, 텍스트에리어, 셀렉트 요소에 16px 이상 글꼴 크기를 적용 */
-input,
-textarea,
-select {
-  font-size: 16px;
-}
+    html, body {
+      overflow-x: hidden;
+    }
+    /* 모든 입력, 텍스트에리어, 셀렉트 요소에 16px 이상 글꼴 크기를 적용 */
+    input,
+    textarea,
+    select {
+      font-size: 16px;
+    }
 
     @media (max-width: 1000px) {
       .section-container {
@@ -461,45 +477,45 @@ select {
       }
     }
  
-/* 모바일 기기(최대 600px)에서 레이아웃 조정 */
-@media (max-width: 600px) {
-  /* 헤더 텍스트 크기 조정 */
-  header h1 {
-    font-size: 1.6rem;
-  }
-  
-  /* main 영역의 패딩을 줄여 화면 폭에 맞춤 */
-  main {
-    padding: 0 0.5rem;
-  }
-  
-  /* 포트폴리오 섹션에서 좌우 여백 없이 세로 배치로 변경 */
-  .portfolio-section-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* 차트 캔버스가 화면에 꽉 차도록 */
-  .chart-container canvas {
-    width: 100% !important;
-    height: auto !important;
-  }
-  
-  /* 달력 내비게이션 버튼 및 텍스트의 레이아웃 재조정 */
-  .calendar-navigation {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-  
-  /* 체크리스트 및 기타 컨텐츠의 폰트 크기 조정 (원하는 경우) */
-  .investment-checklist,
-  .asset-goal-container,
-  .investment-diary,
-  .account-book {
-    font-size: 0.9rem;
-  }
-}
+    /* 모바일 기기(최대 600px)에서 레이아웃 조정 */
+    @media (max-width: 600px) {
+      /* 헤더 텍스트 크기 조정 */
+      header h1 {
+        font-size: 1.6rem;
+      }
+      
+      /* main 영역의 패딩을 줄여 화면 폭에 맞춤 */
+      main {
+        padding: 0 0.5rem;
+      }
+      
+      /* 포트폴리오 섹션에서 좌우 여백 없이 세로 배치로 변경 */
+      .portfolio-section-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      /* 차트 캔버스가 화면에 꽉 차도록 */
+      .chart-container canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+      /* 달력 내비게이션 버튼 및 텍스트의 레이아웃 재조정 */
+      .calendar-navigation {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+      
+      /* 체크리스트 및 기타 컨텐츠의 폰트 크기 조정 (원하는 경우) */
+      .investment-checklist,
+      .asset-goal-container,
+      .investment-diary,
+      .account-book {
+        font-size: 0.9rem;
+      }
+    }
     .calendar-section {
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
@@ -683,24 +699,29 @@ select {
     <div class="portfolio-sections">
       <!-- [자산 포트폴리오] 동적 항목 영역 -->
       <section class="section-container" id="asset-portfolio">
-        <h3>자산 포트폴리오</h3>
-        <p style="font-size:0.9rem; line-height: 1.4;">
-          다양한 자산(예: 현금, 채권, 부동산, 주식, 기타)의 투자 금액을 입력하세요.<br>
-          입력한 금액을 바탕으로 자동으로 각 항목의 비율이 계산되어 차트로 표시됩니다.<br>
-          <strong>안정적인 자산 포트폴리오</strong>를 통해 변동성을 줄이고 장기적인 성장을 기대할 수 있습니다.
-        </p>
-        
-        <div class="portfolio-section-content">
-          <div class="left-content">
-            <!-- 동적 자산 항목들이 들어갈 영역 -->
-            <div id="assetItemsContainer"></div>
-            <div class="portfolio-form">
-              <button id="addAssetItemBtn">자산 항목 추가</button>
+        <div class="section-header">
+          <h3>자산 포트폴리오</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <p style="font-size:0.9rem; line-height: 1.4;">
+            다양한 자산(예: 현금, 채권, 부동산, 주식, 기타)의 투자 금액을 입력하세요.<br>
+            입력한 금액을 바탕으로 자동으로 각 항목의 비율이 계산되어 차트로 표시됩니다.<br>
+            <strong>안정적인 자산 포트폴리오</strong>를 통해 변동성을 줄이고 장기적인 성장을 기대할 수 있습니다.
+          </p>
+          
+          <div class="portfolio-section-content">
+            <div class="left-content">
+              <!-- 동적 자산 항목들이 들어갈 영역 -->
+              <div id="assetItemsContainer"></div>
+              <div class="portfolio-form">
+                <button id="addAssetItemBtn">자산 항목 추가</button>
+              </div>
             </div>
-          </div>
-          <div class="right-chart">
-            <div class="chart-container">
-              <canvas id="assetChart"></canvas>
+            <div class="right-chart">
+              <div class="chart-container">
+                <canvas id="assetChart"></canvas>
+              </div>
             </div>
           </div>
         </div>
@@ -708,21 +729,26 @@ select {
       
       <!-- [주식 포트폴리오] 동적 항목 영역 -->
       <section class="section-container" id="stock-portfolio">
-        <h3>주식 포트폴리오</h3>
-        <p style="font-size:0.9rem; line-height: 1.4;">
-          투자할 종목의 이름과 투자 금액을 입력하세요.<br>
-          입력한 금액의 총합을 기준으로 각 종목의 비율이 자동으로 계산되어 차트로 표시됩니다.
-        </p>
-        <div class="portfolio-section-content">
-          <div class="left-content">
-            <div class="portfolio-form" style="flex-direction: column; align-items: flex-start;">
-              <div id="stockList"></div>
-              <button id="addStockBtn">종목 추가</button>
+        <div class="section-header">
+          <h3>주식 포트폴리오</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <p style="font-size:0.9rem; line-height: 1.4;">
+            투자할 종목의 이름과 투자 금액을 입력하세요.<br>
+            입력한 금액의 총합을 기준으로 각 종목의 비율이 자동으로 계산되어 차트로 표시됩니다.
+          </p>
+          <div class="portfolio-section-content">
+            <div class="left-content">
+              <div class="portfolio-form" style="flex-direction: column; align-items: flex-start;">
+                <div id="stockList"></div>
+                <button id="addStockBtn">종목 추가</button>
+              </div>
             </div>
-          </div>
-          <div class="right-chart">
-            <div class="chart-container">
-              <canvas id="stockChart"></canvas>
+            <div class="right-chart">
+              <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+              </div>
             </div>
           </div>
         </div>
@@ -733,73 +759,99 @@ select {
     <div class="bottom-info">
       <!-- 나만의 투자 원칙 체크리스트 -->
       <div class="investment-checklist">
-        <h3>나만의 투자 원칙 체크리스트</h3>
-        <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
-          새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
-        </p>
-        <ul id="checklist">
-          <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
-        </ul>
-        <div class="checklist-add">
-          <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
-          <button id="addChecklistItemBtn">추가</button>
+        <div class="section-header">
+          <h3>나만의 투자 원칙 체크리스트</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
+            새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
+          </p>
+          <ul id="checklist">
+            <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
+          </ul>
+          <div class="checklist-add">
+            <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
+            <button id="addChecklistItemBtn">추가</button>
+          </div>
         </div>
       </div>
 
-      <!-- 나의 자산 목표 영역 (흰색 배경 컨테이너 추가) -->
+      <!-- 나의 자산 목표 영역 (헤더와 토글이 컨테이너 내부에 위치) -->
       <div class="asset-goal">
         <div class="asset-goal-container">
-          <h3>나의 자산 목표</h3>
-          <p>목표 자산 금액을 입력하세요:</p>
-          <div class="asset-goal-form">
-            <input type="text" id="assetGoalInput" placeholder="예: 10000000">
-            <button id="saveAssetGoalBtn">저장</button>
+          <div class="section-header">
+            <h3>나의 자산 목표</h3>
+            <button class="toggle-btn">▲</button>
           </div>
-          <div id="assetGoalDisplay"></div>
-          <div id="assetGoalProgress"></div>
+          <div class="section-content">
+            <p>목표 자산 금액을 입력하세요:</p>
+            <div class="asset-goal-form">
+              <input type="text" id="assetGoalInput" placeholder="예: 10000000">
+              <button id="saveAssetGoalBtn">저장</button>
+            </div>
+            <div id="assetGoalDisplay"></div>
+            <div id="assetGoalProgress"></div>
+          </div>
         </div>
       </div>
       
-      <!-- 투자 일지 영역 -->
-      <div class="investment-diary">
-        <h3>투자 일지</h3>
-        <textarea id="investmentDiary" placeholder="오늘의 투자 일지를 작성하세요..."></textarea>
-        <button id="saveDiaryBtn">저장</button>
-        <div id="diaryEntries"></div>
+      <!-- 투자 일지 영역 (수정, 삭제 버튼 디자인 변경) -->
+      <section class="section-container" id="investment-diary">
+        <div class="diary-container">
+          <div class="section-header">
+            <h3>투자 일지</h3>
+            <button class="toggle-btn">▲</button>
+          </div>
+          <div class="section-content">
+            <textarea id="investmentDiary" placeholder="오늘의 투자 일지를 작성하세요..."></textarea>
+            <button id="saveDiaryBtn">저장</button>
+            <div id="diaryEntries"></div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 달력 메모 섹션 -->
+      <div class="calendar-section">
+        <div class="section-header">
+          <h3>달력 메모</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <!-- 달력 내비게이션 헤더 -->
+          <div class="calendar-navigation" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <button id="prevMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">이전 달</button>
+            <span id="currentMonthDisplay" style="font-size: 1.2rem; font-weight: bold;"></span>
+            <button id="nextMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">다음 달</button>
+          </div>
+          <div id="calendar"></div>
+        </div>
       </div>
-      
-<!-- 달력 메모 섹션 -->
-<div class="calendar-section">
-  <h3>달력 메모</h3>
-  <!-- 달력 내비게이션 헤더 -->
-  <div class="calendar-navigation" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-    <button id="prevMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">이전 달</button>
-    <span id="currentMonthDisplay" style="font-size: 1.2rem; font-weight: bold;"></span>
-    <button id="nextMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">다음 달</button>
-  </div>
-  <div id="calendar"></div>
-</div>
 
-      
       <!-- 가계부 섹션 -->
       <div class="account-book">
-        <h3>가계부</h3>
-        <div class="account-book-form">
-          <input type="date" id="ab-date">
-          <select id="ab-type">
-            <option value="income">수입</option>
-            <option value="expense">지출</option>
-          </select>
-          <input type="text" id="ab-category" placeholder="카테고리">
-          <input type="text" id="ab-amount" placeholder="금액">
-          <input type="text" id="ab-description" placeholder="설명 (선택)">
-          <button id="ab-addBtn">추가</button>
+        <div class="section-header">
+          <h3>가계부</h3>
+          <button class="toggle-btn">▲</button>
         </div>
-        <div class="account-book-summary" id="ab-summary">
-          <!-- 총 수입/지출/잔액 표시 -->
-        </div>
-        <div class="account-book-entries" id="ab-entries">
-          <!-- 가계부 항목 목록 테이블 -->
+        <div class="section-content">
+          <div class="account-book-form">
+            <input type="date" id="ab-date">
+            <select id="ab-type">
+              <option value="income">수입</option>
+              <option value="expense">지출</option>
+            </select>
+            <input type="text" id="ab-category" placeholder="카테고리">
+            <input type="text" id="ab-amount" placeholder="금액">
+            <input type="text" id="ab-description" placeholder="설명 (선택)">
+            <button id="ab-addBtn">추가</button>
+          </div>
+          <div class="account-book-summary" id="ab-summary">
+            <!-- 총 수입/지출/잔액 표시 -->
+          </div>
+          <div class="account-book-entries" id="ab-entries">
+            <!-- 가계부 항목 목록 테이블 -->
+          </div>
         </div>
       </div>
       
@@ -1310,9 +1362,10 @@ select {
           textElem.textContent = entry.text;
           div.appendChild(textElem);
           
+          // 수정 버튼 - 동일한 디자인 적용
           const editBtn = document.createElement("button");
           editBtn.textContent = "수정";
-          editBtn.style.marginLeft = "8px";
+          editBtn.classList.add("edit-btn");
           editBtn.addEventListener("click", () => {
             const newText = prompt("수정할 내용을 입력하세요", entry.text);
             if(newText !== null && newText.trim() !== ""){
@@ -1322,6 +1375,7 @@ select {
           });
           div.appendChild(editBtn);
           
+          // 삭제 버튼 - 동일한 디자인 적용
           const deleteBtn = document.createElement("button");
           deleteBtn.textContent = "삭제";
           deleteBtn.classList.add("delete-btn");
@@ -1391,153 +1445,152 @@ select {
       addCommaFormatting(document.getElementById("assetGoalInput"));
     });
     
+    // 전역 변수: 현재 표시할 연도와 월 (월은 0부터 시작하므로 1은 2월을 의미)
+    let currentYear = 2025;
+    let currentMonth = 1; // 0: 1월, 1: 2월, ... 11: 12월
 
-  // 전역 변수: 현재 표시할 연도와 월 (월은 0부터 시작하므로 1은 2월을 의미)
-  let currentYear = 2025;
-  let currentMonth = 1; // 0: 1월, 1: 2월, ... 11: 12월
-
-  // 페이지 로드 시 저장된 연도/월 복원 후 달력 렌더링
-  document.addEventListener("DOMContentLoaded", () => {
-    const storedYear = localStorage.getItem("calendarCurrentYear");
-    const storedMonth = localStorage.getItem("calendarCurrentMonth");
-    if (storedYear !== null && storedMonth !== null) {
-      currentYear = Number(storedYear);
-      currentMonth = Number(storedMonth);
-    }
-    updateCalendarHeader();
-    renderCalendar();
-  });
-
-  // 달력 헤더 업데이트: 현재 연도와 월 표시
-  function updateCalendarHeader() {
-    const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
-    document.getElementById("currentMonthDisplay").textContent = currentYear + "년 " + monthNames[currentMonth];
-  }
-
-  // 달력 렌더링: currentYear와 currentMonth를 기준으로 달력 그리기
-  function renderCalendar() {
-    const calendarEl = document.getElementById("calendar");
-    if (!calendarEl) return;
-    calendarEl.innerHTML = "";
-
-    // 해당 월의 첫 날과 시작 요일, 일 수 계산
-    const firstDay = new Date(currentYear, currentMonth, 1);
-    const startDay = firstDay.getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-    // 저장된 메모 불러오기
-    let memos = localStorage.getItem("calendarMemos");
-    memos = memos ? JSON.parse(memos) : {};
-
-    // 요일 헤더 추가
-    const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
-    weekdays.forEach(dayName => {
-      const headerCell = document.createElement("div");
-      headerCell.textContent = dayName;
-      headerCell.style.fontWeight = "bold";
-      calendarEl.appendChild(headerCell);
+    // 페이지 로드 시 저장된 연도/월 복원 후 달력 렌더링
+    document.addEventListener("DOMContentLoaded", () => {
+      const storedYear = localStorage.getItem("calendarCurrentYear");
+      const storedMonth = localStorage.getItem("calendarCurrentMonth");
+      if (storedYear !== null && storedMonth !== null) {
+        currentYear = Number(storedYear);
+        currentMonth = Number(storedMonth);
+      }
+      updateCalendarHeader();
+      renderCalendar();
     });
 
-    // 첫 날 이전 빈 칸 추가
-    for (let i = 0; i < startDay; i++) {
-      const blankCell = document.createElement("div");
-      calendarEl.appendChild(blankCell);
+    // 달력 헤더 업데이트: 현재 연도와 월 표시
+    function updateCalendarHeader() {
+      const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
+      document.getElementById("currentMonthDisplay").textContent = currentYear + "년 " + monthNames[currentMonth];
     }
 
-    // 날짜 셀 생성
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dateStr = currentYear + "-" + String(currentMonth + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
-      const dayCell = document.createElement("div");
-      dayCell.classList.add("calendar-day");
-      dayCell.dataset.date = dateStr;
+    // 달력 렌더링: currentYear와 currentMonth를 기준으로 달력 그리기
+    function renderCalendar() {
+      const calendarEl = document.getElementById("calendar");
+      if (!calendarEl) return;
+      calendarEl.innerHTML = "";
 
-      const dayNumber = document.createElement("span");
-      dayNumber.classList.add("day-number");
-      dayNumber.textContent = d;
-      dayCell.appendChild(dayNumber);
+      // 해당 월의 첫 날과 시작 요일, 일 수 계산
+      const firstDay = new Date(currentYear, currentMonth, 1);
+      const startDay = firstDay.getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-      // 메모가 있으면 간단히 표시 (10자 이상이면 ... 처리)
-      if (memos[dateStr] && memos[dateStr].trim() !== "") {
-        const memoSpan = document.createElement("span");
-        memoSpan.classList.add("memo-text");
-        let text = memos[dateStr];
-        if (text.length > 10) text = text.substring(0, 10) + "...";
-        memoSpan.textContent = text;
-        dayCell.appendChild(memoSpan);
-        dayCell.classList.add("has-memo");
-      }
+      // 저장된 메모 불러오기
+      let memos = localStorage.getItem("calendarMemos");
+      memos = memos ? JSON.parse(memos) : {};
 
-      // 클릭 시 메모 모달 열기
-      dayCell.addEventListener("click", () => {
-        openMemoModal(dateStr, memos[dateStr] || "");
+      // 요일 헤더 추가
+      const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+      weekdays.forEach(dayName => {
+        const headerCell = document.createElement("div");
+        headerCell.textContent = dayName;
+        headerCell.style.fontWeight = "bold";
+        calendarEl.appendChild(headerCell);
       });
 
-      calendarEl.appendChild(dayCell);
+      // 첫 날 이전 빈 칸 추가
+      for (let i = 0; i < startDay; i++) {
+        const blankCell = document.createElement("div");
+        calendarEl.appendChild(blankCell);
+      }
+
+      // 날짜 셀 생성
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = currentYear + "-" + String(currentMonth + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+        const dayCell = document.createElement("div");
+        dayCell.classList.add("calendar-day");
+        dayCell.dataset.date = dateStr;
+
+        const dayNumber = document.createElement("span");
+        dayNumber.classList.add("day-number");
+        dayNumber.textContent = d;
+        dayCell.appendChild(dayNumber);
+
+        // 메모가 있으면 간단히 표시 (10자 이상이면 ... 처리)
+        if (memos[dateStr] && memos[dateStr].trim() !== "") {
+          const memoSpan = document.createElement("span");
+          memoSpan.classList.add("memo-text");
+          let text = memos[dateStr];
+          if (text.length > 10) text = text.substring(0, 10) + "...";
+          memoSpan.textContent = text;
+          dayCell.appendChild(memoSpan);
+          dayCell.classList.add("has-memo");
+        }
+
+        // 클릭 시 메모 모달 열기
+        dayCell.addEventListener("click", () => {
+          openMemoModal(dateStr, memos[dateStr] || "");
+        });
+
+        calendarEl.appendChild(dayCell);
+      }
     }
-  }
 
-  // 이전/다음 버튼 클릭 이벤트 및 값 저장
-  document.getElementById("prevMonthBtn").addEventListener("click", () => {
-    if (currentMonth === 0) {
-      currentMonth = 11;
-      currentYear--;
-    } else {
-      currentMonth--;
+    // 이전/다음 버튼 클릭 이벤트 및 값 저장
+    document.getElementById("prevMonthBtn").addEventListener("click", () => {
+      if (currentMonth === 0) {
+        currentMonth = 11;
+        currentYear--;
+      } else {
+        currentMonth--;
+      }
+      localStorage.setItem("calendarCurrentYear", currentYear);
+      localStorage.setItem("calendarCurrentMonth", currentMonth);
+      updateCalendarHeader();
+      renderCalendar();
+    });
+
+    document.getElementById("nextMonthBtn").addEventListener("click", () => {
+      if (currentMonth === 11) {
+        currentMonth = 0;
+        currentYear++;
+      } else {
+        currentMonth++;
+      }
+      localStorage.setItem("calendarCurrentYear", currentYear);
+      localStorage.setItem("calendarCurrentMonth", currentMonth);
+      updateCalendarHeader();
+      renderCalendar();
+    });
+
+    // 메모 모달 관련 기능
+    let selectedCalendarDate = null;
+    function openMemoModal(dateStr, memoText) {
+      selectedCalendarDate = dateStr;
+      document.getElementById("modalTitle").textContent = "메모 입력 (" + dateStr + ")";
+      document.getElementById("modalTextarea").value = memoText;
+      document.getElementById("memoModal").classList.add("active");
     }
-    localStorage.setItem("calendarCurrentYear", currentYear);
-    localStorage.setItem("calendarCurrentMonth", currentMonth);
-    updateCalendarHeader();
-    renderCalendar();
-  });
 
-  document.getElementById("nextMonthBtn").addEventListener("click", () => {
-    if (currentMonth === 11) {
-      currentMonth = 0;
-      currentYear++;
-    } else {
-      currentMonth++;
+    function closeMemoModal() {
+      document.getElementById("memoModal").classList.remove("active");
+      selectedCalendarDate = null;
     }
-    localStorage.setItem("calendarCurrentYear", currentYear);
-    localStorage.setItem("calendarCurrentMonth", currentMonth);
-    updateCalendarHeader();
-    renderCalendar();
-  });
 
-  // 메모 모달 관련 기능
-  let selectedCalendarDate = null;
-  function openMemoModal(dateStr, memoText) {
-    selectedCalendarDate = dateStr;
-    document.getElementById("modalTitle").textContent = "메모 입력 (" + dateStr + ")";
-    document.getElementById("modalTextarea").value = memoText;
-    document.getElementById("memoModal").classList.add("active");
-  }
-
-  function closeMemoModal() {
-    document.getElementById("memoModal").classList.remove("active");
-    selectedCalendarDate = null;
-  }
-
-  document.getElementById("saveModalBtn").addEventListener("click", () => {
-    if (!selectedCalendarDate) return;
-    let memos = localStorage.getItem("calendarMemos");
-    memos = memos ? JSON.parse(memos) : {};
-    memos[selectedCalendarDate] = document.getElementById("modalTextarea").value;
-    localStorage.setItem("calendarMemos", JSON.stringify(memos));
-    closeMemoModal();
-    renderCalendar();
-    alert("메모가 저장되었습니다.");
-  });
-
-  document.getElementById("cancelModalBtn").addEventListener("click", () => {
-    closeMemoModal();
-  });
-
-  window.addEventListener("click", (e) => {
-    const modal = document.getElementById("memoModal");
-    if (e.target === modal) {
+    document.getElementById("saveModalBtn").addEventListener("click", () => {
+      if (!selectedCalendarDate) return;
+      let memos = localStorage.getItem("calendarMemos");
+      memos = memos ? JSON.parse(memos) : {};
+      memos[selectedCalendarDate] = document.getElementById("modalTextarea").value;
+      localStorage.setItem("calendarMemos", JSON.stringify(memos));
       closeMemoModal();
-    }
-  });
+      renderCalendar();
+      alert("메모가 저장되었습니다.");
+    });
+
+    document.getElementById("cancelModalBtn").addEventListener("click", () => {
+      closeMemoModal();
+    });
+
+    window.addEventListener("click", (e) => {
+      const modal = document.getElementById("memoModal");
+      if (e.target === modal) {
+        closeMemoModal();
+      }
+    });
     
     const ACCOUNT_BOOK_KEY = "accountBookEntries";
     function loadAccountBookEntries() {
@@ -1671,6 +1724,55 @@ select {
       }
       console.log(getSecretKey());
 
+// 토글 기능 추가 (섹션별 접기/펼치기) - 아이콘 사용: 기본 상태 ▲ (펼쳐진 상태), 접으면 ▼ 표시 및 로컬스토리지 저장
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButtons = document.querySelectorAll(".toggle-btn");
+  toggleButtons.forEach((btn, index) => {
+    // 해당 토글 버튼이 속한 컨테이너를 찾음.
+    // (예: .section-container, .asset-goal, .calendar-section, .account-book, .investment-checklist)
+    let container = btn.closest(".section-container") ||
+                    btn.closest(".asset-goal") ||
+                    btn.closest(".calendar-section") ||
+                    btn.closest(".account-book") ||
+                    btn.closest(".investment-checklist");
+    // 컨테이너에 고유 ID가 없다면 생성
+    let containerId = container.id;
+    if (!containerId) {
+      containerId = "toggleContainer_" + index;
+      container.id = containerId;
+    }
+    const sectionContent = btn.parentElement.nextElementSibling;
+    
+    // 저장된 상태 복원: "collapsed"이면 내용 숨김, 그렇지 않으면 보임.
+    const storedState = localStorage.getItem("sectionState_" + containerId);
+    if (storedState === "collapsed") {
+      sectionContent.style.display = "none";
+      btn.textContent = "▼";
+    } else {
+      sectionContent.style.display = "block";
+      btn.textContent = "▲";
+    }
+    
+    // 토글 버튼 클릭 시, 상태 변경 및 로컬스토리지 저장
+    btn.addEventListener("click", () => {
+      if (sectionContent.style.display === "none") {
+        sectionContent.style.display = "block";
+        btn.textContent = "▲";
+        localStorage.setItem("sectionState_" + containerId, "expanded");
+      } else {
+        sectionContent.style.display = "none";
+        btn.textContent = "▼";
+        localStorage.setItem("sectionState_" + containerId, "collapsed");
+      }
+    });
+  });
+});
+
+
+    
+
+    // 투자 일지 수정/삭제 버튼 디자인 변경 (다른 섹션과 동일하게)
+    // loadDiaryEntries 함수 내에서 수정 → 버튼에 각각 "edit-btn"과 "delete-btn" 클래스를 추가함.
   </script>
 </body>
 </html>

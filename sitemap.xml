@@ -15,14 +15,14 @@
   <!-- 포트폴리오 페이지 -->
   <url>
     <loc>https://korvesting.netlify.app/포폴.html</loc>
-    <lastmod>2025-02-22T12:00:00.000Z</lastmod>
+    <lastmod>2025-02-23T12:00:00.000Z</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 유명인 포트폴리오 페이지 -->
   <url>
     <loc>https://korvesting.netlify.app/유명인포폴.html</loc>
-    <lastmod>2025-02-22T12:00:00.000Z</lastmod>
+    <lastmod>2025-02-23T12:00:00.000Z</lastmod>
     <priority>0.8</priority>
   </url>
 
