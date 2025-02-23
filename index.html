@@ -3,17 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <!-- 페이지 제목(Title)에 핵심 키워드와 브랜드명 함께 배치 -->
-    <title>Korbesting - 최신 미국 주식 & 증시 뉴스 매일 업데이트</title>
+    <title>Korvesting - 미국주식·미국증시·환율 매일 오전 업데이트</title>
+    <meta name="description" content="Korvesting - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
 
-    <!-- 문서 요약(Description) -->
-    <meta name="description" content="Korbesting - 매일 업데이트되는 미국 주식 & 증시 뉴스. 증시/기업 뉴스, 테크/IT, 글로벌 경제 뉴스까지 한눈에 확인하세요.">
-
+  <link rel="canonical" href="https://korvesting.netlify.app/">
     <!-- Naver 등에서 활용될 수 있는 키워드 -->
     <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Korbesting">
-
     <!-- 검색 엔진 크롤링 허용 -->
     <meta name="robots" content="index,follow">
-
     <!-- 반응형 웹 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,13 +26,20 @@
 
 
     <!-- Open Graph Meta Tags (SNS 공유 시 미리보기용) -->
-    <meta property="og:title" content="Korbesting - 최신 미국 주식 & 증시 뉴스 매일 업데이트" />
-    <meta property="og:description" content="미국 주식 & 증시 뉴스부터 개인 다이어리, 유명인 포트폴리오까지, Korbesting에서 다양한 기능을 만나보세요." />
+    <meta property="og:title" content="Korvesting - 미국주식·미국증시·환율 매일 오전 업데이트" />
+    <meta property="og:description" content="Korvesting - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
     <meta property="og:image" content="https://korvesting.netlify.app/images/logo.png" />
     <meta property="og:url" content="https://korvesting.netlify.app/index.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Korbesting">
     <meta property="og:locale" content="ko_KR" />
+
+      <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Korvesting - 미국주식·미국증시·환율 매일 오전 업데이트">
+  <meta name="twitter:description" content="Korvesting - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
+  <meta name="twitter:image" content="https://korvesting.netlify.app/images/og-image.jpg">
+
 
     <link rel="icon" type="image/png" href="logo.png">
 
@@ -43,9 +47,9 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Korbesting",
+        "name": "Korvesting - 미국주식·미국증시·환율 매일 오전 업데이트",
         "url": "https://korvesting.netlify.app",
-        "description": "매일 업데이트되는 미국 주식 & 증시 뉴스, 개인 다이어리, 유명인 포트폴리오까지 제공.",
+        "description": "Korvesting - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.",
         "publisher": {
           "@type": "Organization",
           "name": "Korbesting",
@@ -62,6 +66,33 @@
         }
       }
       </script>
+          <!-- 구조화된 데이터: BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "미국주식·미국증시·환율",
+            "item": "https://korvesting.netlify.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "주식포트폴리오",
+            "item": "https://korvesting.netlify.app/주식포트폴리오"
+          },
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "버크셔해서웨이",
+              "item": "https://korvesting.netlify.app/버크셔해서웨이"
+          }
+        ]
+      }
+  </script>
       
 
     <!-- 기본 스타일 -->
@@ -193,8 +224,8 @@
       <nav>
         <ul>
           <li><a href="index.html">투데이 뉴스</a></li>
-          <li><a href="포폴.html">다이어리</a></li>
-          <li><a href="유명인포폴.html">인기 포트폴리오</a></li>
+          <li><a href="주식포트폴리오.html">다이어리</a></li>
+          <li><a href="버크셔해서웨이.html">인기 포트폴리오</a></li>
         </ul>
       </nav>
     </header>

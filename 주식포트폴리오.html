@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <!-- 페이지 제목(Title)에 사이트명 + 페이지 명시 -->
+  <title>Korvesting - 주식 다이어리·포트폴리오 설계·가계부·투자일지·달력</title>
+  <meta name="description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Korbesting에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
+  <link rel="canonical" href="https://korvesting.netlify.app/주식포트폴리오">
+
+  <!-- SEO: 키워드 (네이버가 아직 일부 활용 가능) -->
+  <meta name="keywords" content="포트폴리오, 다이어리, 자산관리, 투자일지, 가계부, Korbesting">
+
+  <!-- 검색엔진 크롤링 허용 -->
+  <meta name="robots" content="index,follow">
+
+  <!-- 반응형 웹 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 사이트 검증 메타 (네이버, 구글) -->
+  <meta name="naver-site-verification" content="507f9a5aef40cffc2aa057dd8a66dcea910ccf86" />
+  <meta name="google-site-verification" content="GhGj63W7kkc-78a0BTXjR-_TRE8ml771kQOtegBKhHs" />
+
+  <!-- Open Graph (OG) 메타 태그: SNS 공유 시 미리보기 정보 -->
+  <meta property="og:title" content="주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력" />
+  <meta property="og:description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Korbesting에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
+  <meta property="og:image" content="https://korvesting.netlify.app/images/og-image.jpg" />
+  <meta property="og:url" content="https://korvesting.netlify.app/포트폴리오.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력">
+  <meta name="twitter:description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Korbesting에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
+  <meta name="twitter:image" content="https://korvesting.netlify.app/images/og-image.jpg">
+
+  <!-- JSON-LD 구조화 데이터: WebPage 정보 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력,
+    "url": "https://korvesting.netlify.app/주식포트폴리오.html",
+    "description": "주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Korbesting에서 간편하게 환율 등 포트폴리오를 관리해보세요.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Korbesting",
+      "url": "https://korvesting.netlify.app"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts: Roboto & Open Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- chartjs-plugin-datalabels CDN (차트에 상시 라벨 표시) -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+  <style>
+    /* ----- 이하 기존 CSS 유지 (내용 동일) ----- */
+    html {
+      font-size: 16px;
+    }
+    :root {
+      --primary-color: #004080;
+      --secondary-color: #0059b3;
+      --accent-color: #f4f7fa;
+      --light-gray: #e0e0e0;
+      --text-color: #333;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
+      color: var(--text-color);
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1rem;
+    }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav ul li a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav ul li a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    main {
+      max-width: 960px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+    }
+    .save-notice {
+      background: #fff;
+      color: #444;
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid var(--primary-color);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      line-height: 1.4;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+    .portfolio-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: flex-start;
+      margin-top: 7px;
+    }
+    .section-container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      padding: 1rem;
+      width: 100%;
+    }
+    /* 토글을 위한 헤더와 내용 영역 */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-content {
+      display: block;
+    }
+    .portfolio-section-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .left-content {
+      flex: 1;
+    }
+    .right-chart {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .asset-item {
+      display: flex;
+      align-items: left;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .asset-item input[type="text"],
+    .asset-item input[type="number"] {
+      padding: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      width: 100px;
+    }
+    .asset-item button {
+      padding: 0.3rem 0.6rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .asset-item button:hover {
+      background: #800000;
+    }
+    .portfolio-form {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .portfolio-form button {
+      padding: 0.3rem 0.6rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .portfolio-form button:hover {
+      background: #003060;
+    }
+    .chart-container {
+      margin: 0;
+    }
+    canvas {
+      width: 100%;
+      height: 300px;
+    }
+    .recommendation {
+      background: var(--light-gray);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .stock-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .stock-item input[type="text"],
+    .stock-item input[type="number"] {
+      padding: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      width: 120px;
+    }
+    .stock-item button {
+      padding: 0.3rem 0.6rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .stock-item button:hover {
+      background: #800000;
+    }
+    .bottom-info {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .investment-checklist {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .investment-checklist ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .investment-checklist li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 0.8rem 0;
+    }
+    .investment-checklist li:last-child {
+      border-bottom: none;
+    }
+    .investment-checklist input[type="checkbox"] {
+      width: 1.5em;
+      height: 1.5em;
+      transform: scale(1.2);
+      margin-left: 1px;
+    }
+    .checklist-add {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .checklist-add input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .checklist-add button {
+      padding: 0.1rem 1rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .checklist-add button:hover {
+      background: #003060;
+    }
+    .check-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .check-controls .delete-checklist-btn {
+      padding: 0.3rem 0.6rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .check-controls .delete-checklist-btn:hover {
+      background: #800000;
+    }
+    .check-controls .check-input {
+      margin-left: 0;
+    }
+    /* 투자 일지 버튼 (수정, 삭제)를 다른 섹션과 동일하게 */
+    .investment-diary button.edit-btn,
+    .investment-diary button.delete-btn {
+      padding: 0.3rem 0.6rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+    .investment-diary button.edit-btn:hover,
+    .investment-diary button.delete-btn:hover {
+      background: #800000;
+    }
+    .asset-goal {
+      margin-bottom: 1rem;
+    }
+    .asset-goal-container {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    #assetGoalProgress {
+      margin-top: 1rem;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .progress {
+      height: 20px;
+      background-color: var(--primary-color);
+      width: 0%;
+      transition: width 0.5s;
+      text-align: center;
+      color: #fff;
+      line-height: 20px;
+      font-size: 0.9rem;
+    }
+    .section-container{
+      margin-bottom: 1rem;
+    }
+    .investment-diary {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .investment-diary textarea {
+      width: 100%;
+      height: 150px;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    .investment-diary button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .investment-diary button:hover {
+      background: #003060;
+    }
+    .diary-entry {
+      border-top: 1px solid #ddd;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+    }
+    .diary-entry time {
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    .diary-entry .diary-text {
+      flex: 1;
+      margin: 0 8px;
+    }
+    footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 0.8rem;
+      bottom: 0;
+      width: 100%;
+      font-size: 1rem;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+    }
+    /* 전체 문서에서 수평 오버플로우 방지 */
+    html, body {
+      overflow-x: hidden;
+    }
+    /* 모든 입력, 텍스트에리어, 셀렉트 요소에 16px 이상 글꼴 크기를 적용 */
+    input,
+    textarea,
+    select {
+      font-size: 16px;
+    }
+
+    @media (max-width: 1000px) {
+      .section-container {
+        width: 100%;
+      }
+      .portfolio-sections {
+        flex-wrap: wrap;
+      }
+    }
+ 
+    /* 모바일 기기(최대 600px)에서 레이아웃 조정 */
+    @media (max-width: 600px) {
+      /* 헤더 텍스트 크기 조정 */
+      header h1 {
+        font-size: 1.6rem;
+      }
+      
+      /* main 영역의 패딩을 줄여 화면 폭에 맞춤 */
+      main {
+        padding: 0 0.5rem;
+      }
+      
+      /* 포트폴리오 섹션에서 좌우 여백 없이 세로 배치로 변경 */
+      .portfolio-section-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      /* 차트 캔버스가 화면에 꽉 차도록 */
+      .chart-container canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+      /* 달력 내비게이션 버튼 및 텍스트의 레이아웃 재조정 */
+      .calendar-navigation {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+      
+      /* 체크리스트 및 기타 컨텐츠의 폰트 크기 조정 (원하는 경우) */
+      .investment-checklist,
+      .asset-goal-container,
+      .investment-diary,
+      .account-book {
+        font-size: 0.9rem;
+      }
+    }
+    .calendar-section {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    #calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-top: 0.5rem;
+    }
+    .calendar-day {
+      padding: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      min-height: 50px;
+      position: relative;
+    }
+    .calendar-day:hover {
+      background-color: #f4f7fa;
+    }
+    .calendar-day .day-number {
+      font-weight: bold;
+    }
+    .calendar-day .memo-text {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.75rem;
+      color: var(--secondary-color);
+      word-break: break-word;
+    }
+    .calendar-day.has-memo {
+      border: 2px solid var(--secondary-color);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal.active {
+      display: block;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .modal-content h4 {
+      margin-bottom: 10px;
+    }
+    .modal-content textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    .modal-content button {
+      padding: 0.4rem 0.8rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+    .modal-content button.cancel-btn {
+      background: #b30000;
+    }
+    .account-book {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .account-book h3 {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+    .account-book-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+    }
+    .account-book-form input,
+    .account-book-form select,
+    .account-book-form button {
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .account-book-form input:focus,
+    .account-book-form select:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+    .account-book-form button {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .account-book-form button:hover {
+      background: #003060;
+    }
+    .account-book-summary {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .account-book-entries table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .account-book-entries th,
+    .account-book-entries td {
+      padding: 0.6rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    .account-book-entries tr:nth-child(odd) {
+      background: #f9f9f9;
+    }
+    .account-book-entries button.delete-entry {
+      padding: 0.2rem 0.5rem;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .account-book-entries button.delete-entry:hover {
+      background: #800000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Korbesting</h1>
+    <p>나의 자산을 잘 이해하는 것이 부자가 되는 지름길!</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">투데이 뉴스</a></li>
+        <li><a href="주식포트폴리오.html">다이어리</a></li>
+        <li><a href="버크셔해서웨이.html">인기 포트폴리오</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
+    <div class="save-notice">
+      이 페이지는 <strong>로그인 없이도</strong> 현재 사용하는 <strong>브라우저에 영구 저장</strong>됩니다.<br>
+      다시 방문하더라도 입력했던 내역이 유지됩니다.
+    </div>
+
+    <h2>포트폴리오 다이어리</h2>
+    <div class="recommendation">
+      <strong>Tip:</strong> 입력한 금액의 비중이 자동으로 계산됩니다.<br>
+      모두 입력한 후 새로고침을 한 번 하세요.
+    </div>
+    <div class="portfolio-sections">
+      <!-- [자산 포트폴리오] 동적 항목 영역 -->
+      <section class="section-container" id="asset-portfolio">
+        <div class="section-header">
+          <h3>자산 포트폴리오</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <p style="font-size:0.9rem; line-height: 1.4;">
+            다양한 자산(예: 현금, 채권, 부동산, 주식, 기타)의 투자 금액을 입력하세요.<br>
+            입력한 금액을 바탕으로 자동으로 각 항목의 비율이 계산되어 차트로 표시됩니다.<br>
+            <strong>안정적인 자산 포트폴리오</strong>를 통해 변동성을 줄이고 장기적인 성장을 기대할 수 있습니다.
+          </p>
+          
+          <div class="portfolio-section-content">
+            <div class="left-content">
+              <!-- 동적 자산 항목들이 들어갈 영역 -->
+              <div id="assetItemsContainer"></div>
+              <div class="portfolio-form">
+                <button id="addAssetItemBtn">자산 항목 추가</button>
+              </div>
+            </div>
+            <div class="right-chart">
+              <div class="chart-container">
+                <canvas id="assetChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- [주식 포트폴리오] 동적 항목 영역 -->
+      <section class="section-container" id="stock-portfolio">
+        <div class="section-header">
+          <h3>주식 포트폴리오</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <p style="font-size:0.9rem; line-height: 1.4;">
+            투자할 종목의 이름과 투자 금액을 입력하세요.<br>
+            입력한 금액의 총합을 기준으로 각 종목의 비율이 자동으로 계산되어 차트로 표시됩니다.
+          </p>
+          <div class="portfolio-section-content">
+            <div class="left-content">
+              <div class="portfolio-form" style="flex-direction: column; align-items: flex-start;">
+                <div id="stockList"></div>
+                <button id="addStockBtn">종목 추가</button>
+              </div>
+            </div>
+            <div class="right-chart">
+              <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- 하단 정보: 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 -->
+    <div class="bottom-info">
+      <!-- 나만의 투자 원칙 체크리스트 -->
+      <div class="investment-checklist">
+        <div class="section-header">
+          <h3>나만의 투자 원칙 체크리스트</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
+            새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
+          </p>
+          <ul id="checklist">
+            <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
+          </ul>
+          <div class="checklist-add">
+            <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
+            <button id="addChecklistItemBtn">추가</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 나의 자산 목표 영역 (헤더와 토글이 컨테이너 내부에 위치) -->
+      <div class="asset-goal">
+        <div class="asset-goal-container">
+          <div class="section-header">
+            <h3>나의 자산 목표</h3>
+            <button class="toggle-btn">▲</button>
+          </div>
+          <div class="section-content">
+            <p>목표 자산 금액을 입력하세요:</p>
+            <div class="asset-goal-form">
+              <input type="text" id="assetGoalInput" placeholder="예: 10000000">
+              <button id="saveAssetGoalBtn">저장</button>
+            </div>
+            <div id="assetGoalDisplay"></div>
+            <div id="assetGoalProgress"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 투자 일지 영역 (수정, 삭제 버튼 디자인 변경) -->
+      <section class="section-container" id="investment-diary">
+        <div class="diary-container">
+          <div class="section-header">
+            <h3>투자 일지</h3>
+            <button class="toggle-btn">▲</button>
+          </div>
+          <div class="section-content">
+            <textarea id="investmentDiary" placeholder="오늘의 투자 일지를 작성하세요..."></textarea>
+            <button id="saveDiaryBtn">저장</button>
+            <div id="diaryEntries"></div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 달력 메모 섹션 -->
+      <div class="calendar-section">
+        <div class="section-header">
+          <h3>달력 메모</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <!-- 달력 내비게이션 헤더 -->
+          <div class="calendar-navigation" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <button id="prevMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">이전 달</button>
+            <span id="currentMonthDisplay" style="font-size: 1.2rem; font-weight: bold;"></span>
+            <button id="nextMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">다음 달</button>
+          </div>
+          <div id="calendar"></div>
+        </div>
+      </div>
+
+      <!-- 가계부 섹션 -->
+      <div class="account-book">
+        <div class="section-header">
+          <h3>가계부</h3>
+          <button class="toggle-btn">▲</button>
+        </div>
+        <div class="section-content">
+          <div class="account-book-form">
+            <input type="date" id="ab-date">
+            <select id="ab-type">
+              <option value="income">수입</option>
+              <option value="expense">지출</option>
+            </select>
+            <input type="text" id="ab-category" placeholder="카테고리">
+            <input type="text" id="ab-amount" placeholder="금액">
+            <input type="text" id="ab-description" placeholder="설명 (선택)">
+            <button id="ab-addBtn">추가</button>
+          </div>
+          <div class="account-book-summary" id="ab-summary">
+            <!-- 총 수입/지출/잔액 표시 -->
+          </div>
+          <div class="account-book-entries" id="ab-entries">
+            <!-- 가계부 항목 목록 테이블 -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- 데이터 초기화 버튼 (추가 기능) -->
+      <div style="text-align:center; margin-top:1rem;">
+        <button id="resetDataBtn" style="background:#800000;"><strong>데이터 초기화</strong></button>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <p>
+      © 2025 Korbesting. All rights reserved.<br>
+      사업체 지역: 대한민국 대구<br>
+      문의: <a href="mailto:hermann8hesse@gmail.com" style="color:#fff; text-decoration:underline;">hermann8hesse@gmail.com</a><br>
+      아이디어가 있으시면 언제든지 메일로 제안해 주세요!
+    </p>
+  </footer>
+  
+  <!-- 달력 메모 모달 -->
+  <div id="memoModal" class="modal">
+    <div class="modal-content">
+      <h4 id="modalTitle">메모 입력</h4>
+      <textarea id="modalTextarea" placeholder="메모를 입력하세요"></textarea>
+      <div style="text-align: right;">
+        <button id="saveModalBtn">저장</button>
+        <button id="cancelModalBtn" class="cancel-btn">취소</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 기능 (기존 동일) -->
+  <script>
+    /* ---- 이하 자바스크립트 부분은 기존 코드와 동일 ---- */
+    // chartjs-plugin-datalabels 등록
+    Chart.register(ChartDataLabels);
+
+    let assetChart, stockChart;
+    
+    function addCommaFormatting(inputElement) {
+      inputElement.addEventListener('input', function() {
+        let numericValue = inputElement.value.replace(/,/g, '');
+        if(numericValue === '') {
+          inputElement.value = '';
+          return;
+        }
+        let num = parseFloat(numericValue);
+        if(isNaN(num)) return;
+        let formattedValue = num.toLocaleString('en-US');
+        inputElement.value = formattedValue;
+        inputElement.selectionStart = inputElement.selectionEnd = inputElement.value.length;
+      });
+    }
+    
+    function adjustChartSize(canvasId, itemCount) {
+      const canvas = document.getElementById(canvasId);
+      const baseSize = 300;
+      const extraPerItem = 30; 
+      const newSize = baseSize + itemCount * extraPerItem;
+      canvas.height = newSize;
+      canvas.width = newSize;
+      canvas.style.height = newSize + "px";
+      canvas.style.width = newSize + "px";
+    }
+    
+    function createAssetItem(asset = {name:"", amount:0}) {
+      const div = document.createElement("div");
+      div.classList.add("asset-item");
+      
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.placeholder = "자산명";
+      nameInput.value = asset.name || "";
+      nameInput.addEventListener("input", updateAssetChart);
+      
+      const amountInput = document.createElement("input");
+      amountInput.type = "text";
+      amountInput.placeholder = "금액";
+      amountInput.value = asset.amount || 0;
+      amountInput.min = 0;
+      amountInput.addEventListener("input", updateAssetChart);
+      addCommaFormatting(amountInput);
+      
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "삭제";
+      removeBtn.addEventListener("click", () => {
+        if(confirm("정말 삭제하시겠습니까?")) {
+          div.remove();
+          saveAssetPortfolio();
+          updateAssetChart();
+        }
+      });
+      
+      div.appendChild(nameInput);
+      div.appendChild(amountInput);
+      div.appendChild(removeBtn);
+      return div;
+    }
+    
+    function loadAssetPortfolio() {
+      const container = document.getElementById("assetItemsContainer");
+      container.innerHTML = "";
+      const stored = localStorage.getItem("assetPortfolio");
+      let assets = [];
+      if(stored) {
+        assets = JSON.parse(stored);
+      } else {
+        assets = [
+          {name: "현금", amount: 0},
+          {name: "채권", amount: 0},
+          {name: "부동산", amount: 0},
+          {name: "주식", amount: 0},
+          {name: "기타", amount: 0}
+        ];
+        localStorage.setItem("assetPortfolio", JSON.stringify(assets));
+      }
+      assets.forEach(asset => container.appendChild(createAssetItem(asset)));
+    }
+    
+    function saveAssetPortfolio() {
+      const container = document.getElementById("assetItemsContainer");
+      const assetItems = container.querySelectorAll(".asset-item");
+      const assets = [];
+      assetItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const name = inputs[0].value.trim();
+        const amount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        assets.push({ name, amount });
+      });
+      localStorage.setItem("assetPortfolio", JSON.stringify(assets));
+    }
+    
+    function updateAssetChart() {
+      const container = document.getElementById("assetItemsContainer");
+      const assetItems = container.querySelectorAll(".asset-item");
+      const names = [];
+      const amounts = [];
+      assetItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const name = inputs[0].value.trim() || "미입력";
+        const amount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        names.push(name);
+        amounts.push(amount);
+      });
+      saveAssetPortfolio();
+      
+      const total = amounts.reduce((a,b) => a+b, 0);
+      const ctx = document.getElementById("assetChart").getContext("2d");
+      
+      adjustChartSize("assetChart", names.length);
+      
+      let labelFontSize = names.length > 5 ? Math.max(10, 14 - (names.length - 5)) : 14;
+      
+      if(total === 0){
+        ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height);
+        ctx.font = "16px sans-serif";
+        ctx.fillStyle = "#333";
+        ctx.fillText("데이터가 없습니다.", 50, 150);
+        updateAssetGoalProgress();
+        return;
+      }
+      
+      const backgroundColors = names.map(() => {
+        const r = Math.floor(Math.random() * 200);
+        const g = Math.floor(Math.random() * 200);
+        const b = Math.floor(Math.random() * 200);
+        return `rgb(${r}, ${g}, ${b})`;
+      });
+      
+      if(assetChart) {
+        assetChart.data.labels = names;
+        assetChart.data.datasets[0].data = amounts;
+        assetChart.data.datasets[0].backgroundColor = backgroundColors;
+        assetChart.options.plugins.datalabels.font.size = labelFontSize;
+        assetChart.update();
+      } else {
+        assetChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: names,
+            datasets: [{
+              data: amounts,
+              backgroundColor: backgroundColors,
+              borderColor: "#fff",
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            layout: { padding: 20 },
+            plugins: {
+              legend: { position: 'bottom' },
+              title: { display: true, text: '자산 포트폴리오' },
+              datalabels: {
+                display: true,
+                color: '#fff',
+                font: { size: 12, weight: 'bold' },
+                formatter: (value, ctx) => {
+                  const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                  const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
+                  const label = ctx.chart.data.labels[ctx.dataIndex];
+                  return label + ': ' + percentage + '%';
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      updateAssetGoalProgress();
+    }
+    
+    document.getElementById("addAssetItemBtn").addEventListener("click", () => {
+      const container = document.getElementById("assetItemsContainer");
+      container.appendChild(createAssetItem());
+    });
+    
+    function createStockItem(stock = {name:"", amount:0}) {
+      const stockDiv = document.createElement("div");
+      stockDiv.classList.add("stock-item");
+      
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.placeholder = "종목명 (예: AAPL)";
+      nameInput.value = stock.name || "";
+      nameInput.addEventListener("input", updateStockChart);
+      
+      const amountInput = document.createElement("input");
+      amountInput.type = "text";
+      amountInput.placeholder = "금액";
+      amountInput.min = 0;
+      amountInput.value = stock.amount || 0;
+      amountInput.addEventListener("input", updateStockChart);
+      addCommaFormatting(amountInput);
+      
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "삭제";
+      removeBtn.addEventListener("click", () => {
+        if(confirm("정말 삭제하시겠습니까?")) {
+          stockDiv.remove();
+          saveStockPortfolio();
+          updateStockChart();
+        }
+      });
+      
+      stockDiv.appendChild(nameInput);
+      stockDiv.appendChild(amountInput);
+      stockDiv.appendChild(removeBtn);
+      return stockDiv;
+    }
+    
+    function loadStockPortfolio() {
+      const stockList = document.getElementById("stockList");
+      stockList.innerHTML = "";
+      const stored = localStorage.getItem("stockPortfolio");
+      let stocks = [];
+      if(stored) {
+        stocks = JSON.parse(stored);
+      } else {
+        stocks = [{name:"", amount:0}, {name:"", amount:0}];
+        localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
+      }
+      stocks.forEach(stock => {
+        stockList.appendChild(createStockItem({name: stock.name, amount: stock.amount}));
+      });
+    }
+    
+    function saveStockPortfolio() {
+      const stockList = document.getElementById("stockList");
+      const stockItems = stockList.querySelectorAll(".stock-item");
+      const stocks = [];
+      stockItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const name = inputs[0].value.trim();
+        const amount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        stocks.push({ name, amount });
+      });
+      localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
+    }
+    
+    function updateStockChart() {
+      const stockList = document.getElementById("stockList");
+      const stockItems = stockList.querySelectorAll(".stock-item");
+      const names = [];
+      const amounts = [];
+      stockItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const stockName = inputs[0].value.trim() || "미입력";
+        const stockAmount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        names.push(stockName);
+        amounts.push(stockAmount);
+      });
+      saveStockPortfolio();
+      
+      const total = amounts.reduce((a, b) => a + b, 0);
+      const ctx = document.getElementById("stockChart").getContext("2d");
+      
+      adjustChartSize("stockChart", names.length);
+      
+      let labelFontSize = names.length > 5 ? Math.max(10, 14 - (names.length - 5)) : 14;
+      
+      if(total === 0) {
+        ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height);
+        ctx.font = "16px sans-serif";
+        ctx.fillStyle = "#333";
+        ctx.fillText("데이터가 없습니다.", 50, 150);
+        return;
+      }
+      
+      const backgroundColors = names.map(() => {
+        const r = Math.floor(Math.random() * 200);
+        const g = Math.floor(Math.random() * 200);
+        const b = Math.floor(Math.random() * 200);
+        return `rgb(${r}, ${g}, ${b})`;
+      });
+      
+      if(stockChart) {
+        stockChart.data.labels = names;
+        stockChart.data.datasets[0].data = amounts;
+        stockChart.data.datasets[0].backgroundColor = backgroundColors;
+        stockChart.options.plugins.datalabels.font.size = labelFontSize;
+        stockChart.update();
+      } else {
+        stockChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: names,
+            datasets: [{
+              data: amounts,
+              backgroundColor: backgroundColors,
+              borderColor: "#fff",
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            layout: { padding: 20 },
+            plugins: {
+              legend: { position: 'bottom' },
+              title: { display: true, text: '주식 포트폴리오' },
+              datalabels: {
+                display: true,
+                color: '#fff',
+                font: { size: 12, weight: 'bold' },
+                formatter: (value, ctx) => {
+                  const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                  const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
+                  const label = ctx.chart.data.labels[ctx.dataIndex];
+                  return label + ': ' + percentage + '%';
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+    
+    document.getElementById("addStockBtn").addEventListener("click", () => {
+      const stockList = document.getElementById("stockList");
+      stockList.appendChild(createStockItem());
+    });
+    
+    const CHECKLIST_KEY = "investmentChecklist";
+    function loadChecklist() {
+      const stored = localStorage.getItem(CHECKLIST_KEY);
+      const checklistEl = document.getElementById("checklist");
+      checklistEl.innerHTML = "";
+      if (stored) {
+        const items = JSON.parse(stored);
+        items.forEach(item => {
+          const li = document.createElement("li");
+          li.innerHTML = `<span>${item.text}</span>
+                          <div class="check-controls">
+                            <button class="delete-checklist-btn">삭제</button>
+                            <input type="checkbox" class="check-input" ${item.checked ? "checked" : ""}>
+                          </div>`;
+          li.querySelector(".delete-checklist-btn").addEventListener("click", () => {
+            if(confirm("정말 삭제하시겠습니까?")) {
+              li.remove();
+              saveChecklist();
+            }
+          });
+          li.querySelector("input").addEventListener("change", saveChecklist);
+          checklistEl.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>예시: PEG가 1 이하인 기업 (피터 린치)</span>
+                        <div class="check-controls">
+                          <button class="delete-checklist-btn">삭제</button>
+                          <input type="checkbox" class="check-input">
+                        </div>`;
+        li.querySelector(".delete-checklist-btn").addEventListener("click", () => {
+          if(confirm("정말 삭제하시겠습니까?")) {
+            li.remove();
+            saveChecklist();
+          }
+        });
+        li.querySelector("input").addEventListener("change", saveChecklist);
+        checklistEl.appendChild(li);
+        saveChecklist();
+      }
+    }
+    function saveChecklist() {
+      const checklistEl = document.getElementById("checklist");
+      const items = [];
+      checklistEl.querySelectorAll("li").forEach(li => {
+        const text = li.querySelector("span").innerText;
+        const checked = li.querySelector("input").checked;
+        items.push({ text, checked });
+      });
+      localStorage.setItem(CHECKLIST_KEY, JSON.stringify(items));
+    }
+    document.getElementById("addChecklistItemBtn").addEventListener("click", function(){
+      const input = document.getElementById("newChecklistItem");
+      const text = input.value.trim();
+      if(text !== ""){
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${text}</span>
+                        <div class="check-controls">
+                          <button class="delete-checklist-btn">삭제</button>
+                          <input type="checkbox" class="check-input">
+                        </div>`;
+        li.querySelector(".delete-checklist-btn").addEventListener("click", () => {
+          if(confirm("정말 삭제하시겠습니까?")) {
+            li.remove();
+            saveChecklist();
+          }
+        });
+        li.querySelector("input").addEventListener("change", saveChecklist);
+        document.getElementById("checklist").appendChild(li);
+        input.value = "";
+        saveChecklist();
+      }
+    });
+    
+    function loadAssetGoal() {
+      const savedGoal = localStorage.getItem("assetGoal");
+      const display = document.getElementById("assetGoalDisplay");
+      if (savedGoal) {
+        display.textContent = "현재 목표: " + Number(savedGoal).toLocaleString() + " 원";
+      } else {
+        display.textContent = "자산 목표가 설정되지 않았습니다.";
+      }
+      updateAssetGoalProgress();
+    }
+    
+    document.getElementById("saveAssetGoalBtn").addEventListener("click", () => {
+      const input = document.getElementById("assetGoalInput");
+      const goal = input.value.replace(/,/g, "").trim();
+      if (goal === "" || isNaN(goal)) {
+        alert("유효한 금액을 입력하세요.");
+        return;
+      }
+      localStorage.setItem("assetGoal", goal);
+      loadAssetGoal();
+      alert("자산 목표가 저장되었습니다.");
+    });
+    
+    function updateAssetGoalProgress() {
+      const savedGoal = localStorage.getItem("assetGoal");
+      const progressContainer = document.getElementById("assetGoalProgress");
+      progressContainer.innerHTML = "";
+      if (!savedGoal) {
+        return;
+      }
+      const goal = Number(savedGoal);
+      const storedAssets = localStorage.getItem("assetPortfolio");
+      let totalAsset = 0;
+      if (storedAssets) {
+        const assets = JSON.parse(storedAssets);
+        assets.forEach(asset => {
+          totalAsset += Number(asset.amount) || 0;
+        });
+      }
+      
+      const percentage = Math.min(100, ((totalAsset / goal) * 100).toFixed(2));
+      
+      const info = document.createElement("p");
+      info.textContent = `현재 자산: ${totalAsset.toLocaleString()} 원 / 목표: ${goal.toLocaleString()} 원`;
+      progressContainer.appendChild(info);
+      
+      const progressBar = document.createElement("div");
+      progressBar.classList.add("progress-bar");
+      const progress = document.createElement("div");
+      progress.classList.add("progress");
+      progress.style.width = percentage + "%";
+      progress.textContent = percentage + "%";
+      progressBar.appendChild(progress);
+      progressContainer.appendChild(progressBar);
+    }
+    
+    function loadDiaryEntries() {
+      const diaryEntriesContainer = document.getElementById("diaryEntries");
+      diaryEntriesContainer.innerHTML = "";
+      const storedEntries = localStorage.getItem("investmentDiaryEntries");
+      if (storedEntries) {
+        const entries = JSON.parse(storedEntries);
+        entries.forEach((entry, index) => {
+          const div = document.createElement("div");
+          div.className = "diary-entry";
+          div.setAttribute("data-index", index);
+          const timeElem = document.createElement("time");
+          timeElem.textContent = entry.date;
+          div.appendChild(timeElem);
+          const textElem = document.createElement("span");
+          textElem.className = "diary-text";
+          textElem.textContent = entry.text;
+          div.appendChild(textElem);
+          
+          // 수정 버튼 - 동일한 디자인 적용
+          const editBtn = document.createElement("button");
+          editBtn.textContent = "수정";
+          editBtn.classList.add("edit-btn");
+          editBtn.addEventListener("click", () => {
+            const newText = prompt("수정할 내용을 입력하세요", entry.text);
+            if(newText !== null && newText.trim() !== ""){
+              entry.text = newText.trim();
+              updateDiaryEntries(entries);
+            }
+          });
+          div.appendChild(editBtn);
+          
+          // 삭제 버튼 - 동일한 디자인 적용
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "삭제";
+          deleteBtn.classList.add("delete-btn");
+          deleteBtn.addEventListener("click", () => {
+            if(confirm("정말 삭제하시겠습니까?")){
+              entries.splice(index, 1);
+              updateDiaryEntries(entries);
+            }
+          });
+          div.appendChild(deleteBtn);
+          
+          diaryEntriesContainer.appendChild(div);
+        });
+      }
+    }
+    function updateDiaryEntries(entries) {
+      localStorage.setItem("investmentDiaryEntries", JSON.stringify(entries));
+      loadDiaryEntries();
+    }
+    document.getElementById("saveDiaryBtn").addEventListener("click", () => {
+      const diaryTextarea = document.getElementById("investmentDiary");
+      const diaryText = diaryTextarea.value.trim();
+      if(diaryText === ""){
+        alert("투자 일지를 작성해주세요.");
+        return;
+      }
+      const now = new Date();
+      const entry = {
+        date: now.toLocaleString(),
+        text: diaryText
+      };
+      let entries = [];
+      const storedEntries = localStorage.getItem("investmentDiaryEntries");
+      if(storedEntries){
+        entries = JSON.parse(storedEntries);
+      }
+      entries.push(entry);
+      localStorage.setItem("investmentDiaryEntries", JSON.stringify(entries));
+      diaryTextarea.value = "";
+      loadDiaryEntries();
+      alert("투자 일지가 저장되었습니다.");
+    });
+    
+    document.getElementById("resetDataBtn").addEventListener("click", () => {
+      if(confirm("모든 데이터를 초기화 하시겠습니까?")) {
+        localStorage.removeItem("assetPortfolio");
+        localStorage.removeItem("stockPortfolio");
+        localStorage.removeItem(CHECKLIST_KEY);
+        localStorage.removeItem("assetGoal");
+        localStorage.removeItem("investmentDiaryEntries");
+        localStorage.removeItem("calendarMemos");
+        localStorage.removeItem("accountBookEntries");
+        location.reload();
+      }
+    });
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      loadAssetPortfolio();
+      loadStockPortfolio();
+      loadChecklist();
+      loadAssetGoal();
+      loadDiaryEntries();
+      
+      updateAssetChart();
+      updateStockChart();
+      
+      addCommaFormatting(document.getElementById("assetGoalInput"));
+    });
+    
+    // 전역 변수: 현재 표시할 연도와 월 (월은 0부터 시작하므로 1은 2월을 의미)
+    let currentYear = 2025;
+    let currentMonth = 1; // 0: 1월, 1: 2월, ... 11: 12월
+
+    // 페이지 로드 시 저장된 연도/월 복원 후 달력 렌더링
+    document.addEventListener("DOMContentLoaded", () => {
+      const storedYear = localStorage.getItem("calendarCurrentYear");
+      const storedMonth = localStorage.getItem("calendarCurrentMonth");
+      if (storedYear !== null && storedMonth !== null) {
+        currentYear = Number(storedYear);
+        currentMonth = Number(storedMonth);
+      }
+      updateCalendarHeader();
+      renderCalendar();
+    });
+
+    // 달력 헤더 업데이트: 현재 연도와 월 표시
+    function updateCalendarHeader() {
+      const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
+      document.getElementById("currentMonthDisplay").textContent = currentYear + "년 " + monthNames[currentMonth];
+    }
+
+    // 달력 렌더링: currentYear와 currentMonth를 기준으로 달력 그리기
+    function renderCalendar() {
+      const calendarEl = document.getElementById("calendar");
+      if (!calendarEl) return;
+      calendarEl.innerHTML = "";
+
+      // 해당 월의 첫 날과 시작 요일, 일 수 계산
+      const firstDay = new Date(currentYear, currentMonth, 1);
+      const startDay = firstDay.getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      // 저장된 메모 불러오기
+      let memos = localStorage.getItem("calendarMemos");
+      memos = memos ? JSON.parse(memos) : {};
+
+      // 요일 헤더 추가
+      const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+      weekdays.forEach(dayName => {
+        const headerCell = document.createElement("div");
+        headerCell.textContent = dayName;
+        headerCell.style.fontWeight = "bold";
+        calendarEl.appendChild(headerCell);
+      });
+
+      // 첫 날 이전 빈 칸 추가
+      for (let i = 0; i < startDay; i++) {
+        const blankCell = document.createElement("div");
+        calendarEl.appendChild(blankCell);
+      }
+
+      // 날짜 셀 생성
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = currentYear + "-" + String(currentMonth + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+        const dayCell = document.createElement("div");
+        dayCell.classList.add("calendar-day");
+        dayCell.dataset.date = dateStr;
+
+        const dayNumber = document.createElement("span");
+        dayNumber.classList.add("day-number");
+        dayNumber.textContent = d;
+        dayCell.appendChild(dayNumber);
+
+        // 메모가 있으면 간단히 표시 (10자 이상이면 ... 처리)
+        if (memos[dateStr] && memos[dateStr].trim() !== "") {
+          const memoSpan = document.createElement("span");
+          memoSpan.classList.add("memo-text");
+          let text = memos[dateStr];
+          if (text.length > 10) text = text.substring(0, 10) + "...";
+          memoSpan.textContent = text;
+          dayCell.appendChild(memoSpan);
+          dayCell.classList.add("has-memo");
+        }
+
+        // 클릭 시 메모 모달 열기
+        dayCell.addEventListener("click", () => {
+          openMemoModal(dateStr, memos[dateStr] || "");
+        });
+
+        calendarEl.appendChild(dayCell);
+      }
+    }
+
+    // 이전/다음 버튼 클릭 이벤트 및 값 저장
+    document.getElementById("prevMonthBtn").addEventListener("click", () => {
+      if (currentMonth === 0) {
+        currentMonth = 11;
+        currentYear--;
+      } else {
+        currentMonth--;
+      }
+      localStorage.setItem("calendarCurrentYear", currentYear);
+      localStorage.setItem("calendarCurrentMonth", currentMonth);
+      updateCalendarHeader();
+      renderCalendar();
+    });
+
+    document.getElementById("nextMonthBtn").addEventListener("click", () => {
+      if (currentMonth === 11) {
+        currentMonth = 0;
+        currentYear++;
+      } else {
+        currentMonth++;
+      }
+      localStorage.setItem("calendarCurrentYear", currentYear);
+      localStorage.setItem("calendarCurrentMonth", currentMonth);
+      updateCalendarHeader();
+      renderCalendar();
+    });
+
+    // 메모 모달 관련 기능
+    let selectedCalendarDate = null;
+    function openMemoModal(dateStr, memoText) {
+      selectedCalendarDate = dateStr;
+      document.getElementById("modalTitle").textContent = "메모 입력 (" + dateStr + ")";
+      document.getElementById("modalTextarea").value = memoText;
+      document.getElementById("memoModal").classList.add("active");
+    }
+
+    function closeMemoModal() {
+      document.getElementById("memoModal").classList.remove("active");
+      selectedCalendarDate = null;
+    }
+
+    document.getElementById("saveModalBtn").addEventListener("click", () => {
+      if (!selectedCalendarDate) return;
+      let memos = localStorage.getItem("calendarMemos");
+      memos = memos ? JSON.parse(memos) : {};
+      memos[selectedCalendarDate] = document.getElementById("modalTextarea").value;
+      localStorage.setItem("calendarMemos", JSON.stringify(memos));
+      closeMemoModal();
+      renderCalendar();
+      alert("메모가 저장되었습니다.");
+    });
+
+    document.getElementById("cancelModalBtn").addEventListener("click", () => {
+      closeMemoModal();
+    });
+
+    window.addEventListener("click", (e) => {
+      const modal = document.getElementById("memoModal");
+      if (e.target === modal) {
+        closeMemoModal();
+      }
+    });
+    
+    const ACCOUNT_BOOK_KEY = "accountBookEntries";
+    function loadAccountBookEntries() {
+      const stored = localStorage.getItem(ACCOUNT_BOOK_KEY);
+      return stored ? JSON.parse(stored) : [];
+    }
+    function saveAccountBookEntries(entries) {
+      localStorage.setItem(ACCOUNT_BOOK_KEY, JSON.stringify(entries));
+    }
+    function renderAccountBook() {
+      const entries = loadAccountBookEntries();
+      const tableContainer = document.getElementById("ab-entries");
+      tableContainer.innerHTML = "";
+      if(entries.length === 0) {
+        tableContainer.innerHTML = "<p>등록된 가계부 항목이 없습니다.</p>";
+      } else {
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        thead.innerHTML = "<tr><th>날짜</th><th>구분</th><th>카테고리</th><th>금액</th><th>설명</th><th>삭제</th></tr>";
+        table.appendChild(thead);
+        const tbody = document.createElement("tbody");
+        entries.forEach((entry, index) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${entry.date}</td>
+            <td>${entry.type === "income" ? "수입" : "지출"}</td>
+            <td>${entry.category}</td>
+            <td>${Number(entry.amount).toLocaleString()} 원</td>
+            <td>${entry.description}</td>
+            <td><button class="delete-entry" data-index="${index}">삭제</button></td>
+          `;
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        tableContainer.appendChild(table);
+      }
+      updateAccountBookSummary();
+    }
+    
+    function updateAccountBookSummary() {
+      const entries = loadAccountBookEntries();
+      let totalIncome = 0, totalExpense = 0;
+      entries.forEach(entry => {
+        const amt = Number(entry.amount);
+        if(entry.type === "income") {
+          totalIncome += amt;
+        } else {
+          totalExpense += amt;
+        }
+      });
+      const net = totalIncome - totalExpense;
+      const summaryDiv = document.getElementById("ab-summary");
+      summaryDiv.innerHTML = `
+        <p>총 수입: ${totalIncome.toLocaleString()} 원</p>
+        <p>총 지출: ${totalExpense.toLocaleString()} 원</p>
+        <p><strong>잔액: ${net.toLocaleString()} 원</strong></p>
+      `;
+    }
+    
+    document.getElementById("ab-addBtn").addEventListener("click", () => {
+      const dateInput = document.getElementById("ab-date");
+      const typeSelect = document.getElementById("ab-type");
+      const categoryInput = document.getElementById("ab-category");
+      const amountInput = document.getElementById("ab-amount");
+      const descriptionInput = document.getElementById("ab-description");
+      
+      const date = dateInput.value;
+      const type = typeSelect.value;
+      const category = categoryInput.value.trim();
+      const amount = amountInput.value.replace(/,/g, "").trim();
+      const description = descriptionInput.value.trim();
+      
+      if(!date || !category || !amount || isNaN(amount)) {
+        alert("날짜, 카테고리, 금액은 필수 항목입니다. 금액은 숫자여야 합니다.");
+        return;
+      }
+      
+      const newEntry = { date, type, category, amount, description };
+      const entries = loadAccountBookEntries();
+      entries.push(newEntry);
+      saveAccountBookEntries(entries);
+      
+      dateInput.value = new Date().toISOString().split("T")[0];
+      typeSelect.value = "income";
+      categoryInput.value = "";
+      amountInput.value = "";
+      descriptionInput.value = "";
+      
+      renderAccountBook();
+    });
+    
+    document.getElementById("ab-entries").addEventListener("click", (e) => {
+      if(e.target.classList.contains("delete-entry")) {
+        const index = e.target.getAttribute("data-index");
+        const entries = loadAccountBookEntries();
+        if(confirm("해당 항목을 삭제하시겠습니까?")) {
+          entries.splice(index, 1);
+          saveAccountBookEntries(entries);
+          renderAccountBook();
+        }
+      }
+    });
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateInput = document.getElementById("ab-date");
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.value = today;
+      addCommaFormatting(document.getElementById("ab-amount"));
+      renderAccountBook();
+    });
+
+    // 개발자 도구(F12) 및 소스 보기(Ctrl+U) 차단
+    document.addEventListener("keydown", function(event) {
+        if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s")) {
+            event.preventDefault();
+            alert("소스 코드 보기가 비활성화되었습니다.");
+        }
+        if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
+            event.preventDefault();
+            alert("개발자 도구 접근이 제한되었습니다.");
+        }
+    });
+
+    // 우클릭 차단
+    document.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
+          //난독화
+          function getSecretKey() {
+          return "my-secret-key";
+      }
+      console.log(getSecretKey());
+
+// 토글 기능 추가 (섹션별 접기/펼치기) - 아이콘 사용: 기본 상태 ▲ (펼쳐진 상태), 접으면 ▼ 표시 및 로컬스토리지 저장
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButtons = document.querySelectorAll(".toggle-btn");
+  toggleButtons.forEach((btn, index) => {
+    // 해당 토글 버튼이 속한 컨테이너를 찾음.
+    // (예: .section-container, .asset-goal, .calendar-section, .account-book, .investment-checklist)
+    let container = btn.closest(".section-container") ||
+                    btn.closest(".asset-goal") ||
+                    btn.closest(".calendar-section") ||
+                    btn.closest(".account-book") ||
+                    btn.closest(".investment-checklist");
+    // 컨테이너에 고유 ID가 없다면 생성
+    let containerId = container.id;
+    if (!containerId) {
+      containerId = "toggleContainer_" + index;
+      container.id = containerId;
+    }
+    const sectionContent = btn.parentElement.nextElementSibling;
+    
+    // 저장된 상태 복원: "collapsed"이면 내용 숨김, 그렇지 않으면 보임.
+    const storedState = localStorage.getItem("sectionState_" + containerId);
+    if (storedState === "collapsed") {
+      sectionContent.style.display = "none";
+      btn.textContent = "▼";
+    } else {
+      sectionContent.style.display = "block";
+      btn.textContent = "▲";
+    }
+    
+    // 토글 버튼 클릭 시, 상태 변경 및 로컬스토리지 저장
+    btn.addEventListener("click", () => {
+      if (sectionContent.style.display === "none") {
+        sectionContent.style.display = "block";
+        btn.textContent = "▲";
+        localStorage.setItem("sectionState_" + containerId, "expanded");
+      } else {
+        sectionContent.style.display = "none";
+        btn.textContent = "▼";
+        localStorage.setItem("sectionState_" + containerId, "collapsed");
+      }
+    });
+  });
+});
+
+
+    
+
+    // 투자 일지 수정/삭제 버튼 디자인 변경 (다른 섹션과 동일하게)
+    // loadDiaryEntries 함수 내에서 수정 → 버튼에 각각 "edit-btn"과 "delete-btn" 클래스를 추가함.
+  </script>
+</body>
+</html>
