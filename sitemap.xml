@@ -7,28 +7,28 @@
 
   <!-- 홈 페이지 -->
   <url>
-    <loc>https://korvesting.netlify.app/</loc>
+    <loc>https://gohigher.netlify.app/</loc>
     <lastmod>2025-02-24T08:35:00Z</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- 포트폴리오 페이지 -->
   <url>
-    <loc>https://korvesting.netlify.app/포폴.html</loc>
+    <loc>https://gohigher.netlify.app/포폴.html</loc>
     <lastmod>2025-02-24T08:35:00Z</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 유명인 포트폴리오 페이지 -->
   <url>
-    <loc>https://korvesting.netlify.app/유명인포폴.html</loc>
+    <loc>https://gohigher.netlify.app/유명인포폴.html</loc>
     <lastmod>2025-02-24T08:35:00Z</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- 중소형 주식 페이지 -->
   <url>
-    <loc>https://korvesting.netlify.app/중소형주식.html</loc>
+    <loc>https://gohigher.netlify.app/중소형주식.html</loc>
     <lastmod>2025-02-24T08:35:00Z</lastmod>
     <priority>0.8</priority>
   </url>
