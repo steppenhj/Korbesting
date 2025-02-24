@@ -2,18 +2,14 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8">
-    <!-- 페이지 제목(Title)에 핵심 키워드와 브랜드명 함께 배치 -->
     <title>Go Higher - 미국주식·미국증시·중소형주식 소개</title>
     <meta name="description" content="미국 중소형주 투자 정보 - 러셀 2000 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다.">
+    <link rel="canonical" href="https://gohigher.netlify.app/중소형주식">
+    <link rel="icon" type="image/webp" href="https://gohigher.netlify.app/logo.webp">
 
-  <link rel="canonical" href="https://gohigher.netlify.app/중소형주식">
-  <link rel="icon" type="image/webp" href="https://gohigher.netlify.app/logo.webp">
-
-    <!-- Naver 등에서 활용될 수 있는 키워드 -->
+    <!-- 예시용 메타 태그 (네이버, 구글 검색, SNS 공유 등) -->
     <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Go Higher">
-    <!-- 검색 엔진 크롤링 허용 -->
     <meta name="robots" content="index,follow">
-    <!-- 반응형 웹 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 구글 폰트 -->
@@ -22,94 +18,15 @@
       rel="stylesheet"
     >
 
-    <!-- 사이트 검증 메타 (네이버, 구글) -->
-    <meta name="naver-site-verification" content="075a0522743a498856c11a2b5dfa09d7ad1527ba" />
-    <meta name="google-site-verification" content="GhGj63W7kkc-78a0BTXjR-_TRE8ml771kQOtegBKhHs" />
-
-    <!-- Open Graph Meta Tags (SNS 공유 시 미리보기용) -->
-    <meta property="og:title" content="Go Higher - 미국주식·미국증시·중소형주식 소개" />
-    <meta property="og:description" content="미국 중소형주 투자 정보 - 러셀 2000 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다.">
-    <meta property="og:image" content="https://gohigher.netlify.app/logo.webp" />
-    <meta property="og:url" content="https://gohigher.netlify.app/index.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Go Higher">
-    <meta property="og:locale" content="ko_KR" />
-
-      <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Go Higher - 미국주식·미국증시·중소형주식 소개">
-  <meta name="twitter:description" content="미국 중소형주 투자 정보 - 러셀 2000 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다.">
-  <meta name="twitter:image" content="https://gohigher.netlify.app/logo.webp">
-
-    <link rel="icon" type="image/png" href="logo.webp">
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Go Higher - 미국주식·미국증시·중소형주식 소개",
-        "url": "https://gohigher.netlify.app",
-        "description": "미국 중소형주 투자 정보 - 러셀 2000 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다.",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Go Higher",
-          "url": "https://gohigher.netlify.app",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://gohigher.netlify.app/images/logo.png"
-          }
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://gohigher.netlify.app/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-      </script>
-          <!-- 구조화된 데이터: BreadcrumbList -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "미국주식·미국증시·환율",
-            "item": "https://gohigher.netlify.app"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "주식포트폴리오",
-            "item": "https://gohigher.netlify.app/주식포트폴리오"
-          },
-          {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "버크셔해서웨이",
-              "item": "https://gohigher.netlify.app/버크셔해서웨이"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "중소형주식",
-            "item": "https://gohigher.netlify.app/중소형주식"
-        }
-        ]
-      }
-  </script>
-
     <style>
-      html {
-        font-size: 16px;
-      }
       :root {
         --primary-color: #004080;
         --secondary-color: #0059b3;
         --accent-color: #f4f7fa;
         --light-gray: #e0e0e0;
         --text-color: #333;
+        --modal-bg: #fff;
+        --modal-overlay-bg: rgba(0,0,0,0.5);
       }
       * {
         box-sizing: border-box;
@@ -120,13 +37,13 @@
         font-family: 'Open Sans', sans-serif;
         background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
         color: var(--text-color);
-        padding-bottom: 60px;
+        line-height: 1.4;
       }
       header {
+        text-align: center;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: #fff;
         padding: 1rem;
-        text-align: center;
         box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       }
       header h1 {
@@ -134,19 +51,19 @@
         font-size: 2rem;
         margin-bottom: 0.5rem;
       }
-      header p {
-        font-size: 1rem;
-      }
-      nav {
-        margin-top: 0.5rem;
+      main {
+        max-width: 960px;
+        margin: 1rem auto;
+        padding: 0 1rem 2rem;
       }
       nav ul {
         list-style: none;
         display: flex;
         justify-content: center;
         gap: 1rem;
+        margin-top: 0.5rem;
       }
-      nav ul li a {
+      nav a {
         display: inline-block;
         padding: 0.5rem 1rem;
         background-color: #fff;
@@ -156,129 +73,157 @@
         text-decoration: none;
         transition: background-color 0.3s, color 0.3s;
       }
-      nav ul li a:hover {
+      nav a:hover {
         background-color: var(--primary-color);
         color: #fff;
       }
-      main {
-        max-width: 960px;
-        margin: 1rem auto;
-        padding: 0 1rem;
-      }
       .save-notice {
-      background: #fff;
-      color: #444;
-      font-size: 0.9rem;
-      padding: 0.6rem 1rem;
-      margin-bottom: 0.5rem;
-      border-left: 4px solid var(--primary-color);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      line-height: 1.4;
-    }
+        background: #fff;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-left: 4px solid var(--primary-color);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
       h2 {
         text-align: center;
-        color: var(--primary-color);
         margin-bottom: 1rem;
+        color: var(--primary-color);
       }
-      /* 테이블 스타일 */
+      /* 테이블 */
       table {
         width: 100%;
         border-collapse: collapse;
         background: #fff;
-        margin-bottom: 1rem;
         border-radius: 6px;
         overflow: hidden;
       }
-      table thead {
+      thead {
         background: var(--light-gray);
       }
-      table th,
-      table td {
+      th, td {
         padding: 0.8rem;
         border: 1px solid #ddd;
         text-align: left;
-        font-size: 0.9rem;
       }
-      table tbody tr:nth-child(odd) {
+      tbody tr:nth-child(odd) {
         background: #f9f9f9;
       }
-      table tr:hover {
+      tbody tr:hover {
         background: #f1f1f1;
         cursor: pointer;
       }
-      /* 모달 스타일 */
+
+      /* 모달 */
       .modal-overlay {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.6);
-        display: none;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: var(--modal-overlay-bg);
+        display: none; /* JS로 제어 */
         justify-content: center;
         align-items: center;
-        z-index: 100;
         opacity: 0;
-        transition: opacity 0.3s;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 999;
       }
       .modal-overlay.active {
         display: flex;
         opacity: 1;
       }
-      .modal-content {
-        background: #fff;
-        padding: 2rem;
-        border-radius: 8px;
+      .modal {
         width: 90%;
-        max-width: 800px;
+        max-width: 850px;
+        background: var(--modal-bg);
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
         max-height: 90vh;
         overflow-y: auto;
         position: relative;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        font-size: 1rem;
-        line-height: 1.6;
       }
-      .modal-content h2 {
-        margin-top: 0;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+      .modal-header,
+      .modal-body,
+      .modal-footer {
+        padding: 1rem 1.5rem;
       }
-      .modal-content h3 {
-        font-size: 1.3rem;
-        margin: 1.2rem 0 0.6rem;
-        border-bottom: 1px solid var(--light-gray);
-        padding-bottom: 0.3rem;
-      }
-      .modal-content ul {
-        margin: 0.8rem 0;
-        padding-left: 1.2rem;
-      }
-      .modal-content li {
-        margin-bottom: 0.4rem;
-      }
-      .modal-content p {
-        margin: 0.8rem 0;
-      }
-      .close-modal {
-        position: absolute;
-        top: 0.5rem;
-        right: 1rem;
+      .modal-header {
         background: var(--primary-color);
         color: #fff;
-        border: none;
-        padding: 0.4rem 0.8rem;
-        border-radius: 4px;
-        cursor: pointer;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
       }
+      .modal-header h2 {
+        margin: 0;
+        font-size: 1.6rem;
+      }
+      .modal-body {
+        padding-top: 1rem;
+      }
+      .modal-body h3 {
+        margin: 1.2rem 0 0.6rem;
+        padding-bottom: 0.3rem;
+        font-size: 1.2rem;
+        border-bottom: 1px solid var(--light-gray);
+      }
+      .modal-footer {
+        background: #fafafa;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        text-align: right;
+      }
+      .close-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        float: right;
+      }
+      .close-btn:hover {
+        opacity: 0.8;
+      }
+            /* 하단 정보: 오늘 뉴스 & 우리의 철학 */
+            .bottom-info {
+        max-width: 960px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      .bottom-info > div {
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+      .bottom-info h3 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
+      }
+      .bottom-info p {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+
       footer {
         background: var(--primary-color);
         color: #fff;
         text-align: center;
-        padding: 0.8rem;
-        margin-top: 2rem;
+        padding: 1rem;
+        margin-top: auto;
+      }
+      footer a {
+        color: #fff;
+        text-decoration: underline;
       }
     </style>
   </head>
+
   <body>
     <header>
       <h1>Go Higher</h1>
@@ -294,15 +239,13 @@
     </header>
 
     <main>
-          <!-- 로그인 없이 브라우저에 영구 저장 안내(는 아니지만 가져와서 사용중 씨발) -->
-    <div class="save-notice">
-      이 페이지는 <strong>미국 중소형주</strong>를 소개합니다.<br>
-      <strong>정기적으로 새로운 종목을 추가하며,</strong>  원하는 주식에 대한<strong>분석 요청</strong>도 <strong>무료</strong>로 받을 수 있습니다.<br>
-      <strong>주식을 클릭하여 자세한 내용을 확인하세요.</strong>
-    </div>
+      <div class="save-notice">
+        이 페이지는 <strong>미국 중소형주</strong>를 소개합니다.<br>
+        <strong>정기적으로 새로운 종목을 추가</strong>하고, 원하는 주식에 대한 <strong>분석 요청</strong>도 <strong>무료</strong>로 받을 수 있습니다.<br>
+        <strong>아래 목록에서 종목을 클릭</strong>하시면 자세한 내용을 확인하실 수 있습니다.
+      </div>
 
       <h2>중소형주식 리스트</h2>
-      <!-- 주식 목록 테이블 -->
       <table id="stockTable">
         <thead>
           <tr>
@@ -311,107 +254,179 @@
           </tr>
         </thead>
         <tbody>
-          <!-- 주식 항목은 JavaScript로 생성됩니다 -->
+          <!-- JavaScript로 주식 목록이 동적으로 렌더링됩니다. -->
         </tbody>
       </table>
     </main>
-    <!-- 모달: 상세 정보 -->
+
+    <!-- 모달 영역 -->
     <div class="modal-overlay" id="modalOverlay">
-      <div class="modal-content" id="modalContent">
-        <button class="close-modal" id="closeModalBtn">닫기</button>
-        <div id="stockDetail">
-          <!-- 상세 정보가 여기에 표시됩니다 -->
+      <div class="modal">
+        <div class="modal-header">
+          <button class="close-btn" id="closeModalBtn">&times;</button>
+          <h2 id="modalTitle">상세정보</h2>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- 상세 내용이 동적으로 삽입됩니다. -->
+        </div>
+        <div class="modal-footer">
+          <button class="close-btn" id="footerCloseBtn">닫기</button>
         </div>
       </div>
     </div>
 
+        <!-- 중소형주에 대한 우리의 철학 (원본 HTML 그대로) -->
+        <div class="bottom-info">
+          <div>
+            <h3>중소형주에 대한 우리의 철학</h3>
+            <p>
+              Go Higher는 미국 중소형주에 특화된 투자 정보를 제공합니다.<br>
+              투자자들이 쉽고 신뢰할 수 있는 정보를 필요로 한다는 사실을 깊이 인식하여, 현재 시장에서 체계적으로 정리된 중소형주 정보를 찾기 어렵다는 현실을 바꾸고자 이 서비스를 시작하였습니다.<br>
+              우리는 높은 성장 잠재력과 혁신적인 아이디어를 가진 중소형 기업들을 발굴하여, 투자자 여러분께 새로운 기회의 문을 열어드리는 것을 목표로 합니다.<br>
+            </p>
+          </div>
+        </div>    
+
     <footer>
       <p>
-          © 2025 Go Higher, 고하이어. All rights reserved.<br>
-          사업체 지역: 대한민국 대구<br>
-          문의: <a href="mailto:hermann8hesse@gmail.com" style="color:#fff; text-decoration:underline;">hermann8hesse@gmail.com</a><br>
-          아이디어가 있으시면 언제든지 메일로 제안해 주세요!
+        © 2025 Go Higher, 고하이어. All rights reserved.<br>
+        사업체 지역: 대한민국 대구<br>
+        문의: <a href="mailto:hermann8hesse@gmail.com">hermann8hesse@gmail.com</a><br>
+        아이디어가 있으시면 언제든지 메일로 제안해 주세요!
       </p>
     </footer>
 
     <script>
-      // 주식 정보를 저장할 배열 (현재 페이지는 정적 소개용)
+      // 주식 정보 배열
       let stocks = [];
 
-      // 미리 Recursion Pharmaceuticals 주식 정보를 추가
+      // 리커젼 파마슈티컬스: 기존 데이터 + 섹션 통합/미래 전망을 맨 뒤
       const recursionStock = {
         ticker: "RXRX",
         company: "Recursion Pharmaceuticals / 리커젼 파마슈티컬스",
+
+        // 1) 회사 개요
         overview: {
           founded: "2013년",
           headquarters: "미국 유타주 솔트레이크시티",
           market: "나스닥 (NASDAQ: RXRX)",
           industry: "AI 기반 신약 개발 생명공학 기업",
           website: "https://www.recursion.com",
-          chulcheo: "https://m.stock.naver.com/worldstock/stock/RXRX.O/finance/summary" //쉣
+          reference: "https://m.stock.naver.com/worldstock/stock/RXRX.O/finance/summary"
         },
-        coreTech: {
+
+        // 2) 핵심 사업 및 기술(=coreTech + detailedPlatform)
+        techAndPlatform: {
           digitalBiology: "AI 및 자동화 실험을 통해 신약 후보 물질 발굴",
-          imagePhenotyping: "세포 이미지를 분석하여 신약의 효능과 독성 예측",
-          dataDriven: "매주 최대 220만 개의 실험을 수행하여 신약 개발 가속화"
+          imagePhenotyping: "세포 이미지를 분석하여 신약 효능·독성 예측",
+          dataDriven: "매주 최대 220만 개의 실험을 수행해 신약 개발 가속화",
+          detailedPlatform: "로봇 자동화 실험실, 고성능 이미징·AI 분석을 통해 약물 작용 기전 파악 속도를 크게 높임."
         },
-        partnerships: "<strong>로슈(Roche) & 제넨텍:(Genentech)</strong> 최대 120억 달러 규모의 신약 개발 협력<br><strong>바이엘(Bayer):</strong> 섬유증 치료제 공동 개발<br><strong>사노피(Sanofi):</strong> 다양한 질병 분야 신약 공동 연구<br><strong>엔비디아</strong>는 2023년 7월 리커젼 파마슈티컬스(Recursion Pharmaceuticals)에 약 5,000만 달러를 투자하여 지분 약 4%를 확보했습니다. 엔비디아는 리커젼 파마슈티컬스 외에도 AI 신약 개발 분야에 적극적으로 투자하고 있습니다. 예를 들어, 엔비디아는 AI 신약 개발 플랫폼인 BioNeMo를 통해 생명공학 기업들에게 AI 모델을 라이선스하고 있으며, 이를 통해 신약 개발을 위한 생체 분자 생성 AI 모델 개발을 가속화하고 있습니다.",
-        financials: {
+
+        // 3) 현재 개발 및 임상 파이프라인 (currentDevelopments + pipelineDetails)
+        development: {
+          currentProjects: "임상 1상: 희귀 유전질환 치료제 | 임상 2상: 섬유증·신경퇴행성 질환 치료제",
+          expansions: "AI 기반 신경과학·면역학 분야 신약 후보 확대, 자동화 실험실 확장 진행",
+          pipelineDetails: "REC-994(CCM), REC-617(고형 종양) 등 주요 파이프라인에서 임상 1/2상 긍정적 데이터 확보."
+        },
+
+        // 4) 재무 정보 (financials + cashFlow + keyMetrics + financialStability 등)
+        financialInfo: {
           revenue: "371.88억 원",
           operatingProfit: "-1,402.33억 원 (손실)",
           netProfit: "-1,366.52억 원 (손실)",
           operatingMargin: "-377.09%",
-          eps: "-0.34"
-        },
-        cashFlow: {
-          operating: "-3,475.30억 원",
-          investment: "-219.53억 원",
-          financing: "4,184.45억 원",
-          quarterlyNetIncome: "2023.09: -235.07억 원, 2023.12: -328.07억 원, 2024.03: -91.37억 원, 2024.06: -188.91억 원, 2024.09: -284.76억 원",
-          workingCapitalChange: "-44.05억 원"
-        },
-        keyMetrics: {
+          eps: "-0.34",
+          operatingCashFlow: "-3,475.30억 원",
+          investmentCashFlow: "-219.53억 원",
+          financingCashFlow: "4,184.45억 원",
+          quarterlyNetIncome: "2023.09: -235.07억, 2023.12: -328.07억, 2024.03: -91.37억, 2024.06: -188.91억, 2024.09: -284.76억",
+          workingCapitalChange: "-44.05억 원",
           pbr: "5.74",
           ebitda: "-88.79억 원",
           ebit: "-98.35억 원",
           roa: "-51.18%",
           roe: "-69.33%",
           currentRatio: "4.35",
-          longTermDebtRatio: "3.91"
+          longTermDebtRatio: "3.91",
+          financialStability: "손실 지속 중이나 엔비디아 등 파트너십·투자로 자금 조달."
         },
-        listing: {
+
+        // 5) 파트너십 (주요 파트너십 + 파트너십 구조/라이선싱)
+        partnership: {
+          majorDeals: `
+            <strong>로슈(Roche)&제넨텍(Genentech)</strong>: 최대 120억 달러 규모 신약 개발 협력<br>
+            <strong>바이엘(Bayer)</strong>: 섬유증 치료제 공동 개발<br>
+            <strong>사노피(Sanofi)</strong>: 다양한 질병 분야 신약 공동 연구<br>
+            <strong>엔비디아(NVIDIA)</strong>: 2023년 7월 약 5,000만 달러 투자(지분 4%)
+          `,
+          licensingStructure: "마일스톤·로열티 계약, 공동 연구(R&D Co-Development), 지분 투자 등 다양한 방식으로 파트너십을 전개."
+        },
+
+        // 6) IP 전략 & 규제·윤리 이슈
+        ipAndRegulation: {
+          ipStrategy: "자동화 실험·이미징 분석 기술 특허, 신약 후보물질 특허를 통해 독점권 확보. 파트너사와 공동 특허·라이선스 체계 유지.",
+          regulationEthics: "FDA·EMA 등 임상 규정 준수, 환자 데이터 보호·AI 알고리즘 투명성 강조, 희귀질환 임상(Orphan drug)에서 윤리적 이슈 고려."
+        },
+
+        // 7) 경영진 및 조직 문화
+        managementCulture: "CEO Chris Gibson 등 AI·생명공학 전문가 중심 조직. 데이터·협업 문화를 강조하며 대규모 자동화 연구 인프라 구축.",
+
+        // 8) 경쟁 구도
+        competition: "Exscientia, Insilico Medicine, Schrödinger 등 AI 신약 기업과 경쟁. 빅파마(대형 제약사) 자체 AI팀도 잠재적 경쟁 상대.",
+
+        // 9) 상장·주주 정보 (listing + majorShareholders)
+        listingInfo: {
           exchange: "나스닥 증권거래소",
           currency: "USD",
           reportingDate: "2023-12-31",
           listingDate: "2021-04-16",
           sharesOutstanding: "390,722,080주",
-          marketCap: "$3,625,900,902 (약 5조 1,752억 원)"
+          marketCap: "$3,625,900,902 (약 5조 1,752억 원)",
+          majorShareholders: `
+            The Vanguard Group, Inc. (8.85%)<br>
+            ARK Investment Management LLC (8.43%)<br>
+            Baillie Gifford & Co. (6.48%)<br>
+            BlackRock Institutional Trust Company, N.A. (5.29%)<br>
+            ARK Innovation ETF (4.91%)
+          `
         },
-        majorShareholders: "The Vanguard Group, Inc. (8.85%)<br>ARK Investment Management LLC (8.43%)<br>Baillie Gifford & Co. (6.48%)<br>BlackRock Institutional Trust Company, N.A. (5.29%)<br>ARK Innovation ETF (4.91%)",
-        currentDevelopments: "임상 1상 진행 중: 희귀 유전질환 치료제 개발<br>임상 2상 진행 중: 섬유증 치료제 및 신경퇴행성 질환 치료제 연구<br>AI 기반 신약 후보 물질 발굴 가속화: 신경과학 및 면역학 관련 신약 개발 확대<br>자동화 실험실 확장: 대규모 실험 데이터 축적을 위한 시설 확장 진행",
-        futureOutlook: "A현재 <strong>리커젼</strong>은 지속적인 영업손실과 순손실을 기록하고 있지만, <strong>AI 기반 신약 개발</strong>을 통한 상업화 가능성이 있습니다.<br><br>2024년 9월 기준, <strong>뇌해면체 기형(CCM) 치료제 REC-994</strong>의 임상 2상에서 긍정적인 결과를 발표했고, <strong>진행성 고형 종양 치료제 REC-617</strong>의 임상 1/2상에서도 고무적인 데이터를 확보했습니다.<br><br>일반적으로 신약 개발 과정에서 <strong>임상 2상 성공 이후 상업화까지 약 3~5년</strong>이 소요될 것으로 예상됩니다.<br>따라서 리커젼이 <strong>흑자로 전환</strong>되려면 최소 3~5년 내에 상업화가 이루어져야 하며, 이는 <strong>규제 승인, 추가 연구, 시장 진입 전략</strong> 등에 따라 변동될 수 있습니다.<br><br>또한, 리커젼의 주가는 엔비디아와의 협력에도 큰 영향을 받을 가능성이 있습니다. 엔비디아는 2023년 7월 리커젼에 5,000만 달러를 투자하며 약 4%의 지분을 확보하였으며, AI 기반 신약 개발을 지원하는 전략적 파트너로 자리 잡고 있습니다. 엔비디아의 AI 및 컴퓨팅 인프라를 활용한 신약 개발 가속화는 리커젼의 기술력과 기업 가치 상승에 기여할 것으로 기대됩니다.<br><br>투자자들은 리커젼의 <strong>임상 시험 진행 상황과 재무 상태</strong> 및 <strong>엔비디아와의 협력 확대</strong>를 지속적으로 모니터링하는 것이 중요합니다."
+
+        // 10) 미래 전망 (가장 마지막)
+        futureOutlook: `
+          <p>현재 리커젼은 영업손실을 지속 중이지만, AI 기반의 R&D 속도와 파이프라인 상업화 가능성이 부각되고 있습니다.</p>
+          <p>2024년 9월 기준, REC-994(뇌해면체 기형) 임상 2상·REC-617(고형 종양) 임상 1/2상에서 긍정적 결과를 확보했습니다. 
+          일반적으로 임상 2상 성공 후 상업화까지 3~5년가량 소요될 수 있으므로, 규제 승인·추가 연구·시장 전략에 따라 흑자 전환 시점이 달라질 것입니다.</p>
+          <p>엔비디아와의 협력(지분 4% 투자)으로 AI 컴퓨팅 인프라가 강화되어, 연구 개발과 기업 가치 상승에 긍정적인 영향을 줄 것으로 기대됩니다. 
+          투자자들은 임상 시험 진행과 재무 건전성, 파트너십 확대 여부를 지속적으로 모니터링하는 것이 중요합니다.</p>
+        `
       };
+
+      // 배열에 추가
       stocks.push(recursionStock);
 
-      // 테이블에 주식 목록을 렌더링하는 함수
+      // 테이블 렌더링
       function renderStockTable() {
         const tbody = document.querySelector("#stockTable tbody");
         tbody.innerHTML = "";
-        stocks.forEach((stock, index) => {
-          const tr = document.createElement("tr");
-          tr.dataset.index = index;
-          tr.innerHTML = `<td>${stock.ticker}</td><td>${stock.company}</td>`;
-          tr.addEventListener("click", () => openModal(index));
-          tbody.appendChild(tr);
+        stocks.forEach((stock, idx) => {
+          const row = document.createElement("tr");
+          row.dataset.index = idx;
+          row.innerHTML = `<td>${stock.ticker}</td><td>${stock.company}</td>`;
+          row.addEventListener("click", () => openModal(idx));
+          tbody.appendChild(row);
         });
       }
 
-      // 모달을 열어 상세 정보를 표시하는 함수 (가독성을 위한 마크업 개선)
+      // 모달 열기
       function openModal(index) {
         const stock = stocks[index];
-        const detailDiv = document.getElementById("stockDetail");
-        detailDiv.innerHTML = `
-          <h2>${stock.company} (${stock.ticker})</h2>
+        document.getElementById("modalTitle").textContent = `${stock.company} (${stock.ticker})`;
+
+        // 섹션별 내용 구성
+        const modalBody = document.getElementById("modalBody");
+        modalBody.innerHTML = `
+          <!-- (1) 회사 개요 -->
           <h3>1. 회사 개요</h3>
           <ul>
             <li><strong>설립연도:</strong> ${stock.overview.founded}</li>
@@ -419,67 +434,95 @@
             <li><strong>상장시장:</strong> ${stock.overview.market}</li>
             <li><strong>산업 분야:</strong> ${stock.overview.industry}</li>
             <li><strong>웹사이트:</strong> <a href="${stock.overview.website}" target="_blank">${stock.overview.website}</a></li>
-            <li><strong>출처:</strong> <a href="${stock.overview.chulcheo}" target="_blank">${stock.overview.chulcheo}</a></li>
+            <li><strong>출처:</strong> <a href="${stock.overview.reference}" target="_blank">${stock.overview.reference}</a></li>
           </ul>
+
+          <!-- (2) 핵심 사업 및 기술 -->
           <h3>2. 핵심 사업 및 기술</h3>
           <ul>
-            <li><strong>디지털 생물학 플랫폼:</strong> ${stock.coreTech.digitalBiology}</li>
-            <li><strong>이미지 기반 페노타이핑:</strong> ${stock.coreTech.imagePhenotyping}</li>
-            <li><strong>데이터 중심 접근 방식:</strong> ${stock.coreTech.dataDriven}</li>
+            <li><strong>디지털 생물학 플랫폼:</strong> ${stock.techAndPlatform.digitalBiology}</li>
+            <li><strong>이미지 기반 페노타이핑:</strong> ${stock.techAndPlatform.imagePhenotyping}</li>
+            <li><strong>데이터 중심 R&D:</strong> ${stock.techAndPlatform.dataDriven}</li>
+            <li><strong>추가 상세:</strong> ${stock.techAndPlatform.detailedPlatform}</li>
           </ul>
-          <h3>3. 주요 파트너십 및 협업</h3>
-          <p>${stock.partnerships}</p>
-          <h3>4. 재무 현황 (2024년 9월 기준)</h3>
+
+          <!-- (3) 현재 개발 및 임상 파이프라인 -->
+          <h3>3. 현재 개발 및 임상 파이프라인</h3>
+          <p>${stock.development.currentProjects}</p>
+          <p>${stock.development.expansions}</p>
+          <p>${stock.development.pipelineDetails}</p>
+
+          <!-- (4) 재무 정보 -->
+          <h3>4. 재무 정보</h3>
           <ul>
-            <li><strong>매출액:</strong> ${stock.financials.revenue}</li>
-            <li><strong>영업이익:</strong> ${stock.financials.operatingProfit}</li>
-            <li><strong>순이익:</strong> ${stock.financials.netProfit}</li>
-            <li><strong>영업이익률:</strong> ${stock.financials.operatingMargin}</li>
-            <li><strong>EPS:</strong> ${stock.financials.eps}</li>
+            <li><strong>매출액:</strong> ${stock.financialInfo.revenue}</li>
+            <li><strong>영업이익:</strong> ${stock.financialInfo.operatingProfit}</li>
+            <li><strong>순이익:</strong> ${stock.financialInfo.netProfit}</li>
+            <li><strong>영업이익률:</strong> ${stock.financialInfo.operatingMargin}</li>
+            <li><strong>EPS:</strong> ${stock.financialInfo.eps}</li>
+            <li><strong>영업활동 현금흐름:</strong> ${stock.financialInfo.operatingCashFlow}</li>
+            <li><strong>투자활동 현금흐름:</strong> ${stock.financialInfo.investmentCashFlow}</li>
+            <li><strong>재무활동 현금흐름:</strong> ${stock.financialInfo.financingCashFlow}</li>
+            <li><strong>최근 분기별 순이익 변화:</strong> ${stock.financialInfo.quarterlyNetIncome}</li>
+            <li><strong>운전자본 변화:</strong> ${stock.financialInfo.workingCapitalChange}</li>
+            <li><strong>PBR:</strong> ${stock.financialInfo.pbr}</li>
+            <li><strong>EBITDA:</strong> ${stock.financialInfo.ebitda}</li>
+            <li><strong>EBIT:</strong> ${stock.financialInfo.ebit}</li>
+            <li><strong>ROA:</strong> ${stock.financialInfo.roa}</li>
+            <li><strong>ROE:</strong> ${stock.financialInfo.roe}</li>
+            <li><strong>유동비율:</strong> ${stock.financialInfo.currentRatio}</li>
+            <li><strong>장기부채비율:</strong> ${stock.financialInfo.longTermDebtRatio}</li>
+            <li><strong>재무 안정성:</strong> ${stock.financialInfo.financialStability}</li>
           </ul>
-          <h3>5. 현금흐름표 (2024년 9월 기준)</h3>
+
+          <!-- (5) 파트너십 -->
+          <h3>5. 파트너십</h3>
+          <p>${stock.partnership.majorDeals}</p>
+          <p><strong>라이선싱 구조:</strong> ${stock.partnership.licensingStructure}</p>
+
+          <!-- (6) IP 전략 & 규제·윤리 이슈 -->
+          <h3>6. IP 전략 & 규제·윤리 이슈</h3>
+          <p><strong>지적 재산권(IP) 전략:</strong> ${stock.ipAndRegulation.ipStrategy}</p>
+          <p><strong>규제·윤리 이슈:</strong> ${stock.ipAndRegulation.regulationEthics}</p>
+
+          <!-- (7) 경영진 및 조직 문화 -->
+          <h3>7. 경영진 및 조직 문화</h3>
+          <p>${stock.managementCulture}</p>
+
+          <!-- (8) 경쟁 구도 -->
+          <h3>8. 경쟁 구도</h3>
+          <p>${stock.competition}</p>
+
+          <!-- (9) 상장·주주 정보 -->
+          <h3>9. 상장·주주 정보</h3>
           <ul>
-            <li><strong>영업활동 현금흐름:</strong> ${stock.cashFlow.operating}</li>
-            <li><strong>투자활동 현금흐름:</strong> ${stock.cashFlow.investment}</li>
-            <li><strong>재무활동 현금흐름:</strong> ${stock.cashFlow.financing}</li>
-            <li><strong>최근 분기별 순이익 변화:</strong> ${stock.cashFlow.quarterlyNetIncome}</li>
-            <li><strong>운전자본 변화:</strong> ${stock.cashFlow.workingCapitalChange}</li>
+            <li><strong>거래소:</strong> ${stock.listingInfo.exchange}</li>
+            <li><strong>통화:</strong> ${stock.listingInfo.currency}</li>
+            <li><strong>결산일:</strong> ${stock.listingInfo.reportingDate}</li>
+            <li><strong>상장일:</strong> ${stock.listingInfo.listingDate}</li>
+            <li><strong>상장 주식 수:</strong> ${stock.listingInfo.sharesOutstanding}</li>
+            <li><strong>시가총액:</strong> ${stock.listingInfo.marketCap}</li>
           </ul>
-          <h3>6. 주요 재무 지표</h3>
-          <ul>
-            <li><strong>PBR:</strong> ${stock.keyMetrics.pbr}</li>
-            <li><strong>EBITDA:</strong> ${stock.keyMetrics.ebitda}</li>
-            <li><strong>EBIT:</strong> ${stock.keyMetrics.ebit}</li>
-            <li><strong>ROA:</strong> ${stock.keyMetrics.roa}</li>
-            <li><strong>ROE:</strong> ${stock.keyMetrics.roe}</li>
-            <li><strong>유동비율:</strong> ${stock.keyMetrics.currentRatio}</li>
-            <li><strong>장기부채비율:</strong> ${stock.keyMetrics.longTermDebtRatio}</li>
-          </ul>
-          <h3>7. 상장 정보</h3>
-          <ul>
-            <li><strong>거래소:</strong> ${stock.listing.exchange}</li>
-            <li><strong>통화:</strong> ${stock.listing.currency}</li>
-            <li><strong>결산일:</strong> ${stock.listing.reportingDate}</li>
-            <li><strong>상장일:</strong> ${stock.listing.listingDate}</li>
-            <li><strong>상장 주식 수:</strong> ${stock.listing.sharesOutstanding}</li>
-            <li><strong>시가총액:</strong> ${stock.listing.marketCap}</li>
-          </ul>
-          <h3>8. 주요 주주 구성</h3>
-          <p>${stock.majorShareholders}</p>
-          <h3>9. 현재 개발 현황</h3>
-          <p>${stock.currentDevelopments}</p>
+          <p><strong>주요 주주 구성:</strong><br> ${stock.listingInfo.majorShareholders}</p>
+
+          <!-- (10) 미래 전망(마지막) -->
           <h3>10. 미래 전망</h3>
-          <p>${stock.futureOutlook}</p>
+          ${stock.futureOutlook}
         `;
+
+        // 모달 표시
         document.getElementById("modalOverlay").classList.add("active");
       }
 
+      // 모달 닫기
       function closeModal() {
         document.getElementById("modalOverlay").classList.remove("active");
       }
-      document.getElementById("closeModalBtn").addEventListener("click", closeModal);
 
-      // 페이지 로드 시 주식 목록 렌더링
+      document.getElementById("closeModalBtn").addEventListener("click", closeModal);
+      document.getElementById("footerCloseBtn").addEventListener("click", closeModal);
+
+      // 페이지 로드 후 테이블 렌더링
       renderStockTable();
     </script>
   </body>
