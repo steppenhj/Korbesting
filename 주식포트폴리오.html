@@ -851,6 +851,18 @@
           <div class="account-book-entries" id="ab-entries">
             <!-- 가계부 항목 목록 테이블 -->
           </div>
+          <!-- 추가: 고정 지출 계산기 -->
+          <div class="fixed-expense-calculator" style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+            <h3>월간 고정 지출 계산기</h3>
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+              <input type="text" id="fixedExpenseDescription" placeholder="지출 항목" style="flex: 1; padding: 5px;">
+              <input type="text" id="fixedExpenseAmount" placeholder="금액" style="width: 100px; padding: 5px;">
+              <button id="addFixedExpenseBtn" style="padding: 5px 10px;">추가</button>
+            </div>
+            <div id="fixedExpenseList"></div>
+            <div id="fixedExpenseTotal" style="margin-top: 10px; font-weight: bold;"></div>
+          </div>
+          <!-- 고정 지출 계산기 끝 -->
         </div>
       </div>
       
@@ -1685,7 +1697,7 @@
       if(e.target.classList.contains("delete-entry")) {
         const index = e.target.getAttribute("data-index");
         const entries = loadAccountBookEntries();
-        if(confirm("해당 항목을 삭제하시겠습니까?")) {
+        if(confirm("해당 항목을 삭제하시겠습니까?")){
           entries.splice(index, 1);
           saveAccountBookEntries(entries);
           renderAccountBook();
@@ -1723,7 +1735,7 @@
       }
       console.log(getSecretKey());
 
-// 토글 기능 추가 (섹션별 접기/펼치기) - 아이콘 사용: 기본 상태 ▲ (펼쳐진 상태), 접으면 ▼ 표시 및 로컬스토리지 저장
+    // 토글 기능 추가 (섹션별 접기/펼치기) - 아이콘 사용: 기본 상태 ▲ (펼쳐진 상태), 접으면 ▼ 표시 및 로컬스토리지 저장
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButtons = document.querySelectorAll(".toggle-btn");
   toggleButtons.forEach((btn, index) => {
@@ -1767,11 +1779,79 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-    
-
     // 투자 일지 수정/삭제 버튼 디자인 변경 (다른 섹션과 동일하게)
     // loadDiaryEntries 함수 내에서 수정 → 버튼에 각각 "edit-btn"과 "delete-btn" 클래스를 추가함.
   </script>
+<!-- 고정 지출 계산기 스크립트 (수정: 로컬 스토리지 저장 기능 추가) -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const addFixedExpenseBtn = document.getElementById("addFixedExpenseBtn");
+    const fixedExpenseDescription = document.getElementById("fixedExpenseDescription");
+    const fixedExpenseAmount = document.getElementById("fixedExpenseAmount");
+    const fixedExpenseList = document.getElementById("fixedExpenseList");
+    const fixedExpenseTotal = document.getElementById("fixedExpenseTotal");
+
+    // 로컬 스토리지에서 저장된 고정 지출 데이터를 불러옵니다.
+    let fixedExpenses = [];
+    const storedFixedExpenses = localStorage.getItem("fixedExpenses");
+    if (storedFixedExpenses) {
+      fixedExpenses = JSON.parse(storedFixedExpenses);
+    }
+
+    function saveFixedExpenses() {
+      localStorage.setItem("fixedExpenses", JSON.stringify(fixedExpenses));
+    }
+
+    function updateFixedExpenseDisplay() {
+      fixedExpenseList.innerHTML = "";
+      fixedExpenses.forEach((expense, index) => {
+        const div = document.createElement("div");
+        div.style.display = "flex";
+        div.style.justifyContent = "space-between";
+        div.style.alignItems = "center";
+        div.style.marginBottom = "5px";
+        div.innerHTML = `<span>${expense.description}: ${Number(expense.amount).toLocaleString()} 원</span>`;
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "삭제";
+        delBtn.style.padding = "2px 5px";
+        delBtn.style.fontSize = "0.8rem";
+        delBtn.addEventListener("click", () => {
+          fixedExpenses.splice(index, 1);
+          updateFixedExpenseDisplay();
+          updateFixedExpenseTotal();
+          saveFixedExpenses();
+        });
+        div.appendChild(delBtn);
+        fixedExpenseList.appendChild(div);
+      });
+    }
+
+    function updateFixedExpenseTotal() {
+      let total = fixedExpenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
+      fixedExpenseTotal.textContent = "총 고정 지출: " + total.toLocaleString() + " 원";
+    }
+
+    addFixedExpenseBtn.addEventListener("click", () => {
+      const description = fixedExpenseDescription.value.trim();
+      const amountStr = fixedExpenseAmount.value.replace(/,/g, "").trim();
+      if(description === "" || amountStr === "" || isNaN(amountStr)) {
+        alert("유효한 지출 항목과 금액을 입력하세요.");
+        return;
+      }
+      fixedExpenses.push({ description: description, amount: Number(amountStr) });
+      updateFixedExpenseDisplay();
+      updateFixedExpenseTotal();
+      saveFixedExpenses();
+      fixedExpenseDescription.value = "";
+      fixedExpenseAmount.value = "";
+    });
+
+    // 초기 로딩 시 표시 업데이트
+    updateFixedExpenseDisplay();
+    updateFixedExpenseTotal();
+  });
+</script>
+
+  
 </body>
 </html>
