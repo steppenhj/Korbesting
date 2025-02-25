@@ -32,7 +32,7 @@
     <meta name="twitter:title" content="Go Higher - 버크셔해서웨이·워렌버핏·일론머스크·손정의·피터린치">
     <meta name="twitter:description" content="전 세계 주요 인물인 워렌버핏, 손정의, 피터린치 등의 포트폴리오를 살펴보세요. SEC 13F 공시 기반으로 최신 투자 동향을 제공합니다.">
     <meta name="twitter:image" content="https://gohigher.netlify.app/logo.webp">
-    
+
     <link rel="icon" type="image/png" href="logo.webp">
 
     <!-- JSON-LD 구조화 데이터(WebPage) -->
@@ -42,7 +42,7 @@
       "@type": "WebPage",
       "name": "Go Higher - 버크셔해서웨이·워렌버핏·일론머스크·손정의·피터린치",
       "url": "https://gohigher.netlify.app/버크셔해서웨이.html",
-      "description": 전 세계 주요 인물인 워렌버핏, 손정의, 피터린치 등의 포트폴리오를 살펴보세요. SEC 13F 공시 기반으로 최신 투자 동향을 제공합니다.",
+      "description": "전 세계 주요 인물인 워렌버핏, 손정의, 피터린치 등의 포트폴리오를 살펴보세요. SEC 13F 공시 기반으로 최신 투자 동향을 제공합니다.",
       "inLanguage": "ko",
       "isPartOf": {
         "@type": "WebSite",
@@ -51,7 +51,7 @@
       }
     }
     </script>
-              <!-- 구조화된 데이터: BreadcrumbList -->
+    <!-- 구조화된 데이터: BreadcrumbList -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -80,10 +80,10 @@
             "position": 4,
             "name": "중소형주식",
             "item": "https://gohigher.netlify.app/중소형주식"
-        }
+          }
         ]
       }
-  </script>
+    </script>
 
     <!-- 구글 폰트 & 차트.js 및 플러그인 -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
@@ -167,35 +167,56 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
             line-height: 1.4;
         }
+
         .chart-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
         }
+        .chart-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .chart-wrapper {
+            background-color: #fff;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            /* 행이 너무 좁아지면 다음 줄로 넘어갈 수 있도록 허용 */
+            flex: 1 1 0;
+        }
+        .chart-wrapper:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        /* (중요) chart-box를 퍼센트(30~33%)로 지정하되, 너무 작아지지 않도록 min-width 설정 */
         .chart-box {
+            width: 32%;
+            min-width: 380px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 400px;
-            transition: transform 0.3s;
-        }
-        .chart-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         .chart-box h2 {
-            font-size: 20px;
+            font-size: 1.2rem;
             text-align: center;
+            margin: 0.5rem 0;
         }
         .chart-box p {
             margin: 0;
             margin-bottom: 8px;
             text-align: left !important;
+            font-size: 0.95rem;
         }
+        /* (중요) canvas를 width:100%로 설정해, 부모의 너비에 맞춰 자동 확장/축소 */
         canvas {
-            width: 250px;
-            height: 250px; /* 크기 고정 */
+            width: 100%;
+            height: auto;
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
@@ -205,23 +226,17 @@
             color: #fff;
             text-align: center;
             padding: 0.8rem;
-            bottom: 0;
-            width: 100%;
+            bottom: 0; width: 100%;
             font-size: 1rem;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
         }
-
-        /* ============================= */
-        /* 모달 스타일 */
-        /* ============================= */
+        /* 모달 */
         .modal {
-            display: none; /* 기본 숨김 */
+            display: none;
             position: fixed;
             z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.6);
         }
@@ -230,8 +245,8 @@
             margin: 5% auto;
             padding: 20px;
             border-radius: 8px;
-            width: 90%;         /* 가로 길이 늘림 */
-            max-width: 1000px;  /* 최대 1000px */
+            width: 90%;
+            max-width: 1000px;
             position: relative;
         }
         .close {
@@ -239,19 +254,16 @@
             font-size: 28px;
             font-weight: bold;
             position: absolute;
-            top: 10px;
-            right: 20px;
+            top: 10px; right: 20px;
             cursor: pointer;
         }
         .close:hover,
         .close:focus {
             color: black;
         }
-        /* 모달 내부 설명 */
         .modal-description {
             margin-bottom: 20px;
         }
-        /* 모달 내부 차트 크기 (너무 크게 느껴지면 조절) */
         #modalChart {
             width: 500px !important;
             height: 500px !important;
@@ -259,49 +271,38 @@
             display: block;
         }
         .container {
-        max-width: 1500px;
-        margin: 40px auto;
-        padding: 0 20px;
+            max-width: 1500px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
- /* .about 섹션: 전체 텍스트를 왼쪽 정렬하고 패딩을 추가 */
-.about {
-    text-align: left;
-    background: white;
-    padding: 40px 20px;
-    border-radius: 8px;
-    /* 필요에 따라 max-width를 제거하거나 조정 */
-    max-width: 100%;
-}
-
-/* ul 스타일: 고정 폭 대신 전체 폭 사용, 좌측 여백 추가 */
-.section ul {
-    width: 100%;
-    list-style: none;
-    padding-left: 20px;
-    margin: 0 auto 20px auto;
-}
-
-/* li 스타일: 불필요한 고정 폭 제거 및 자연스러운 간격 부여 */
-.section li {
-    margin: 10px 0;
-    text-align: left;
-}
-
-/* 제목 등 다른 텍스트 요소도 왼쪽 정렬 */
-.section h1{
-    text-align: center;
-    margin-bottom: 30px;
-}
-.section h2{
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: 15px;
-
-}
-.section p {
-    text-align: center;
-}
-
+        .about {
+            text-align: left;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        .section ul {
+            width: 100%;
+            list-style: none;
+            padding-left: 20px;
+            margin: 0 auto 20px auto;
+        }
+        .section li {
+            margin: 10px 0;
+            text-align: left;
+        }
+        .section h1{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section h2{
+            text-align: center;
+            margin-bottom: 30px; margin-top: 15px;
+        }
+        .section p {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -325,72 +326,100 @@
         </div>
     </main>
 
-    <!-- 차트 목록 -->
+    <!-- 차트 목록 (3행*3열) -->
     <div class="chart-container">
-        <div class="chart-box">
+      <!-- 첫 번째 행: chart1, chart2, chart3 -->
+      <div class="chart-row">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>BERKSHIRE HATHAWAY INC</h2>
             <p>CEO: 워런 버핏 (Warren Buffett)</p>
             <p>투자 성향: 장기 투자</p>
             <p>사업 분야: 보험, 철도, 에너지, 가구, 화학제품 등</p>
             <canvas id="chart1"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>DUQUESNE FAMILY OFFICE</h2>
             <p>CEO: 스탠리 드라켄밀러(Stanley Druckenmiller)</p>
             <p>투자 성향: 장기 투자, 다각화된 포트폴리오</p>
             <p>사업 분야: 헤지펀드 운영, 투자 관리, 금융서비스 제공 등</p>
             <canvas id="chart2"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>Bridgewater Associates</h2>
             <p>CEO: 레이 달리오(Ray Dalio)</p>
             <p>투자 성향: 장기 투자, 다각화된 포트폴리오, 위험 배분</p>
             <p>사업 분야: 헤지펀드 운영, 자산운용, 경제적 자문 등</p>
             <canvas id="chart3"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+      </div>
+      <!-- 두 번째 행: chart4, chart5, chart6 -->
+      <div class="chart-row">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>Pershing Square Capital Management</h2>
             <p>CEO: 빌 애크먼(Bill Ackman)</p>
             <p>투자 성향: 장기 투자</p>
             <p>사업 분야: 주식, 채권, 부동산, 토대 계약 등</p>
             <canvas id="chart4"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>SoftBank Group</h2>
             <p>CEO: 손정의(Masayoshi Son)</p>
             <p>투자 성향: 높은 리스크, 높은 보상</p>
             <p>사업 분야: 인공지능, 운송 서비스, 로봇, 자동화 등</p>
             <canvas id="chart5"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>PAULSON & COMPANY INC</h2>
             <p>CEO: 존 폴슨(John Paulson)</p>
             <p>투자 성향: 장기 투자</p>
             <p>사업 분야: 의료, 금융서비스, 통신서비스, 에너지 등</p>
             <canvas id="chart6"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+      </div>
+      <!-- 세 번째 행: chart7, chart8, chart9 -->
+      <div class="chart-row">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>SAUDI CENTRAL BANK</h2>
             <p>CEO: 아이만 알사이리(Ayman Al-Sayari)</p>
             <p>투자 성향: 안전한 투자</p>
             <p>사업 분야: 금융 기술, 중소기업 지원 등</p>
             <canvas id="chart7"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>KNIGHTHEAD CAPITAL MANAGEMENT, LLC</h2>
             <p>CEO: 아라 D. 코헨(Ara D. Cohen)</p>
             <p>투자 성향: 장기 투자</p>
             <p>사업 분야: 금융 서비스, 통신 서비스, 에너지 등</p>
             <canvas id="chart8"></canvas>
+          </div>
         </div>
-        <div class="chart-box">
+        <div class="chart-wrapper">
+          <div class="chart-box">
             <h2>FIDELITY NATIONAL FINANCIAL, INC.</h2>
             <p>CEO: 아비게일 피에르폰트 존슨 (Abigail Pierrepont Johnson)</p>
             <p>투자 성향: 장기 투자</p>
             <p>사업 분야: 금융 서비스 등</p>
             <canvas id="chart9"></canvas>
+          </div>
         </div>
+      </div>
     </div>
+
     <div class="container">
         <section class="section about">
           <h1>주요 기관 및 인물 투자 동향</h1>
@@ -407,7 +436,7 @@
           <h2>버크셔 해서웨이의 투자 전략</h2>
           <ul>
             <li>
-              <strong>애플 지분 조정:</strong> 워런 버핏은 2024년 1분기 동안 애플 지분을 약 13% 줄였습니다. 
+              <strong>애플 지분 조정:</strong> 워런 버핏은 2024년 1분기 동안 애플 지분을 약 13% 줄였습니다.
               이는 세금 효율성을 높이기 위한 전략적 매도로, 애플에 대한 장기적 전망은 여전히 긍정적입니다.
             </li>
             <li>
@@ -457,10 +486,10 @@
             [22.12, 5.5, 4.23, 3.14, 2.15, 2.15, 60.71],     // 3번
             [15.89, 11.88, 11.78, 11.5, 11.39, 11.23, 26.33], // 4번
             [80.64, 6.04, 4.04, 1.83, 1.68, 1.17, 4.6],       // 5번
-            [38.14, 16, 14.27, 12.9, 5.49, 3.83, 9.87],        // 6번
-            [19.19, 18.25, 14.01, 12.69, 12.66, 11.79, 11.41], // 7번
-            [31.59, 20.26, 15.77, 14.96, 13.94, 3.06, 0.42],   // 8번
-            [89.08, 3.12, 1.63, 1.30, 0.68, 0.56, 3.63]        // 9번 (FIDELITY NATIONAL FINANCIAL, INC.)
+            [38.14, 16, 14.27, 12.9, 5.49, 3.83, 9.87],       // 6번
+            [19.19, 18.25, 14.01, 12.69, 12.66, 11.79, 11.41],// 7번
+            [31.59, 20.26, 15.77, 14.96, 13.94, 3.06, 0.42],  // 8번
+            [89.08, 3.12, 1.63, 1.30, 0.68, 0.56, 3.63]       // 9번 (FIDELITY NATIONAL FINANCIAL, INC.)
         ];
         // 차트별 라벨
         const chartLabels = [
@@ -468,100 +497,159 @@
             ["NTRA", "COHR", "WWD", "TEVA", "CPNG", "PM", "기타"],   // 2번
             ["SPY", "IVV", "IEMG", "GOOGL", "NVDA", "META", "기타"],  // 3번
             ["BN", "QSR", "CMG", "HHH", "GOOG", "NKE", "기타"],       // 4번
-            ["TMUS", "NVDA", "SYM", "WBTN", "LMND", "INTR", "기타"],   // 5번
-            ["MDGL", "PPTA", "AAMI", "BHC", "NG", "THRY", "기타"],     // 6번
+            ["TMUS", "NVDA", "SYM", "WBTN", "LMND", "INTR", "기타"],  // 5번
+            ["MDGL", "PPTA", "AAMI", "BHC", "NG", "THRY", "기타"],    // 6번
             ["XLE", "META", "SMH", "QQQ", "VTV", "SPY", "기타"],      // 7번
             ["HTZ", "UP", "IWM", "HYG", "SPY", "GB", "기타"],         // 8번
-            ["FG", "ALIT", "CCAP", "PSFE", "PM", "UPS", "기타"]         // 9번 (FIDELITY NATIONAL FINANCIAL, INC.)
+            ["FG", "ALIT", "CCAP", "PSFE", "PM", "UPS", "기타"]       // 9번 (FIDELITY NATIONAL FINANCIAL, INC.)
         ];
         // 색상
         const chartColors = [
             "#ff6384", "#36a2eb", "#ffcd56", "#4bc0c0", "#9966ff", "#ff9f40", "#c9cbcf"
         ];
 
-        // 모달에서 보여줄 "자세한 내용" (버크셔만 예시로 자세히, 나머지는 직접 작성하거나 빈 문자열로)
+        // 모달 내 "자세한 내용"
         const chartDetails = [
-            // 0: 버크셔 해서웨이
-            `
-                <h3>버크셔 해서웨이 (Berkshire Hathaway Inc.)</h3>
-                <p>
-                    버크셔 해서웨이는 워런 버핏(Warren Buffett)이 이끄는 투자 지주회사로서,
-                    보험, 철도, 에너지, 유통, 금융 등 다양한 사업 분야를 포괄하고 있습니다.
-                    오랫동안 가치 투자의 아이콘으로 여겨져 왔으며, 장기적으로 안정적인
-                    수익을 추구하는 투자자들에게 주목받고 있습니다.
-                </p>
-                <p>
-                    <strong>주요 종목:</strong> AAPL, AXP, BAC, KO, CVX 등<br>
-                    <strong>투자 성향:</strong> 장기 투자 (가치투자, 집중투자 등)<br>
-                    <strong>특징:</strong> 주주총회 때마다 ‘버크셔 해서웨이 주주총회’가 큰 행사로 주목받습니다.
-                </p>
-            `,
-            // 1: 듀케인 패밀리 오피스
-            `<h3>듀케인 패밀리 오피스 (Duquesne Family Office)</h3><p>Duquesne Family Office는 전설적인 헤지펀드 매니저 스탠리 드라켄밀러가 운영하는 패밀리 오피스로, 거시경제 분석을 기반으로 한 투자 전략을 펼칩니다. 드라켄밀러는 조지 소로스와 함께 ‘영국 파운드화 공격’으로 유명한 인물이며, 뛰어난 시장 예측력과 유연한 투자 방식으로 주목받고 있습니다.
-</p>
-                <p>
-                    <strong>주요 종목:</strong> NTRA, COHR, WWD, TEVA, CPNG 등<br>
-                    <strong>투자 성향:</strong> 매크로 투자, 유동적 포트폴리오 조정<br>
-                    <strong>특징:</strong> 헤지펀드를 폐쇄한 후 개인 자산을 운용하는 패밀리 오피스 형태로 운영됨
-                </p>`,
-            // 2: 브릿지워터 어소시에이츠
-            `<h3>브릿지워터 어소시에이츠 (Bridgewater Associates)</h3><p> Bridgewater Associates는 세계 최대 규모의 헤지펀드 중 하나로, 글로벌 거시경제 데이터를 분석하여 투자 결정을 내리는 ‘올웨더(All Weather)’ 전략으로 유명합니다. 레이 달리오는 경제 사이클과 리스크 관리를 중시하며, 금융 시장의 흐름을 분석하는 철학적 접근법으로 유명합니다.</p>
-                <p>
-                    <strong>주요 종목:</strong> SPY, IVV, IEMG, GOOGL, NVDA 등<br>
-                    <strong>투자 성향:</strong> 거시경제 분석 기반의 퀀트 투자<br>
-                    <strong>특징:</strong> 독창적인 투자 철학과 조직 문화(‘아이디어 성격’ 강조)
-                </p>`,
-            // 3: 퍼싱 스퀘어 캐피털 매니지먼트
-            `<h3>퍼싱 스퀘어 캐피털 매니지먼트 (Pershing Square Capital Management)</h3><p>Pershing Square Capital Management는 빌 애크먼이 운영하는 액티비스트 헤지펀드로, 기업의 지배구조를 개선하고 장기적인 가치를 끌어올리는 전략을 펼칩니다. 빌 애크먼은 공격적인 투자 스타일로 유명하며, 기업 경영진과 직접 협상하는 방식의 투자 활동을 진행합니다.</p>
-                <p>
-                    <strong>주요 종목:</strong> BN, QSR, CMG, HHH, GOOG, NKE 등<br>
-                    <strong>투자 성향:</strong> 가치투자, 액티비스트 투자<br>
-                    <strong>특징:</strong> 공매도 투자에도 적극적이며, 대중적인 논란을 일으킨 투자 사례(예: 발레안트 제약)도 있음
-                </p>`,
-            // 4: 소프트뱅크 그룹
-            `<h3>소프트뱅크 그룹 (SoftBank Group)</h3><p>SoftBank Group은 일본의 거대 투자 기업으로, 기술 및 스타트업에 집중 투자하는 Vision Fund를 운영하며 글로벌 기술 기업에 대한 공격적인 투자를 진행합니다. 손정의는 미래 혁신 기술에 대한 강한 신념을 바탕으로 장기적인 성장을 추구하는 전략을 고수합니다.</p>
-                <p>
-                    <strong>주요 종목:</strong> TMUS, NVDA, SYM, WBTN, LMND 등<br>
-                    <strong>투자 성향:</strong> 혁신 기술 중심의 벤처 투자<br>
-                    <strong>특징:</strong> 우버, ARM, 알리바바 등 주요 글로벌 기업에 대규모 투자
-                </p>`,
-            // 5: 폴슨 앤 컴퍼니
-            `<h3>폴슨 앤 컴퍼니 (PAULSON & COMPANY INC)</h3><p>PAULSON & COMPANY INC는 헤지펀드 업계에서 ‘서브프라임 모기지 사태’를 예측하고 공매도를 통해 큰 수익을 거둔 존 폴슨이 운영하는 투자 회사입니다. 주로 특수 상황(Special Situation) 및 이벤트 드리븐(Event-Driven) 투자 전략을 활용합니다.</p>
-                <p>
-                    <strong>주요 종목:</strong> MDGL, PPTA, AAMI, BHC, NG 등<br>
-                    <strong>투자 성향:</strong> 이벤트 드리븐, 가치투자<br>
-                    <strong>특징:</strong> 2008년 금융 위기 당시 공매도를 통해 수십억 달러의 수익을 거둔 투자자로 유명
-                </p>`,
-            // 6: 사우디 중앙은행
-            `<h3>사우디 중앙은행 (SAUDI CENTRAL BANK)</h3><p>사우디아라비아 중앙은행(Saudi Central Bank, SAMA)은 국가의 금융 안정성과 경제 성장 지원을 목표로 하는 기관입니다. 외환 보유액 관리, 금융 규제 및 통화 정책을 통해 사우디 경제를 조율하는 역할을 합니다.</p>
-                <p>
-                    <strong>주요 종목:</strong> XLE, META, SMH, QQQ, VTV, SPY 등<br>
-                    <strong>투자 성향:</strong> 안정적인 국가 자산 운용<br>
-                    <strong>특징:</strong> 중동 지역에서 가장 영향력 있는 중앙은행 중 하나
-                </p>`,
-            // 7: 나이트헤드 캐피털 매니지먼트
-            `<h3>나이트헤드 캐피털 매니지먼트 (KNIGHTHEAD CAPITAL MANAGEMENT, LLC)</h3><p>Knighthead Capital Management는 부실채권(Distressed Debt) 및 특수 상황 투자에 중점을 두는 헤지펀드로, 기업 구조조정과 파산 절차에서 기회를 찾는 전략을 사용합니다.</p>
-                <p>
-                    <strong>주요 종목:</strong> HTZ, UP, IWM, HYG, SPY, GB 등<br>
-                    <strong>투자 성향:</strong> 이벤트 드리븐, 딥 밸류 투자<br>
-                    <strong>특징:</strong> 위기 상황에서 기회를 포착하는 역발상 투자 방식
-                </p>`,
-            // 8: FIDELITY NATIONAL FINANCIAL, INC. (수정된 내용)
-            `<h3>FIDELITY NATIONAL FINANCIAL, INC.</h3>
+          // [0] BERKSHIRE
+          `
+            <h3>BERKSHIRE HATHAWAY INC</h3>
             <p>
-                Fidelity National Financial, Inc.는 미국 내 부동산 거래 및 보험 서비스 분야에서 주요한 역할을 하는 기업으로, 타이틀 보험(title insurance), 부동산 결제 서비스, 금융 솔루션 등을 제공합니다. 또한, 자산 운용 및 금융 서비스 사업을 다각화하여 지속적인 성장을 추구하고 있습니다.
+              버크셔 해서웨이는 워런 버핏(Warren Buffett)이 이끄는 투자 지주회사로,
+              보험, 철도, 에너지, 유통, 금융 등 다양한 사업 분야를 포괄하고 있습니다.
+              오랫동안 가치 투자의 아이콘으로 여겨져 왔으며, 장기적으로 안정적인 수익을
+              추구하는 투자자들에게 주목받고 있습니다.
             </p>
             <p>
-                <strong>주요 종목:</strong> FG, ALIT, CCAP, PSFE, PM, UPS, 기타<br>
-                <strong>투자 비중:</strong> FG: 89.08%, ALIT: 3.12%, CCAP: 1.63%, PSFE: 1.30%, PM: 0.68%, UPS: 0.56%, 기타: 3.63%<br>
-                <strong>투자 성향:</strong> 장기 안정적 성장, 금융 및 부동산 관련 투자 확대<br>
-                <strong>특징:</strong> 부동산 및 금융 산업 중심의 투자 포트폴리오를 구성하며, 장기적인 가치 성장을 추구하는 전략을 사용.
-            </p>`
+              <strong>투자 비중:</strong> AAPL 28.12%, AXP 16.84%, BAC 11.19%, KO 9.32%, CVX 6.43%, OXY 5%, 기타 23.1%<br>
+              <strong>투자 성향:</strong> 가치투자, 장기투자<br>
+              <strong>특징:</strong> 매년 열리는 ‘버크셔 해서웨이 주주총회’는 수많은 투자자들의 이목을 끌며,
+              워런 버핏의 투자 철학이 광범위한 주목을 받습니다.
+            </p>
+          `,
+          // [1] DUQUESNE FAMILY OFFICE
+          `
+            <h3>DUQUESNE FAMILY OFFICE</h3>
+            <p>
+              듀케인 패밀리 오피스(Duquesne Family Office)는 전설적인 헤지펀드 매니저
+              스탠리 드라켄밀러(Stanley Druckenmiller)가 운영하는 패밀리 오피스로,
+              거시경제 분석을 기반으로 한 투자 전략을 펼칩니다. 
+              드라켄밀러는 조지 소로스와 함께 영국 파운드화 공격으로 큰 이익을 거둔 사례로도 유명합니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> NTRA 15.17%, COHR 7.18%, WWD 5.48%, TEVA 5.33%, CPNG 5.26%, PM 4.37%, 기타 57.21%<br>
+              <strong>투자 성향:</strong> 매크로 투자, 유동적 포트폴리오 조정<br>
+              <strong>특징:</strong> 헤지펀드를 폐쇄한 뒤 개인 자산을 운용하는 패밀리 오피스 형태로,
+              시장 상황에 따라 민첩하게 투자 방향을 전환하는 것이 강점입니다.
+            </p>
+          `,
+          // [2] Bridgewater
+          `
+            <h3>Bridgewater Associates</h3>
+            <p>
+              브릿지워터 어소시에이츠(Bridgewater Associates)는 세계 최대 헤지펀드 중 하나로,
+              레이 달리오(Ray Dalio)가 창업했습니다. 글로벌 거시경제 데이터를 바탕으로 
+              '올웨더(All Weather)' 전략을 고안해, 시장 상황에 관계없이 안정적인 수익을 추구하는 것으로 유명합니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> SPY 22.12%, IVV 5.5%, IEMG 4.23%, GOOGL 3.14%, NVDA 2.15%, META 2.15%, 기타 60.71%<br>
+              <strong>투자 성향:</strong> 거시경제 분석, 리스크 분산, 알고리즘 운용<br>
+              <strong>특징:</strong> 투자자들과 직원들이 ‘아이디어 성과주의’를 바탕으로 자유롭게 토론하고,
+              모든 의사결정을 수치화·시스템화하는 독특한 조직 문화를 갖추고 있습니다.
+            </p>
+          `,
+          // [3] Pershing Square
+          `
+            <h3>Pershing Square Capital Management</h3>
+            <p>
+              퍼싱 스퀘어 캐피털 매니지먼트는 빌 애크먼(Bill Ackman)이 설립한 액티비스트 헤지펀드로,
+              기업 지분을 인수한 뒤 경영진과 적극적으로 소통하여 기업 가치 극대화를 추구하는 투자 방식을 택합니다.
+              빌 애크먼은 공매도 전략이나 공격적인 M&A에도 참여하는 등 시장에서 이슈를 자주 만들어내는 인물입니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> BN 15.89%, QSR 11.88%, CMG 11.78%, HHH 11.5%, GOOG 11.39%, NKE 11.23%, 기타 26.33%<br>
+              <strong>투자 성향:</strong> 장기 가치투자, 액티비스트 전략<br>
+              <strong>특징:</strong> 기업의 지배구조 개선·주주가치 제고가 목표며, 
+              한때 제약사 발레안트(Valeant)에 대한 대규모 투자로 큰 손실을 입었으나, 이후 만회했습니다.
+            </p>
+          `,
+          // [4] SoftBank
+          `
+            <h3>SoftBank Group</h3>
+            <p>
+              소프트뱅크 그룹(SoftBank Group)은 일본의 대형 투자 기업으로, 손정의(Masayoshi Son)가 이끄는 
+              비전 펀드(Vision Fund)를 통해 글로벌 스타트업과 기술 기업에 대규모 투자를 단행해 왔습니다.
+              자율주행, 로봇, 통신, 금융 등 광범위한 분야에 투자하며, 미래 혁신 기술에 집중하는 것으로 유명합니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> TMUS 80.64%, NVDA 6.04%, SYM 4.04%, WBTN 1.83%, LMND 1.68%, INTR 1.17%, 기타 4.6%<br>
+              <strong>투자 성향:</strong> 높은 리스크·높은 보상, 혁신기술 중심<br>
+              <strong>특징:</strong> 알리바바, 우버 등에 초기 투자하여 대성공을 거뒀으며, 
+              때로는 거품 논란에 휩싸이는 공격적 투자 방식을 택하기도 합니다.
+            </p>
+          `,
+          // [5] PAULSON & COMPANY
+          `
+            <h3>PAULSON & COMPANY INC</h3>
+            <p>
+              폴슨 앤 컴퍼니는 존 폴슨(John Paulson)이 설립한 헤지펀드로, 
+              2008년 서브프라임 사태를 예견하고 공매도를 통해 막대한 수익을 거둔 사례로 유명해졌습니다.
+              주로 이벤트 드리븐(Event-Driven) 전략과 특수 상황 투자에 집중하는 편입니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> MDGL 38.14%, PPTA 16%, AAMI 14.27%, BHC 12.9%, NG 5.49%, THRY 3.83%, 기타 9.87%<br>
+              <strong>투자 성향:</strong> 이벤트 드리븐, 가치투자<br>
+              <strong>특징:</strong> 큰 시장 변동성을 기회로 삼는 강점이 있으며, 최근에는 금(Gold) 및 제약·바이오 분야에도 관심을 보였습니다.
+            </p>
+          `,
+          // [6] SAUDI CENTRAL BANK
+          `
+            <h3>SAUDI CENTRAL BANK</h3>
+            <p>
+              사우디아라비아 중앙은행(Saudi Central Bank, SAMA)은 국가의 금융 안정성과 
+              경제 성장 지원을 목표로 하는 기관입니다. 통화 정책 수립, 은행 감독, 
+              외환 보유고 관리 등을 총괄하며, 중동 지역에서 가장 영향력 있는 중앙은행 중 하나로 꼽힙니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> XLE 19.19%, META 18.25%, SMH 14.01%, QQQ 12.69%, VTV 12.66%, SPY 11.79%, 기타 11.41%<br>
+              <strong>투자 성향:</strong> 국가 자산 운용, 장기적 안정 추구<br>
+              <strong>특징:</strong> 안정적인 포트폴리오를 유지하면서도, 최근에는 기술주나 글로벌 지수연동 ETF 등에도 점진적으로 투자 영역을 넓히는 추세입니다.
+            </p>
+          `,
+          // [7] KNIGHTHEAD CAPITAL
+          `
+            <h3>KNIGHTHEAD CAPITAL MANAGEMENT, LLC</h3>
+            <p>
+              나이트헤드 캐피털 매니지먼트(Knighthead Capital Management)는 
+              구조조정 기업이나 부실 채권(Distressed Debt)에 투자하는 전략을 주로 활용하는 헤지펀드로, 
+              기업 파산 과정 및 재무적 어려움에 처한 기업을 구조조정하여 가치를 회복하는 데서 
+              투자 수익을 창출합니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> HTZ 31.59%, UP 20.26%, IWM 15.77%, HYG 14.96%, SPY 13.94%, GB 3.06%, 기타 0.42%<br>
+              <strong>투자 성향:</strong> 딥 밸류, 특수 상황 투자<br>
+              <strong>특징:</strong> 파산 직전 또는 구조조정 대상 기업에서 저평가된 자산을 발견하고, 
+              정상화 후 기업 가치 상승을 노리는 형태의 투자에 강점을 갖습니다.
+            </p>
+          `,
+          // [8] FIDELITY NATIONAL FINANCIAL
+          `
+            <h3>FIDELITY NATIONAL FINANCIAL, INC.</h3>
+            <p>
+              Fidelity National Financial, Inc.는 미국 내 부동산 거래 및 보험 서비스 분야에서
+              주요한 역할을 하는 기업으로, 타이틀 보험(title insurance), 부동산 결제 서비스,
+              금융 솔루션 등을 제공합니다. 또한, 자산 운용 및 금융 서비스 사업을 다각화하여
+              지속적인 성장을 추구하고 있습니다.
+            </p>
+            <p>
+              <strong>투자 비중:</strong> FG: 89.08%, ALIT: 3.12%, CCAP: 1.63%, PSFE: 1.30%, PM: 0.68%, UPS: 0.56%, 기타: 3.63%<br>
+              <strong>투자 성향:</strong> 장기 안정적 성장, 금융 및 부동산 관련 투자 확대<br>
+              <strong>특징:</strong> 부동산 및 금융 산업 중심의 투자 포트폴리오를 구성하며,
+              장기적인 가치 성장을 추구하는 전략을 사용합니다.
+            </p>
+          `
         ];
 
-        // ----------------------------------------------
-        // 1) 각 차트 생성 (작은 차트)
-        // ----------------------------------------------
+        // (1) 각 차트 생성
         chartData.forEach((data, index) => {
             const ctx = document.getElementById(`chart${index + 1}`).getContext('2d');
             new Chart(ctx, {
@@ -597,35 +685,32 @@
                 },
                 plugins: [ChartDataLabels]
             });
-            // 각 차트 캔버스에 data-chart-index 속성 부여
+            // 각 차트에 data-chart-index
             document.getElementById(`chart${index + 1}`).setAttribute('data-chart-index', index);
         });
 
-        // ----------------------------------------------
-        // 2) 모달 관련 처리
-        // ----------------------------------------------
+        // (2) 모달 처리
         const modal = document.getElementById('chartModal');
         const modalDescription = document.querySelector('.modal-description');
         const modalCanvas = document.getElementById('modalChart');
         let modalChartInstance = null;
 
-        // 차트를 클릭했을 때 모달 열기
+        // 차트를 클릭 -> 모달 열기
         document.querySelectorAll('.chart-box canvas').forEach(canvas => {
             canvas.addEventListener('click', function() {
                 const chartIndex = parseInt(this.getAttribute('data-chart-index'));
-
-                // 모달 설명 업데이트 (해당 차트 인덱스에 맞는 텍스트를 삽입)
+                // 모달 내용
                 modalDescription.innerHTML = chartDetails[chartIndex];
 
                 // 모달 열기
                 modal.style.display = 'block';
 
-                // 모달 차트가 이미 생성되어 있으면 제거
+                // 이전 모달 차트 제거
                 if (modalChartInstance) {
                     modalChartInstance.destroy();
                 }
 
-                // 모달에 표시할 큰 차트 생성
+                // 큰 차트
                 const ctx = modalCanvas.getContext('2d');
                 modalChartInstance = new Chart(ctx, {
                     type: 'pie',
@@ -663,19 +748,18 @@
             });
         });
 
-        // 모달 닫기 버튼
+        // (3) 모달 닫기
         document.querySelector('.close').addEventListener('click', function() {
             modal.style.display = 'none';
         });
 
-        // 모달 바깥을 클릭해도 닫히도록
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
         });
 
-        // 개발자 도구(F12) 및 소스 보기(Ctrl+U) 차단
+        // (4) 개발자 도구 차단
         document.addEventListener("keydown", function(event) {
             if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s")) {
                 event.preventDefault();
@@ -691,11 +775,12 @@
         document.addEventListener("contextmenu", function(event) {
             event.preventDefault();
         });
-      //난독화
-      function getSecretKey() {
-          return "my-secret-key";
-      }
-      console.log(getSecretKey());
+
+        // 난독화 예시
+        function getSecretKey() {
+            return "my-secret-key";
+        }
+        console.log(getSecretKey());
     </script>
 </body>
 </html>
