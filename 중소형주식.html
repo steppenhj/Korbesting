@@ -19,64 +19,71 @@
     >
 
     <style>
-      :root {
-        --primary-color: #004080;
-        --secondary-color: #0059b3;
-        --accent-color: #f4f7fa;
-        --light-gray: #e0e0e0;
-        --text-color: #333;
-        --modal-bg: #fff;
-        --modal-overlay-bg: rgba(0,0,0,0.5);
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: 'Open Sans', sans-serif;
-        background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
-        color: var(--text-color);
-        line-height: 1.4;
-      }
-      header {
-        text-align: center;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: #fff;
-        padding: 1rem;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      }
-      header h1 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-      main {
-        max-width: 960px;
-        margin: 1rem auto;
-        padding: 0 1rem 2rem;
-      }
-      nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 0.5rem;
-      }
-      nav a {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background-color: #fff;
-        color: var(--primary-color);
-        border: 1px solid var(--primary-color);
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      nav a:hover {
-        background-color: var(--primary-color);
-        color: #fff;
-      }
+        html {
+            font-size: 16px;
+        }
+        :root {
+            --primary-color: #004080;
+            --secondary-color: #0059b3;
+            --accent-color: #f4f7fa;
+            --light-gray: #e0e0e0;
+            --text-color: #333;
+        }
+        /* 기본 리셋 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
+            color: var(--text-color);
+            padding-bottom: 60px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1rem;
+        }
+        nav {
+            margin-top: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        nav ul li a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #fff;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        main {
+            max-width: 960px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+        }
       .save-notice {
         background: #fff;
         margin-bottom: 1rem;
@@ -233,7 +240,7 @@
           <li><a href="index.html">투데이 뉴스</a></li>
           <li><a href="주식포트폴리오.html">다이어리</a></li>
           <li><a href="버크셔해서웨이.html">인기 포트폴리오</a></li>
-          <li><a href="중소형주식.html">중소형주 소개</a></li>
+          <li><a href="중소형주식.html">중소형주식 추천</a></li>
         </ul>
       </nav>
     </header>
