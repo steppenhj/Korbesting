@@ -19,6 +19,7 @@
 
   <!-- 사이트 검증 메타 (네이버, 구글) -->
   <meta name="naver-site-verification" content="075a0522743a498856c11a2b5dfa09d7ad1527ba" />
+  <meta name="naver-site-verification" content="daa71973aba155bc2d96dfde44d8fb34b6a74ba7" />
   <meta name="google-site-verification" content="GhGj63W7kkc-78a0BTXjR-_TRE8ml771kQOtegBKhHs" />
 
   <!-- Open Graph (OG) 메타 태그: SNS 공유 시 미리보기 정보 -->
@@ -1749,7 +1750,7 @@
 
     // 개발자 도구(F12) 및 소스 보기(Ctrl+U) 차단
     document.addEventListener("keydown", function(event) {
-        if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s")) {
+        if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
             event.preventDefault();
             alert("소스 코드 보기가 비활성화되었습니다.");
         }

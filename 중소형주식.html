@@ -13,6 +13,9 @@
       href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap"
       rel="stylesheet"
     />
+
+    <meta name="naver-site-verification" content="daa71973aba155bc2d96dfde44d8fb34b6a74ba7" />
+    
     <style>
       html {
         font-size: 16px;
@@ -295,7 +298,7 @@
   <body>
     <header>
       <h1>Go Higher</h1>
-      <p>미국 중소형주식을 소개해드립니다. 정기적으로 업데이트 됩니다.</p>
+      <p>성장 가능성이 높은 주식을 선정해서, 미국 중소형주식을 추천합니다!</p>
       <nav>
         <ul>
           <li><a href="index.html">투데이 뉴스</a></li>
@@ -307,7 +310,7 @@
     </header>
     <main>
       <div class="save-notice">
-        이 페이지는 <strong>미국 중소형주</strong>를 소개합니다.<br>
+        이 페이지는 <strong>미국 중소형주식</strong>을 소개합니다.<br>
         <strong>정기적으로 새로운 종목을 추가</strong>하고, 원하는 주식에 대한 <strong>분석 요청</strong>도 <strong>무료</strong>로 받을 수 있습니다.<br>
         <strong>아래 목록에서 종목을 클릭</strong>하시면 자세한 내용을 확인하실 수 있습니다.
       </div>
@@ -804,6 +807,29 @@
 
       // 페이지 로드 후 테이블 렌더링
       renderStockTable();
+
+              // (4) 개발자 도구 차단
+              document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
+                event.preventDefault();
+                alert("소스 코드 보기가 비활성화되었습니다.");
+            }
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
+                event.preventDefault();
+                alert("개발자 도구 접근이 제한되었습니다.");
+            }
+        });
+
+        // 우클릭 차단
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+        });
+
+        // 난독화 예시
+        function getSecretKey() {
+            return "my-secret-key";
+        }
+        console.log(getSecretKey());
     </script>
   </body>
 </html>
