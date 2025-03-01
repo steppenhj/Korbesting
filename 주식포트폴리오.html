@@ -900,11 +900,7 @@
           <!-- 고정 지출 계산기 끝 -->
         </div>
       </div>
-      
-      <!-- 데이터 초기화 버튼 (추가 기능) -->
-      <div style="text-align:center; margin-top:1rem;">
-        <button id="resetDataBtn" style="background:#800000;"><strong>데이터 초기화</strong></button>
-      </div>
+
     </div>
   </main>
   
@@ -1463,19 +1459,6 @@
       diaryTextarea.value = "";
       loadDiaryEntries();
       alert("투자 일지가 저장되었습니다.");
-    });
-    
-    document.getElementById("resetDataBtn").addEventListener("click", () => {
-      if(confirm("모든 데이터를 초기화 하시겠습니까?")) {
-        localStorage.removeItem("assetPortfolio");
-        localStorage.removeItem("stockPortfolio");
-        localStorage.removeItem(CHECKLIST_KEY);
-        localStorage.removeItem("assetGoal");
-        localStorage.removeItem("investmentDiaryEntries");
-        localStorage.removeItem("calendarMemos");
-        localStorage.removeItem("accountBookEntries");
-        location.reload();
-      }
     });
     
     document.addEventListener("DOMContentLoaded", () => {
