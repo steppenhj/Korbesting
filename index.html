@@ -180,12 +180,12 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
             line-height: 1.4;
         }
-      .news-section {
+            .news-section {
         background-color: #fff;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         padding: 2rem;
         border-radius: 8px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
       }
       .news-section h2 {
         font-family: 'Roboto', sans-serif;
@@ -199,33 +199,39 @@
       .news-card {
         background: #f9f9f9;
         border-radius: 6px;
-        padding: 1rem;
-        margin-bottom: 1.2rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .news-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
       }
       .news-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         color: var(--secondary-color);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.6rem;
       }
       .news-card p {
-        font-size: 0.95rem;
-        line-height: 1.4;
-        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
       }
       .news-card .news-date {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         color: #777;
       }
       footer {
         background-color: var(--primary-color);
         color: #fff;
         text-align: center;
-        padding: 0.8rem;
+        padding: 1rem;
+        position: relative;
         bottom: 0;
         width: 100%;
         font-size: 1rem;
-        box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
       }
       footer a {
         color: #fff;
@@ -261,6 +267,62 @@
       <br><br>
       지금 바로 최신 뉴스를 확인하고, 투자 전략을 세워보세요! 🚀
     </div>
+
+<!-- 추가: 주요 종목 시세 -->
+<section class="news-section">
+  <h2>주요 종목 시세</h2>
+  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+    <!-- 표(table)로 정렬 + colgroup으로 열 너비 지정 -->
+    <table style="border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
+      <!-- colgroup을 이용해 각 열의 너비를 지정 -->
+      <colgroup>
+        <col style="width: 200px;">
+        <col style="width: 140px;">
+        <col style="width: 110px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th style="text-align:left; padding: 8px;">종목</th>
+          <th style="text-align:left; padding: 8px;">가격</th>
+          <th style="text-align:left; padding: 8px;">등락률</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px;"><strong>AMZN 아마존</strong></td>
+          <td style="padding: 8px;">212.28USD</td>
+          <td style="padding: 8px;">1.70% 상승</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>TSLA 테슬라</strong></td>
+          <td style="padding: 8px;">292.98USD</td>
+          <td style="padding: 8px;">3.91% 상승</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>NVDA 엔비디아</strong></td>
+          <td style="padding: 8px;">124.92USD</td>
+          <td style="padding: 8px;">3.97% 상승</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>GOOGL 구글</strong></td>
+          <td style="padding: 8px;">170.28USD</td>
+          <td style="padding: 8px;">1.06% 상승</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>MSFT 마이크로소프트</strong></td>
+          <td style="padding: 8px;">396.99USD</td>
+          <td style="padding: 8px;">1.14% 상승</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>AAPL 애플</strong></td>
+          <td style="padding: 8px;">241.84USD</td>
+          <td style="padding: 8px;">1.91% 상승</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+</section>
+
 
 <!-- 1. 글로벌 증시 동향 -->
 <section class="news-section">
