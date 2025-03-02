@@ -769,11 +769,9 @@ body {
         document.addEventListener("keydown", function(event) {
             if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s"|| event.key === "S")) {
                 event.preventDefault();
-                alert("소스 코드 보기가 비활성화되었습니다.");
             }
             if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
                 event.preventDefault();
-                alert("개발자 도구 접근이 제한되었습니다.");
             }
         });
 

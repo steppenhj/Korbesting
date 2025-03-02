@@ -26,11 +26,11 @@
   <meta property="og:title" content="주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력" />
   <meta property="og:description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
   <meta property="og:image" content="https://gohigher.netlify.app/logo.webp" />
-  <meta property="og:url" content="https://gohigher.netlify.app/포트폴리오.html" />
+  <meta property="og:url" content="https://gohigher.netlify.app/주식포트폴리오.html" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
 
-  <link rel="icon" type="image/png" href="logo.webp">
+  <link rel="icon" type="image/webp" href="logo.webp">
 
   <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
   <meta name="twitter:card" content="summary_large_image">
@@ -43,7 +43,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력,
+    "name": "주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력",
     "url": "https://gohigher.netlify.app/주식포트폴리오.html",
     "description": "주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요.",
     "isPartOf": {
@@ -880,7 +880,7 @@
           <!-- 고정 지출 계산기 끝 -->
         </div>
       </div>
-      <div class="bottom-info">
+      
         <!-- 나만의 투자 원칙 체크리스트 -->
         <div class="investment-checklist">
           <div class="section-header">
@@ -900,7 +900,6 @@
             </div>
           </div>
         </div>
-    </div>
   </main>
   
   <footer>
@@ -1474,8 +1473,11 @@
     });
     
     // 전역 변수: 현재 표시할 연도와 월 (월은 0부터 시작하므로 1은 2월을 의미)
-    let currentYear = 2025;
-    let currentMonth = 1; // 0: 1월, 1: 2월, ... 11: 12월
+// 현재 날짜를 기준으로 초기값 설정
+const today = new Date();
+let currentYear = today.getFullYear();
+let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
+
 
     // 페이지 로드 시 저장된 연도/월 복원 후 달력 렌더링
     document.addEventListener("DOMContentLoaded", () => {
@@ -1734,11 +1736,9 @@
     document.addEventListener("keydown", function(event) {
         if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
             event.preventDefault();
-            alert("소스 코드 보기가 비활성화되었습니다.");
         }
         if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
             event.preventDefault();
-            alert("개발자 도구 접근이 제한되었습니다.");
         }
     });
 
