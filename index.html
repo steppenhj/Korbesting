@@ -5,29 +5,23 @@
     <!-- 페이지 제목(Title)에 핵심 키워드와 브랜드명 함께 배치 -->
     <title>Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트</title>
     <meta name="description" content="Go Higher - 매일 업데이트되는 미국주식·증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
-
-  <link rel="canonical" href="https://gohigher.netlify.app/">
-  <link rel="icon" type="image/webp" href="https://gohigher.netlify.app/logo.webp">
-
+    <link rel="canonical" href="https://gohigher.netlify.app/">
+    <link rel="icon" type="image/webp" href="https://gohigher.netlify.app/logo.webp">
     <!-- Naver 등에서 활용될 수 있는 키워드 -->
     <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Go Higher">
     <!-- 검색 엔진 크롤링 허용 -->
     <meta name="robots" content="index,follow">
     <!-- 반응형 웹 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- 구글 폰트 -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap"
       rel="stylesheet"
     >
-
     <!-- 사이트 검증 메타 (네이버, 구글) -->
     <meta name="naver-site-verification" content="075a0522743a498856c11a2b5dfa09d7ad1527ba" />
     <meta name="naver-site-verification" content="daa71973aba155bc2d96dfde44d8fb34b6a74ba7" />
     <meta name="google-site-verification" content="GhGj63W7kkc-78a0BTXjR-_TRE8ml771kQOtegBKhHs" />
-
-
     <!-- Open Graph Meta Tags (SNS 공유 시 미리보기용) -->
     <meta property="og:title" content="Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트" />
     <meta property="og:description" content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
@@ -36,16 +30,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Go Higher">
     <meta property="og:locale" content="ko_KR" />
-
-      <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트">
-  <meta name="twitter:description" content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
-  <meta name="twitter:image" content="https://gohigher.netlify.app/logo.webp">
-
-
+    <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트">
+    <meta name="twitter:description" content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
+    <meta name="twitter:image" content="https://gohigher.netlify.app/logo.webp">
     <link rel="icon" type="image/png" href="logo.webp">
-
+    
+    <!-- 구조화된 데이터: WebSite -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -68,8 +60,8 @@
           "query-input": "required name=search_term_string"
         }
       }
-      </script>
-          <!-- 구조화된 데이터: BreadcrumbList -->
+    </script>
+    <!-- 구조화된 데이터: BreadcrumbList -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -98,11 +90,11 @@
             "position": 4,
             "name": "중소형주식",
             "item": "https://gohigher.netlify.app/중소형주식"
-        }
+          }
         ]
       }
-  </script>
-      
+    </script>
+    
     <!-- 기본 스타일 -->
     <style>
       html {
@@ -169,18 +161,18 @@
         margin: 1rem auto;
         padding: 0 1rem;
       }
-              /* 브라우저에 영구저장 안내 문구 */
-        .save-notice {
-            background: #fff;
-            color: #444;
-            font-size: 0.9rem;
-            padding: 0.6rem 1rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-            line-height: 1.4;
-        }
-            .news-section {
+      /* 브라우저에 영구저장 안내 문구 */
+      .save-notice {
+        background: #fff;
+        color: #444;
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid var(--primary-color);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        line-height: 1.4;
+      }
+      .news-section {
         background-color: #fff;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         padding: 2rem;
@@ -237,13 +229,71 @@
         color: #fff;
         text-decoration: underline;
       }
+      /* 좌우 배치 레이아웃 스타일 */
+      .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .half-section {
+        width: 48%;
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .half-section:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      }
+      .stock-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      .stock-table th, .stock-table td {
+        border-bottom: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      .stock-table th {
+        background-color: #f8f8f8;
+        font-weight: bold;
+      }
+      .earnings-list {
+        list-style-type: none;
+        padding: 0;
+      }
+      .earnings-list li {
+        margin-bottom: 1rem;
+      }
+      .earnings-list ul {
+        padding-left: 1rem;
+        list-style-type: none;
+      }
+      .earnings-list ul li {
+        padding-left: 10px;
+        position: relative;
+      }
+      .earnings-list ul li::before {
+        content: "📅";
+        position: absolute;
+        left: -10px;
+      }
+      @media (max-width: 768px) {
+        .flex-container {
+          flex-direction: column;
+        }
+        .half-section {
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+      }
     </style>
-
   </head>
   <body>
     <header>
-      <!--<img class="text" src="text.jpg" alt="울프렌트 텍스트 로고 – 남친대행·렌탈남친 전문" loading="lazy" width="160" height="80">
-    -->
       <h1>Go Higher</h1>
       <p>매일매일 업데이트되는 최신 미국 주식 뉴스를 만나보세요!</p>
       <nav>
@@ -256,216 +306,262 @@
       </nav>
     </header>
     <main>
-          <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
-    <div class="save-notice">
-      이 페이지는 <strong>매일 오전</strong> 업데이트되는 <strong>미국 및 세계 증시 현황</strong>을 제공합니다.<br>
-      웹사이트에서 다음과 같은 주요 기능을 이용할 수 있습니다:
-      <br>1️⃣ <strong>최신 증시 뉴스</strong> – 매일 오전 업데이트
-      <br>2️⃣ <strong>자산 관리 및 투자 다이어리</strong> – 포트폴리오, 목표 설정, 체크리스트, 가계부 등
-      <br>3️⃣ <strong>대가들의 포트폴리오 분석</strong> – 유명 투자자 및 기업의 투자 전략 확인
-      <br>4️⃣ <strong>미국 중소형주 추천</strong> – 유망한 미국 중소형 주식 소개
-      <br><br>
-      지금 바로 최신 뉴스를 확인하고, 투자 전략을 세워보세요! 🚀
-    </div>
-
-<!-- 추가: 주요 종목 시세 -->
-<section class="news-section">
-  <h2>매그니피센트 7 주식 시세</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <!-- 표(table)로 정렬 + colgroup으로 열 너비 지정 -->
-    <table style="border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
-      <!-- colgroup을 이용해 각 열의 너비를 지정 -->
-      <colgroup>
-        <col style="width: 200px;">
-        <col style="width: 140px;">
-        <col style="width: 110px;">
-      </colgroup>
-      <thead>
-        <tr>
-          <th style="text-align:left; padding: 8px;">종목</th>
-          <th style="text-align:left; padding: 8px;">가격</th>
-          <th style="text-align:left; padding: 8px;">등락률</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding: 8px;"><strong>AMZN 아마존</strong></td>
-          <td style="padding: 8px;">212.28USD</td>
-          <td style="padding: 8px;">1.70% 상승</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;"><strong>TSLA 테슬라</strong></td>
-          <td style="padding: 8px;">292.98USD</td>
-          <td style="padding: 8px;">3.91% 상승</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;"><strong>NVDA 엔비디아</strong></td>
-          <td style="padding: 8px;">124.92USD</td>
-          <td style="padding: 8px;">3.97% 상승</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;"><strong>GOOGL 구글</strong></td>
-          <td style="padding: 8px;">170.28USD</td>
-          <td style="padding: 8px;">1.06% 상승</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;"><strong>MSFT 마이크로소프트</strong></td>
-          <td style="padding: 8px;">396.99USD</td>
-          <td style="padding: 8px;">1.14% 상승</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;"><strong>AAPL 애플</strong></td>
-          <td style="padding: 8px;">241.84USD</td>
-          <td style="padding: 8px;">1.91% 상승</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;"><strong>META 메타</strong></td>
-          <td style="padding: 8px;">668.20USD</td>
-          <td style="padding: 8px;">1.51% 상승</td>
-        </tr>
-      </tbody>
-    </table>
-  </article>
-</section>
-
-
-<!-- 1. 글로벌 증시 동향 -->
-<section class="news-section">
-  <h2>글로벌 증시 동향</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">미국 증시 혼조세, 기술주 강세</h3>
-    <p itemprop="articleBody">
-      미국 뉴욕 증시는 도널드 트럼프 대통령의 중국에 대한 추가 관세 위협에도 불구하고 일부 기술주의 강세로 인해 혼조세를 보였습니다.
-      <br>다우존스 산업평균지수는 소폭 상승했으며, S&P 500 지수와 나스닥 종합지수도 반등하며 상승 마감했습니다.
-      <br>특히, 엔비디아와 테슬라 등의 기술주가 시장 상승을 주도했습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">아시아 증시 혼조, 중국 기술주 상승</h3>
-    <p itemprop="articleBody">
-      아시아 증시는 혼조세를 보였습니다. 중국 상하이 종합지수와 홍콩 항셍지수가 상승했으며, 이는 중국 정부의 민간 부문 지원 강화 소식에 메이투안, 알리바바, 텐센트, 바이두 등 기술주가 상승한 영향입니다.
-      <br>반면, 일본 닛케이 225 지수는 하락했으며, 한국 코스피 지수는 소폭 상승했습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-</section>
-
-<!-- 2. 주요 경제 지표 및 전망 -->
-<section class="news-section">
-  <h2>주요 경제 지표 및 전망</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">미국 소비자 신뢰지수 하락</h3>
-    <p itemprop="articleBody">
-      미국 콘퍼런스보드(CB)에 따르면, 2월 소비자 신뢰지수가 전달보다 하락하여 경기 침체 우려를 반영하고 있습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">한국은행, 기준금리 인하 및 성장률 전망 하향</h3>
-    <p itemprop="articleBody">
-      한국은행은 기준금리를 0.25%p 인하하여 연 2.75%로 조정했습니다.
-      <br>또한, 올해 경제 성장률 전망치를 기존 1.9%에서 1.5%로 하향 조정했습니다.
-      <br>이는 수출 부진, 건설경기 불황, 소비 위축 등으로 성장세가 크게 위축될 것이라는 전망에 따른 것입니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-</section>
-
-<!-- 3. 연준의 통화정책 및 미국 주요 발표 일정 -->
-<section class="news-section">
-  <h2>연준의 통화정책 및 미국 주요 발표 일정</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">연준 금리 인하 전망 축소</h3>
-    <p itemprop="articleBody">
-      미국 연방준비제도는 2025년 기준금리 목표를 기존 3.4%에서 3.9%로 상향 조정하며, 금리 인하 횟수를 4회에서 2회로 축소할 전망입니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">3월 주요 경제 일정 발표</h3>
-    <p itemprop="articleBody">
-      3월에는 유럽연합(EU) 정상회의, 미국 비농업부문 고용지표 발표, 그리고 아시아 최대 금융포럼 등 글로벌 경제에 영향을 미칠 주요 일정들이 예정되어 있습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-</section>
-
-<!-- 4. 기업 및 산업 동향 -->
-<section class="news-section">
-  <h2>기업 및 산업 동향</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">엔비디아, 주가 변동성 확대</h3>
-    <p itemprop="articleBody">
-      엔비디아는 2월 26일 실적 발표 이후 8.48% 하락했지만, 2월 28일에는 3.97% 상승하며 일부 회복세를 보였습니다.
-      <br>최근 AI 경쟁 심화 및 트럼프 대통령의 관세 부과 위협이 주가 변동성에 영향을 주고 있습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">애플로빈(AppLovin) 주가 하락</h3>
-    <p itemprop="articleBody">
-      모바일 앱 기술 플랫폼인 애플로빈의 주가는 최근 사기 혐의와 관련된 소식으로 인해 하락했습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-</section>
-
-<!-- 5. 정책 및 국제 관계 -->
-<section class="news-section">
-  <h2>정책 및 국제 관계</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">트럼프 대통령, 북핵 문제 관련 긴급 회담 소집</h3>
-    <p itemprop="articleBody">
-      도널드 트럼프 대통령이 한반도 안보 상황 대응을 위해 주요 동맹국들과 북핵 문제를 논의하는 긴급 회담을 소집했습니다.
-      <br>이번 회담은 한미 동맹 강화와 지역 안보 재점검을 위한 것으로 평가되고 있습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">미 재무장관, 중국 부총리와 화상통화</h3>
-    <p itemprop="articleBody">
-      미 재무장관이 중국 부총리와의 화상통화를 통해 미·중 경제 협력 및 긴장 완화에 관한 논의를 진행했습니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-</section>
-
-<!-- 6. 원자재 및 외환 시장 -->
-<section class="news-section">
-  <h2>원자재 및 외환 시장</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">트럼프 대통령, 신재생에너지 투자 촉진 정책 발표</h3>
-    <p itemprop="articleBody">
-      트럼프 대통령은 신재생에너지 분야에 대한 대대적인 투자 촉진 정책을 발표하며, 석유 의존도를 낮추고 친환경 에너지 전환을 가속화하겠다고 밝혔습니다.
-      <br>이에 따라 국제 유가 및 관련 원자재 가격 변동성이 예상됩니다.
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-</section>
-
-
-<!-- 7. 환율 정보 및 전망 -->
-<section class="news-section">
-  <h2>환율 정보 및 전망</h2>
-  <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-    <h3 itemprop="headline">2025년 3월 1일 환율 정보 및 전망</h3>
-    <p itemprop="articleBody">
-      <strong>오늘의 환율:</strong><br>
-      - 원/달러 환율: 1,430.9원<br>
-      - 원/엔 환율: 100엔당 958.88원<br><br>
-      <strong>전망:</strong><br>
-      - 일본은행(BOJ)의 금리 인상 검토로 엔화 강세 가능성이 큼<br>
-      - 일본의 금리 인상이 현실화되면 원/엔 환율 상승(엔화 강세, 원화 약세) 예상<br>
-      - 단기적으로는 원/엔 환율이 960~970원 범위에서 등락할 가능성이 큼<br>
-      - 장기적으로는 일본의 금리 정책 및 글로벌 경제 흐름에 따라 변동 가능
-    </p>
-    <span class="news-date" itemprop="datePublished" content="2025-03-01">2025년 3월 1일</span>
-  </article>
-</section>
-
-
+      <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
+      <div class="save-notice">
+        이 페이지는 <strong>매일 오전</strong> 업데이트되는 <strong>미국 및 세계 증시 현황</strong>을 제공합니다.<br>
+        웹사이트에서 다음과 같은 주요 기능을 이용할 수 있습니다:
+        <br>1️⃣ <strong>최신 증시 뉴스</strong> – 매일 오전 업데이트
+        <br>2️⃣ <strong>자산 관리 및 투자 다이어리</strong> – 포트폴리오, 목표 설정, 체크리스트, 가계부 등
+        <br>3️⃣ <strong>대가들의 포트폴리오 분석</strong> – 유명 투자자 및 기업의 투자 전략 확인
+        <br>4️⃣ <strong>미국 중소형주 추천</strong> – 유망한 미국 중소형 주식 소개
+        <br><br>
+        지금 바로 최신 뉴스를 확인하고, 투자 전략을 세워보세요! 🚀
+      </div>
       
+      <!-- 매그니피센트 7 주식 시세 및 주요 기업 실적 발표 일정 (좌우 배치) -->
+      <section class="news-section flex-container">
+        <!-- 왼쪽: 매그니피센트 7 주식 시세 -->
+        <div class="half-section">
+          <h2>매그니피센트 7 주식 시세</h2>
+          <table class="stock-table">
+            <colgroup>
+              <col style="width: 200px;">
+              <col style="width: 140px;">
+              <col style="width: 110px;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>종목</th>
+                <th>가격</th>
+                <th>등락률</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>AMZN 아마존</strong></td>
+                <td>212.28USD</td>
+                <td>1.70% 상승</td>
+              </tr>
+              <tr>
+                <td><strong>TSLA 테슬라</strong></td>
+                <td>292.98USD</td>
+                <td>3.91% 상승</td>
+              </tr>
+              <tr>
+                <td><strong>NVDA 엔비디아</strong></td>
+                <td>124.92USD</td>
+                <td>3.97% 상승</td>
+              </tr>
+              <tr>
+                <td><strong>GOOGL 구글</strong></td>
+                <td>170.28USD</td>
+                <td>1.06% 상승</td>
+              </tr>
+              <tr>
+                <td><strong>MSFT 마이크로소프트</strong></td>
+                <td>396.99USD</td>
+                <td>1.14% 상승</td>
+              </tr>
+              <tr>
+                <td><strong>AAPL 애플</strong></td>
+                <td>241.84USD</td>
+                <td>1.91% 상승</td>
+              </tr>
+              <tr>
+                <td><strong>META 메타</strong></td>
+                <td>668.20USD</td>
+                <td>1.51% 상승</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- 오른쪽: 주요 기업 실적 발표 일정 -->
+        <div class="half-section">
+          <h2>주요 기업 실적 발표 일정</h2>
+          <ul class="earnings-list">
+            <li>
+              <strong>3월 3일 (월)</strong>
+              <ul>
+                <li>🔹 플러그 파워(PLUG) - 장 시작 전</li>
+                <li>🔹 뉴스케일파워(SMR) - 장 마감 후</li>
+                <li>🔹 AST 스페이스모바일(ASTS) - 장 마감 후</li>
+                <li>🔹 깃랩(GTLB) - 장 마감 후</li>
+              </ul>
+            </li>
+            <li>
+              <strong>3월 4일 (화)</strong>
+              <ul>
+                <li>🔹 타겟(TGT) - 장 시작 전</li>
+                <li>🔹 크라우드스트라이크(CRWD) - 장 마감 후</li>
+                <li>🔹 크리도 테크놀로지 그룹(CRDO) - 장 마감 후</li>
+              </ul>
+            </li>
+            <li>
+              <strong>3월 5일 (수)</strong>
+              <ul>
+                <li>🔹 캠벨 수프(CPB) - 장 시작 전</li>
+                <li>🔹 마벨 테크놀로지(MRVL) - 장 마감 후</li>
+                <li>🔹 몽고DB(MDB) - 장 마감 후</li>
+                <li>🔹 비바 시스템즈(VEEV) - 장 마감 후</li>
+                <li>🔹 지스케일러(ZS) - 장 마감 후</li>
+              </ul>
+            </li>
+            <li>
+              <strong>3월 6일 (목)</strong>
+              <ul>
+                <li>🔹 크로거(KR) - 장 시작 전</li>
+                <li>🔹 브로드컴(AVGO) - 장 마감 후</li>
+                <li>🔹 코스트코(COST) - 장 마감 후</li>
+              </ul>
+            </li>
+            <li>
+              <strong>3월 7일 (금)</strong>
+              <ul>
+                <li>🔹 알곤퀸 파워(AQN) - 장 시작 전</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- 기존 뉴스 섹션들 -->
+      <!-- 1. 글로벌 증시 동향 -->
+      <section class="news-section">
+        <h2>글로벌 증시 동향</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">미국 증시 혼조세, 기술주 강세</h3>
+          <p itemprop="articleBody">
+            미국 뉴욕 증시는 최근 경제 지표 발표와 연방준비제도의 금리 정책에 대한 우려로 혼조세를 보였습니다. 그러나 엔비디아와 테슬라 등 주요 기술주가 강세를 보이며 시장을 지지했습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">아시아 증시 혼조, 중국 기술주 상승</h3>
+          <p itemprop="articleBody">
+            아시아 증시는 혼조세를 보였습니다. 중국 상하이 종합지수와 홍콩 항셍지수가 중국 정부의 민간 부문 지원 강화 소식에 힘입어 상승했으며, 메이투안, 알리바바, 텐센트, 바이두 등 주요 기술주가 상승세를 보였습니다. 반면, 일본 닛케이 225 지수는 하락했으며, 한국 코스피 지수는 소폭 상승했습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
+      
+      <!-- 2. 주요 경제 지표 및 전망 -->
+      <section class="news-section">
+        <h2>주요 경제 지표 및 전망</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">미국 소비자 신뢰지수 하락</h3>
+          <p itemprop="articleBody">
+            미국 콘퍼런스보드(CB)에 따르면, 2월 소비자 신뢰지수가 전달보다 하락하여 경기 침체 우려를 반영하고 있습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">한국은행, 기준금리 인하 및 성장률 전망 하향</h3>
+          <p itemprop="articleBody">
+            한국은행은 기준금리를 0.25%p 인하하여 연 2.75%로 조정했습니다. 또한, 올해 경제 성장률 전망치를 기존 1.9%에서 1.5%로 하향 조정했습니다. 이는 수출 부진, 건설경기 불황, 소비 위축 등으로 성장세가 크게 위축될 것이라는 전망에 따른 것입니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
+      
+      <!-- 3. 연준의 통화정책 및 미국 주요 발표 일정 -->
+      <section class="news-section">
+        <h2>연준의 통화정책 및 미국 주요 발표 일정</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">연준 금리 인하 전망 축소</h3>
+          <p itemprop="articleBody">
+            미국 연방준비제도는 2025년 기준금리 목표를 기존 3.4%에서 3.9%로 상향 조정하며, 금리 인하 횟수를 4회에서 2회로 축소할 전망입니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">3월 주요 경제 일정 발표</h3>
+          <p itemprop="articleBody">
+            3월에는 유럽연합(EU) 정상회의, 미국 비농업부문 고용지표 발표, 그리고 아시아 최대 금융포럼 등 글로벌 경제에 영향을 미칠 주요 일정들이 예정되어 있습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
+      
+      <!-- 4. 기업 및 산업 동향 -->
+      <section class="news-section">
+        <h2>기업 및 산업 동향</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">엔비디아, 주가 변동성 확대</h3>
+          <p itemprop="articleBody">
+            엔비디아는 2월 26일 실적 발표 이후 8.48% 하락했지만, 2월 28일에는 3.97% 상승하며 일부 회복세를 보였습니다. 최근 AI 경쟁 심화 및 무역 긴장 고조가 주가 변동성에 영향을 주고 있습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">애플로빈(AppLovin) 주가 하락</h3>
+          <p itemprop="articleBody">
+            모바일 앱 기술 플랫폼인 애플로빈의 주가는 최근 사기 혐의와 관련된 소식으로 인해 하락했습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
+      
+      <!-- 5. 정책 및 국제 관계 -->
+      <section class="news-section">
+        <h2>정책 및 국제 관계</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">트럼프 대통령, 북핵 문제 관련 긴급 회담 소집</h3>
+          <p itemprop="articleBody">
+            도널드 트럼프 대통령이 한반도 안보 상황 대응을 위해 주요 동맹국들과 북핵 문제를 논의하는 긴급 회담을 소집했습니다. 이번 회담은 한미 동맹 강화와 지역 안보 재점검을 위한 것으로 평가되고 있습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">미 재무장관, 중국 부총리와 화상통화</h3>
+          <p itemprop="articleBody">
+            미 재무장관이 중국 부총리와의 화상통화를 통해 미·중 경제 협력 및 긴장 완화에 관한 논의를 진행했습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
+      
+      <!-- 6. 원자재 및 외환 시장 -->
+      <section class="news-section">
+        <h2>원자재 및 외환 시장</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">트럼프 대통령, 신재생에너지 투자 촉진 정책 발표</h3>
+          <p itemprop="articleBody">
+            트럼프 대통령은 신재생에너지 분야에 대한 대대적인 투자 촉진 정책을 발표하며, 석유 의존도를 낮추고 친환경 에너지 전환을 가속화하겠다고 밝혔습니다. 이에 따라 국제 유가 및 관련 원자재 가격 변동성이 예상됩니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
+      
+      <!-- 7. 채권 시장 동향 -->
+      <section class="news-section">
+        <h2>채권 시장 동향</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">TLT 배팅 증가, 장기 국채 수요 상승</h3>
+          <p itemprop="articleBody">
+            미국 장기 국채 ETF(TLT)에 대한 투자자들의 배팅이 증가하고 있습니다. 연준의 금리 인하 기대감이 일부 약화되었음에도 불구하고, 경기 침체 우려로 인해 장기 국채에 대한 수요가 증가하고 있습니다.
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
+      
+      <!-- 8. 환율 정보 및 전망 -->
+      <section class="news-section">
+        <h2>환율 정보 및 전망</h2>
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <h3 itemprop="headline">2025년 3월 2일 환율 정보 및 전망</h3>
+          <p itemprop="articleBody">
+            <strong>오늘의 환율:</strong><br>
+            - 원/달러 환율: 1,430.9원<br>
+            - 원/엔 환율: 100엔당 958.88원<br><br>
+            <strong>전망:</strong><br>
+            - 일본은행(BOJ)의 금리 인상 검토로 엔화 강세 가능성이 큼<br>
+            - 일본의 금리 인상이 현실화되면 원/엔 환율 상승(엔화 강세, 원화 약세) 예상<br>
+            - 단기적으로는 원/엔 환율이 960~970원 범위에서 등락할 가능성이 큼<br>
+            - 장기적으로는 일본의 금리 정책 및 글로벌 경제 흐름에 따라 변동 가능
+          </p>
+          <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+        </article>
+      </section>
     </main>
     
     <footer>
@@ -476,7 +572,7 @@
         아이디어가 있으시면 언제든지 메일로 제안해 주세요!
       </p>
     </footer>
-
+    
     <script>
       // 개발자 도구(F12) 및 소스 보기(Ctrl+U) 차단
       document.addEventListener("keydown", function(event) {
@@ -494,12 +590,12 @@
       document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
       });
-      //난독화
+      
+      // 난독화: 비밀키
       function getSecretKey() {
           return "my-secret-key";
       }
       console.log(getSecretKey());
-
     </script>
   </body>
 </html>
