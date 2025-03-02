@@ -790,26 +790,6 @@
     </div>
     
     <!-- 하단 정보: 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 -->
-    <div class="bottom-info">
-      <!-- 나만의 투자 원칙 체크리스트 -->
-      <div class="investment-checklist">
-        <div class="section-header">
-          <h3>나만의 투자 원칙 체크리스트</h3>
-          <button class="toggle-btn">▲</button>
-        </div>
-        <div class="section-content">
-          <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
-            새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
-          </p>
-          <ul id="checklist">
-            <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
-          </ul>
-          <div class="checklist-add">
-            <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
-            <button id="addChecklistItemBtn">추가</button>
-          </div>
-        </div>
-      </div>
 
       <!-- 나의 자산 목표 영역 (헤더와 토글이 컨테이너 내부에 위치) -->
       <div class="asset-goal">
@@ -900,7 +880,26 @@
           <!-- 고정 지출 계산기 끝 -->
         </div>
       </div>
-
+      <div class="bottom-info">
+        <!-- 나만의 투자 원칙 체크리스트 -->
+        <div class="investment-checklist">
+          <div class="section-header">
+            <h3>나만의 투자 원칙 체크리스트</h3>
+            <button class="toggle-btn">▲</button>
+          </div>
+          <div class="section-content">
+            <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
+              새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
+            </p>
+            <ul id="checklist">
+              <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
+            </ul>
+            <div class="checklist-add">
+              <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
+              <button id="addChecklistItemBtn">추가</button>
+            </div>
+          </div>
+        </div>
     </div>
   </main>
   
