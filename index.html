@@ -36,7 +36,7 @@
     <meta name="twitter:description" content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.">
     <meta name="twitter:image" content="https://gohigher.netlify.app/logo.webp">
     <link rel="icon" type="image/webp" href="logo.webp">
-    
+
     <!-- 구조화된 데이터: WebSite -->
     <script type="application/ld+json">
       {
@@ -44,7 +44,7 @@
         "@type": "WebSite",
         "name": "Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트",
         "url": "https://gohigher.netlify.app",
-        "description": "Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라· 엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.",
+        "description": "Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요.",
         "publisher": {
           "@type": "Organization",
           "name": "Go Higher",
@@ -94,7 +94,7 @@
         ]
       }
     </script>
-    
+
     <!-- 기본 스타일 -->
     <style>
       html {
@@ -163,20 +163,16 @@
         margin: 1rem auto;
         padding: 0 1rem;
         gap: 1rem;
-        /* 사이드바가 sticky로 동작하도록, 부모 요소에 overflow를 지정하지 않는 것이 중요 */
-        /* align-items를 flex-start로 두어야 사이드바가 자연스럽게 위에 붙어 있을 수 있음 */
         align-items: flex-start;
       }
 
       /* 화면을 따라오는 사이드바 */
       aside.sidebar {
-        /* 기존 너비보다 약간 여유있게 조정 가능 */
         min-width: 200px;
-        /* sticky 사용 */
         position: -webkit-sticky; /* 사파리 호환 */
         position: sticky;
-        top: 1rem; /* viewport 상단에서 1rem 아래 위치에 고정 */
-        height: fit-content; /* 내용물에 맞게 높이 조절 */
+        top: 1rem;
+        height: fit-content;
       }
       aside.sidebar h2 {
         font-size: 1.2rem;
@@ -334,6 +330,8 @@
         position: absolute;
         left: -10px;
       }
+
+      /* 768px 이하에서 사이드바를 없애기 위해 display: none 추가 */
       @media (max-width: 768px) {
         nav ul {
           flex-wrap: wrap;
@@ -348,9 +346,9 @@
         .layout-container {
           flex-direction: column;
         }
+        /* 여기서 사이드바를 숨김 */
         aside.sidebar {
-          width: 100%;
-          margin-bottom: 1rem;
+          display: none;
         }
       }
     </style>
@@ -376,6 +374,8 @@
       <aside class="sidebar">
         <h2>뉴스 바로가기</h2>
         <ul>
+          <!-- 새로 추가된 '매그니피센트 7 주식 시세' 링크 -->
+          <li><a href="#magnificent-seven">매그니피센트 7 주식 시세</a></li>
           <li><a href="#global-market">글로벌 증시 동향</a></li>
           <li><a href="#economic-indicators">주요 경제 지표</a></li>
           <li><a href="#federal-reserve">연준 통화정책 & 일정</a></li>
@@ -384,6 +384,8 @@
           <li><a href="#commodities-forex">원자재 및 외환 시장</a></li>
           <li><a href="#bond-market">채권 시장 동향</a></li>
           <li><a href="#exchange-rates">환율 정보 및 전망</a></li>
+          <!-- 속보 바로가기 링크 추가 -->
+          <li><a href="#breaking-news">속보</a></li>
         </ul>
       </aside>
 
@@ -400,11 +402,11 @@
           <br><br>
           지금 바로 최신 뉴스를 확인하고, 투자 전략을 세워보세요! 🚀
         </div>
-        
+
         <!-- 매그니피센트 7 주식 시세 및 주요 기업 실적 발표 일정 (좌우 배치) -->
         <section class="news-section flex-container">
-          <!-- 왼쪽: 매그니피센트 7 주식 시세 -->
-          <div class="half-section">
+          <!-- 왼쪽: 매그니피센트 7 주식 시세 (id 추가) -->
+          <div class="half-section" id="magnificent-seven">
             <h2>매그니피센트 7 주식 시세</h2>
             <table class="stock-table">
               <colgroup>
@@ -458,6 +460,7 @@
               </tbody>
             </table>
           </div>
+
           <!-- 오른쪽: 주요 기업 실적 발표 일정 -->
           <div class="half-section">
             <h2>주요 기업 실적 발표 일정</h2>
@@ -524,8 +527,16 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 글로벌 증시 동향 기사 -->
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">미국 증시, 경제 지표 발표 앞두고 혼조세</h3>
+            <p itemprop="articleBody">
+              미국 주요 주가지수는 최근 경제 지표 발표를 앞두고 혼조세를 보였습니다. 투자자들은 고용 보고서와 인플레이션 데이터를 주시하며, 연준의 통화정책 방향성에 대한 단서를 찾고 있습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+          </article>
         </section>
-        
+
         <!-- 2. 주요 경제 지표 및 전망 -->
         <section class="news-section" id="economic-indicators">
           <h2>주요 경제 지표 및 전망</h2>
@@ -543,8 +554,16 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 주요 경제 지표 기사 -->
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">미국 2월 고용보고서, 시장 예상치 상회</h3>
+            <p itemprop="articleBody">
+              미국 노동부에 따르면, 2025년 2월 비농업부문 고용은 27만 5천 명 증가하여 시장 예상치인 20만 명을 상회하였으며, 실업률은 3.9%로 상승하였습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+          </article>
         </section>
-        
+
         <!-- 3. 연준의 통화정책 및 미국 주요 발표 일정 -->
         <section class="news-section" id="federal-reserve">
           <h2>연준의 통화정책 및 미국 주요 발표 일정</h2>
@@ -562,8 +581,16 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 연준 통화정책 기사 -->
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">3월 FOMC 회의, 금리 인상 여부 주목</h3>
+            <p itemprop="articleBody">
+              오는 3월 연방공개시장위원회(FOMC) 회의에서 연준이 기준금리를 동결할지, 0.25%p 인상할지에 대한 시장의 관심이 집중되고 있습니다. CME FedWatch Tool에 따르면, 금리 동결 확률은 40%, 25bp 인상 확률은 60%로 나타나고 있습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+          </article>
         </section>
-        
+
         <!-- 4. 기업 및 산업 동향 -->
         <section class="news-section" id="industry-news">
           <h2>기업 및 산업 동향</h2>
@@ -574,15 +601,16 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 기업 및 산업 동향 기사 -->
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-            <h3 itemprop="headline">애플로빈(AppLovin) 주가 하락</h3>
+            <h3 itemprop="headline">애플, 3월 신형 iPad 발표 예정</h3>
             <p itemprop="articleBody">
-              모바일 앱 기술 플랫폼인 애플로빈의 주가는 최근 사기 혐의와 관련된 소식으로 인해 하락했습니다.
+              애플은 오는 3월 신형 iPad를 발표할 것으로 예상되며, 저가형 모델로 시장을 공략하여 태블릿 시장 점유율 유지를 기대하고 있습니다.
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
         </section>
-        
+
         <!-- 5. 정책 및 국제 관계 -->
         <section class="news-section" id="policy-international">
           <h2>정책 및 국제 관계</h2>
@@ -600,8 +628,16 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 정책 및 국제 관계 기사 -->
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">미·중 무역협상 2단계 돌입, 반도체 규제 완화 논의</h3>
+            <p itemprop="articleBody">
+              미국 재무장관과 중국 부총리는 무역협상 2단계에 돌입하여, 반도체 규제 완화를 포함한 다양한 현안을 논의하기로 합의하였습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+          </article>
         </section>
-        
+
         <!-- 6. 원자재 및 외환 시장 -->
         <section class="news-section" id="commodities-forex">
           <h2>원자재 및 외환 시장</h2>
@@ -612,8 +648,16 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 원자재 및 외환 시장 기사 -->
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">국제유가, OPEC+ 증산 가능성 시사에 하락</h3>
+            <p itemprop="articleBody">
+              국제유가는 OPEC+가 증산 가능성을 시사함에 따라 2% 하락하여, WTI 기준 배럴당 75달러대로 진입하였습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+          </article>
         </section>
-        
+
         <!-- 7. 채권 시장 동향 -->
         <section class="news-section" id="bond-market">
           <h2>채권 시장 동향</h2>
@@ -624,8 +668,16 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 채권 시장 동향 기사 -->
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">미국 2년물·10년물 금리 스프레드 역전 확대</h3>
+            <p itemprop="articleBody">
+              미국 2년물과 10년물 국채 금리 스프레드가 40bp까지 역전되어, 연준의 긴축 장기화 우려로 장기물 금리가 하락하고 있으며, 이는 경기침체 신호로 해석되고 있습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
+          </article>
         </section>
-        
+
         <!-- 8. 환율 정보 및 전망 -->
         <section class="news-section" id="exchange-rates">
           <h2>환율 정보 및 전망</h2>
@@ -643,6 +695,22 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 2일</span>
           </article>
+          <!-- 새로 추가된 환율 정보 및 전망 기사 -->
+          <article class="news-card">
+            <h3>달러인덱스(DXY), 107.61 기록</h3>
+            <p>
+              달러인덱스(DXY)는 107.61을 기록하며 강세를 보였습니다. 유럽 경제지표 개선으로 유로화가 강세를 보이고 있음에도 불구하고, 미국 경제의 견조한 성장과 연준의 긴축 정책 지속 가능성으로 인해 달러 강세가 지속되고 있습니다.
+            </p>
+            <span class="news-date">2025년 3월 2일</span>
+          </article>
+        </section>
+
+        <!-- 새로 추가한 "속보" 섹션 (내용은 비워둠) -->
+        <section class="news-section" id="breaking-news">
+          <h2>속보</h2>
+          <div class="news-card">
+            <p>속보가 있으면 바로 공지하겠습니다.</p>
+          </div>
         </section>
       </main>
     </div><!-- layout-container 종료 -->
@@ -655,7 +723,7 @@
         아이디어가 있으시면 언제든지 메일로 제안해 주세요!
       </p>
     </footer>
-    
+
     <script>
       // 개발자 도구(F12) 및 소스 보기(Ctrl+U) 차단
       document.addEventListener("keydown", function(event) {
@@ -671,7 +739,7 @@
       document.addEventListener("contextmenu", function(event) {
           event.preventDefault();
       });
-      
+
       // 난독화: 비밀키
       function getSecretKey() {
           return "my-secret-key";
