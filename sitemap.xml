@@ -8,28 +8,28 @@
   <!-- 홈 페이지 -->
   <url>
     <loc>https://gohigher.netlify.app/</loc>
-    <lastmod>2025-03-02T10:13:23Z</lastmod>
+    <lastmod>2025-03-03T12:15:00Z</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- 포트폴리오 페이지 -->
   <url>
     <loc>https://gohigher.netlify.app/주식포트폴리오.html</loc> 
-    <lastmod>2025-03-02T10:13:23Z</lastmod>
+    <lastmod>2025-03-03T12:15:00Z</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 유명인 포트폴리오 페이지 -->
   <url>
     <loc>https://gohigher.netlify.app/버크셔해서웨이.html</loc> 
-    <lastmod>2025-03-02T10:13:23Z</lastmod>
+    <lastmod>2025-03-03T12:15:00Z</lastmod>
     <priority>0.7</priority>
   </url>
 
   <!-- 중소형 주식 페이지 -->
   <url>
     <loc>https://gohigher.netlify.app/중소형주식.html</loc>
-    <lastmod>2025-03-02T10:13:23Z</lastmod>
+    <lastmod>2025-03-03T12:15:00Z</lastmod>
     <priority>0.8</priority> 
   </url>
 

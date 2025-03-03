@@ -8,7 +8,7 @@
       content="미국 중소형주 투자 정보 - 러셀 2000 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다."
     />
     <link rel="canonical" href="https://gohigher.netlify.app/중소형주식" />
-    <link rel="icon" type="image/webp" href="https://gohigher.netlify.app/logo.webp" />
+    <link rel="icon" type="image/jpg" href="https://gohigher.netlify.app/logo.jpg" />
     <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Go Higher" />
     <meta name="robots" content="index,follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -107,6 +107,7 @@
         background: #fff;
         border-radius: 6px;
         overflow: hidden;
+        margin-bottom: 2rem; /* 테이블 하단 여백 추가 */
       }
       thead {
         background: var(--light-gray);
@@ -127,7 +128,7 @@
         background: #f9f9f9;
       }
       tbody tr:hover {
-        background: #f1f1f1;
+        background: #f5faff; /* 약간의 파란 톤 */
         cursor: pointer;
       }
       /* 모달 오버레이 및 모달 */
@@ -182,10 +183,18 @@
         color: #fff;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
+          /* 추가 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
       }
+      /* 모달 창 본문에 조금 더 여백 */
+.modal-body {
+  padding: 1rem 2rem; /* 좌우 여백 살짝 늘림 */
+}
       .modal-header h2 {
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
       /* 업데이트 날짜 스타일 */
       .update-date {
@@ -296,6 +305,15 @@
         content: "▼";
         font-size: 0.8rem;
       }
+      /* 섹터 이름을 표시하는 행에 스타일 부여 */
+.sector-heading td {
+  background-color: #d3d5d9;  /* 연한 하늘색 느낌 */
+  color: #333;               /* 텍스트 색상 */
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
     </style>
   </head>
   <body>
@@ -367,7 +385,6 @@
             <p>
               REC-994(CCM), REC-617(고형 종양) 등 주요 파이프라인에서 임상 1/2상 긍정적 데이터 확보
             </p>
-            <!-- (4) 재무 정보 섹션을 네이버 증권 링크로 교체 -->
             <h4>4. 재무 정보</h4>
             <p>
               <a href="https://m.stock.naver.com/worldstock/stock/RXRX.O/finance/summary" target="_blank">
@@ -463,7 +480,6 @@
               미국 전역에 1,200개의 신규 매장 후보지를 검토 중으로, 유기농 및 건강식품 시장의 성장에 힘입어 매출 및 고객층
               확대 예상.
             </p>
-            <!-- (4) 재무 정보 섹션 교체 -->
             <h4>4. 재무 정보</h4>
             <p>
               <a href="https://m.stock.naver.com/worldstock/stock/SFM.O/finance/summary" target="_blank">
@@ -546,7 +562,6 @@
             <p>
               <strong>Neutron 로켓:</strong> 중형 발사체로, 2025년 첫 발사를 목표로 개발 중. 이를 통해 중형 발사체 시장에 진출할 예정.
             </p>
-            <!-- (4) 재무 정보 섹션 교체 -->
             <h4>4. 재무 정보</h4>
             <p>
               <a href="https://m.stock.naver.com/worldstock/stock/RKLB.O/finance/summary" target="_blank">
@@ -632,7 +647,6 @@
             <p>
               Coherent는 시장 혁신자들이 재료에서 시스템에 이르기까지 혁신적인 기술로 미래를 정의할 수 있도록 지원합니다.
             </p>
-            <!-- (4) 재무 정보 섹션 교체 -->
             <h4>4. 재무 정보</h4>
             <p>
               <a href="https://m.stock.naver.com/worldstock/stock/COHR.K/finance/summary" target="_blank">
@@ -720,7 +734,6 @@
             <p>
               차세대 안과용 카테터 및 스텐트 기술 개발, 망막질환(황반변성 등)용 이식형 치료기기 임상 진행 중
             </p>
-            <!-- (4) 재무 정보 섹션 교체 -->
             <h4>4. 재무 정보</h4>
             <p>
               <a href="https://m.stock.naver.com/worldstock/stock/GKOS.K/finance/summary" target="_blank">
@@ -809,7 +822,6 @@
               랜섬웨어 대응 및 사이버 보안 기능 업그레이드.  
               AI·ML 활용 자동화로 기업 데이터 운영 효율성 극대화.
             </p>
-            <!-- (4) 재무 정보 섹션 교체 -->
             <h4>4. 재무 정보</h4>
             <p>
               <a href="https://m.stock.naver.com/worldstock/stock/CVLT.O/finance/summary" target="_blank">
@@ -1316,31 +1328,318 @@
               </li>
             </ul>
             <h4>10. 미래 전망</h4>
+            <p> <strong>테일러 모리슨 홈 코퍼레이션은 미국 주택 건설 시장에서 견고한 입지를 기반으로 지속 가능한 성장을 추구하는 주요 주택 건설 기업입니다.</strong> </p> 
+            <p> 회사는 2023년과 2024년 주택 공급 실적과 조정 총 마진을 토대로, 2025년까지 주당 순이익(EPS)을 약 8.60달러까지 끌어올릴 것으로 전망하고 있습니다. 평균 주택 가격 상승과 공급 확대가 예상됨에 따라 주택 건설 부문에서의 수익 확대가 기대되며, 이를 반영한 목표 주가는 72달러에서 78달러 사이로 형성될 것으로 예상됩니다. </p> 
+            <p> 단순한 주택 건설을 넘어, 테일러 모리슨은 라이프스타일 및 마스터플랜 커뮤니티 개발, 그리고 Urban Form 브랜드를 통해 복합 부동산 개발 전략을 적극적으로 추진하고 있습니다. 이를 통해 다양한 소비자층의 니즈를 충족시킬 수 있는 라인업을 갖추고 있으며, 시장 점유율을 한층 더 높일 수 있는 경쟁력을 확보하고 있습니다. </p> 
+            <p> 또한 금융 서비스, 소유권 보험(Title Insurance), 마감 정산(Closing) 서비스 등 부가가치가 높은 사업도 운영하며, 이 같은 다각화 전략은 회사의 수익성 강화에 기여하는 중요한 요소로 평가됩니다. 지리적 확장과 함께 혁신적인 부동산 개발 노력을 지속함으로써, 미국 주택 시장 전반에서 안정적인 수익 창출 구조를 구축해 나갈 것으로 전망됩니다. </p> 
+            <p> 종합적으로 볼 때, 테일러 모리슨 홈 코퍼레이션은 주택 건설 사업의 탄탄한 기반 위에 부동산 개발과 서비스 사업을 결합해 성장 기회를 극대화하고 있으며, 투자자들에게는 장기적으로 매력적인 투자 대상이 될 것으로 기대를 모으고 있습니다. </p>
+          </div>
+          <!-- LNTH 콘텐츠 추가 -->
+          <div id="modalContentLNTH" class="modal-content">
+            <h3>Lantheus Holdings / 랜티우스 홀딩스 상세 정보</h3>
+            <h4>1. 회사 개요</h4>
+            <ul>
+              <li><strong>설립연도:</strong> ???</li>
+              <li><strong>본사 위치:</strong> 미국 매사추세츠주 노스 빌레리카</li>
+              <li><strong>상장시장:</strong> 나스닥 증권거래소</li>
+              <li>
+                <strong>웹사이트:</strong>
+                <a href="https://www.lantheus.com/" target="_blank">https://www.lantheus.com/</a>
+              </li>
+            </ul>
+            <h4>2. 핵심 사업 및 기술</h4>
+            <ul>
+              <li>
+                랜티우스 홀딩스는 약 70년간 방사성 의약품 및 조영제를 취급해온 의료기기 기업으로, 진단 영상 및 핵의학 제품을 제공합니다.
+              </li>
+              <li>
+                테라노스틱과 알츠하이머병 진단에 주력하며, 심혈관 질환, 종양학, 신경학 분야에서 사용되는 진단용 방사성 의약품과 조영제 개발에 집중하고 있습니다.
+              </li>
+              <li>
+                이러한 제품들은 질병의 조기 발견과 정확한 진단을 가능하게 하여, 환자 치료 및 관리에 중요한 역할을 수행합니다.
+              </li>
+            </ul>
+            <h4>3. 현재 개발</h4>
             <p>
-              <strong>테일러 모리슨 홈 코퍼레이션은 미국 주택 건설 시장에서 견고한 입지를 기반으로 지속 가능한 성장을 도모하는 기업으로 평가받고 있습니다.</strong>
+              랜티우스는 최근 3억 5천만 달러의 현금을 선불로 지불하고 라이프 몰레큘러 이미징(Life Molecular Imaging)을 인수하기로 합의하였습니다.
+              이번 인수를 통해 전 세계적으로 승인된 신경퇴행성 질환 진단용 방사성 의약품을 확보함으로써, 알츠하이머병 등 신경계 질환의 진단 역량을 크게 강화할 것으로 기대됩니다.
+            </p>
+            <h4>4. 재무 정보</h4>
+            <ul>
+              <li><strong>영업이익:</strong> 1,953.99억 원</li>
+              <li><strong>매출액:</strong> 5,533.30억 원</li>
+              <li><strong>영업이익률:</strong> 35.31%</li>
+              <li><strong>EPS:</strong> 5.73</li>
+              <li><strong>영업활동 현금흐름:</strong> 5,654.36억 원</li>
+              <li><strong>투자활동 현금흐름:</strong> -3,205.62억 원</li>
+              <li><strong>재무활동 현금흐름:</strong> -217.35억 원</li>
+              <li>
+                <strong>최근 분기별 순이익 변화:</strong>
+                2023.09: 131.96억, 2023.12: 103.38억, 2024.03: 131.07억, 2024.06: 62.07억, 2024.09: 131.09억
+              </li>
+              <li><strong>PBR:</strong> 6.57</li>
+              <li><strong>EBITDA:</strong> 572.54억 원</li>
+              <li><strong>EBIT:</strong> 512.14억 원</li>
+              <li><strong>ROA:</strong> 21.98%</li>
+              <li><strong>ROE:</strong> 51.73%</li>
+              <li><strong>유동비율:</strong> 5.80</li>
+              <li><strong>장기부채비율:</strong> 68.84</li>
+            </ul>
+            <h4>5. 파트너십</h4>
+            <p>
+              랜티우스는 플루르피리다즈 분야에서 GE와, 필클라리 분야에서는 큐리움(유럽에서는 필라리파이)과 협력 관계를 구축하고 있습니다.
+              이를 통해 새로운 진단 기술과 제품을 공동 개발하며, 시장 진입 속도를 높이고 있습니다.
+              또한, 글로벌 의료기기 및 제약 기업들과의 협력을 통해 제품의 상용화와 배포를 확대하고 있습니다.
+            </p>
+            <h4>6. IP 전략 및 규제·윤리 이슈</h4>
+            <p>
+              랜티우스는 특허 출원과 기술 라이선싱을 적극 활용하여 지적 재산권 보호에 주력하고 있으며,
+              이를 통해 경쟁사와의 차별화 및 시장 내 경쟁력을 유지하고자 합니다.
+              또한, 의료 분야의 엄격한 규제와 윤리 기준을 준수하며 제품의 안전성과 효과를 보장하기 위해 노력하고 있습니다.
+            </p>
+            <h4>7. 경영진 및 조직 문화</h4>
+            <p>
+              랜티우스의 경영진은 의료 영상 진단 분야에서 풍부한 경험과 전문 지식을 보유하고 있으며,
+              혁신과 협력을 중시하는 조직 문화를 바탕으로 직원들의 전문성 개발과 연구개발 역량 강화를 위한 다양한 프로그램을 운영하고 있습니다.
+            </p>
+            <h4>8. 경쟁 구도</h4>
+            <p>
+              랜티우스는 의료 영상 진단 시장에서 GE 헬스케어, 지멘스 헬스니어스, 필립스 등과 경쟁하고 있습니다.
+              그러나 방사성 의약품 및 조영제 분야에서의 오랜 경험과 혁신적인 제품 포트폴리오를 통해 차별화된 경쟁력을 유지하고 있습니다.
+            </p>
+            <h4>9. 상장·주주 정보</h4>
+            <ul>
+              <li><strong>거래소:</strong> 나스닥 증권거래소</li>
+              <li><strong>통화:</strong> USD</li>
+              <li><strong>결산일:</strong> 2023-12-31</li>
+              <li><strong>상장일:</strong> 2015-06-25</li>
+              <li><strong>상장주식수:</strong> 68,476,575</li>
+              <li><strong>시가총액:</strong> $6,424,472,267 (9조 3,926억원)</li>
+              <li>
+                <strong>주요 주주 구성:</strong><br />
+                BlackRock Institutional Trust Company, N.A. – 7,776,717 (11.19%)<br />
+                The Vanguard Group, Inc. – 7,227,736 (10.40%)<br />
+                Janus Henderson Investors – 6,198,689 (8.92%)<br />
+                Farallon Capital Management, L.L.C. – 5,316,227 (7.65%)<br />
+                State Street Global Advisors (US) – 2,639,753 (3.80%)
+              </li>
+            </ul>
+            <h4>10. 미래 전망</h4>
+            <p>
+              <strong>랜티우스 홀딩스는 인구 고령화와 만성 질환 증가에 힘입어, 진단 영상 및 핵의학 제품 시장에서 지속적인 성장이 기대되는 기업입니다.</strong>
             </p>
             <p>
-              회사는 2023년과 2024년의 주택 공급 실적과 조정 총 마진을 바탕으로, 향후 주당 순이익(EPS)이 2025년까지 8.60달러로 성장할 것으로 전망됩니다.
-              또한, 평균 주택 가격과 공급량 증대를 통해 주택 건설 수익의 확대가 기대되며, 주가 목표는 72달러에서 78달러 사이로 형성될 전망입니다.
+              최근 라이프 몰레큘러 이미징 인수를 통해 신경퇴행성 질환 진단 역량을 강화함으로써, 알츠하이머병과 기타 신경계 질환의 조기 진단이 가능해졌습니다.
+              또한 심혈관 질환, 종양학 및 신경학 분야에서의 진단용 방사성 의약품과 조영제에 대한 수요 증가가 매출 확대에 기여할 것으로 예상됩니다.
             </p>
             <p>
-              테일러 모리슨은 단순 주택 건설을 넘어 라이프스타일 및 마스터플랜 커뮤니티 개발, 그리고 Urban Form 브랜드를 통한 복합 부동산 개발 전략을 추진하고 있어,
-              다양한 소비자층의 수요를 충족시키며 시장 점유율을 확대할 수 있는 강점을 보유하고 있습니다.
-              금융 서비스, 소유권 보험, 마감 정산 서비스 등의 부가가치 사업도 회사의 수익성 강화에 기여할 중요한 요소로 작용할 것입니다.
+              기술 혁신과 엄격한 규제 준수를 통해 랜티우스는 경쟁 우위를 유지하며, 글로벌 의료기기 및 제약 기업과의 전략적 제휴를 바탕으로 신제품 개발과 상용화가 가속화될 전망입니다.
+              재무 지표 역시 높은 ROE와 안정적인 유동비율을 통해 투자자들에게 매력적인 수익성과 현금흐름을 제공할 것으로 보입니다.
             </p>
             <p>
-              이와 같이 테일러 모리슨 홈 코퍼레이션은 다각화된 제품 및 서비스 전략, 지리적 확장, 그리고 혁신적인 부동산 개발 전략을 통해 미국 주택 시장에서 지속 가능한 성장과 안정적인 수익 창출 구조를 구축할 것으로 기대되며,
-              투자자들에게 매력적인 장기 투자 기회를 제공할 것으로 전망됩니다.
+              전반적으로, 랜티우스는 진단 영상 및 핵의학 분야에서의 오랜 경험과 혁신적인 기술, 그리고 강력한 파트너십을 바탕으로 글로벌 시장에서 지속 가능한 성장과 수익성 개선을 달성할 것으로 기대되며,
+              투자자들은 이 회사의 미래 성과에 큰 기대를 걸어도 좋을 것으로 판단됩니다.
             </p>
           </div>
-
+          <!-- Taylor Morrison Home Corporation 콘텐츠 -->
+          <div id="modalContentTMHC" class="modal-content">
+            <h3>Taylor Morrison Home Corporation / 테일러 모리슨 홈 코퍼레이션 상세 정보</h3>
+            <!-- (내용 생략) -->
+          </div>
+          <!-- Lantheus Holdings 콘텐츠 -->
+          <div id="modalContentLNTH" class="modal-content">
+            <h3>Lantheus Holdings / 랜티우스 홀딩스 상세 정보</h3>
+            <!-- (내용 생략) -->
+          </div>
+          <!-- ACI Worldwide 콘텐츠 (새롭게 추가) -->
+          <div id="modalContentACIW" class="modal-content">
+            <h3>ACI 월드와이드 / ACI Worldwide 상세 정보</h3>
+            <h4>1. 회사 개요</h4>
+            <ul>
+              <li><strong>설립연도:</strong> 1975</li>
+              <li><strong>본사 위치:</strong> 미국 네브래스카주 오마하</li>
+              <li><strong>상장시장:</strong> 나스닥 증권거래소</li>
+              <li>
+                <strong>웹사이트:</strong>
+                <a href="https://www.aciworldwide.com" target="_blank">https://www.aciworldwide.com</a>
+              </li>
+            </ul>
+            <h4>2. 핵심 사업 및 기술</h4>
+            <p>
+              ACI 월드와이드는 실시간 전자 결제를 촉진하는 소프트웨어 제품 및 솔루션을 개발, 마케팅, 설치 및 지원하는 기업입니다.
+              전 세계 금융 기관, 상인, 결제 프로세서 등 다양한 고객에게 안전하고 효율적인 결제 처리 시스템을 제공합니다.
+            </p>
+            <h4>3. 현재 개발</h4>
+            <p>
+              최근 2024년 4분기 실적 발표에서 ACI 월드와이드는 매출 4억 5,304만 달러를 기록하며 애널리스트 예상치를 상회하였습니다.
+              또한 2024년 총 수익은 전년 대비 10% 증가한 15억 9,400만 달러, 순이익은 67% 증가한 2억 300만 달러를 달성하였습니다.
+              이러한 성과는 회사의 지속적인 제품 개발과 글로벌 시장 확대 노력의 결과로 평가됩니다.
+            </p>
+            <h4>4. 재무 정보</h4>
+            <ul>
+              <li><strong>영업이익:</strong> 1,790.98억 원</li>
+              <li><strong>매출액:</strong> 6,600.10억 원</li>
+              <li><strong>영업이익률:</strong> 27.14%</li>
+              <li><strong>EPS:</strong> 1.14</li>
+              <li><strong>영업활동 현금흐름:</strong> 3,393.41억 원</li>
+              <li><strong>투자활동 현금흐름:</strong> -462.28억 원</li>
+              <li><strong>재무활동 현금흐름:</strong> -2,490.20억 원</li>
+              <li><strong>최근 분기별 순이익 변화:</strong> 2023.09: 37.91억, 2023.12: 122.62억, 2024.03: -7.75억, 2024.06: 30.89억, 2024.09: 81.43억</li>
+              <li><strong>PBR:</strong> 4.13</li>
+              <li><strong>EBITDA:</strong> 345.38억 원</li>
+              <li><strong>EBIT:</strong> 223.01억 원</li>
+              <li><strong>ROA:</strong> 3.65%</li>
+              <li><strong>ROE:</strong> 9.65%</li>
+              <li><strong>유동비율:</strong> 1.36</li>
+              <li><strong>장기부채비율:</strong> 72.76</li>
+            </ul>
+            <h4>5. 파트너십</h4>
+            <p>
+              ACI 월드와이드는 중동 및 북아프리카(MENA) 지역의 AI 기반 결제 환경을 발전시키기 위해 HyperPay와 파트너십을 확장하였습니다.
+              이를 통해 해당 지역의 결제 인프라를 강화하고, 고객에게 향상된 결제 솔루션을 제공하고자 합니다.
+            </p>
+            <h4>6. IP 전략 및 규제·윤리 이슈</h4>
+            <p>
+              ACI 월드와이드는 지적 재산권 보호를 위해 적극적인 특허 출원과 기술 라이선싱 전략을 채택하고 있으며,
+              결제 산업의 엄격한 규제와 윤리 기준을 준수하여 고객 데이터의 보안 및 프라이버시 보호에 힘쓰고 있습니다.
+            </p>
+            <h4>7. 경영진 및 조직 문화</h4>
+            <p>
+              ACI 월드와이드의 경영진은 결제 산업에서 다년간의 경험과 전문성을 보유하고 있으며,
+              혁신과 협력을 중시하는 조직 문화를 바탕으로 직원들의 전문성 개발과 연구개발 역량 강화를 위한 다양한 프로그램을 운영하고 있습니다.
+            </p>
+            <h4>8. 경쟁 구도</h4>
+            <p>
+              ACI 월드와이드는 글로벌 결제 기술 제공업체로서 FIS, Fiserv, 글로벌 페이먼츠 등과 경쟁하고 있으나,
+              실시간 전자 결제 솔루션 분야에서의 전문성과 다양한 제품 포트폴리오를 통해 차별화된 경쟁력을 유지하고 있습니다.
+            </p>
+            <h4>9. 상장·주주 정보</h4>
+            <ul>
+              <li><strong>거래소:</strong> 나스닥 증권거래소</li>
+              <li><strong>통화:</strong> USD</li>
+              <li><strong>결산일:</strong> 2023-12-31</li>
+              <li><strong>상장일:</strong> 1995-02-24</li>
+              <li><strong>상장주식수:</strong> 105,336,028</li>
+              <li><strong>시가총액:</strong> $6,041,021,206 (8조 8,259억원)</li>
+            </ul>
+            <p>
+              <strong>주요 주주 구성:</strong><br />
+              BlackRock Institutional Trust Company, N.A. – 16,491,135 (15.72%)<br />
+              The Vanguard Group, Inc. – 13,840,338 (13.20%)<br />
+              iShares Core S&P Small-Cap ETF – 6,724,429 (6.41%)<br />
+              State Street Global Advisors (US) – 4,539,013 (4.33%)<br />
+              Dimensional Fund Advisors, L.P. – 3,413,390 (3.25%)
+            </p>
+            <h4>10. 미래 전망</h4>
+            <p> <strong>ACI 월드와이드는 전 세계 금융기관과 상거래 업체에 실시간 결제 솔루션 및 관련 서비스를 제공하는 글로벌 결제 기술 기업입니다.</strong> </p> 
+            <p> 2025년 연간 매출을 약 16억 8,500만 달러에서 17억 1,500만 달러 사이로 전망하며, 인공지능(AI)과 머신러닝(ML) 기반 결제 처리 기술에 지속적으로 투자하고 있습니다. 이를 통해 디지털 전환(Digital Transformation)에 대한 수요가 급증하는 가운데, 경쟁 우위를 공고히 하고 새로운 수익 창출 기회를 모색 중입니다. </p> 
+            <p> 특히 중동·북아프리카(MENA) 지역뿐만 아니라 아시아와 유럽 등 신흥 시장에서 적극적인 고객 확보와 매출 다각화 전략을 추진하고 있습니다. 결제 인프라가 빠르게 고도화되고 있는 이러한 지역들에서 ACI 월드와이드는 맞춤형 솔루션과 현지화된 서비스를 제공함으로써 시장 점유율을 높이고 있습니다. </p> 
+            <p> 안정적인 현금흐름과 견고한 재무 구조는 글로벌 경제의 불확실성 속에서도 장기적 성장을 유지할 수 있는 중요한 기반이 됩니다. 또한 회사는 기술 혁신과 전략적 파트너십 확대를 통해 업계 전반에 긍정적인 파급 효과를 가져올 것으로 기대되며, AI·ML을 활용한 사기 방지(Fraud Detection) 및 결제 처리 효율성 개선이 주요 성장 동력이 될 전망입니다. </p> 
+            <p> 투자자들은 ACI 월드와이드가 신기술 도입 및 글로벌 시장 확대 전략을 강화함으로써 결제 산업에서의 리더십을 더욱 견고히 하고, 장기적으로 지속 가능한 성장과 수익성 개선을 이룰 수 있을 것으로 기대합니다. </p>
+          </div>
+          <!-- FLR 플루오르 콘텐츠 (새롭게 추가) -->
+          <div id="modalContentFLR" class="modal-content">
+            <h3>FLR 플루오르 / 플루오르 상세 정보</h3>
+            <h4>1. 회사 개요</h4>
+            <ul>
+              <li><strong>설립연도:</strong> 1975</li>
+              <li><strong>본사 위치:</strong> 미국 네브래스카주 오마하</li>
+              <li><strong>상장시장:</strong> 나스닥 증권거래소</li>
+              <li>
+                <strong>웹사이트:</strong>
+                <a href="https://www.aciworldwide.com" target="_blank">https://www.aciworldwide.com</a>
+              </li>
+            </ul>
+            <h4>2. 핵심 사업 및 기술</h4>
+            <p>
+              플루오르는 글로벌 엔지니어링, 조달, 건설(EPC) 및 유지보수 서비스를 제공하는 기업으로, 다양한 산업 분야에서 활동하고 있다.
+              특히, 에너지 및 화학, 인프라 및 광업, 첨단 제조 및 생명과학, 정부 및 방위산업과 같은 분야에서 강점을 보인다.
+            </p>
+            <p>
+              에너지 및 화학 부문에서는 석유, 가스, 화학, 정제 공장을 설계하고 건설하는 역할을 하며, 친환경 에너지를 위한 인프라 개발에도 주력하고 있다.
+              인프라 및 광업 부문에서는 교량, 도로, 철도 및 공항 건설 프로젝트를 수행하며, 자원 개발 관련 프로젝트도 맡고 있다.
+            </p>
+            <p>
+              최근 반도체 및 바이오산업의 성장과 맞물려 첨단 제조 및 생명과학 부문에서도 활발한 활동을 보이며, 반도체 공장 및 바이오테크, 제약 공장의 설계 및 건설을 맡고 있다.
+              또한, 정부 및 방위산업 분야에서도 미 국방부 및 국토안보부의 인프라 구축 및 유지보수 프로젝트를 진행하는 등 안정적인 사업 포트폴리오를 유지하고 있다.
+            </p>
+            <h4>3. 현재 개발</h4>
+            <p>
+              플루오르는 최근 독일 하이델베르크 머티리얼스와 GeZero 프로젝트의 기본설계(FEED) 계약을 체결했다.
+              이 프로젝트는 독일에서 진행되는 대규모 탄소 포집 및 저장(CCS) 프로젝트로, 플루오르는 지속가능한 기술 개발에 적극적으로 나서고 있다.
+            </p>
+            <h4>4. 재무 정보</h4>
+            <ul>
+              <li><strong>영업이익:</strong> 2,718.39억 원</li>
+              <li><strong>매출액:</strong> 62,259.90억 원</li>
+              <li><strong>영업이익률:</strong> 4.37%</li>
+              <li><strong>EPS:</strong> 12.33</li>
+              <li><strong>영업활동 현금흐름:</strong> 12,101.22억 원</li>
+              <li><strong>투자활동 현금흐름:</strong> -4,866.80억 원</li>
+              <li><strong>재무활동 현금흐름:</strong> -1,695.34억 원</li>
+              <li><strong>최근 분기별 순이익 변화:</strong> 2023.12: -22.00억, 2024.03: 59.00억, 2024.06: 169.00억, 2024.09: 54.00억, 2024.12: 1,863.00억</li>
+              <li><strong>PBR:</strong> 1.62</li>
+              <li><strong>EBITDA:</strong> 444.00억 원</li>
+              <li><strong>EBIT:</strong> 371.00억 원</li>
+              <li><strong>ROA:</strong> -0.26%</li>
+              <li><strong>ROE:</strong> 72.85%</li>
+              <li><strong>유동비율:</strong> 1.69</li>
+              <li><strong>장기부채비율:</strong> 27.96</li>
+            </ul>
+            <h4>5. 파트너십</h4>
+            <p>
+              플루오르는 정부 및 공공기관과 협력하여 국방 및 원자력 관련 인프라 프로젝트를 진행 중이다.
+              이와 같은 파트너십은 플루오르가 친환경 기술 및 지속가능한 인프라 개발에 집중하고 있음을 보여준다.
+            </p>
+            <h4>6. IP 전략 및 규제·윤리 이슈</h4>
+            <p>
+              플루오르는 친환경 건설 및 탄소 포집 기술과 관련된 특허를 보유하고 있으며, 연구개발(R&D) 투자를 지속적으로 확대하고 있다.
+              ESG(환경, 사회, 지배구조) 경영 방침을 적극 도입하여 지속가능성 프로젝트를 강화하고 있으며, 2024년에는 헌혈 캠페인과 같은 사회적 책임(CSR) 활동을 진행하기도 했다.
+              또한, 환경 및 규제 관련 리스크를 줄이기 위해 각국의 법규를 철저히 준수하고 있으며, 글로벌 인프라 프로젝트 수행 시 윤리적 문제를 사전에 방지하는 프로세스를 구축하고 있다.
+            </p>
+            <h4>7. 경영진 및 조직 문화</h4>
+            <p>
+              플루오르는 2025년 5월 1일부터 새로운 CEO로 Jim Breuer를 임명할 예정이다.
+              현 CEO인 David E. Constable는 같은 날 이사회 의장직을 맡게 되며, 오랫동안 재무를 책임졌던 조 브레넌 CFO는 은퇴를 앞두고 그의 후임으로 <strong>존 리건(John Regan)</strong>이 신임 CFO로 임명된다.
+            </p>
+            <p>
+              이러한 경영진 변화는 회사의 전략적 방향에 영향을 미칠 것으로 예상되며, 안정적인 기업 문화와 ESG 경영 강화 측면에서도 긍정적인 변화를 기대할 수 있다.
+            </p>
+            <h4>8. 경쟁 구도</h4>
+            <p>
+              플루오르는 글로벌 엔지니어링 및 건설 산업에서 Bechtel Corporation, Jacobs Engineering, KBR Inc. 등과 경쟁하고 있다.
+              다양한 산업 분야에서의 경험과 기술력을 바탕으로 탄소 포집 및 저장 기술과 같은 친환경 프로젝트 확대를 통해 차별화된 경쟁력을 확보하고 있다.
+            </p>
+            <h4>9. 상장 주주 정보</h4>
+            <ul>
+              <li><strong>거래소:</strong> 뉴욕 거래소</li>
+              <li><strong>통화:</strong> USD</li>
+              <li><strong>결산일:</strong> 2024-12-31</li>
+              <li><strong>상장일:</strong> 1980-03-17</li>
+              <li><strong>상장주식수:</strong> 168,786,393</li>
+              <li><strong>시가총액:</strong> $6,418,946,526 (9조 3,813억원)</li>
+            </ul>
+            <p>
+              <strong>주요 주주 구성:</strong><br />
+              BlackRock Institutional Trust Company, N.A. – 19,367,367 (11.47%)<br />
+              The Vanguard Group, Inc. – 17,659,384 (10.46%)<br />
+              Bernhard Capital Partners Management LP – 13,671,478 (9.72%)<br />
+              Fidelity Management & Research Company LLC – 13,601,774 (8.06%)<br />
+              Wellington Management Company, LLP – 10,509,451 (6.23%)
+            </p>
+            <h4>10. 미래 전망</h4>
+            <p> <strong>플루오르는 전 세계 인프라, 에너지, 광업, 정부 등 다양한 산업 분야에서 엔지니어링, 조달 및 건설(EPC) 서비스를 제공하는 글로벌 종합 건설·엔지니어링 기업입니다.</strong> </p> 
+            <p> 이 회사는 대형 프로젝트 관리 역량과 풍부한 경험을 바탕으로, 최근 급부상하는 친환경·탄소 포집 및 저탄소 에너지 인프라 분야에서 사업 기회를 넓히고 있습니다. 정부와 기업들이 ESG(환경·사회·지배구조) 경영과 탄소 중립 목표를 추구함에 따라, 플루오르 역시 해당 프로젝트 수주 및 관련 기술개발에 주력하고 있습니다. 이는 장기적 관점에서 회사의 기술 경쟁력과 매출 기반을 강화하는 발판이 될 것으로 기대됩니다. </p> 
+            <p> 다만, 2024년 4분기 실적이 시장 기대치를 밑돌면서 주가 하락과 연간 가이던스 하향 조정이라는 도전 과제에 직면했습니다. 이는 프로젝트 지연 및 글로벌 경제 불확실성, 원자재 가격 변동 등 여러 요소가 복합적으로 작용한 결과로 보입니다. 그럼에도 불구하고 플루오르는 프로젝트 포트폴리오 다변화와 리스크 관리 체계 개선을 통해, 중장기적으로 재무 건전성을 회복하고 주주 가치를 제고하기 위한 노력을 기울이고 있습니다. </p>
+            <p> 2025년 3월 기준으로, 플루오르는 새로운 경영진 체제하에서 대형 인프라 및 친환경 프로젝트 수주 경쟁력을 강화하고 있습니다. 특히 탄소 포집, 수소 에너지, 소형 모듈형 원자로(SMR) 등 차세대 에너지 분야에서의 기술 고도화 및 사업 확장을 적극 추진하며, 글로벌 기업과의 전략적 협력도 검토하고 있습니다. 이러한 움직임을 통해 회사는 미래 성장 동력을 확보하고, 더욱 안정적인 수익 창출 구조를 구축할 가능성을 높여가고 있습니다. </p> 
+            <p> 투자자들은 플루오르가 추진하는 친환경·에너지 프로젝트의 진행 상황과 재무 구조 개선, 그리고 프로젝트 수행 역량을 종합적으로 주시할 필요가 있습니다. 향후 회사가 글로벌 탄소 중립 기조와 함께 대형 프로젝트 수주 역량을 극대화한다면, 이 같은 혁신과 투자는 실적 개선과 기업 가치 상승으로 이어질 수 있을 것으로 전망됩니다. </p>
+          </div>
         </div>
         <div class="modal-footer">
           <button class="close-btn" id="footerCloseBtn">닫기</button>
         </div>
       </div>
     </div>
-    <!-- 중소형주에 대한 우리의 철학 -->
     <div class="bottom-info">
       <div>
         <h3>중소형주에 대한 우리의 철학</h3>
@@ -1362,67 +1661,197 @@
       </p>
     </footer>
     <script>
-      // 주식 정보 배열 (번호와 업데이트 날짜 추가)
+      // ---------------------------------------------------------------------------------------
+      // (1) [추가] stocks 배열에 sector 정보 추가
+      // ---------------------------------------------------------------------------------------
       let stocks = [
-        { id: 1, ticker: "RXRX", company: "Recursion Pharmaceuticals / 리커젼 파마슈티컬스", updateDate: "2025년 2월 25일" },
-        { id: 2, ticker: "SFM", company: "Sprouts Farmers Market / 스프라우츠 파머스 마켓", updateDate: "2025년 2월 25일" },
-        { id: 3, ticker: "RKLB", company: "Rocket Lab / 로켓 랩", updateDate: "2025년 2월 25일" },
-        { id: 4, ticker: "COHR", company: "Coherent / 코히어런트", updateDate: "2025년 2월 25일" },
-        { id: 5, ticker: "GKOS", company: "Glaukos Corp / 글라우코스", updateDate: "2025년 3월 2일" },
-        { id: 6, ticker: "CVLT", company: "Commvault Systems / 컴볼트 시스템즈", updateDate: "2025년 3월 2일" },
-        { id: 7, ticker: "CYBR", company: "CyberArk Software / 사이버아크", updateDate: "2025년 3월 2일" },
-        { id: 8, ticker: "CRDO", company: "Credo Technology / 크레도 테크놀로지", updateDate: "2025년 3월 2일" },
-        { id: 9, ticker: "ENSG", company: "Ensign Group / 엔사인 그룹", updateDate: "2025년 3월 2일" },
-        { id: 10, ticker: "UMB", company: "UMB Financial / UMB 파이낸셜", updateDate: "2025년 3월 3일" },
-        { id: 11, ticker: "TMHC", company: "Taylor Morrison Home Corporation / 테일러 모리슨 홈 코퍼레이션", updateDate: "2025년 3월 3일" }
+        // { id, ticker, company, updateDate, sector } 구조
+        {
+          id: 1,
+          ticker: "RXRX",
+          company: "Recursion Pharmaceuticals / 리커젼 파마슈티컬스",
+          updateDate: "2025년 2월 25일",
+          sector: "헬스케어"
+        },
+        {
+          id: 1,
+          ticker: "SFM",
+          company: "Sprouts Farmers Market / 스프라우츠 파머스 마켓",
+          updateDate: "2025년 2월 25일",
+          sector: "소비자 필수재"
+        },
+        {
+          id: 1,
+          ticker: "RKLB",
+          company: "Rocket Lab / 로켓 랩",
+          updateDate: "2025년 2월 25일",
+          sector: "산업재"
+        },
+        {
+          id: 1,
+          ticker: "COHR",
+          company: "Coherent / 코히어런트",
+          updateDate: "2025년 2월 25일",
+          sector: "정보기술"
+        },
+        {
+          id: 2,
+          ticker: "GKOS",
+          company: "Glaukos Corp / 글라우코스",
+          updateDate: "2025년 3월 2일",
+          sector: "헬스케어"
+        },
+        {
+          id: 2,
+          ticker: "CVLT",
+          company: "Commvault Systems / 컴볼트 시스템즈",
+          updateDate: "2025년 3월 2일",
+          sector: "정보기술"
+        },
+        {
+          id: 3,
+          ticker: "CYBR",
+          company: "CyberArk Software / 사이버아크",
+          updateDate: "2025년 3월 2일",
+          sector: "정보기술"
+        },
+        {
+          id: 4,
+          ticker: "CRDO",
+          company: "Credo Technology / 크레도 테크놀로지",
+          updateDate: "2025년 3월 2일",
+          sector: "정보기술"
+        },
+        {
+          id: 3,
+          ticker: "ENSG",
+          company: "Ensign Group / 엔사인 그룹",
+          updateDate: "2025년 3월 3일",
+          sector: "헬스케어"
+        },
+        {
+          id: 1,
+          ticker: "UMB",
+          company: "UMB Financial / UMB 파이낸셜",
+          updateDate: "2025년 3월 3일",
+          sector: "금융"
+        },
+        {
+          id: 1,
+          ticker: "TMHC",
+          company: "Taylor Morrison Home Corporation / 테일러 모리슨 홈 코퍼레이션",
+          updateDate: "2025년 3월 3일",
+          sector: "부동산"
+        },
+        {
+          id: 4,
+          ticker: "LNTH",
+          company: "Lantheus Holdings / 랜티우스 홀딩스",
+          updateDate: "2025년 3월 3일",
+          sector: "헬스케어"
+        },
+        {
+          id: 5,
+          ticker: "ACIW",
+          company: "ACI 월드와이드 / ACI Worldwide",
+          updateDate: "2025년 3월 3일",
+          sector: "정보기술"
+        },
+        {
+          id: 2,
+          ticker: "FLR",
+          company: "FLR 플루오르 / 플루오르",
+          updateDate: "2025년 3월 3일",
+          sector: "산업재"
+        }
       ];
 
-      // 테이블 렌더링 (번호, 티커, 회사명을 보여줌)
+      // ---------------------------------------------------------------------------------------
+      // (2) [수정] 테이블 렌더링 로직을 "섹터별"로 묶어서 표시
+      // ---------------------------------------------------------------------------------------
       function renderStockTable() {
         const tbody = document.querySelector("#stockTable tbody");
         tbody.innerHTML = "";
-        stocks.forEach((stock, idx) => {
-          const row = document.createElement("tr");
-          row.dataset.index = idx;
-          row.innerHTML = `<td class="number">${stock.id}</td><td>${stock.ticker}</td><td>${stock.company}</td>`;
-          row.addEventListener("click", () => openModal(idx));
-          tbody.appendChild(row);
+
+        // 2-1) 섹터별 그룹화
+        const sectorMap = {};
+        stocks.forEach((stock) => {
+          if (!sectorMap[stock.sector]) {
+            sectorMap[stock.sector] = [];
+          }
+          sectorMap[stock.sector].push(stock);
+        });
+
+        // 2-2) 섹터 이름 사전순(or 원하는 순)으로 정렬
+        const sortedSectors = Object.keys(sectorMap).sort();
+
+        // 2-3) 각 섹터별로 <tr>을 추가 (섹터명 헤더 1줄 + 종목들)
+        sortedSectors.forEach((sectorName) => {
+          // (A) 섹터 구분행
+          const sectorRow = document.createElement("tr");
+          sectorRow.classList.add("sector-heading");
+          // colspan=3 → 테이블 헤더가 3개(번호, 티커, 회사명)이므로 3칸 병합
+          sectorRow.innerHTML = `<td colspan="3">${sectorName}</td>`;
+          tbody.appendChild(sectorRow);
+
+          // (B) 해당 섹터 종목들
+          sectorMap[sectorName].forEach((stock, idx) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td class="number">${stock.id}</td>
+              <td>${stock.ticker}</td>
+              <td>${stock.company}</td>
+            `;
+            // 모달 열기 이벤트
+            row.addEventListener("click", () => openModalByTicker(stock.ticker));
+            tbody.appendChild(row);
+          });
         });
       }
 
-      // 모달 열기: 해당 주식에 맞는 정적 콘텐츠 블록을 표시
-      function openModal(index) {
-        // 모든 모달 콘텐츠 숨기기
+      // 모달 열기 함수를 티커 기반으로 작성 (기존 ID → ticker 방식)
+      function openModalByTicker(ticker) {
+        // 1) 모든 모달 콘텐츠 숨기기
         document.querySelectorAll(".modal-content").forEach((content) => {
           content.classList.remove("active");
         });
-        // 모달 제목 업데이트 및 업데이트 날짜 설정
-        document.getElementById("modalTitle").textContent = `${stocks[index].company} (${stocks[index].ticker})`;
-        document.getElementById("modalUpdateDate").textContent = `업데이트: ${stocks[index].updateDate}`;
+
+        // 2) 해당 주식 정보 찾아서 제목/날짜 세팅
+        const foundStock = stocks.find(s => s.ticker === ticker);
+        if (foundStock) {
+          document.getElementById("modalTitle").textContent = `${foundStock.company} (${foundStock.ticker})`;
+          document.getElementById("modalUpdateDate").textContent = `업데이트: ${foundStock.updateDate}`;
+        }
 
         // 선택한 주식에 맞는 콘텐츠 표시
-        if (stocks[index].ticker === "RXRX") {
+        if (ticker === "RXRX") {
           document.getElementById("modalContentRXRX").classList.add("active");
-        } else if (stocks[index].ticker === "SFM") {
+        } else if (ticker === "SFM") {
           document.getElementById("modalContentSFM").classList.add("active");
-        } else if (stocks[index].ticker === "RKLB") {
+        } else if (ticker === "RKLB") {
           document.getElementById("modalContentRKLB").classList.add("active");
-        } else if (stocks[index].ticker === "COHR") {
+        } else if (ticker === "COHR") {
           document.getElementById("modalContentCOHR").classList.add("active");
-        } else if (stocks[index].ticker === "GKOS") {
+        } else if (ticker === "GKOS") {
           document.getElementById("modalContentGKOS").classList.add("active");
-        } else if (stocks[index].ticker === "CVLT") {
+        } else if (ticker === "CVLT") {
           document.getElementById("modalContentCVLT").classList.add("active");
-        } else if (stocks[index].ticker === "CYBR") {
+        } else if (ticker === "CYBR") {
           document.getElementById("modalContentCYBR").classList.add("active");
-        } else if (stocks[index].ticker === "CRDO") {
+        } else if (ticker === "CRDO") {
           document.getElementById("modalContentCRDO").classList.add("active");
-        } else if (stocks[index].ticker === "ENSG") {
+        } else if (ticker === "ENSG") {
           document.getElementById("modalContentENSG").classList.add("active");
-        } else if (stocks[index].ticker === "UMB") {
+        } else if (ticker === "UMB") {
           document.getElementById("modalContentUMB").classList.add("active");
-        } else if (stocks[index].ticker === "TMHC") {
+        } else if (ticker === "TMHC") {
           document.getElementById("modalContentTMHC").classList.add("active");
+        } else if (ticker === "LNTH") {
+          document.getElementById("modalContentLNTH").classList.add("active");
+        } else if (ticker === "ACIW") {
+          document.getElementById("modalContentACIW").classList.add("active");
+        } else if (ticker === "FLR") {
+          document.getElementById("modalContentFLR").classList.add("active");
         }
 
         // 모달 표시
