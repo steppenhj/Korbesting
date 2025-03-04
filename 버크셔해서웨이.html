@@ -5,8 +5,10 @@
     <!-- 페이지 제목 -->
     <title>Go Higher - 버크셔해서웨이·워렌버핏·일론머스크·손정의·피터린치</title>
     <meta name="description" content="전 세계 주요 인물인 워렌버핏, 손정의, 피터린치 등의 포트폴리오를 살펴보세요. SEC 13F 공시 기반으로 최신 투자 동향을 제공합니다.">
-    <link rel="canonical" href="https://gohigher.kr/버크셔해서웨이">
-    <link rel="icon" type="image/jpg" href="https://gohigher.kr/logo.jpg">
+    <link rel="canonical" href="https://gohigher.kr/">
+
+    <link rel="icon" href="https://gohigher.kr/logo.jpg" type="image/jpeg">
+
     <!-- 키워드 (네이버에서 일부 활용) -->
     <meta name="keywords" content="유명인포폴, 투자기관, 헤지펀드, 포트폴리오, gohigher">
 
@@ -33,8 +35,6 @@
     <meta name="twitter:title" content="Go Higher - 버크셔해서웨이·워렌버핏·일론머스크·손정의·피터린치">
     <meta name="twitter:description" content="전 세계 주요 인물인 워렌버핏, 손정의, 피터린치 등의 포트폴리오를 살펴보세요. SEC 13F 공시 기반으로 최신 투자 동향을 제공합니다.">
     <meta name="twitter:image" content="https://gohigher.kr/logo.jpg">
-
-    <link rel="icon" type="image/jpg" href="logo.jpg">
 
     <!-- JSON-LD 구조화 데이터(WebPage) -->
     <script type="application/ld+json">
@@ -304,11 +304,15 @@
         .section p {
             text-align: center;
         }
-
-/* 혹은 body에 가로 스크롤이 발생하지 않도록 overflow-x 설정 */
-body {
-    overflow-x: hidden;
-}
+        /* 혹은 body에 가로 스크롤이 발생하지 않도록 overflow-x 설정 */
+        body {
+            overflow-x: hidden;
+        }
+        @media (max-width: 768px) {
+        nav ul {
+          flex-wrap: wrap;
+        }
+        }
     </style>
 </head>
 <body>
