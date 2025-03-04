@@ -303,50 +303,57 @@
         }
 
         /* 모바일 최적화를 위한 미디어 쿼리 */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            header p {
-                font-size: 0.9rem;
-            }
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-            nav ul li a {
-                padding: 0.5rem;
-                font-size: 0.9rem;
-            }
-            .chart-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            .chart-box {
-                width: 90%;
-                min-width: auto;
-            }
-            .chart-wrapper {
-                padding: 0.5rem;
-            }
-            main, .container {
-                padding: 0 10px;
-            }
-            footer {
-                font-size: 0.9rem;
-            }
-            canvas {
-                border-radius: 5px;
-            }
-            /* 모달 크기 조정 */
-            .modal-content {
-                padding: 15px;
-            }
-            #modalChart {
-                width: 90% !important;
-                height: auto !important;
-            }
+        @media (max-width: 768px) {
+          /* 네비게이션: 각 메뉴 항목을 50% 너비로 하여 한 줄에 2개씩 표시 */
+          nav ul {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          nav ul li {
+            flex: 0 0 50%;
+            max-width: 50%;
+            text-align: center;
+            margin-bottom: 10px;
+          }
+          nav ul li a {
+            padding: 0.5rem;
+            font-size: 0.95rem;
+          }
+
+          /* 차트 컨테이너: 모든 차트박스를 동일한 너비로 설정 */
+          .chart-row {
+            flex-direction: column;
+            align-items: center;
+          }
+          .chart-wrapper,
+          .chart-box {
+            width: 100%;
+            max-width: 400px; /* 모바일에서 동일하게 보일 최대 너비 */
+            margin: 0 auto 20px auto;
+          }
+          .chart-wrapper {
+            padding: 0.5rem;
+          }
+          /* 기타 패딩 및 글자 크기 조정 */
+          main, .container {
+            padding: 0 10px;
+          }
+          footer {
+            font-size: 0.9rem;
+          }
+          canvas {
+            border-radius: 5px;
+          }
+          /* 모달 내용도 모바일에 맞게 조정 */
+          .modal-content {
+            padding: 15px;
+          }
+          #modalChart {
+            width: 90% !important;
+            height: auto !important;
+          }
         }
+
     </style>
 </head>
 <body>
@@ -802,6 +809,18 @@
                 modal.style.display = 'none';
             }
         });
+
+        // 모달을 흰바탕이나 esc 눌렀을 때도 닫을 수 있게
+      document.getElementById('modalOverlay').addEventListener('click', (event) => {
+        if (event.target.id === 'modalOverlay') {
+          closeModal();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeModal();
+        }
+      });
 
         // (4) 개발자 도구 차단
         document.addEventListener("keydown", function(event) {
