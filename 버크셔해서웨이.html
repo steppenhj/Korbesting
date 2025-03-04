@@ -25,7 +25,7 @@
     <meta name="google-site-verification" content="GGuWsc5cbeYC9W0nQsN7550kWcUzArKuo3zfhjN5LXE" />
     <!-- Open Graph (OG) 메타 태그: SNS 공유용 -->
     <meta property="og:title" content="Go Higher - 버크셔해서웨이·워렌버핏·일론머스크·손정의·피터린치" />
-    <meta property="og:description" content="전 세계 주요 인물인 워렌버핏, 손정의, 피터린치 등의 포트폴리오를 살펴보세요. SEC 13F 공시 기반으로 최신 투자 동향을 제공합니다.">
+    <meta property="og:description" content="전 세계 주요 인물인 워렌버핏, 손정의, 피터린치 등의 포트폴리오를 살펴보세요. SEC 13F 공시 기반으로 최신 투자 동향을 제공합니다." />
     <meta property="og:url" content="https://gohigher.kr/버크셔해서웨이.html" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ko_KR" />
@@ -113,6 +113,7 @@
             background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
             color: var(--text-color);
             padding-bottom: 60px;
+            overflow-x: hidden;
         }
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -157,7 +158,7 @@
             margin: 1rem auto;
             padding: 0 1rem;
         }
-        /* 브라우저에 영구저장 안내 문구 */
+        /* 로그인 없이 브라우저에 영구 저장 안내 */
         .save-notice {
             background: #fff;
             color: #444;
@@ -168,7 +169,6 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
             line-height: 1.4;
         }
-
         .chart-container {
             display: flex;
             flex-direction: column;
@@ -188,14 +188,12 @@
             padding: 1rem;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s;
-            /* 행이 너무 좁아지면 다음 줄로 넘어갈 수 있도록 허용 */
             flex: 1 1 0;
         }
         .chart-wrapper:hover {
             transform: translateY(-4px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        /* (중요) chart-box를 퍼센트(30~33%)로 지정하되, 너무 작아지지 않도록 min-width 설정 */
         .chart-box {
             width: 32%;
             min-width: 380px;
@@ -214,7 +212,6 @@
             text-align: left !important;
             font-size: 0.95rem;
         }
-        /* (중요) canvas를 width:100%로 설정해, 부모의 너비에 맞춰 자동 확장/축소 */
         canvas {
             width: 100%;
             height: auto;
@@ -304,15 +301,52 @@
         .section p {
             text-align: center;
         }
-        /* 혹은 body에 가로 스크롤이 발생하지 않도록 overflow-x 설정 */
-        body {
-            overflow-x: hidden;
+
+        /* 모바일 최적화를 위한 미디어 쿼리 */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav ul li a {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            .chart-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .chart-box {
+                width: 90%;
+                min-width: auto;
+            }
+            .chart-wrapper {
+                padding: 0.5rem;
+            }
+            main, .container {
+                padding: 0 10px;
+            }
+            footer {
+                font-size: 0.9rem;
+            }
+            canvas {
+                border-radius: 5px;
+            }
+            /* 모달 크기 조정 */
+            .modal-content {
+                padding: 15px;
+            }
+            #modalChart {
+                width: 90% !important;
+                height: auto !important;
+            }
         }
-        @media (max-width: 768px) {
-      nav .nav-top,
-      nav .nav-bottom {
-        flex-direction: row;
-      }}
     </style>
 </head>
 <body>
