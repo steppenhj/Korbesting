@@ -5,8 +5,9 @@
   <!-- 페이지 제목(Title)에 사이트명 + 페이지 명시 -->
   <title>Go Higher - 주식 다이어리·포트폴리오 설계·가계부·투자일지·달력</title>
   <meta name="description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
-  <link rel="canonical" href="https://gohigher.kr/주식포트폴리오">
-  <link rel="icon" type="image/jpg" href="https://gohigher.kr/logo.jpg">
+  <link rel="canonical" href="https://gohigher.kr/">
+
+  <link rel="icon" href="https://gohigher.kr/logo.jpg" type="image/jpeg">
 
   <!-- SEO: 키워드 (네이버가 아직 일부 활용 가능) -->
   <meta name="keywords" content="포트폴리오, 다이어리, 자산관리, 투자일지, 가계부, gohigher">
@@ -24,13 +25,11 @@
   <meta name="google-site-verification" content="GGuWsc5cbeYC9W0nQsN7550kWcUzArKuo3zfhjN5LXE" />
   <!-- Open Graph (OG) 메타 태그: SNS 공유 시 미리보기 정보 -->
   <meta property="og:title" content="주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력" />
-  <meta property="og:description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
+  <meta property="og:description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요." />
   <meta property="og:image" content="https://gohigher.kr/logo.jpg" />
   <meta property="og:url" content="https://gohigher.kr/주식포트폴리오.html" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
-
-  <link rel="icon" type="image/jpg" href="logo.jpg">
 
   <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
   <meta name="twitter:card" content="summary_large_image">
@@ -53,38 +52,38 @@
     }
   }
   </script>
-            <!-- 구조화된 데이터: BreadcrumbList -->
-    <script type="application/ld+json">
+  <!-- 구조화된 데이터: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "미국주식·미국증시·환율",
-            "item": "https://gohigher.kr"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "주식포트폴리오",
-            "item": "https://gohigher.kr/주식포트폴리오"
-          },
-          {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "버크셔해서웨이",
-              "item": "https://gohigher.kr/버크셔해서웨이"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "중소형주식",
-            "item": "https://gohigher.kr/중소형주식"
-        }
-        ]
+        "@type": "ListItem",
+        "position": 1,
+        "name": "미국주식·미국증시·환율",
+        "item": "https://gohigher.kr"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "주식포트폴리오",
+        "item": "https://gohigher.kr/주식포트폴리오"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "버크셔해서웨이",
+        "item": "https://gohigher.kr/버크셔해서웨이"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "중소형주식",
+        "item": "https://gohigher.kr/중소형주식"
       }
+    ]
+  }
   </script>
 
   <!-- Google Fonts: Roboto & Open Sans -->
@@ -96,16 +95,16 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
   <style>
-    /* ----- 이하 기존 CSS 유지 (내용 동일) ----- */
-    html {
-      font-size: 16px;
-    }
+    /* 기본 CSS 변수 */
     :root {
       --primary-color: #004080;
       --secondary-color: #0059b3;
       --accent-color: #f4f7fa;
       --light-gray: #e0e0e0;
       --text-color: #333;
+    }
+    html {
+      font-size: 16px;
     }
     * {
       box-sizing: border-box;
@@ -117,6 +116,12 @@
       background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
       color: var(--text-color);
       padding-bottom: 60px;
+      transition: background 0.3s, color 0.3s;
+    }
+    /* 다크 모드 스타일 */
+    body.dark-mode {
+      background: #222;
+      color: #8b8b8b;
     }
     header {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -196,6 +201,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
       padding: 1rem;
       width: 100%;
+      margin-bottom: 1rem;
     }
     /* 토글을 위한 헤더와 내용 영역 */
     .section-header {
@@ -219,8 +225,61 @@
     .right-chart {
       flex: 1;
       display: flex;
-      justify-content: flex-end;
+      flex-direction: column;
       align-items: center;
+    }
+    /* 투자 포트폴리오 섹션 전용 스타일 개선 */
+    #stock-portfolio {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    #stock-portfolio .section-description {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    /* 차트 영역 카드 스타일 */
+    .right-chart.card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+      width: 100%;
+    }
+    /* 차트 버튼 그룹 스타일 */
+    .chart-btn-group {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .chart-btn-group button {
+      margin: 0 5px;
+    }
+    /* 기본 버튼 스타일 (공통) */
+    .primary-btn, .secondary-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .primary-btn {
+      background: var(--primary-color);
+      color: #fff;
+    }
+    .primary-btn:hover {
+      background: #003060;
+    }
+    .secondary-btn {
+      background: var(--secondary-color);
+      color: #fff;
+    }
+    .secondary-btn:hover {
+      background: #004080;
     }
     .asset-item {
       display: flex;
@@ -387,7 +446,6 @@
     .check-controls .check-input {
       margin-left: 0;
     }
-    /* 투자 일지 버튼 (수정, 삭제)를 다른 섹션과 동일하게 */
     .investment-diary button.edit-btn,
     .investment-diary button.delete-btn {
       padding: 0.3rem 0.6rem;
@@ -431,9 +489,6 @@
       color: #fff;
       line-height: 20px;
       font-size: 0.9rem;
-    }
-    .section-container{
-      margin-bottom: 1rem;
     }
     .investment-diary {
       background: #fff;
@@ -489,17 +544,14 @@
       font-size: 1rem;
       box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
     }
-    /* 전체 문서에서 수평 오버플로우 방지 */
     html, body {
       overflow-x: hidden;
     }
-    /* 모든 입력, 텍스트에리어, 셀렉트 요소에 16px 이상 글꼴 크기를 적용 */
     input,
     textarea,
     select {
       font-size: 16px;
     }
-
     @media (max-width: 1000px) {
       .section-container {
         width: 100%;
@@ -508,39 +560,26 @@
         flex-wrap: wrap;
       }
     }
- 
-    /* 모바일 기기(최대 600px)에서 레이아웃 조정 */
     @media (max-width: 600px) {
-      /* 헤더 텍스트 크기 조정 */
       header h1 {
         font-size: 1.6rem;
       }
-      
-      /* main 영역의 패딩을 줄여 화면 폭에 맞춤 */
       main {
         padding: 0 0.5rem;
       }
-      
-      /* 포트폴리오 섹션에서 좌우 여백 없이 세로 배치로 변경 */
       .portfolio-section-content {
         flex-direction: column;
         align-items: center;
       }
-      
-      /* 차트 캔버스가 화면에 꽉 차도록 */
       .chart-container canvas {
         width: 100% !important;
         height: auto !important;
       }
-      
-      /* 달력 내비게이션 버튼 및 텍스트의 레이아웃 재조정 */
       .calendar-navigation {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
       }
-      
-      /* 체크리스트 및 기타 컨텐츠의 폰트 크기 조정 (원하는 경우) */
       .investment-checklist,
       .asset-goal-container,
       .investment-diary,
@@ -701,6 +740,37 @@
     .account-book-entries button.delete-entry:hover {
       background: #800000;
     }
+    @media (max-width: 768px) {
+        nav ul {
+          flex-wrap: wrap;
+        }
+    }
+    /* 설정 모달 스타일 */
+    .settings-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .settings-form input[type="checkbox"],
+    .settings-form input[type="range"],
+    .settings-form input[type="color"] {
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+    .settings-form button {
+      margin-right: 10px;
+    }
+    #settingsBtn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.3rem;
+    }
+    .toggle-btn {
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      min-width: 3rem;
+    }
   </style>
 </head>
 <body>
@@ -713,6 +783,7 @@
         <li><a href="주식포트폴리오.html">다이어리</a></li>
         <li><a href="버크셔해서웨이.html">인기 포트폴리오</a></li>
         <li><a href="중소형주식.html">중소형주식 추천</a></li>
+        <li><a href="#" id="settingsBtn">⚙</a></li>
       </ul>
     </nav>
   </header>
@@ -742,7 +813,6 @@
             입력한 금액을 바탕으로 자동으로 각 항목의 비율이 계산되어 차트로 표시됩니다.<br>
             <strong>안정적인 자산 포트폴리오</strong>를 통해 변동성을 줄이고 장기적인 성장을 기대할 수 있습니다.
           </p>
-          
           <div class="portfolio-section-content">
             <div class="left-content">
               <!-- 동적 자산 항목들이 들어갈 영역 -->
@@ -760,14 +830,14 @@
         </div>
       </section>
       
-      <!-- [주식 포트폴리오] 동적 항목 영역 -->
+      <!-- [투자 포트폴리오] 동적 항목 영역 -->
       <section class="section-container" id="stock-portfolio">
         <div class="section-header">
           <h3>투자 포트폴리오</h3>
           <button class="toggle-btn">▲</button>
         </div>
         <div class="section-content">
-          <p style="font-size:0.9rem; line-height: 1.4;">
+          <p class="section-description">
             투자한 종목의 이름과 투자 금액을 입력하세요.<br>
             입력한 금액의 총합을 기준으로 각 종목의 비율이 자동으로 계산되어 차트로 표시됩니다.
           </p>
@@ -775,12 +845,18 @@
             <div class="left-content">
               <div class="portfolio-form" style="flex-direction: column; align-items: flex-start;">
                 <div id="stockList"></div>
-                <button id="addStockBtn">종목 추가</button>
+                <button id="addStockBtn" class="primary-btn">종목 추가</button>
               </div>
             </div>
-            <div class="right-chart">
+            <!-- [투자 포트폴리오] 섹션 내 차트 영역 (디자인 개선 적용) -->
+            <div class="right-chart card">
               <div class="chart-container">
                 <canvas id="stockChart"></canvas>
+              </div>
+              <!-- 차트 타입 선택 버튼 -->
+              <div class="chart-btn-group">
+                <button id="pieChartBtn" class="secondary-btn">원형 그래프</button>
+                <button id="barChartBtn" class="secondary-btn">막대 그래프</button>
               </div>
             </div>
           </div>
@@ -788,117 +864,127 @@
       </section>
     </div>
     
-    <!-- 하단 정보: 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 -->
-
-      <!-- 나의 자산 목표 영역 (헤더와 토글이 컨테이너 내부에 위치) -->
-      <div class="asset-goal">
-        <div class="asset-goal-container">
-          <div class="section-header">
-            <h3>나의 자산 목표</h3>
-            <button class="toggle-btn">▲</button>
-          </div>
-          <div class="section-content">
-            <p>목표 자산 금액을 입력하세요:</p>
-            <div class="asset-goal-form">
-              <input type="text" id="assetGoalInput" placeholder="예: 10000000">
-              <button id="saveAssetGoalBtn">저장</button>
-            </div>
-            <div id="assetGoalDisplay"></div>
-            <div id="assetGoalProgress"></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 투자 일지 영역 (수정, 삭제 버튼 디자인 변경) -->
-      <section class="section-container" id="investment-diary">
-        <div class="diary-container">
-          <div class="section-header">
-            <h3>투자 일지</h3>
-            <button class="toggle-btn">▲</button>
-          </div>
-          <div class="section-content">
-            <textarea id="investmentDiary" placeholder="오늘의 투자 일지를 작성하세요..."></textarea>
-            <button id="saveDiaryBtn">저장</button>
-            <div id="diaryEntries"></div>
-          </div>
-        </div>
-      </section>
-      
-      <!-- 달력 메모 섹션 -->
-      <div class="calendar-section">
+    <!-- 나의 자산 목표 영역 -->
+    <div class="asset-goal">
+      <div class="asset-goal-container">
         <div class="section-header">
-          <h3>달력 메모</h3>
+          <h3>나의 자산 목표</h3>
           <button class="toggle-btn">▲</button>
         </div>
         <div class="section-content">
-          <!-- 달력 내비게이션 헤더 -->
-          <div class="calendar-navigation" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-            <button id="prevMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">이전 달</button>
-            <span id="currentMonthDisplay" style="font-size: 1.2rem; font-weight: bold;"></span>
-            <button id="nextMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">다음 달</button>
+          <p>목표 자산 금액을 입력하세요:</p>
+          <div class="asset-goal-form">
+            <input type="text" id="assetGoalInput" placeholder="예: 10000000">
+            <button id="saveAssetGoalBtn">저장</button>
           </div>
-          <div id="calendar"></div>
+          <div id="assetGoalDisplay"></div>
+          <div id="assetGoalProgress"></div>
         </div>
       </div>
-
-      <!-- 가계부 섹션 -->
-      <div class="account-book">
+    </div>
+    
+    <!-- 투자 일지 영역 -->
+    <section class="section-container" id="investment-diary">
+      <div class="diary-container">
         <div class="section-header">
-          <h3>가계부</h3>
+          <h3>투자 일지</h3>
           <button class="toggle-btn">▲</button>
         </div>
         <div class="section-content">
-          <div class="account-book-form">
-            <input type="date" id="ab-date">
-            <select id="ab-type">
-              <option value="income">수입</option>
-              <option value="expense">지출</option>
-            </select>
-            <input type="text" id="ab-category" placeholder="카테고리">
-            <input type="text" id="ab-amount" placeholder="금액">
-            <input type="text" id="ab-description" placeholder="설명 (선택)">
-            <button id="ab-addBtn">추가</button>
-          </div>
-          <div class="account-book-summary" id="ab-summary">
-            <!-- 총 수입/지출/잔액 표시 -->
-          </div>
-          <div class="account-book-entries" id="ab-entries">
-            <!-- 가계부 항목 목록 테이블 -->
-          </div>
-          <!-- 추가: 고정 지출 계산기 -->
-          <div class="fixed-expense-calculator" style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
-            <h3>월간 고정 지출 계산기</h3>
-            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
-              <input type="text" id="fixedExpenseDescription" placeholder="지출 항목" style="flex: 1; padding: 5px;">
-              <input type="text" id="fixedExpenseAmount" placeholder="금액" style="width: 100px; padding: 5px;">
-              <button id="addFixedExpenseBtn" style="padding: 5px 10px;">추가</button>
-            </div>
-            <div id="fixedExpenseList"></div>
-            <div id="fixedExpenseTotal" style="margin-top: 10px; font-weight: bold;"></div>
-          </div>
-          <!-- 고정 지출 계산기 끝 -->
+          <textarea id="investmentDiary" placeholder="오늘의 투자 일지를 작성하세요..."></textarea>
+          <button id="saveDiaryBtn">저장</button>
+          <div id="diaryEntries"></div>
         </div>
       </div>
-      
-        <!-- 나만의 투자 원칙 체크리스트 -->
-        <div class="investment-checklist">
-          <div class="section-header">
-            <h3>나만의 투자 원칙 체크리스트</h3>
-            <button class="toggle-btn">▲</button>
-          </div>
-          <div class="section-content">
-            <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
-              새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
-            </p>
-            <ul id="checklist">
-              <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
-            </ul>
-            <div class="checklist-add">
-              <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
-              <button id="addChecklistItemBtn">추가</button>
-            </div>
-          </div>
+    </section>
+    
+    <!-- 달력 메모 섹션 -->
+    <div class="calendar-section">
+      <div class="section-header">
+        <h3>달력 메모</h3>
+        <button class="toggle-btn">▲</button>
+      </div>
+      <div class="section-content">
+        <div class="calendar-navigation" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <button id="prevMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">이전 달</button>
+          <span id="currentMonthDisplay" style="font-size: 1.2rem; font-weight: bold;"></span>
+          <button id="nextMonthBtn" style="padding: 0.5rem 1rem; background: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">다음 달</button>
         </div>
+        <div id="calendar"></div>
+      </div>
+    </div>
+
+    <!-- 가계부 섹션 -->
+    <div class="account-book">
+      <div class="section-header">
+        <h3>가계부</h3>
+        <button class="toggle-btn">▲</button>
+      </div>
+      <div class="section-content">
+        <div class="account-book-form">
+          <input type="date" id="ab-date">
+          <select id="ab-type">
+            <option value="income">수입</option>
+            <option value="expense">지출</option>
+          </select>
+          <input type="text" id="ab-category" placeholder="카테고리">
+          <input type="text" id="ab-amount" placeholder="금액">
+          <input type="text" id="ab-description" placeholder="설명 (선택)">
+          <button id="ab-addBtn">추가</button>
+        </div>
+        <div class="account-book-summary" id="ab-summary">
+          <!-- 총 수입/지출/잔액 표시 -->
+        </div>
+        <div class="account-book-entries" id="ab-entries">
+          <!-- 가계부 항목 목록 테이블 -->
+        </div>
+        <!-- 고정 지출 계산기 -->
+        <div class="fixed-expense-calculator" style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+          <h3>월간 고정 지출 계산기</h3>
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+            <input type="text" id="fixedExpenseDescription" placeholder="지출 항목" style="flex: 1; padding: 5px;">
+            <input type="text" id="fixedExpenseAmount" placeholder="금액" style="width: 100px; padding: 5px;">
+            <button id="addFixedExpenseBtn" style="padding: 5px 10px;">추가</button>
+          </div>
+          <div id="fixedExpenseList"></div>
+          <div id="fixedExpenseTotal" style="margin-top: 10px; font-weight: bold;"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 월별 가계부 보고서 섹션 -->
+    <section class="section-container" id="report-section">
+      <div class="section-header">
+        <h3>월별 가계부 보고서</h3>
+        <button class="toggle-btn">▲</button>
+      </div>
+      <div class="section-content">
+        <button id="generateReportBtn">보고서 생성</button>
+        <div id="reportSummary" style="margin-top: 20px;"></div>
+        <canvas id="incomeExpenseChart" style="margin-top: 20px;"></canvas>
+      </div>
+    </section>
+      
+    <!-- 나만의 투자 원칙 체크리스트 -->
+    <div class="investment-checklist">
+      <div class="section-header">
+        <h3>나만의 투자 원칙 체크리스트</h3>
+        <button class="toggle-btn">▲</button>
+      </div>
+      <div class="section-content">
+        <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
+          새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
+        </p>
+        <ul id="checklist">
+          <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
+        </ul>
+        <div class="checklist-add">
+          <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
+          <button id="addChecklistItemBtn">추가</button>
+        </div>
+      </div>
+    </div>
+    
   </main>
   
   <footer>
@@ -922,12 +1008,36 @@
     </div>
   </div>
   
-  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 기능 (기존 동일) -->
+  <!-- 설정 모달 (커스터마이징) -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <h4>설정</h4>
+      <form id="settingsForm" class="settings-form">
+        <label>
+          다크 모드:
+          <input type="checkbox" id="darkModeToggle">
+        </label>
+        <label>
+          폰트 크기 (기본: 16px):
+          <input type="range" id="fontSizeRange" min="12" max="20" step="1">
+        </label>
+        <label>
+          주요 색상:
+          <input type="color" id="primaryColorPicker" value="#004080">
+        </label>
+        <div style="text-align: right;">
+          <button type="button" id="resetSettingsBtn">리셋</button>
+          <button type="submit" id="saveSettingsBtn">저장</button>
+          <button type="button" id="cancelSettingsBtn" class="cancel-btn">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 기능 -->
   <script>
     /* ---- 이하 자바스크립트 부분은 기존 코드와 동일 ---- */
-    // chartjs-plugin-datalabels 등록
     Chart.register(ChartDataLabels);
-
     let assetChart, stockChart;
     
     function addCommaFormatting(inputElement) {
@@ -1099,7 +1209,6 @@
           }
         });
       }
-      
       updateAssetGoalProgress();
     }
     
@@ -1171,6 +1280,10 @@
       localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
     }
     
+    // 전역 변수로 차트 타입을 저장 (기본: 'pie')
+    let stockChartType = 'pie';
+    
+    // 업데이트 함수 수정: stockChartType에 따라 차트 타입 변경
     function updateStockChart() {
       const stockList = document.getElementById("stockList");
       const stockItems = stockList.querySelectorAll(".stock-item");
@@ -1208,45 +1321,63 @@
       });
       
       if(stockChart) {
-        stockChart.data.labels = names;
-        stockChart.data.datasets[0].data = amounts;
-        stockChart.data.datasets[0].backgroundColor = backgroundColors;
-        stockChart.options.plugins.datalabels.font.size = labelFontSize;
-        stockChart.update();
-      } else {
-        stockChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: names,
-            datasets: [{
-              data: amounts,
-              backgroundColor: backgroundColors,
-              borderColor: "#fff",
-              borderWidth: 2
-            }]
+        stockChart.destroy();
+      }
+      
+      stockChart = new Chart(ctx, {
+        type: stockChartType,
+        data: {
+          labels: names,
+          datasets: [{
+            data: amounts,
+            backgroundColor: backgroundColors,
+            borderColor: "#fff",
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          layout: { padding: 20 },
+          plugins: {
+            legend: { position: 'bottom' },
+            title: { display: true, text: stockChartType === 'pie' ? '주식 포트폴리오 (원형)' : '주식 포트폴리오 (막대)' },
+            datalabels: {
+              display: true,
+              color: '#fff',
+              font: { size: 12, weight: 'bold' },
+              formatter: (value, ctx) => {
+                const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
+                const label = ctx.chart.data.labels[ctx.dataIndex];
+                return label + ': ' + percentage + '%';
+              }
+            }
           },
-          options: {
-            responsive: true,
-            layout: { padding: 20 },
-            plugins: {
-              legend: { position: 'bottom' },
-              title: { display: true, text: '주식 포트폴리오' },
-              datalabels: {
-                display: true,
-                color: '#fff',
-                font: { size: 12, weight: 'bold' },
-                formatter: (value, ctx) => {
-                  const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                  const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
-                  const label = ctx.chart.data.labels[ctx.dataIndex];
-                  return label + ': ' + percentage + '%';
+          scales: stockChartType === 'bar' ? {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return value.toLocaleString() + " 원";
                 }
               }
             }
-          }
-        });
-      }
+          } : {}
+        }
+      });
     }
+    
+    // 이벤트 리스너: 원형 그래프 버튼 클릭 시
+    document.getElementById("pieChartBtn").addEventListener("click", () => {
+      stockChartType = 'pie';
+      updateStockChart();
+    });
+    
+    // 이벤트 리스너: 막대 그래프 버튼 클릭 시
+    document.getElementById("barChartBtn").addEventListener("click", () => {
+      stockChartType = 'bar';
+      updateStockChart();
+    });
     
     document.getElementById("addStockBtn").addEventListener("click", () => {
       const stockList = document.getElementById("stockList");
@@ -1315,7 +1446,7 @@
                           <input type="checkbox" class="check-input">
                         </div>`;
         li.querySelector(".delete-checklist-btn").addEventListener("click", () => {
-          if(confirm("정말 삭제하시겠습니까?")) {
+          if(confirm("정말 삭제하시겠습니까?")){
             li.remove();
             saveChecklist();
           }
@@ -1401,7 +1532,6 @@
           textElem.textContent = entry.text;
           div.appendChild(textElem);
           
-          // 수정 버튼 - 동일한 디자인 적용
           const editBtn = document.createElement("button");
           editBtn.textContent = "수정";
           editBtn.classList.add("edit-btn");
@@ -1414,7 +1544,6 @@
           });
           div.appendChild(editBtn);
           
-          // 삭제 버튼 - 동일한 디자인 적용
           const deleteBtn = document.createElement("button");
           deleteBtn.textContent = "삭제";
           deleteBtn.classList.add("delete-btn");
@@ -1469,16 +1598,14 @@
       updateStockChart();
       
       addCommaFormatting(document.getElementById("assetGoalInput"));
+      loadCustomizationSettings();
     });
     
-    // 전역 변수: 현재 표시할 연도와 월 (월은 0부터 시작하므로 1은 2월을 의미)
-// 현재 날짜를 기준으로 초기값 설정
-const today = new Date();
-let currentYear = today.getFullYear();
-let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
-
-
-    // 페이지 로드 시 저장된 연도/월 복원 후 달력 렌더링
+    // 달력 관련 코드
+    const today = new Date();
+    let currentYear = today.getFullYear();
+    let currentMonth = today.getMonth();
+    
     document.addEventListener("DOMContentLoaded", () => {
       const storedYear = localStorage.getItem("calendarCurrentYear");
       const storedMonth = localStorage.getItem("calendarCurrentMonth");
@@ -1489,29 +1616,24 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
       updateCalendarHeader();
       renderCalendar();
     });
-
-    // 달력 헤더 업데이트: 현재 연도와 월 표시
+    
     function updateCalendarHeader() {
       const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
       document.getElementById("currentMonthDisplay").textContent = currentYear + "년 " + monthNames[currentMonth];
     }
-
-    // 달력 렌더링: currentYear와 currentMonth를 기준으로 달력 그리기
+    
     function renderCalendar() {
       const calendarEl = document.getElementById("calendar");
       if (!calendarEl) return;
       calendarEl.innerHTML = "";
-
-      // 해당 월의 첫 날과 시작 요일, 일 수 계산
+    
       const firstDay = new Date(currentYear, currentMonth, 1);
       const startDay = firstDay.getDay();
       const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-      // 저장된 메모 불러오기
+    
       let memos = localStorage.getItem("calendarMemos");
       memos = memos ? JSON.parse(memos) : {};
-
-      // 요일 헤더 추가
+    
       const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
       weekdays.forEach(dayName => {
         const headerCell = document.createElement("div");
@@ -1519,26 +1641,23 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
         headerCell.style.fontWeight = "bold";
         calendarEl.appendChild(headerCell);
       });
-
-      // 첫 날 이전 빈 칸 추가
+    
       for (let i = 0; i < startDay; i++) {
         const blankCell = document.createElement("div");
         calendarEl.appendChild(blankCell);
       }
-
-      // 날짜 셀 생성
+    
       for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = currentYear + "-" + String(currentMonth + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
         const dayCell = document.createElement("div");
         dayCell.classList.add("calendar-day");
         dayCell.dataset.date = dateStr;
-
+    
         const dayNumber = document.createElement("span");
         dayNumber.classList.add("day-number");
         dayNumber.textContent = d;
         dayCell.appendChild(dayNumber);
-
-        // 메모가 있으면 간단히 표시 (10자 이상이면 ... 처리)
+    
         if (memos[dateStr] && memos[dateStr].trim() !== "") {
           const memoSpan = document.createElement("span");
           memoSpan.classList.add("memo-text");
@@ -1548,17 +1667,15 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
           dayCell.appendChild(memoSpan);
           dayCell.classList.add("has-memo");
         }
-
-        // 클릭 시 메모 모달 열기
+    
         dayCell.addEventListener("click", () => {
           openMemoModal(dateStr, memos[dateStr] || "");
         });
-
+    
         calendarEl.appendChild(dayCell);
       }
     }
-
-    // 이전/다음 버튼 클릭 이벤트 및 값 저장
+    
     document.getElementById("prevMonthBtn").addEventListener("click", () => {
       if (currentMonth === 0) {
         currentMonth = 11;
@@ -1571,7 +1688,7 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
       updateCalendarHeader();
       renderCalendar();
     });
-
+    
     document.getElementById("nextMonthBtn").addEventListener("click", () => {
       if (currentMonth === 11) {
         currentMonth = 0;
@@ -1584,8 +1701,7 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
       updateCalendarHeader();
       renderCalendar();
     });
-
-    // 메모 모달 관련 기능
+    
     let selectedCalendarDate = null;
     function openMemoModal(dateStr, memoText) {
       selectedCalendarDate = dateStr;
@@ -1593,12 +1709,12 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
       document.getElementById("modalTextarea").value = memoText;
       document.getElementById("memoModal").classList.add("active");
     }
-
+    
     function closeMemoModal() {
       document.getElementById("memoModal").classList.remove("active");
       selectedCalendarDate = null;
     }
-
+    
     document.getElementById("saveModalBtn").addEventListener("click", () => {
       if (!selectedCalendarDate) return;
       let memos = localStorage.getItem("calendarMemos");
@@ -1609,18 +1725,18 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
       renderCalendar();
       alert("메모가 저장되었습니다.");
     });
-
+    
     document.getElementById("cancelModalBtn").addEventListener("click", () => {
       closeMemoModal();
     });
-
+    
     window.addEventListener("click", (e) => {
       const modal = document.getElementById("memoModal");
       if (e.target === modal) {
         closeMemoModal();
       }
     });
-    
+    // 가계부
     const ACCOUNT_BOOK_KEY = "accountBookEntries";
     function loadAccountBookEntries() {
       const stored = localStorage.getItem(ACCOUNT_BOOK_KEY);
@@ -1730,143 +1846,296 @@ let currentMonth = today.getMonth(); // 0: 1월, 1: 2월, ..., 11: 12월
       addCommaFormatting(document.getElementById("ab-amount"));
       renderAccountBook();
     });
-
-    // 개발자 도구(F12) 및 소스 보기(Ctrl+U) 차단
-    document.addEventListener("keydown", function(event) {
-        if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
-            event.preventDefault();
-        }
-        if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
-            event.preventDefault();
-        }
-    });
-
-    // 우클릭 차단
-    document.addEventListener("contextmenu", function(event) {
-        event.preventDefault();
-    });
-          //난독화
-          function getSecretKey() {
-          return "my-secret-key";
-      }
-      console.log(getSecretKey());
-
-    // 토글 기능 추가 (섹션별 접기/펼치기) - 아이콘 사용: 기본 상태 ▲ (펼쳐진 상태), 접으면 ▼ 표시 및 로컬스토리지 저장
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleButtons = document.querySelectorAll(".toggle-btn");
-  toggleButtons.forEach((btn, index) => {
-    // 해당 토글 버튼이 속한 컨테이너를 찾음.
-    // (예: .section-container, .asset-goal, .calendar-section, .account-book, .investment-checklist)
-    let container = btn.closest(".section-container") ||
-                    btn.closest(".asset-goal") ||
-                    btn.closest(".calendar-section") ||
-                    btn.closest(".account-book") ||
-                    btn.closest(".investment-checklist");
-    // 컨테이너에 고유 ID가 없다면 생성
-    let containerId = container.id;
-    if (!containerId) {
-      containerId = "toggleContainer_" + index;
-      container.id = containerId;
-    }
-    const sectionContent = btn.parentElement.nextElementSibling;
     
-    // 저장된 상태 복원: "collapsed"이면 내용 숨김, 그렇지 않으면 보임.
-    const storedState = localStorage.getItem("sectionState_" + containerId);
-    if (storedState === "collapsed") {
-      sectionContent.style.display = "none";
-      btn.textContent = "▼";
-    } else {
-      sectionContent.style.display = "block";
-      btn.textContent = "▲";
-    }
-    
-    // 토글 버튼 클릭 시, 상태 변경 및 로컬스토리지 저장
-    btn.addEventListener("click", () => {
-      if (sectionContent.style.display === "none") {
-        sectionContent.style.display = "block";
-        btn.textContent = "▲";
-        localStorage.setItem("sectionState_" + containerId, "expanded");
-      } else {
-        sectionContent.style.display = "none";
-        btn.textContent = "▼";
-        localStorage.setItem("sectionState_" + containerId, "collapsed");
-      }
-    });
-  });
-});
-
-    // 투자 일지 수정/삭제 버튼 디자인 변경 (다른 섹션과 동일하게)
-    // loadDiaryEntries 함수 내에서 수정 → 버튼에 각각 "edit-btn"과 "delete-btn" 클래스를 추가함.
-  </script>
-<!-- 고정 지출 계산기 스크립트 (수정: 로컬 스토리지 저장 기능 추가) -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const addFixedExpenseBtn = document.getElementById("addFixedExpenseBtn");
-    const fixedExpenseDescription = document.getElementById("fixedExpenseDescription");
-    const fixedExpenseAmount = document.getElementById("fixedExpenseAmount");
-    const fixedExpenseList = document.getElementById("fixedExpenseList");
-    const fixedExpenseTotal = document.getElementById("fixedExpenseTotal");
-
-    // 로컬 스토리지에서 저장된 고정 지출 데이터를 불러옵니다.
-    let fixedExpenses = [];
-    const storedFixedExpenses = localStorage.getItem("fixedExpenses");
-    if (storedFixedExpenses) {
-      fixedExpenses = JSON.parse(storedFixedExpenses);
-    }
-
-    function saveFixedExpenses() {
-      localStorage.setItem("fixedExpenses", JSON.stringify(fixedExpenses));
-    }
-
-    function updateFixedExpenseDisplay() {
-      fixedExpenseList.innerHTML = "";
-      fixedExpenses.forEach((expense, index) => {
-        const div = document.createElement("div");
-        div.style.display = "flex";
-        div.style.justifyContent = "space-between";
-        div.style.alignItems = "center";
-        div.style.marginBottom = "5px";
-        div.innerHTML = `<span>${expense.description}: ${Number(expense.amount).toLocaleString()} 원</span>`;
-        const delBtn = document.createElement("button");
-        delBtn.textContent = "삭제";
-        delBtn.style.padding = "2px 5px";
-        delBtn.style.fontSize = "0.8rem";
-        delBtn.addEventListener("click", () => {
-          fixedExpenses.splice(index, 1);
-          updateFixedExpenseDisplay();
-          updateFixedExpenseTotal();
-          saveFixedExpenses();
-        });
-        div.appendChild(delBtn);
-        fixedExpenseList.appendChild(div);
-      });
-    }
-
-    function updateFixedExpenseTotal() {
-      let total = fixedExpenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
-      fixedExpenseTotal.textContent = "총 고정 지출: " + total.toLocaleString() + " 원";
-    }
-
-    addFixedExpenseBtn.addEventListener("click", () => {
-      const description = fixedExpenseDescription.value.trim();
-      const amountStr = fixedExpenseAmount.value.replace(/,/g, "").trim();
-      if(description === "" || amountStr === "" || isNaN(amountStr)) {
-        alert("유효한 지출 항목과 금액을 입력하세요.");
+    // 추가 - 월별 가계부 보고서
+    function generateMonthlyReport() {
+      const stored = localStorage.getItem(ACCOUNT_BOOK_KEY);
+      if (!stored) {
+        alert("가계부 데이터가 없습니다.");
         return;
       }
-      fixedExpenses.push({ description: description, amount: Number(amountStr) });
+      const entries = JSON.parse(stored);
+      const monthlyData = {};
+      entries.forEach(entry => {
+        const monthKey = entry.date.slice(0, 7);
+        if (!monthlyData[monthKey]) {
+          monthlyData[monthKey] = { income: 0, expense: 0 };
+        }
+        const amount = Number(entry.amount);
+        if (entry.type === "income") {
+          monthlyData[monthKey].income += amount;
+        } else {
+          monthlyData[monthKey].expense += amount;
+        }
+      });
+      const months = Object.keys(monthlyData).sort();
+      const incomes = months.map(month => monthlyData[month].income);
+      const expenses = months.map(month => monthlyData[month].expense);
+      
+      return { months, incomes, expenses, monthlyData };
+    }
+    
+    let incomeExpenseChart;
+    function renderReportChart(months, incomes, expenses) {
+      const ctx = document.getElementById("incomeExpenseChart").getContext("2d");
+      if (incomeExpenseChart) {
+        incomeExpenseChart.destroy();
+      }
+      
+      incomeExpenseChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: months,
+          datasets: [
+            {
+              label: '수입',
+              data: incomes,
+              backgroundColor: 'rgba(54, 162, 235, 0.6)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            },
+            {
+              label: '지출',
+              data: expenses,
+              backgroundColor: 'rgba(255, 99, 132, 0.6)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'bottom' },
+            title: { display: true, text: '월별 수입/지출 보고서' }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return value.toLocaleString() + " 원";
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+    
+    function renderReportSummary(monthlyData) {
+      const reportSummary = document.getElementById("reportSummary");
+      reportSummary.innerHTML = "";
+      const sortedMonths = Object.keys(monthlyData).sort();
+      const latestMonth = sortedMonths[sortedMonths.length - 1];
+      const data = monthlyData[latestMonth];
+      const net = data.income - data.expense;
+      const summaryText = `
+        <h4>${latestMonth} 보고서</h4>
+        <p>총 수입: ${data.income.toLocaleString()} 원</p>
+        <p>총 지출: ${data.expense.toLocaleString()} 원</p>
+        <p><strong>순이익: ${net.toLocaleString()} 원</strong></p>
+      `;
+      reportSummary.innerHTML = summaryText;
+    }
+    
+    document.getElementById("generateReportBtn").addEventListener("click", () => {
+      const reportData = generateMonthlyReport();
+      if (reportData) {
+        renderReportSummary(reportData.monthlyData);
+        renderReportChart(reportData.months, reportData.incomes, reportData.expenses);
+      }
+    });
+    
+    // 개발자 도구 및 우클릭 차단 (필요 시 제거)
+    document.addEventListener("keydown", function(event) {
+      if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
+          event.preventDefault();
+      }
+      if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
+          event.preventDefault();
+      }
+    });
+    
+    document.addEventListener("contextmenu", function(event) {
+      event.preventDefault();
+    });
+    
+    function getSecretKey() {
+      return "my-secret-key";
+    }
+    console.log(getSecretKey());
+    
+    // 토글 기능
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleButtons = document.querySelectorAll(".toggle-btn");
+      toggleButtons.forEach((btn, index) => {
+        let container = btn.closest(".section-container") ||
+                        btn.closest(".asset-goal") ||
+                        btn.closest(".calendar-section") ||
+                        btn.closest(".account-book") ||
+                        btn.closest(".investment-checklist");
+        let containerId = container.id;
+        if (!containerId) {
+          containerId = "toggleContainer_" + index;
+          container.id = containerId;
+        }
+        const sectionContent = btn.parentElement.nextElementSibling;
+        const storedState = localStorage.getItem("sectionState_" + containerId);
+        if (storedState === "collapsed") {
+          sectionContent.style.display = "none";
+          btn.textContent = "▼";
+        } else {
+          sectionContent.style.display = "block";
+          btn.textContent = "▲";
+        }
+        btn.addEventListener("click", () => {
+          if (sectionContent.style.display === "none") {
+            sectionContent.style.display = "block";
+            btn.textContent = "▲";
+            localStorage.setItem("sectionState_" + containerId, "expanded");
+          } else {
+            sectionContent.style.display = "none";
+            btn.textContent = "▼";
+            localStorage.setItem("sectionState_" + containerId, "collapsed");
+          }
+        });
+      });
+    });
+    
+    /* ====== 사용자 커스터마이징 (설정) ====== */
+    const settingsBtn = document.getElementById("settingsBtn");
+    const settingsModal = document.getElementById("settingsModal");
+    const settingsForm = document.getElementById("settingsForm");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const fontSizeRange = document.getElementById("fontSizeRange");
+    const primaryColorPicker = document.getElementById("primaryColorPicker");
+    const resetSettingsBtn = document.getElementById("resetSettingsBtn");
+    const cancelSettingsBtn = document.getElementById("cancelSettingsBtn");
+    
+    settingsBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      settingsModal.classList.add("active");
+    });
+    
+    cancelSettingsBtn.addEventListener("click", () => {
+      settingsModal.classList.remove("active");
+    });
+    
+    resetSettingsBtn.addEventListener("click", () => {
+      localStorage.removeItem("customSettings");
+      applyCustomSettings({
+        darkMode: false,
+        fontSize: 16,
+        primaryColor: "#004080"
+      });
+      settingsForm.reset();
+      alert("설정이 기본값으로 초기화되었습니다.");
+    });
+    
+    settingsForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const customSettings = {
+        darkMode: darkModeToggle.checked,
+        fontSize: parseInt(fontSizeRange.value, 10),
+        primaryColor: primaryColorPicker.value
+      };
+      localStorage.setItem("customSettings", JSON.stringify(customSettings));
+      applyCustomSettings(customSettings);
+      settingsModal.classList.remove("active");
+      alert("설정이 저장되었습니다.");
+    });
+    
+    function applyCustomSettings(settings) {
+      if(settings.darkMode) {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+      document.documentElement.style.fontSize = settings.fontSize + "px";
+      document.documentElement.style.setProperty("--primary-color", settings.primaryColor);
+    }
+    
+    function loadCustomizationSettings() {
+      const savedSettings = localStorage.getItem("customSettings");
+      if(savedSettings) {
+        const settings = JSON.parse(savedSettings);
+        applyCustomSettings(settings);
+        darkModeToggle.checked = settings.darkMode;
+        fontSizeRange.value = settings.fontSize;
+        primaryColorPicker.value = settings.primaryColor;
+      }
+    }
+    /* ====== 끝 ====== */
+  </script>
+  
+  <!-- 고정 지출 계산기 스크립트 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const addFixedExpenseBtn = document.getElementById("addFixedExpenseBtn");
+      const fixedExpenseDescription = document.getElementById("fixedExpenseDescription");
+      const fixedExpenseAmount = document.getElementById("fixedExpenseAmount");
+      const fixedExpenseList = document.getElementById("fixedExpenseList");
+      const fixedExpenseTotal = document.getElementById("fixedExpenseTotal");
+
+      let fixedExpenses = [];
+      const storedFixedExpenses = localStorage.getItem("fixedExpenses");
+      if (storedFixedExpenses) {
+        fixedExpenses = JSON.parse(storedFixedExpenses);
+      }
+
+      function saveFixedExpenses() {
+        localStorage.setItem("fixedExpenses", JSON.stringify(fixedExpenses));
+      }
+
+      function updateFixedExpenseDisplay() {
+        fixedExpenseList.innerHTML = "";
+        fixedExpenses.forEach((expense, index) => {
+          const div = document.createElement("div");
+          div.style.display = "flex";
+          div.style.justifyContent = "space-between";
+          div.style.alignItems = "center";
+          div.style.marginBottom = "5px";
+          div.innerHTML = `<span>${expense.description}: ${Number(expense.amount).toLocaleString()} 원</span>`;
+          const delBtn = document.createElement("button");
+          delBtn.textContent = "삭제";
+          delBtn.style.padding = "2px 5px";
+          delBtn.style.fontSize = "0.8rem";
+          delBtn.addEventListener("click", () => {
+            fixedExpenses.splice(index, 1);
+            updateFixedExpenseDisplay();
+            updateFixedExpenseTotal();
+            saveFixedExpenses();
+          });
+          div.appendChild(delBtn);
+          fixedExpenseList.appendChild(div);
+        });
+      }
+
+      function updateFixedExpenseTotal() {
+        let total = fixedExpenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
+        fixedExpenseTotal.textContent = "총 고정 지출: " + total.toLocaleString() + " 원";
+      }
+
+      addFixedExpenseBtn.addEventListener("click", () => {
+        const description = fixedExpenseDescription.value.trim();
+        const amountStr = fixedExpenseAmount.value.replace(/,/g, "").trim();
+        if(description === "" || amountStr === "" || isNaN(amountStr)) {
+          alert("유효한 지출 항목과 금액을 입력하세요.");
+          return;
+        }
+        fixedExpenses.push({ description: description, amount: Number(amountStr) });
+        updateFixedExpenseDisplay();
+        updateFixedExpenseTotal();
+        saveFixedExpenses();
+        fixedExpenseDescription.value = "";
+        fixedExpenseAmount.value = "";
+      });
+
       updateFixedExpenseDisplay();
       updateFixedExpenseTotal();
-      saveFixedExpenses();
-      fixedExpenseDescription.value = "";
-      fixedExpenseAmount.value = "";
     });
-
-    // 초기 로딩 시 표시 업데이트
-    updateFixedExpenseDisplay();
-    updateFixedExpenseTotal();
-  });
-</script>
+  </script>
   
 </body>
 </html>
