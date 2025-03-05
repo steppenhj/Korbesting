@@ -745,15 +745,14 @@
           flex-wrap: wrap;
         }
     }
-    /* 설정 모달 스타일 */
+    /* 설정 모달 스타일 (주요 색상 선택 부분 제거됨) */
     .settings-form label {
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
     }
     .settings-form input[type="checkbox"],
-    .settings-form input[type="range"],
-    .settings-form input[type="color"] {
+    .settings-form input[type="range"] {
       margin-top: 4px;
       margin-bottom: 12px;
     }
@@ -770,6 +769,121 @@
       font-size: 1.2rem;
       padding: 0.5rem 1rem;
       min-width: 3rem;
+    }
+    /* 다크 모드 전용 추가 스타일 */
+    body.dark-mode {
+      background: #1f1f1f;
+      color: #ccc;
+    }
+    /* 섹션 컨테이너 (카드 스타일) 다크 모드 */
+    body.dark-mode .section-container {
+      background: #2b2b2b;
+      border: 1px solid #444;
+      color: #ddd;
+    }
+    /* 카드 스타일 적용 영역 (예: 투자 포트폴리오 차트 영역) */
+    body.dark-mode .card {
+      background: #333;
+      box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+    }
+    /* 투자 포트폴리오 섹션 */
+    body.dark-mode #stock-portfolio {
+      background: #2b2b2b;
+      border-color: #444;
+      color: #ddd;
+    }
+    /* 나의 자산 목표 섹션 */
+    body.dark-mode .asset-goal-container {
+      background: #2b2b2b;
+      border-color: #444;
+      color: #ddd;
+    }
+    /* 가계부 섹션 다크 모드 스타일 */
+    body.dark-mode .account-book {
+      background: #2b2b2b;
+      border-color: #444;
+      color: #ddd;
+    }
+    /* 가계부 테이블 배경 및 텍스트 색상 변경 */
+    body.dark-mode .account-book table {
+      background: #2b2b2b;
+      color: #ddd;
+      border-color: #444;
+    }
+    body.dark-mode .account-book th,
+    body.dark-mode .account-book td {
+      background: #2b2b2b;
+      color: #ddd;
+      border: 1px solid #444;
+    }
+    /* 가계부 입력 필드 다크 모드 스타일 */
+    body.dark-mode .account-book-form input,
+    body.dark-mode .account-book-form select {
+      background: #3a3a3a;
+      color: #eee;
+      border: 1px solid #555;
+    }
+    /* 다크 모드에서 전체 텍스트 색상을 흰색으로 지정 */
+    body.dark-mode {
+      background: #1f1f1f;
+      color: #fff;
+    }
+    body.dark-mode header,
+    body.dark-mode main,
+    body.dark-mode footer {
+      color: #fff;
+    }
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode p,
+    body.dark-mode span,
+    body.dark-mode li,
+    body.dark-mode a {
+      color: #fff;
+    }
+    /* 네비게이션 및 톱니바퀴는 원래 색상 유지 */
+    body.dark-mode nav ul li a,
+    body.dark-mode #settingsBtn {
+      color: var(--primary-color);
+    }
+    body.dark-mode nav ul li a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    /* 다크 모드에서도 설정 모달은 기본 스타일 유지 */
+    body.dark-mode #settingsModal .modal-content {
+      background: #fff;
+      color: var(--text-color);
+    }
+    /* 입력창, 텍스트필드 등 */
+    body.dark-mode input,
+    body.dark-mode textarea,
+    body.dark-mode select {
+      background: #3a3a3a;
+      color: #fff;
+      border: 1px solid #555;
+    }
+    /* 버튼 다크 모드 */
+    body.dark-mode .primary-btn {
+      background: #0059b3;
+    }
+    body.dark-mode .primary-btn:hover {
+      background: #003060;
+    }
+    body.dark-mode .secondary-btn {
+      background: #007acc;
+    }
+    body.dark-mode .secondary-btn:hover {
+      background: #005fa3;
+    }
+    /* 기타: 달력, 모달 등 */
+    body.dark-mode .calendar-section,
+    body.dark-mode .account-book,
+    body.dark-mode .investment-checklist {
+      background: #2b2b2b;
+      color: #7d7b7b;
+      border: 1px solid #4b4747;
     }
   </style>
 </head>
@@ -848,7 +962,7 @@
                 <button id="addStockBtn" class="primary-btn">종목 추가</button>
               </div>
             </div>
-            <!-- [투자 포트폴리오] 섹션 내 차트 영역 (디자인 개선 적용) -->
+            <!-- [투자 포트폴리오] 섹션 내 차트 영역 -->
             <div class="right-chart card">
               <div class="chart-container">
                 <canvas id="stockChart"></canvas>
@@ -956,6 +1070,7 @@
     <section class="section-container" id="report-section">
       <div class="section-header">
         <h3>월별 가계부 보고서</h3>
+        <p>보고서 생성 버튼을 클릭하면 그래프가 생성됩니다.</p>
         <button class="toggle-btn">▲</button>
       </div>
       <div class="section-content">
@@ -1008,7 +1123,7 @@
     </div>
   </div>
   
-  <!-- 설정 모달 (커스터마이징) -->
+  <!-- 설정 모달 (커스터마이징) - 주요 색상 선택 요소 제거됨 -->
   <div id="settingsModal" class="modal">
     <div class="modal-content">
       <h4>설정</h4>
@@ -1021,10 +1136,7 @@
           폰트 크기 (기본: 16px):
           <input type="range" id="fontSizeRange" min="12" max="20" step="1">
         </label>
-        <label>
-          주요 색상:
-          <input type="color" id="primaryColorPicker" value="#004080">
-        </label>
+        <!-- 주요 색상 선택 제거됨 -->
         <div style="text-align: right;">
           <button type="button" id="resetSettingsBtn">리셋</button>
           <button type="submit" id="saveSettingsBtn">저장</button>
@@ -2009,7 +2121,7 @@
     const settingsForm = document.getElementById("settingsForm");
     const darkModeToggle = document.getElementById("darkModeToggle");
     const fontSizeRange = document.getElementById("fontSizeRange");
-    const primaryColorPicker = document.getElementById("primaryColorPicker");
+    // 주요 색상 선택은 제거되었으므로 관련 변수는 삭제합니다.
     const resetSettingsBtn = document.getElementById("resetSettingsBtn");
     const cancelSettingsBtn = document.getElementById("cancelSettingsBtn");
     
@@ -2026,8 +2138,8 @@
       localStorage.removeItem("customSettings");
       applyCustomSettings({
         darkMode: false,
-        fontSize: 16,
-        primaryColor: "#004080"
+        fontSize: 16
+        // 주요 색상은 다크 모드 여부에 따라 자동 처리됨
       });
       settingsForm.reset();
       alert("설정이 기본값으로 초기화되었습니다.");
@@ -2037,8 +2149,8 @@
       e.preventDefault();
       const customSettings = {
         darkMode: darkModeToggle.checked,
-        fontSize: parseInt(fontSizeRange.value, 10),
-        primaryColor: primaryColorPicker.value
+        fontSize: parseInt(fontSizeRange.value, 10)
+        // 주요 색상은 선택하지 않으므로 저장하지 않습니다.
       };
       localStorage.setItem("customSettings", JSON.stringify(customSettings));
       applyCustomSettings(customSettings);
@@ -2049,11 +2161,14 @@
     function applyCustomSettings(settings) {
       if(settings.darkMode) {
         document.body.classList.add("dark-mode");
+        // 다크 모드일 때 주요 색상 강제 적용: R:73, G:79, B:85 (#494F55)
+        document.documentElement.style.setProperty("--primary-color", "#494F55");
       } else {
         document.body.classList.remove("dark-mode");
+        // 다크 모드가 아닐 때에는 기본 주요 색상 (기본값 #004080)
+        document.documentElement.style.setProperty("--primary-color", "#004080");
       }
       document.documentElement.style.fontSize = settings.fontSize + "px";
-      document.documentElement.style.setProperty("--primary-color", settings.primaryColor);
     }
     
     function loadCustomizationSettings() {
@@ -2063,7 +2178,6 @@
         applyCustomSettings(settings);
         darkModeToggle.checked = settings.darkMode;
         fontSizeRange.value = settings.fontSize;
-        primaryColorPicker.value = settings.primaryColor;
       }
     }
     /* ====== 끝 ====== */
