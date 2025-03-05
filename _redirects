@@ -1,0 +1,3 @@
+# netlify.app → kr 도메인
+https://gohigher.netlify.app/* https://gohigher.kr/:splat 301
+http://gohigher.netlify.app/* https://gohigher.kr/:splat 301
