@@ -6,36 +6,22 @@
   <title>Go Higher - 주식 다이어리·포트폴리오 설계·가계부·투자일지·달력</title>
   <meta name="description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
   <link rel="canonical" href="https://gohigher.kr/주식포트폴리오.html">
-
   <link rel="icon" href="https://gohigher.kr/logo.jpg" type="image/jpeg">
-
-  <!-- SEO: 키워드 (네이버가 아직 일부 활용 가능) -->
   <meta name="keywords" content="포트폴리오, 다이어리, 자산관리, 투자일지, 가계부, gohigher">
-
-  <!-- 검색엔진 크롤링 허용 -->
   <meta name="robots" content="index,follow">
-
-  <!-- 반응형 웹 설정 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- 사이트 검증 메타 (네이버, 구글) -->
   <meta name="naver-site-verification" content="daa71973aba155bc2d96dfde44d8fb34b6a74ba7" />
   <meta name="google-site-verification" content="GGuWsc5cbeYC9W0nQsN7550kWcUzArKuo3zfhjN5LXE" />
-  <!-- Open Graph (OG) 메타 태그: SNS 공유 시 미리보기 정보 -->
   <meta property="og:title" content="주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력" />
   <meta property="og:description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요." />
   <meta property="og:image" content="https://gohigher.kr/logo.jpg" />
   <meta property="og:url" content="https://gohigher.kr/주식포트폴리오.html" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
-
-  <!-- (선택) Twitter Card 태그: 트위터 공유 시 미리보기 -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="주식 다이어리 - 포트폴리오 설계·가계부·투자일지·달력">
   <meta name="twitter:description" content="주식 포트폴리오, 투자 일지, 달력, 가계부 기능 등을 제공하는 자산 다이어리 페이지입니다. Go Higher에서 간편하게 환율 등 포트폴리오를 관리해보세요.">
   <meta name="twitter:image" content="https://gohigher.kr/logo.jpg">
-
-  <!-- JSON-LD 구조화 데이터: WebPage 정보 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,15 +36,9 @@
     }
   }
   </script>
-
-  <!-- Google Fonts: Roboto & Open Sans -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet">
-  
-  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- chartjs-plugin-datalabels CDN (차트에 상시 라벨 표시) -->
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-
   <style>
     /* 기본 CSS 변수 */
     :root {
@@ -68,14 +48,8 @@
       --light-gray: #e0e0e0;
       --text-color: #333;
     }
-    html {
-      font-size: 16px;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    html { font-size: 16px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Open Sans', sans-serif;
       background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
@@ -83,7 +57,6 @@
       padding-bottom: 60px;
       transition: background 0.3s, color 0.3s;
     }
-    /* 다크 모드 스타일 */
     body.dark-mode {
       background: #222;
       color: #8b8b8b;
@@ -95,761 +68,309 @@
       text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-    header h1 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1rem;
-    }
-    nav {
-      margin-top: 0.5rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
+    header h1 { font-family: 'Roboto', sans-serif; font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1rem; }
+    nav { margin-top: 0.5rem; }
+    nav ul { list-style: none; display: flex; justify-content: center; gap: 1rem; }
     nav ul li a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: #fff;
-      color: var(--primary-color);
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background-color 0.3s, color 0.3s;
+      display: inline-block; padding: 0.5rem 1rem; background-color: #fff;
+      color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px;
+      text-decoration: none; transition: background-color 0.3s, color 0.3s;
     }
-    nav ul li a:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    main {
-      max-width: 960px;
-      margin: 1rem auto;
-      padding: 0 1rem;
-    }
+    nav ul li a:hover { background-color: var(--primary-color); color: #fff; }
+    main { max-width: 960px; margin: 1rem auto; padding: 0 1rem; }
     .save-notice {
-      background: #fff;
-      color: #444;
-      font-size: 0.9rem;
-      padding: 0.6rem 1rem;
-      margin-bottom: 0.5rem;
-      border-left: 4px solid var(--primary-color);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      line-height: 1.4;
+      background: #fff; color: #444; font-size: 0.9rem; padding: 0.6rem 1rem; margin-bottom: 0.5rem;
+      border-left: 4px solid var(--primary-color); box-shadow: 0 1px 4px rgba(0,0,0,0.1); line-height: 1.4;
     }
-    h2 {
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    h3 {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-    }
-    .portfolio-sections {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      margin-top: 7px;
-    }
+    h2 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 1rem; text-align: center; }
+    h3 { font-size: 1.2rem; color: var(--primary-color); border-bottom: 2px solid var(--primary-color);
+         padding-bottom: 0.3rem; margin-bottom: 1rem; }
+    .portfolio-sections { display: flex; flex-direction: column; justify-content: flex-start; margin-top: 7px; }
     .section-container {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-      padding: 1rem;
-      width: 100%;
-      margin-bottom: 1rem;
+      background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      padding: 1rem; width: 100%; margin-bottom: 1rem;
     }
-    /* 토글을 위한 헤더와 내용 영역 */
     .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .section-content {
-      display: block;
-    }
+    .section-content { display: block; }
     .portfolio-section-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-top: 1rem;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-top: 1rem;
     }
-    .left-content {
-      flex: 1;
-    }
-    .right-chart {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    /* 투자 포트폴리오 섹션 전용 스타일 개선 */
+    .left-content { flex: 1; }
+    .right-chart { flex: 1; display: flex; flex-direction: column; align-items: center; }
     #stock-portfolio {
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 1rem;
-      background: #fff;
+      border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
     #stock-portfolio .section-description {
-      font-size: 0.95rem;
-      line-height: 1.4;
-      margin-bottom: 1rem;
-      color: #555;
+      font-size: 0.95rem; line-height: 1.4; margin-bottom: 1rem; color: #555;
     }
-    /* 차트 영역 카드 스타일 */
     .right-chart.card {
-      background: #f9f9f9;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
-      width: 100%;
+      background: #f9f9f9; border-radius: 8px; padding: 1rem;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05); width: 100%;
     }
-    /* 차트 버튼 그룹 스타일 */
-    .chart-btn-group {
-      text-align: center;
-      margin-top: 15px;
-    }
-    .chart-btn-group button {
-      margin: 0 5px;
-    }
-    /* 기본 버튼 스타일 (공통) */
+    .chart-btn-group { text-align: center; margin-top: 15px; }
+    .chart-btn-group button { margin: 0 5px; }
     .primary-btn, .secondary-btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
+      padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;
       transition: background 0.3s;
     }
-    .primary-btn {
-      background: var(--primary-color);
-      color: #fff;
-    }
-    .primary-btn:hover {
-      background: #003060;
-    }
-    .secondary-btn {
-      background: var(--secondary-color);
-      color: #fff;
-    }
-    .secondary-btn:hover {
-      background: #004080;
-    }
+    .primary-btn { background: var(--primary-color); color: #fff; }
+    .primary-btn:hover { background: #003060; }
+    .secondary-btn { background: var(--secondary-color); color: #fff; }
+    .secondary-btn:hover { background: #004080; }
     .asset-item {
-      display: flex;
-      align-items: left;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      display: flex; align-items: left; gap: 0.5rem; margin-bottom: 0.5rem;
     }
     .asset-item input[type="text"],
     .asset-item input[type="number"] {
-      padding: 0.3rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      text-align: center;
-      font-size: 0.9rem;
-      width: 100px;
+      padding: 0.3rem; border: 1px solid #ccc; border-radius: 4px; text-align: center;
+      font-size: 0.9rem; width: 100px;
     }
     .asset-item button {
-      padding: 0.3rem 0.6rem;
-      background: #b30000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem; background: #b30000; color: #fff; border: none; border-radius: 4px;
+      cursor: pointer; font-size: 0.8rem;
     }
-    .asset-item button:hover {
-      background: #800000;
-    }
+    .asset-item button:hover { background: #800000; }
     .portfolio-form {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 1rem;
     }
     .portfolio-form button {
-      padding: 0.3rem 0.6rem;
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.3s;
+      padding: 0.3rem 0.6rem; background: var(--primary-color); color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: background 0.3s;
     }
-    .portfolio-form button:hover {
-      background: #003060;
-    }
-    .chart-container {
-      margin: 0;
-    }
-    canvas {
-      width: 100%;
-      height: 300px;
-    }
+    .portfolio-form button:hover { background: #003060; }
+    .chart-container { margin: 0; }
+    canvas { width: 100%; height: 300px; }
     .recommendation {
-      background: var(--light-gray);
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 0.8rem;
+      background: var(--light-gray); padding: 1rem; border-radius: 8px; margin-top: 1rem;
+      text-align: center; font-size: 0.8rem;
     }
     .stock-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;
     }
     .stock-item input[type="text"],
     .stock-item input[type="number"] {
-      padding: 0.3rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      text-align: center;
-      font-size: 0.9rem;
-      width: 120px;
+      padding: 0.3rem; border: 1px solid #ccc; border-radius: 4px; text-align: center;
+      font-size: 0.9rem; width: 120px;
     }
     .stock-item button {
-      padding: 0.3rem 0.6rem;
-      background: #b30000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem; background: #b30000; color: #fff; border: none;
+      border-radius: 4px; cursor: pointer; font-size: 0.8rem;
     }
-    .stock-item button:hover {
-      background: #800000;
-    }
-    .bottom-info {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+    .stock-item button:hover { background: #800000; }
+    .bottom-info { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
     .investment-checklist {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
+      background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem;
+      margin-bottom: 1rem; border-radius: 8px;
     }
-    .investment-checklist ul {
-      list-style: none;
-      padding-left: 0;
-    }
+    .investment-checklist ul { list-style: none; padding-left: 0; }
     .investment-checklist li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      padding: 0.8rem 0;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #eee; padding: 0.8rem 0;
     }
-    .investment-checklist li:last-child {
-      border-bottom: none;
-    }
+    .investment-checklist li:last-child { border-bottom: none; }
     .investment-checklist input[type="checkbox"] {
-      width: 1.5em;
-      height: 1.5em;
-      transform: scale(1.2);
-      margin-left: 1px;
+      width: 1.5em; height: 1.5em; transform: scale(1.2); margin-left: 1px;
     }
-    .checklist-add {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .checklist-add input {
-      flex: 1;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
+    .checklist-add { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .checklist-add input { flex: 1; padding: 0.5rem; border: 1px solid #ccc;
+                           border-radius: 4px; font-size: 1rem; }
     .checklist-add button {
-      padding: 0.1rem 1rem;
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
+      padding: 0.1rem 1rem; background: var(--primary-color); color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;
     }
-    .checklist-add button:hover {
-      background: #003060;
-    }
+    .checklist-add button:hover { background: #003060; }
     .check-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
     }
     .check-controls .delete-checklist-btn {
-      padding: 0.3rem 0.6rem;
-      background: #b30000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem; background: #b30000; color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
     }
-    .check-controls .delete-checklist-btn:hover {
-      background: #800000;
-    }
-    .check-controls .check-input {
-      margin-left: 0;
-    }
+    .check-controls .delete-checklist-btn:hover { background: #800000; }
+    .check-controls .check-input { margin-left: 0; }
     .investment-diary button.edit-btn,
     .investment-diary button.delete-btn {
-      padding: 0.3rem 0.6rem;
-      background: #b30000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem; background: #b30000; color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
       margin-left: 0.5rem;
     }
     .investment-diary button.edit-btn:hover,
-    .investment-diary button.delete-btn:hover {
-      background: #800000;
-    }
-    .asset-goal {
-      margin-bottom: 1rem;
-    }
+    .investment-diary button.delete-btn:hover { background: #800000; }
+    .asset-goal { margin-bottom: 1rem; }
     .asset-goal-container {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem;
-      border-radius: 8px;
+      background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem; border-radius: 8px;
     }
-    #assetGoalProgress {
-      margin-top: 1rem;
-    }
+    #assetGoalProgress { margin-top: 1rem; }
     .progress-bar {
-      width: 100%;
-      background-color: #e0e0e0;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 0.5rem;
+      width: 100%; background-color: #e0e0e0; border-radius: 4px;
+      overflow: hidden; margin-top: 0.5rem;
     }
     .progress {
-      height: 20px;
-      background-color: var(--primary-color);
-      width: 0%;
-      transition: width 0.5s;
-      text-align: center;
-      color: #fff;
-      line-height: 20px;
-      font-size: 0.9rem;
+      height: 20px; background-color: var(--primary-color);
+      width: 0%; transition: width 0.5s; text-align: center; color: #fff;
+      line-height: 20px; font-size: 0.9rem;
     }
     .investment-diary {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
+      background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem; margin-bottom: 1rem; border-radius: 8px;
     }
     #investment-diary textarea {
-      width: 100%;
-      height: 150px;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
+      width: 100%; height: 150px; padding: 0.5rem; font-size: 1rem;
+      border: 1px solid #ccc; border-radius: 4px; resize: vertical;
     }
     .investment-diary button {
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
+      margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--primary-color);
+      color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;
     }
-    .investment-diary button:hover {
-      background: #003060;
-    }
+    .investment-diary button:hover { background: #003060; }
     .diary-entry {
-      border-top: 1px solid #ddd;
-      padding: 0.5rem 0;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
+      border-top: 1px solid #ddd; padding: 0.5rem 0; font-size: 0.9rem;
+      display: flex; align-items: center;
     }
-    .diary-entry time {
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
-    .diary-entry .diary-text {
-      flex: 1;
-      margin: 0 8px;
-    }
+    .diary-entry time { font-weight: bold; margin-right: 0.5rem; }
+    .diary-entry .diary-text { flex: 1; margin: 0 8px; }
     footer {
-      background-color: var(--primary-color);
-      color: #fff;
-      text-align: center;
-      padding: 0.8rem;
-      bottom: 0;
-      width: 100%;
-      font-size: 1rem;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+      background-color: var(--primary-color); color: #fff; text-align: center;
+      padding: 0.8rem; bottom: 0; width: 100%; font-size: 1rem; box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
     }
-    html, body {
-      overflow-x: hidden;
-    }
-    input,
-    textarea,
-    select {
-      font-size: 16px;
-    }
+    html, body { overflow-x: hidden; }
+    input, textarea, select { font-size: 16px; }
     @media (max-width: 1000px) {
-      .section-container {
-        width: 100%;
-      }
-      .portfolio-sections {
-        flex-wrap: wrap;
-      }
+      .section-container { width: 100%; }
+      .portfolio-sections { flex-wrap: wrap; }
     }
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-      main {
-        padding: 0 0.5rem;
-      }
-      .portfolio-section-content {
-        flex-direction: column;
-        align-items: center;
-      }
-      .chart-container canvas {
-        width: 100% !important;
-        height: auto !important;
-      }
-      .calendar-navigation {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-      }
-      .investment-checklist,
-      .asset-goal-container,
-      .investment-diary,
-      .account-book {
-        font-size: 0.9rem;
-      }
+      header h1 { font-size: 1.6rem; }
+      main { padding: 0 0.5rem; }
+      .portfolio-section-content { flex-direction: column; align-items: center; }
+      .chart-container canvas { width: 100% !important; height: auto !important; }
+      .calendar-navigation { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .investment-checklist, .asset-goal-container, .investment-diary, .account-book { font-size: 0.9rem; }
     }
     .calendar-section {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
+      background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.15); padding: 1rem;
+      margin-bottom: 1rem; border-radius: 8px;
     }
     #calendar {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-      margin-top: 0.5rem;
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 0.5rem;
     }
     .calendar-day {
-      padding: 8px;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      min-height: 50px;
-      position: relative;
+      padding: 8px; border: 1px solid #ccc; cursor: pointer; min-height: 50px; position: relative;
     }
-    .calendar-day:hover {
-      background-color: #f4f7fa;
-    }
-    .calendar-day .day-number {
-      font-weight: bold;
-    }
+    .calendar-day:hover { background-color: #f4f7fa; }
+    .calendar-day .day-number { font-weight: bold; }
     .calendar-day .memo-text {
-      display: block;
-      margin-top: 4px;
-      font-size: 0.75rem;
-      color: var(--secondary-color);
+      display: block; margin-top: 4px; font-size: 0.75rem; color: var(--secondary-color);
       word-break: break-word;
     }
-    .calendar-day.has-memo {
-      border: 2px solid var(--secondary-color);
-    }
+    .calendar-day.has-memo { border: 2px solid var(--secondary-color); }
     .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.4);
+      display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+      overflow: auto; background-color: rgba(0,0,0,0.4);
     }
-    .modal.active {
-      display: block;
-    }
+    .modal.active { display: block; }
     .modal-content {
-      background-color: #fff;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background-color: #fff; margin: 10% auto; padding: 20px; border-radius: 8px;
+      width: 90%; max-width: 400px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-    .modal-content h4 {
-      margin-bottom: 10px;
-    }
-    .modal-content textarea {
-      width: 100%;
-      height: 100px;
-      margin-bottom: 10px;
-    }
+    .modal-content h4 { margin-bottom: 10px; }
+    .modal-content textarea { width: 100%; height: 100px; margin-bottom: 10px; }
     .modal-content button {
-      padding: 0.4rem 0.8rem;
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-right: 5px;
+      padding: 0.4rem 0.8rem; background: var(--primary-color); color: #fff; border: none;
+      border-radius: 4px; cursor: pointer; margin-right: 5px;
     }
-    .modal-content button.cancel-btn {
-      background: #b30000;
-    }
+    .modal-content button.cancel-btn { background: #b30000; }
     .account-book {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
+      background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem;
+      margin-bottom: 1rem; border-radius: 8px;
     }
     .account-book h3 {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
+      font-size: 1.2rem; color: var(--primary-color); border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.3rem; margin-bottom: 1rem;
     }
     .account-book-form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: flex-end;
-      margin-bottom: 1rem;
+      display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; margin-bottom: 1rem;
     }
     .account-book-form input,
     .account-book-form select,
     .account-book-form button {
-      padding: 0.4rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.9rem;
+      padding: 0.4rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem;
     }
     .account-book-form input:focus,
-    .account-book-form select:focus {
-      border-color: var(--primary-color);
-      outline: none;
-    }
+    .account-book-form select:focus { border-color: var(--primary-color); outline: none; }
     .account-book-form button {
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-      cursor: pointer;
+      background: var(--primary-color); color: #fff; border: none; cursor: pointer;
       transition: background 0.3s;
     }
-    .account-book-form button:hover {
-      background: #003060;
-    }
-    .account-book-summary {
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
+    .account-book-form button:hover { background: #003060; }
+    .account-book-summary { margin-bottom: 1rem; font-size: 0.95rem; }
     .account-book-entries table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
+      width: 100%; border-collapse: collapse; font-size: 0.9rem;
     }
     .account-book-entries th,
     .account-book-entries td {
-      padding: 0.6rem;
-      border: 1px solid #ddd;
-      text-align: left;
+      padding: 0.6rem; border: 1px solid #ddd; text-align: left;
     }
-    .account-book-entries tr:nth-child(odd) {
-      background: #f9f9f9;
-    }
+    .account-book-entries tr:nth-child(odd) { background: #f9f9f9; }
     .account-book-entries button.delete-entry {
-      padding: 0.2rem 0.5rem;
-      background: #b30000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
+      padding: 0.2rem 0.5rem; background: #b30000; color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
     }
-    .account-book-entries button.delete-entry:hover {
-      background: #800000;
-    }
-    @media (max-width: 768px) {
-        nav ul {
-          flex-wrap: wrap;
-        }
-    }
-    /* 설정 모달 스타일 (주요 색상 선택 부분 제거됨) */
-    .settings-form label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
+    .account-book-entries button.delete-entry:hover { background: #800000; }
+    @media (max-width: 768px) { nav ul { flex-wrap: wrap; } }
+    .settings-form label { display: block; margin-bottom: 8px; font-weight: bold; }
     .settings-form input[type="checkbox"],
-    .settings-form input[type="range"] {
-      margin-top: 4px;
-      margin-bottom: 12px;
-    }
-    .settings-form button {
-      margin-right: 10px;
-    }
+    .settings-form input[type="range"] { margin-top: 4px; margin-bottom: 12px; }
+    .settings-form button { margin-right: 10px; }
     #settingsBtn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.3rem;
+      position: absolute; top: 1rem; right: 1rem; font-size: 1.3rem;
     }
-    .toggle-btn {
-      font-size: 1.2rem;
-      padding: 0.5rem 1rem;
-      min-width: 3rem;
-    }
-    /* 다크 모드 전용 추가 스타일 */
-    body.dark-mode {
-      background: #1f1f1f;
-      color: #ccc;
-    }
-    /* 섹션 컨테이너 (카드 스타일) 다크 모드 */
-    body.dark-mode .section-container {
-      background: #2b2b2b;
-      border: 1px solid #444;
-      color: #ddd;
-    }
-    /* 카드 스타일 적용 영역 (예: 투자 포트폴리오 차트 영역) */
-    body.dark-mode .card {
-      background: #333;
-      box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
-    }
-    /* 투자 포트폴리오 섹션 */
-    body.dark-mode #stock-portfolio {
-      background: #2b2b2b;
-      border-color: #444;
-      color: #ddd;
-    }
-    /* 나의 자산 목표 섹션 */
-    body.dark-mode .asset-goal-container {
-      background: #2b2b2b;
-      border-color: #444;
-      color: #ddd;
-    }
-    /* 가계부 섹션 다크 모드 스타일 */
-    body.dark-mode .account-book {
-      background: #2b2b2b;
-      border-color: #444;
-      color: #ddd;
-    }
-    /* 가계부 테이블 배경 및 텍스트 색상 변경 */
-    body.dark-mode .account-book table {
-      background: #2b2b2b;
-      color: #ddd;
-      border-color: #444;
-    }
+    .toggle-btn { font-size: 1.2rem; padding: 0.5rem 1rem; min-width: 3rem; }
+    body.dark-mode { background: #1f1f1f; color: #ccc; }
+    body.dark-mode .section-container { background: #2b2b2b; border: 1px solid #444; color: #ddd; }
+    body.dark-mode .card { background: #333; box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05); }
+    body.dark-mode #stock-portfolio { background: #2b2b2b; border-color: #444; color: #ddd; }
+    body.dark-mode .asset-goal-container { background: #2b2b2b; border-color: #444; color: #ddd; }
+    body.dark-mode .account-book { background: #2b2b2b; border-color: #444; color: #ddd; }
+    body.dark-mode .account-book table { background: #2b2b2b; color: #ddd; border-color: #444; }
     body.dark-mode .account-book th,
-    body.dark-mode .account-book td {
-      background: #2b2b2b;
-      color: #ddd;
-      border: 1px solid #444;
-    }
-    /* 가계부 입력 필드 다크 모드 스타일 */
+    body.dark-mode .account-book td { background: #2b2b2b; color: #ddd; border: 1px solid #444; }
     body.dark-mode .account-book-form input,
-    body.dark-mode .account-book-form select {
-      background: #3a3a3a;
-      color: #eee;
-      border: 1px solid #555;
-    }
-    /* 다크 모드에서 전체 텍스트 색상을 흰색으로 지정 */
-    body.dark-mode {
-      background: #1f1f1f;
-      color: #fff;
-    }
+    body.dark-mode .account-book-form select { background: #3a3a3a; color: #eee; border: 1px solid #555; }
+    body.dark-mode { background: #1f1f1f; color: #fff; }
     body.dark-mode header,
     body.dark-mode main,
-    body.dark-mode footer {
-      color: #fff;
-    }
+    body.dark-mode footer { color: #fff; }
     body.dark-mode h1,
     body.dark-mode h2,
     body.dark-mode h3,
     body.dark-mode p,
     body.dark-mode span,
     body.dark-mode li,
-    body.dark-mode a {
-      color: #fff;
-    }
-    /* 네비게이션 및 톱니바퀴는 원래 색상 유지 */
+    body.dark-mode a { color: #fff; }
     body.dark-mode nav ul li a,
-    body.dark-mode #settingsBtn {
-      color: var(--primary-color);
-    }
+    body.dark-mode #settingsBtn { color: var(--primary-color); }
     body.dark-mode nav ul li a:hover {
-      background-color: var(--primary-color);
-      color: #fff;
+      background-color: var(--primary-color); color: #fff;
     }
-    /* 다크 모드에서도 설정 모달은 기본 스타일 유지 */
     body.dark-mode #settingsModal .modal-content {
-      background: #fff;
-      color: var(--text-color);
+      background: #fff; color: var(--text-color);
     }
-    /* 입력창, 텍스트필드 등 */
     body.dark-mode input,
     body.dark-mode textarea,
-    body.dark-mode select {
-      background: #3a3a3a;
-      color: #fff;
-      border: 1px solid #555;
-    }
-    /* 버튼 다크 모드 */
-    body.dark-mode .primary-btn {
-      background: #0059b3;
-    }
-    body.dark-mode .primary-btn:hover {
-      background: #003060;
-    }
-    body.dark-mode .secondary-btn {
-      background: #007acc;
-    }
-    body.dark-mode .secondary-btn:hover {
-      background: #005fa3;
-    }
-    /* 기타: 달력, 모달 등 */
+    body.dark-mode select { background: #3a3a3a; color: #fff; border: 1px solid #555; }
+    body.dark-mode .primary-btn { background: #0059b3; }
+    body.dark-mode .primary-btn:hover { background: #003060; }
+    body.dark-mode .secondary-btn { background: #007acc; }
+    body.dark-mode .secondary-btn:hover { background: #005fa3; }
     body.dark-mode .calendar-section,
     body.dark-mode .account-book,
-    body.dark-mode .investment-checklist {
-      background: #2b2b2b;
-      color: #7d7b7b;
-      border: 1px solid #4b4747;
-    }
+    body.dark-mode .investment-checklist { background: #2b2b2b; color: #7d7b7b; border: 1px solid #4b4747; }
   </style>
 </head>
 <body>
@@ -868,7 +389,6 @@
   </header>
   
   <main>
-    <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
     <div class="save-notice">
       이 페이지는 <strong>로그인 없이도</strong> 현재 사용하는 <strong>브라우저에 영구 저장</strong>됩니다.<br>
       다시 방문하더라도 입력했던 내역이 유지됩니다.
@@ -899,6 +419,16 @@
               <div class="portfolio-form">
                 <button id="addAssetItemBtn">자산 항목 추가</button>
               </div>
+              <!-- 목표 비율 설정 및 리밸런싱 섹션 -->
+              <div id="targetRatioSection" style="margin-top:1rem; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+                <h4 style="margin-bottom:0.5rem;">리밸런싱 도구 (단위: %)</h4>
+                <div id="targetRatioContainer"></div>
+                <div class="portfolio-form" style="margin-top:0.5rem;">
+                  <button id="saveTargetRatiosBtn" class="primary-btn">목표 비율 저장</button>
+                  <button id="calcRebalancingBtn" class="secondary-btn">리밸런싱 계산</button>
+                </div>
+                <div id="rebalancingSuggestions" style="margin-top:1rem; font-size:0.9rem;"></div>
+              </div>
             </div>
             <div class="right-chart">
               <div class="chart-container">
@@ -927,12 +457,10 @@
                 <button id="addStockBtn" class="primary-btn">종목 추가</button>
               </div>
             </div>
-            <!-- [투자 포트폴리오] 섹션 내 차트 영역 -->
             <div class="right-chart card">
               <div class="chart-container">
                 <canvas id="stockChart"></canvas>
               </div>
-              <!-- 차트 타입 선택 버튼 -->
               <div class="chart-btn-group">
                 <button id="pieChartBtn" class="secondary-btn">원형 그래프</button>
                 <button id="barChartBtn" class="secondary-btn">막대 그래프</button>
@@ -1011,13 +539,8 @@
           <input type="text" id="ab-description" placeholder="설명 (선택)">
           <button id="ab-addBtn">추가</button>
         </div>
-        <div class="account-book-summary" id="ab-summary">
-          <!-- 총 수입/지출/잔액 표시 -->
-        </div>
-        <div class="account-book-entries" id="ab-entries">
-          <!-- 가계부 항목 목록 테이블 -->
-        </div>
-        <!-- 고정 지출 계산기 -->
+        <div class="account-book-summary" id="ab-summary"></div>
+        <div class="account-book-entries" id="ab-entries"></div>
         <div class="fixed-expense-calculator" style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
           <h3>월간 고정 지출 계산기</h3>
           <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
@@ -1055,9 +578,7 @@
         <p style="font-size:0.9rem; line-height: 1.4; margin-top: 0.5rem;">
           새로운 종목을 구매할 때 고려해야 할 중요한 원칙을 체크하세요.
         </p>
-        <ul id="checklist">
-          <!-- 체크리스트 항목은 자바스크립트에서 렌더링 -->
-        </ul>
+        <ul id="checklist"></ul>
         <div class="checklist-add">
           <input type="text" id="newChecklistItem" placeholder="원칙을 입력하세요">
           <button id="addChecklistItemBtn">추가</button>
@@ -1088,7 +609,7 @@
     </div>
   </div>
   
-  <!-- 설정 모달 (커스터마이징) - 주요 색상 선택 요소 제거됨 -->
+  <!-- 설정 모달 -->
   <div id="settingsModal" class="modal">
     <div class="modal-content">
       <h4>설정</h4>
@@ -1101,7 +622,6 @@
           폰트 크기 (기본: 16px):
           <input type="range" id="fontSizeRange" min="12" max="20" step="1">
         </label>
-        <!-- 주요 색상 선택 제거됨 -->
         <div style="text-align: right;">
           <button type="button" id="resetSettingsBtn">리셋</button>
           <button type="submit" id="saveSettingsBtn">저장</button>
@@ -1111,19 +631,15 @@
     </div>
   </div>
   
-  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부 기능 -->
+  <!-- JavaScript: 포트폴리오, 체크리스트, 자산 목표, 투자 일지, 달력 메모, 가계부, 리밸런싱 기능 -->
   <script>
-    /* ---- 이하 자바스크립트 부분은 기존 코드와 동일 ---- */
     Chart.register(ChartDataLabels);
     let assetChart, stockChart;
     
     function addCommaFormatting(inputElement) {
       inputElement.addEventListener('input', function() {
         let numericValue = inputElement.value.replace(/,/g, '');
-        if(numericValue === '') {
-          inputElement.value = '';
-          return;
-        }
+        if(numericValue === '') { inputElement.value = ''; return; }
         let num = parseFloat(numericValue);
         if(isNaN(num)) return;
         let formattedValue = num.toLocaleString('en-US');
@@ -1143,6 +659,7 @@
       canvas.style.width = newSize + "px";
     }
     
+    // 자산 항목 생성 함수 (기존 기능 유지)
     function createAssetItem(asset = {name:"", amount:0}) {
       const div = document.createElement("div");
       div.classList.add("asset-item");
@@ -1151,7 +668,7 @@
       nameInput.type = "text";
       nameInput.placeholder = "자산명";
       nameInput.value = asset.name || "";
-      nameInput.addEventListener("input", updateAssetChart);
+      nameInput.addEventListener("input", () => { updateAssetChart(); updateTargetRatioFields(); });
       
       const amountInput = document.createElement("input");
       amountInput.type = "text";
@@ -1168,6 +685,7 @@
           div.remove();
           saveAssetPortfolio();
           updateAssetChart();
+          updateTargetRatioFields();
         }
       });
       
@@ -1289,11 +807,88 @@
       updateAssetGoalProgress();
     }
     
+    // 타겟 비율 입력 필드 생성: 자산 항목의 이름과 연동하여 표시
+    function updateTargetRatioFields() {
+      const targetContainer = document.getElementById("targetRatioContainer");
+      targetContainer.innerHTML = "";
+      const assetItems = document.querySelectorAll("#assetItemsContainer .asset-item");
+      assetItems.forEach(item => {
+        const nameInput = item.querySelector("input[type='text']");
+        const assetName = nameInput.value.trim() || "미입력";
+        const div = document.createElement("div");
+        div.style.marginBottom = "0.3rem";
+        div.innerHTML = `<label style="font-size:0.9rem;">${assetName} 목표비율: </label>
+                         <input type="number" class="target-ratio-input" data-asset-name="${assetName}" placeholder="%" style="width:60px; padding:2px; margin-left:5px;">`;
+        targetContainer.appendChild(div);
+      });
+    }
+    
+    // 목표 비율 저장 및 불러오기 함수
+    function saveTargetRatios() {
+      const ratioInputs = document.querySelectorAll('.target-ratio-input');
+      let targetRatios = {};
+      ratioInputs.forEach((input) => {
+        const assetName = input.getAttribute('data-asset-name');
+        targetRatios[assetName] = Number(input.value) || 0;
+      });
+      localStorage.setItem('targetRatios', JSON.stringify(targetRatios));
+      alert("목표 비율이 저장되었습니다.");
+    }
+    
+    function loadTargetRatios() {
+      const stored = localStorage.getItem('targetRatios');
+      return stored ? JSON.parse(stored) : {};
+    }
+    
+    // 리밸런싱 계산 및 제안
+    function calculateRebalancingSuggestions() {
+      const container = document.getElementById("assetItemsContainer");
+      const assetItems = container.querySelectorAll(".asset-item");
+      const targetRatios = loadTargetRatios();
+      let totalAsset = 0;
+      let currentAssets = [];
+    
+      assetItems.forEach(item => {
+        const inputs = item.querySelectorAll("input");
+        const name = inputs[0].value.trim() || "미입력";
+        const amount = Number(inputs[1].value.replace(/,/g, "")) || 0;
+        totalAsset += amount;
+        currentAssets.push({ name, amount });
+      });
+    
+      let suggestions = currentAssets.map(asset => {
+        const targetRatio = targetRatios[asset.name] || 0;
+        const targetAmount = totalAsset * (targetRatio / 100);
+        return {
+          name: asset.name,
+          current: asset.amount,
+          target: targetAmount,
+          difference: targetAmount - asset.amount // 양수면 매수, 음수면 매도 필요
+        };
+      });
+      return suggestions;
+    }
+    
+    function displayRebalancingSuggestions() {
+      const suggestions = calculateRebalancingSuggestions();
+      const suggestionsContainer = document.getElementById("rebalancingSuggestions");
+      suggestionsContainer.innerHTML = "";
+      suggestions.forEach(suggestion => {
+        const div = document.createElement("div");
+        div.style.marginBottom = "0.3rem";
+        div.innerHTML = `<strong>${suggestion.name}</strong>: 현재 ${suggestion.current.toLocaleString()} 원, 목표 ${suggestion.target.toLocaleString()} 원,
+                         ${suggestion.difference >= 0 ? "매수" : "매도"} ${Math.abs(suggestion.difference).toLocaleString()} 원 필요`;
+        suggestionsContainer.appendChild(div);
+      });
+    }
+    
     document.getElementById("addAssetItemBtn").addEventListener("click", () => {
       const container = document.getElementById("assetItemsContainer");
       container.appendChild(createAssetItem());
+      updateTargetRatioFields();
     });
     
+    // 주식 포트폴리오 관련 함수 (기존 코드 유지)
     function createStockItem(stock = {name:"", amount:0}) {
       const stockDiv = document.createElement("div");
       stockDiv.classList.add("stock-item");
@@ -1357,10 +952,7 @@
       localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
     }
     
-    // 전역 변수로 차트 타입을 저장 (기본: 'pie')
     let stockChartType = 'pie';
-    
-    // 업데이트 함수 수정: stockChartType에 따라 차트 타입 변경
     function updateStockChart() {
       const stockList = document.getElementById("stockList");
       const stockItems = stockList.querySelectorAll(".stock-item");
@@ -1397,9 +989,7 @@
         return `rgb(${r}, ${g}, ${b})`;
       });
       
-      if(stockChart) {
-        stockChart.destroy();
-      }
+      if(stockChart) { stockChart.destroy(); }
       
       stockChart = new Chart(ctx, {
         type: stockChartType,
@@ -1444,13 +1034,11 @@
       });
     }
     
-    // 이벤트 리스너: 원형 그래프 버튼 클릭 시
     document.getElementById("pieChartBtn").addEventListener("click", () => {
       stockChartType = 'pie';
       updateStockChart();
     });
     
-    // 이벤트 리스너: 막대 그래프 버튼 클릭 시
     document.getElementById("barChartBtn").addEventListener("click", () => {
       stockChartType = 'bar';
       updateStockChart();
@@ -1476,10 +1064,7 @@
                             <input type="checkbox" class="check-input" ${item.checked ? "checked" : ""}>
                           </div>`;
           li.querySelector(".delete-checklist-btn").addEventListener("click", () => {
-            if(confirm("정말 삭제하시겠습니까?")) {
-              li.remove();
-              saveChecklist();
-            }
+            if(confirm("정말 삭제하시겠습니까?")) { li.remove(); saveChecklist(); }
           });
           li.querySelector("input").addEventListener("change", saveChecklist);
           checklistEl.appendChild(li);
@@ -1492,10 +1077,7 @@
                           <input type="checkbox" class="check-input">
                         </div>`;
         li.querySelector(".delete-checklist-btn").addEventListener("click", () => {
-          if(confirm("정말 삭제하시겠습니까?")) {
-            li.remove();
-            saveChecklist();
-          }
+          if(confirm("정말 삭제하시겠습니까?")) { li.remove(); saveChecklist(); }
         });
         li.querySelector("input").addEventListener("change", saveChecklist);
         checklistEl.appendChild(li);
@@ -1523,10 +1105,7 @@
                           <input type="checkbox" class="check-input">
                         </div>`;
         li.querySelector(".delete-checklist-btn").addEventListener("click", () => {
-          if(confirm("정말 삭제하시겠습니까?")){
-            li.remove();
-            saveChecklist();
-          }
+          if(confirm("정말 삭제하시겠습니까?")) { li.remove(); saveChecklist(); }
         });
         li.querySelector("input").addEventListener("change", saveChecklist);
         document.getElementById("checklist").appendChild(li);
@@ -1562,25 +1141,18 @@
       const savedGoal = localStorage.getItem("assetGoal");
       const progressContainer = document.getElementById("assetGoalProgress");
       progressContainer.innerHTML = "";
-      if (!savedGoal) {
-        return;
-      }
+      if (!savedGoal) { return; }
       const goal = Number(savedGoal);
       const storedAssets = localStorage.getItem("assetPortfolio");
       let totalAsset = 0;
       if (storedAssets) {
         const assets = JSON.parse(storedAssets);
-        assets.forEach(asset => {
-          totalAsset += Number(asset.amount) || 0;
-        });
+        assets.forEach(asset => { totalAsset += Number(asset.amount) || 0; });
       }
-      
       const percentage = Math.min(100, ((totalAsset / goal) * 100).toFixed(2));
-      
       const info = document.createElement("p");
       info.textContent = `현재 자산: ${totalAsset.toLocaleString()} 원 / 목표: ${goal.toLocaleString()} 원`;
       progressContainer.appendChild(info);
-      
       const progressBar = document.createElement("div");
       progressBar.classList.add("progress-bar");
       const progress = document.createElement("div");
@@ -1648,15 +1220,10 @@
         return;
       }
       const now = new Date();
-      const entry = {
-        date: now.toLocaleString(),
-        text: diaryText
-      };
+      const entry = { date: now.toLocaleString(), text: diaryText };
       let entries = [];
       const storedEntries = localStorage.getItem("investmentDiaryEntries");
-      if(storedEntries){
-        entries = JSON.parse(storedEntries);
-      }
+      if(storedEntries){ entries = JSON.parse(storedEntries); }
       entries.push(entry);
       localStorage.setItem("investmentDiaryEntries", JSON.stringify(entries));
       diaryTextarea.value = "";
@@ -1676,6 +1243,7 @@
       
       addCommaFormatting(document.getElementById("assetGoalInput"));
       loadCustomizationSettings();
+      updateTargetRatioFields();
     });
     
     // 달력 관련 코드
@@ -1745,21 +1313,15 @@
           dayCell.classList.add("has-memo");
         }
     
-        dayCell.addEventListener("click", () => {
-          openMemoModal(dateStr, memos[dateStr] || "");
-        });
+        dayCell.addEventListener("click", () => { openMemoModal(dateStr, memos[dateStr] || ""); });
     
         calendarEl.appendChild(dayCell);
       }
     }
     
     document.getElementById("prevMonthBtn").addEventListener("click", () => {
-      if (currentMonth === 0) {
-        currentMonth = 11;
-        currentYear--;
-      } else {
-        currentMonth--;
-      }
+      if (currentMonth === 0) { currentMonth = 11; currentYear--; }
+      else { currentMonth--; }
       localStorage.setItem("calendarCurrentYear", currentYear);
       localStorage.setItem("calendarCurrentMonth", currentMonth);
       updateCalendarHeader();
@@ -1767,12 +1329,8 @@
     });
     
     document.getElementById("nextMonthBtn").addEventListener("click", () => {
-      if (currentMonth === 11) {
-        currentMonth = 0;
-        currentYear++;
-      } else {
-        currentMonth++;
-      }
+      if (currentMonth === 11) { currentMonth = 0; currentYear++; }
+      else { currentMonth++; }
       localStorage.setItem("calendarCurrentYear", currentYear);
       localStorage.setItem("calendarCurrentMonth", currentMonth);
       updateCalendarHeader();
@@ -1803,25 +1361,19 @@
       alert("메모가 저장되었습니다.");
     });
     
-    document.getElementById("cancelModalBtn").addEventListener("click", () => {
-      closeMemoModal();
-    });
+    document.getElementById("cancelModalBtn").addEventListener("click", () => { closeMemoModal(); });
     
     window.addEventListener("click", (e) => {
       const modal = document.getElementById("memoModal");
-      if (e.target === modal) {
-        closeMemoModal();
-      }
+      if (e.target === modal) { closeMemoModal(); }
     });
-    // 가계부
+    
     const ACCOUNT_BOOK_KEY = "accountBookEntries";
     function loadAccountBookEntries() {
       const stored = localStorage.getItem(ACCOUNT_BOOK_KEY);
       return stored ? JSON.parse(stored) : [];
     }
-    function saveAccountBookEntries(entries) {
-      localStorage.setItem(ACCOUNT_BOOK_KEY, JSON.stringify(entries));
-    }
+    function saveAccountBookEntries(entries) { localStorage.setItem(ACCOUNT_BOOK_KEY, JSON.stringify(entries)); }
     function renderAccountBook() {
       const entries = loadAccountBookEntries();
       const tableContainer = document.getElementById("ab-entries");
@@ -1857,11 +1409,8 @@
       let totalIncome = 0, totalExpense = 0;
       entries.forEach(entry => {
         const amt = Number(entry.amount);
-        if(entry.type === "income") {
-          totalIncome += amt;
-        } else {
-          totalExpense += amt;
-        }
+        if(entry.type === "income") { totalIncome += amt; }
+        else { totalExpense += amt; }
       });
       const net = totalIncome - totalExpense;
       const summaryDiv = document.getElementById("ab-summary");
@@ -1924,40 +1473,28 @@
       renderAccountBook();
     });
     
-    // 추가 - 월별 가계부 보고서
     function generateMonthlyReport() {
       const stored = localStorage.getItem(ACCOUNT_BOOK_KEY);
-      if (!stored) {
-        alert("가계부 데이터가 없습니다.");
-        return;
-      }
+      if (!stored) { alert("가계부 데이터가 없습니다."); return; }
       const entries = JSON.parse(stored);
       const monthlyData = {};
       entries.forEach(entry => {
         const monthKey = entry.date.slice(0, 7);
-        if (!monthlyData[monthKey]) {
-          monthlyData[monthKey] = { income: 0, expense: 0 };
-        }
+        if (!monthlyData[monthKey]) { monthlyData[monthKey] = { income: 0, expense: 0 }; }
         const amount = Number(entry.amount);
-        if (entry.type === "income") {
-          monthlyData[monthKey].income += amount;
-        } else {
-          monthlyData[monthKey].expense += amount;
-        }
+        if (entry.type === "income") { monthlyData[monthKey].income += amount; }
+        else { monthlyData[monthKey].expense += amount; }
       });
       const months = Object.keys(monthlyData).sort();
       const incomes = months.map(month => monthlyData[month].income);
       const expenses = months.map(month => monthlyData[month].expense);
-      
       return { months, incomes, expenses, monthlyData };
     }
     
     let incomeExpenseChart;
     function renderReportChart(months, incomes, expenses) {
       const ctx = document.getElementById("incomeExpenseChart").getContext("2d");
-      if (incomeExpenseChart) {
-        incomeExpenseChart.destroy();
-      }
+      if (incomeExpenseChart) { incomeExpenseChart.destroy(); }
       
       incomeExpenseChart = new Chart(ctx, {
         type: 'bar',
@@ -1989,11 +1526,7 @@
           scales: {
             y: {
               beginAtZero: true,
-              ticks: {
-                callback: function(value) {
-                  return value.toLocaleString() + " 원";
-                }
-              }
+              ticks: { callback: function(value) { return value.toLocaleString() + " 원"; } }
             }
           }
         }
@@ -2026,21 +1559,13 @@
     
     // 개발자 도구 및 우클릭 차단 (필요 시 제거)
     document.addEventListener("keydown", function(event) {
-      if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
-          event.preventDefault();
-      }
-      if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) {
-          event.preventDefault();
-      }
+      if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) { event.preventDefault(); }
+      if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.shiftKey && event.key === "J")) { event.preventDefault(); }
     });
     
-    document.addEventListener("contextmenu", function(event) {
-      event.preventDefault();
-    });
+    document.addEventListener("contextmenu", function(event) { event.preventDefault(); });
     
-    function getSecretKey() {
-      return "my-secret-key";
-    }
+    function getSecretKey() { return "my-secret-key"; }
     console.log(getSecretKey());
     
     // 토글 기능
@@ -2053,27 +1578,17 @@
                         btn.closest(".account-book") ||
                         btn.closest(".investment-checklist");
         let containerId = container.id;
-        if (!containerId) {
-          containerId = "toggleContainer_" + index;
-          container.id = containerId;
-        }
+        if (!containerId) { containerId = "toggleContainer_" + index; container.id = containerId; }
         const sectionContent = btn.parentElement.nextElementSibling;
         const storedState = localStorage.getItem("sectionState_" + containerId);
-        if (storedState === "collapsed") {
-          sectionContent.style.display = "none";
-          btn.textContent = "▼";
-        } else {
-          sectionContent.style.display = "block";
-          btn.textContent = "▲";
-        }
+        if (storedState === "collapsed") { sectionContent.style.display = "none"; btn.textContent = "▼"; }
+        else { sectionContent.style.display = "block"; btn.textContent = "▲"; }
         btn.addEventListener("click", () => {
           if (sectionContent.style.display === "none") {
-            sectionContent.style.display = "block";
-            btn.textContent = "▲";
+            sectionContent.style.display = "block"; btn.textContent = "▲";
             localStorage.setItem("sectionState_" + containerId, "expanded");
           } else {
-            sectionContent.style.display = "none";
-            btn.textContent = "▼";
+            sectionContent.style.display = "none"; btn.textContent = "▼";
             localStorage.setItem("sectionState_" + containerId, "collapsed");
           }
         });
@@ -2086,37 +1601,21 @@
     const settingsForm = document.getElementById("settingsForm");
     const darkModeToggle = document.getElementById("darkModeToggle");
     const fontSizeRange = document.getElementById("fontSizeRange");
-    // 주요 색상 선택은 제거되었으므로 관련 변수는 삭제합니다.
     const resetSettingsBtn = document.getElementById("resetSettingsBtn");
     const cancelSettingsBtn = document.getElementById("cancelSettingsBtn");
     
-    settingsBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      settingsModal.classList.add("active");
-    });
-    
-    cancelSettingsBtn.addEventListener("click", () => {
-      settingsModal.classList.remove("active");
-    });
-    
+    settingsBtn.addEventListener("click", (e) => { e.preventDefault(); settingsModal.classList.add("active"); });
+    cancelSettingsBtn.addEventListener("click", () => { settingsModal.classList.remove("active"); });
     resetSettingsBtn.addEventListener("click", () => {
       localStorage.removeItem("customSettings");
-      applyCustomSettings({
-        darkMode: false,
-        fontSize: 16
-        // 주요 색상은 다크 모드 여부에 따라 자동 처리됨
-      });
+      applyCustomSettings({ darkMode: false, fontSize: 16 });
       settingsForm.reset();
       alert("설정이 기본값으로 초기화되었습니다.");
     });
     
     settingsForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const customSettings = {
-        darkMode: darkModeToggle.checked,
-        fontSize: parseInt(fontSizeRange.value, 10)
-        // 주요 색상은 선택하지 않으므로 저장하지 않습니다.
-      };
+      const customSettings = { darkMode: darkModeToggle.checked, fontSize: parseInt(fontSizeRange.value, 10) };
       localStorage.setItem("customSettings", JSON.stringify(customSettings));
       applyCustomSettings(customSettings);
       settingsModal.classList.remove("active");
@@ -2126,11 +1625,9 @@
     function applyCustomSettings(settings) {
       if(settings.darkMode) {
         document.body.classList.add("dark-mode");
-        // 다크 모드일 때 주요 색상 강제 적용: R:73, G:79, B:85 (#494F55)
         document.documentElement.style.setProperty("--primary-color", "#494F55");
       } else {
         document.body.classList.remove("dark-mode");
-        // 다크 모드가 아닐 때에는 기본 주요 색상 (기본값 #004080)
         document.documentElement.style.setProperty("--primary-color", "#004080");
       }
       document.documentElement.style.fontSize = settings.fontSize + "px";
@@ -2146,10 +1643,8 @@
       }
     }
     /* ====== 끝 ====== */
-  </script>
-  
-  <!-- 고정 지출 계산기 스크립트 -->
-  <script>
+    
+    // 고정 지출 계산기 스크립트
     document.addEventListener("DOMContentLoaded", function() {
       const addFixedExpenseBtn = document.getElementById("addFixedExpenseBtn");
       const fixedExpenseDescription = document.getElementById("fixedExpenseDescription");
@@ -2159,43 +1654,31 @@
 
       let fixedExpenses = [];
       const storedFixedExpenses = localStorage.getItem("fixedExpenses");
-      if (storedFixedExpenses) {
-        fixedExpenses = JSON.parse(storedFixedExpenses);
-      }
+      if (storedFixedExpenses) { fixedExpenses = JSON.parse(storedFixedExpenses); }
 
-      function saveFixedExpenses() {
-        localStorage.setItem("fixedExpenses", JSON.stringify(fixedExpenses));
-      }
-
+      function saveFixedExpenses() { localStorage.setItem("fixedExpenses", JSON.stringify(fixedExpenses)); }
       function updateFixedExpenseDisplay() {
         fixedExpenseList.innerHTML = "";
         fixedExpenses.forEach((expense, index) => {
           const div = document.createElement("div");
-          div.style.display = "flex";
-          div.style.justifyContent = "space-between";
-          div.style.alignItems = "center";
-          div.style.marginBottom = "5px";
+          div.style.display = "flex"; div.style.justifyContent = "space-between";
+          div.style.alignItems = "center"; div.style.marginBottom = "5px";
           div.innerHTML = `<span>${expense.description}: ${Number(expense.amount).toLocaleString()} 원</span>`;
           const delBtn = document.createElement("button");
           delBtn.textContent = "삭제";
-          delBtn.style.padding = "2px 5px";
-          delBtn.style.fontSize = "0.8rem";
+          delBtn.style.padding = "2px 5px"; delBtn.style.fontSize = "0.8rem";
           delBtn.addEventListener("click", () => {
             fixedExpenses.splice(index, 1);
-            updateFixedExpenseDisplay();
-            updateFixedExpenseTotal();
-            saveFixedExpenses();
+            updateFixedExpenseDisplay(); updateFixedExpenseTotal(); saveFixedExpenses();
           });
           div.appendChild(delBtn);
           fixedExpenseList.appendChild(div);
         });
       }
-
       function updateFixedExpenseTotal() {
         let total = fixedExpenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
         fixedExpenseTotal.textContent = "총 고정 지출: " + total.toLocaleString() + " 원";
       }
-
       addFixedExpenseBtn.addEventListener("click", () => {
         const description = fixedExpenseDescription.value.trim();
         const amountStr = fixedExpenseAmount.value.replace(/,/g, "").trim();
@@ -2204,17 +1687,16 @@
           return;
         }
         fixedExpenses.push({ description: description, amount: Number(amountStr) });
-        updateFixedExpenseDisplay();
-        updateFixedExpenseTotal();
-        saveFixedExpenses();
-        fixedExpenseDescription.value = "";
-        fixedExpenseAmount.value = "";
+        updateFixedExpenseDisplay(); updateFixedExpenseTotal(); saveFixedExpenses();
+        fixedExpenseDescription.value = ""; fixedExpenseAmount.value = "";
       });
-
-      updateFixedExpenseDisplay();
-      updateFixedExpenseTotal();
+      updateFixedExpenseDisplay(); updateFixedExpenseTotal();
     });
+    
+    // 이벤트 리스너: 목표 비율 저장 및 리밸런싱 계산 버튼
+    document.getElementById("saveTargetRatiosBtn").addEventListener("click", saveTargetRatios);
+    document.getElementById("calcRebalancingBtn").addEventListener("click", displayRebalancingSuggestions);
+    
   </script>
-  
 </body>
 </html>
