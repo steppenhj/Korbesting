@@ -183,10 +183,10 @@
         align-items: flex-start;
       }
       .red {
-        color: red; /* 상승일 때 */
+        color: red;
       }
       .blue {
-        color: blue; /* 하락일 때 */
+        color: blue;
       }
       /* 사이드바 */
       aside.sidebar {
@@ -296,7 +296,7 @@
         color: #fff;
         text-decoration: underline;
       }
-      /* 설치 버튼 영역 */
+      /* PWA 설치 버튼 영역 */
       #installContainer {
         text-align: center;
         margin-top: 20px;
@@ -398,7 +398,7 @@
       </nav>
     </header>
 
-    <!-- 설치 버튼 영역 (PWA 설치) -->
+    <!-- PWA 설치 버튼 영역 -->
     <div id="installContainer">
       <button id="installBtn">GoHigher 설치</button>
     </div>
@@ -432,7 +432,7 @@
           지금 바로 최신 뉴스를 확인하고, 투자 전략을 세워보세요! 🚀
         </div>
 
-        <!-- 뉴스 섹션들 -->
+        <!-- 뉴스 섹션들 (전체 내용 생략 없이 포함) -->
         <section class="news-section flex-container" id="magnificent-seven">
           <div class="half-section">
             <h2>매그니피센트 7 주식 시세</h2>
@@ -591,7 +591,7 @@
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">연준 베이지북 공개 예정</h3>
             <p itemprop="articleBody">
-              현지시간 3월 5일(한국시간 6일 오전 4시), 미국 연방준비제도(Fed)의 경제동향 보고서인 '베이지북(Beige Book)'이 공개될 예정입니다. 이는 연준의 통화정책 방향성에 대한 중요한 단서를 제공할 것으로 보입니다. ​
+              현지시간 3월 5일(한국시간 6일 오전 4시), 미국 연방준비제도(Fed)의 경제동향 보고서인 '베이지북(Beige Book)'이 공개될 예정입니다. 이는 연준의 통화정책 방향성에 대한 중요한 단서를 제공할 것으로 보입니다.
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 5일</span>
           </article>
@@ -609,7 +609,7 @@
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">노보 노디스크, 위고비 할인 판매</h3>
             <p itemprop="articleBody">
-              ​노보 노디스크는 비만 치료제인 위고비(Wegovy)를 보험 적용이 부족한 환자들을 위해 자사 온라인 약국을 통해 월 499달러에 판매하기로 발표했습니다. 이는 기존 정가인 월 1350달러보다 크게 할인된 가격입니다.​
+              ​노보 노디스크는 비만 치료제인 위고비(Wegovy)를 보험 적용이 부족한 환자들을 위해 자사 온라인 약국을 통해 월 499달러에 판매하기로 발표했습니다. 이는 기존 정가인 월 1350달러보다 크게 할인된 가격입니다.
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 6일</span>
           </article>
@@ -659,7 +659,7 @@
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국 10년물 국채 금리 상승</h3>
             <p itemprop="articleBody">
-              3월 5일미국 10년물 국채 금리는 전일 대비 3.70bp 상승한 4.222%를 기록했습니다. 이는 투자자들이 안전자산인 국채로 몰리면서 수요 증가로 인한 것으로 분석됩니다. ​
+              3월 5일미국 10년물 국채 금리는 전일 대비 3.70bp 상승한 4.222%를 기록했습니다. 이는 투자자들이 안전자산인 국채로 몰리면서 수요 증가로 인한 것으로 분석됩니다.
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 5일</span>
           </article>
@@ -705,12 +705,6 @@
         문의: <a href="mailto:hermann8hesse@gmail.com" style="color:#fff; text-decoration:underline;">hermann8hesse@gmail.com</a><br>
         아이디어가 있으시면 언제든지 메일로 제안해 주세요!
       </p>
-      <!-- 다운로드 버튼 -->
-      <div style="text-align: center; margin-top: 20px;">
-        <a id="downloadBtn" href="GoHigher.zip" download="GoHigher.zip" style="display: inline-block; padding: 10px 20px; font-size: 16px; background-color: #0059b3; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">
-          GoHigher 다운로드
-        </a>
-      </div>
     </footer>
 
     <script>
@@ -751,17 +745,6 @@
       });
       function getSecretKey() { return "my-secret-key"; }
       console.log(getSecretKey());
-
-      // ZIP 파일 다운로드 강제 실행 스크립트
-      document.getElementById("downloadBtn").addEventListener("click", function(event) {
-          event.preventDefault();
-          let link = document.createElement("a");
-          link.href = "GoHigher.zip";
-          link.download = "GoHigher.zip";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-      });
     </script>
   </body>
 </html>
