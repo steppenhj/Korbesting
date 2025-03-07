@@ -2,7 +2,7 @@
   "id": "/",
   "name": "GoHigher",
   "short_name": "GoHigher",
-  "start_url": "/",
+  "start_url": "/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -10,6 +10,7 @@
   "theme_color": "#004080",
   "description": "GoHigher PWA App",
   "lang": "ko-KR",
+  "dir": "ltr",
   "launch_handler": {
     "client_mode": "navigate-existing"
   },
@@ -36,6 +37,28 @@
       "src": "/screenshots/screenshot2.png",
       "sizes": "1080x1920",
       "type": "image/png"
+    },
+    {
+      "src": "/screenshots/screenshot3.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    },
+    {
+      "src": "/screenshots/screenshot4.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["finance", "productivity", "utilities"],
+  "push_notification": {
+    "enabled": true
+  },
+  "background_sync": {
+    "periodic_sync": true
+  },
+  "scope_extensions": [
+    {
+      "origin": "https://gohigher.kr"
     }
   ],
   "related_applications": [],
