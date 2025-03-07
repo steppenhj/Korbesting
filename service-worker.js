@@ -1,4 +1,4 @@
-const CACHE_NAME = "gohigher-cache-v6"; // 캐시 버전 업데이트
+const CACHE_NAME = "gohigher-cache-v7"; // 캐시 버전 업데이트
 const urlsToCache = [
     "/",
     "/index.html",
@@ -146,3 +146,25 @@ function markActionAsSynced(db, id) {
         request.onerror = () => reject("Failed to mark action as synced");
     });
 }
+
+// **푸시 알림 활성화 (앱이 실행되지 않아도 동작)**
+self.addEventListener("push", (event) => {
+    let data = event.data ? event.data.json() : {};
+    event.waitUntil(
+        self.registration.showNotification(data.title || "GoHigher 알림", {
+            body: data.body || "새로운 알림이 도착했습니다!",
+            icon: "/icon-192x192.png",
+            badge: "/icon-192x192.png",
+            data: { url: data.url || "/" },
+            actions: [{ action: "open", title: "열기" }]
+        })
+    );
+});
+
+// **알림 클릭 시 앱 열기**
+self.addEventListener("notificationclick", (event) => {
+    event.notification.close();
+    event.waitUntil(
+        clients.openWindow(event.notification.data.url)
+    );
+});
