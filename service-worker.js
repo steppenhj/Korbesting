@@ -1,4 +1,4 @@
-const CACHE_NAME = "gohigher-cache-v7"; // 캐시 버전 업데이트
+const CACHE_NAME = "gohigher-cache-v8"; // 캐시 버전 업데이트
 const urlsToCache = [
     "/",
     "/index.html",
@@ -61,58 +61,54 @@ self.addEventListener("message", (event) => {
     }
 });
 
-// **백그라운드 동기화 지원 (네트워크 연결 시 데이터 자동 동기화)**
+// **백그라운드 동기화 지원 (명확한 등록 추가)**
 self.addEventListener("sync", (event) => {
-    if (event.tag === "background-sync") {
-        event.waitUntil(
-            fetch("/api/sync")
-            .then(response => response.json())
-            .then(data => {
-                console.log("[Service Worker] Background Sync Successful", data);
-            })
-            .catch(error => {
-                console.error("[Service Worker] Background Sync Failed", error);
-            })
-        );
-    }
-});
-
-// **사용자가 데이터를 입력하면 로컬에 저장하고, 네트워크 복구 시 서버에 전송**
-self.addEventListener("fetch", (event) => {
-    if (!navigator.onLine) {
-        event.respondWith(
-            caches.match(event.request).then((response) => {
-                return response || fetch(event.request);
-            })
-        );
-    }
-});
-
-// **백그라운드에서 사용자 액션 동기화 (IndexedDB 활용)**
-self.addEventListener("sync", async (event) => {
     if (event.tag === "sync-user-actions") {
-        event.waitUntil(
-            (async () => {
-                const db = await openDatabase();
-                const unsyncedActions = await getUnsyncedActions(db);
-
-                for (const action of unsyncedActions) {
-                    try {
-                        await fetch("/api/user-actions", {
-                            method: "POST",
-                            body: JSON.stringify(action),
-                            headers: { "Content-Type": "application/json" }
-                        });
-
-                        await markActionAsSynced(db, action.id);
-                    } catch (error) {
-                        console.error("[Service Worker] Failed to sync action", error);
-                    }
-                }
-            })()
-        );
+        event.waitUntil(syncUserActions());
     }
 });
+
+async function syncUserActions() {
+    try {
+        console.log("[Service Worker] Attempting background sync...");
+        const db = await openDatabase();
+        const unsyncedActions = await getUnsyncedActions(db);
+
+        for (const action of unsyncedActions) {
+            try {
+                await fetch("/api/user-actions", {
+                    method: "POST",
+                    body: JSON.stringify(action),
+                    headers: { "Content-Type": "application/json" }
+                });
+
+                await markActionAsSynced(db, action.id);
+                console.log("[Service Worker] Synced action:", action);
+            } catch (error) {
+                console.error("[Service Worker] Failed to sync action", error);
+                throw error; // Sync 재시도를 위해 throw
+            }
+        }
+        console.log("[Service Worker] Background Sync Complete!");
+    } catch (error) {
+        console.error("[Service Worker] Background Sync Failed", error);
+    }
+}
+
+// **클라이언트에서 명확하게 sync 요청하는 코드 추가**
+function registerSync() {
+    if ('serviceWorker' in navigator && 'SyncManager' in window) {
+        navigator.serviceWorker.ready.then((swRegistration) => {
+            swRegistration.sync.register("sync-user-actions").then(() => {
+                console.log("[Service Worker] Sync registered successfully");
+            }).catch((error) => {
+                console.error("[Service Worker] Sync registration failed:", error);
+            });
+        });
+    } else {
+        console.warn("[Service Worker] Background Sync is not supported in this browser.");
+    }
+}
 
 // **IndexedDB를 활용한 로컬 데이터 저장 및 동기화 기능**
 function openDatabase() {
@@ -147,24 +143,5 @@ function markActionAsSynced(db, id) {
     });
 }
 
-// **푸시 알림 활성화 (앱이 실행되지 않아도 동작)**
-self.addEventListener("push", (event) => {
-    let data = event.data ? event.data.json() : {};
-    event.waitUntil(
-        self.registration.showNotification(data.title || "GoHigher 알림", {
-            body: data.body || "새로운 알림이 도착했습니다!",
-            icon: "/icon-192x192.png",
-            badge: "/icon-192x192.png",
-            data: { url: data.url || "/" },
-            actions: [{ action: "open", title: "열기" }]
-        })
-    );
-});
-
-// **알림 클릭 시 앱 열기**
-self.addEventListener("notificationclick", (event) => {
-    event.notification.close();
-    event.waitUntil(
-        clients.openWindow(event.notification.data.url)
-    );
-});
+// **클라이언트에서 registerSync() 실행하여 동기화 요청 (클라이언트 JS 코드에 추가)**
+registerSync();
