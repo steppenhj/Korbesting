@@ -19,17 +19,20 @@ self.addEventListener("install", (event) => {
     self.skipWaiting(); // 즉시 활성화
 });
 
-// 네트워크 우선(fetch 이벤트) - 로컬 데이터 저장 기능 유지
+// **fetch: 네트워크 우선 + 실패 시 캐시 fallback**
 self.addEventListener("fetch", (event) => {
     event.respondWith(
         fetch(event.request)
-        .then((response) => {
-            return caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, response.clone()); // 최신 데이터 캐싱
-                return response;
-            });
-        })
-        .catch(() => caches.match(event.request)) // 네트워크 실패 시 캐시 사용
+            .then((response) => {
+                return caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, response.clone()); // 최신 데이터 캐싱
+                    return response;
+                });
+            })
+            .catch(() => {
+                // 네트워크 실패 시 캐시 사용
+                return caches.match(event.request);
+            })
     );
 });
 
@@ -61,36 +64,20 @@ self.addEventListener("message", (event) => {
     }
 });
 
-// **백그라운드 동기화 지원 (네트워크 연결 시 데이터 자동 동기화)**
+// **백그라운드 동기화 (event.tag 구분)**
 self.addEventListener("sync", (event) => {
     if (event.tag === "background-sync") {
         event.waitUntil(
             fetch("/api/sync")
-            .then(response => response.json())
-            .then(data => {
-                console.log("[Service Worker] Background Sync Successful", data);
-            })
-            .catch(error => {
-                console.error("[Service Worker] Background Sync Failed", error);
-            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("[Service Worker] Background Sync Successful", data);
+                })
+                .catch(error => {
+                    console.error("[Service Worker] Background Sync Failed", error);
+                })
         );
-    }
-});
-
-// **사용자가 데이터를 입력하면 로컬에 저장하고, 네트워크 복구 시 서버에 전송**
-// self.addEventListener("fetch", (event) => {
-//     if (!navigator.onLine) {
-//         event.respondWith(
-//             caches.match(event.request).then((response) => {
-//                 return response || fetch(event.request);
-//             })
-//         );
-//     }
-// });
-
-// **백그라운드에서 사용자 액션 동기화 (IndexedDB 활용)**
-self.addEventListener("sync", async (event) => {
-    if (event.tag === "sync-user-actions") {
+    } else if (event.tag === "sync-user-actions") {
         event.waitUntil(
             (async () => {
                 const db = await openDatabase();
@@ -103,7 +90,6 @@ self.addEventListener("sync", async (event) => {
                             body: JSON.stringify(action),
                             headers: { "Content-Type": "application/json" }
                         });
-
                         await markActionAsSynced(db, action.id);
                     } catch (error) {
                         console.error("[Service Worker] Failed to sync action", error);
@@ -114,40 +100,12 @@ self.addEventListener("sync", async (event) => {
     }
 });
 
-// **IndexedDB를 활용한 로컬 데이터 저장 및 동기화 기능**
-function openDatabase() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open("PWA_DB", 1);
-        request.onerror = () => reject("IndexedDB open failed");
-        request.onsuccess = () => resolve(request.result);
-        request.onupgradeneeded = (event) => {
-            const db = event.target.result;
-            db.createObjectStore("user-actions", { keyPath: "id", autoIncrement: true });
-        };
-    });
-}
+// IndexedDB 함수들
+function openDatabase() { /* ... */ }
+function getUnsyncedActions(db) { /* ... */ }
+function markActionAsSynced(db, id) { /* ... */ }
 
-function getUnsyncedActions(db) {
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction("user-actions", "readonly");
-        const store = transaction.objectStore("user-actions");
-        const request = store.getAll();
-        request.onsuccess = () => resolve(request.result.filter(action => !action.synced));
-        request.onerror = () => reject("Failed to fetch actions");
-    });
-}
-
-function markActionAsSynced(db, id) {
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction("user-actions", "readwrite");
-        const store = transaction.objectStore("user-actions");
-        const request = store.put({ id, synced: true });
-        request.onsuccess = resolve;
-        request.onerror = () => reject("Failed to mark action as synced");
-    });
-}
-
-// **푸시 알림 활성화 (앱이 실행되지 않아도 동작)**
+// 푸시 알림
 self.addEventListener("push", (event) => {
     let data = event.data ? event.data.json() : {};
     event.waitUntil(
@@ -161,7 +119,7 @@ self.addEventListener("push", (event) => {
     );
 });
 
-// **알림 클릭 시 앱 열기**
+// 알림 클릭 시 앱 열기
 self.addEventListener("notificationclick", (event) => {
     event.notification.close();
     event.waitUntil(
