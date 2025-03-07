@@ -78,15 +78,15 @@ self.addEventListener("sync", (event) => {
 });
 
 // **사용자가 데이터를 입력하면 로컬에 저장하고, 네트워크 복구 시 서버에 전송**
-self.addEventListener("fetch", (event) => {
-    if (!navigator.onLine) {
-        event.respondWith(
-            caches.match(event.request).then((response) => {
-                return response || fetch(event.request);
-            })
-        );
-    }
-});
+// self.addEventListener("fetch", (event) => {
+//     if (!navigator.onLine) {
+//         event.respondWith(
+//             caches.match(event.request).then((response) => {
+//                 return response || fetch(event.request);
+//             })
+//         );
+//     }
+// });
 
 // **백그라운드에서 사용자 액션 동기화 (IndexedDB 활용)**
 self.addEventListener("sync", async (event) => {
