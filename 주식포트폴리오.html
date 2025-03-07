@@ -811,21 +811,26 @@
       updateAssetGoalProgress();
     }
     
-    // 타겟 비율 입력 필드 생성: 자산 항목의 이름과 연동하여 표시
     function updateTargetRatioFields() {
-      const targetContainer = document.getElementById("targetRatioContainer");
-      targetContainer.innerHTML = "";
-      const assetItems = document.querySelectorAll("#assetItemsContainer .asset-item");
-      assetItems.forEach(item => {
-        const nameInput = item.querySelector("input[type='text']");
-        const assetName = nameInput.value.trim() || "미입력";
-        const div = document.createElement("div");
-        div.style.marginBottom = "0.3rem";
-        div.innerHTML = `<label style="font-size:0.9rem;">${assetName} 목표비율: </label>
-                         <input type="number" class="target-ratio-input" data-asset-name="${assetName}" placeholder="%" style="width:60px; padding:2px; margin-left:5px;">`;
-        targetContainer.appendChild(div);
-      });
-    }
+  const targetContainer = document.getElementById("targetRatioContainer");
+  targetContainer.innerHTML = "";
+  const storedRatios = localStorage.getItem('targetRatios');
+  const targetRatios = storedRatios ? JSON.parse(storedRatios) : {};
+  
+  const assetItems = document.querySelectorAll("#assetItemsContainer .asset-item");
+  assetItems.forEach(item => {
+    const nameInput = item.querySelector("input[type='text']");
+    const assetName = nameInput.value.trim() || "미입력";
+    // 저장된 값이 있으면 그 값을 넣어줌
+    const savedValue = targetRatios[assetName] || "";
+    const div = document.createElement("div");
+    div.style.marginBottom = "0.3rem";
+    div.innerHTML = `<label style="font-size:0.9rem;">${assetName} 목표비율: </label>
+                     <input type="number" class="target-ratio-input" data-asset-name="${assetName}" placeholder="%" style="width:60px; padding:2px; margin-left:5px;" value="${savedValue}">`;
+    targetContainer.appendChild(div);
+  });
+}
+
     
     // 목표 비율 저장 및 불러오기 함수
     function saveTargetRatios() {

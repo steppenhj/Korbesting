@@ -33,6 +33,8 @@
     <meta name="twitter:image" content="https://gohigher.kr/logo.jpg" />
     <link rel="icon" href="/logo.jpg" type="image/jpeg" />
 
+    <script src="path/to/settings.js"></script>
+
     <!-- 구조화된 데이터: WebSite -->
     <script type="application/ld+json">
       {
@@ -320,7 +322,7 @@
       .half-section {
         width: 48%;
         background: #fff;
-        padding: 1.5rem;
+        padding: 0.5rem 0.5rem 0.5rem;
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -444,59 +446,76 @@
 
         <!-- 주식 시세 및 환율 정보 섹션 -->
         <section class="news-section" id="stocks-exchange">
-          <div class="flex-container">
-            <div class="half-section">
-              <h2>매그니피센트 7 주식 시세</h2>
-              <table class="stock-table">
-                <colgroup>
-                  <col style="width: 200px;">
-                  <col style="width: 140px;">
-                  <col style="width: 110px;">
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th>종목</th>
-                    <th>가격</th>
-                    <th>등락률</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td><strong>AMZN 아마존</strong></td>
-                  <td>200.70USD</td>
-                  <td><span class="blue" style="white-space: nowrap;">3.68% 하락</span></td>
-                </tr>
-                <tr>
-                  <td><strong>TSLA 테슬라</strong></td>
-                  <td>263.45USD</td>
-                  <td><span class="blue" style="white-space: nowrap;">5.61% 하락</span></td>
-                </tr>
-                <tr>
-                  <td><strong>NVDA 엔비디아</strong></td>
-                  <td>110.57USD</td>
-                  <td><span class="blue" style="white-space: nowrap;">5.74% 하락</span></td>
-                </tr>
-                <tr>
-                  <td><strong>GOOGL 구글</strong></td>
-                  <td>172.35USD</td>
-                  <td><span class="blue" style="white-space: nowrap;">0.39% 하락</span></td>
-                </tr>
-                <tr>
-                  <td><strong>MSFT 마이크로소프트</strong></td>
-                  <td>396.89USD</td>
-                  <td><span class="blue" style="white-space: nowrap;">1.03% 하락</span></td>
-                </tr>
-                <tr>
-                  <td><strong>AAPL 애플</strong></td>
-                  <td>235.33USD</td>
-                  <td><span class="blue" style="white-space: nowrap;">0.17% 하락</span></td>
-                </tr>
-                <tr>
-                  <td><strong>META 메타</strong></td>
-                  <td>627.93USD</td>
-                  <td><span class="blue" style="white-space: nowrap;">4.35% 하락</span></td>
-                </tr>
-              </table>
-            </div>
+            <div class="flex-container">
+              <div class="half-section" id="magnificent-seven">
+                <h2>매그니피센트 7 주식 시세</h2>
+                <table class="stock-table">
+                  <colgroup>
+                    <col style="width: 200px;">
+                    <col style="width: 140px;">
+                    <col style="width: 110px;">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>종목</th>
+                      <th>가격</th>
+                      <th>등락률</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <!-- white-space: nowrap; 을 적용하여 이미지와 텍스트가 한 줄에 유지되도록 함 -->
+                      <td style="white-space: nowrap;">
+                      <img src="AMZN logo.png" alt="Amazon Logo" height="35" 
+                          style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AMZN 아마존</strong></td>
+                      <td>205.02USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">3.43% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="TSLA logo.png" alt="Amazon Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>TSLA 테슬라</strong></td>
+                      <td>284.65USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">2.80% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="NVDA logo.png" alt="Amazon Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>NVDA 엔비디아</strong></td>
+                      <td>114.06USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">8.69% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="GOOGL logo.png" alt="Amazon Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>GOOGL 구글</strong></td>
+                      <td>170.28USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">1.06% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="MSFT logo.png" alt="Amazon Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>MSFT 마이크로소프트</strong></td>
+                      <td>388.49USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">2.11% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="AAPL logo.png" alt="Amazon Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AAPL 애플</strong></td>
+                      <td>238.03USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">1.50% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="META logo.png" alt="Amazon Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>META 메타</strong></td>
+                      <td>655.05USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">1.98% 하락</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
             <div class="half-section">
               <h2>주요 기업 실적 발표 일정</h2>

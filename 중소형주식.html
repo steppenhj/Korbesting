@@ -5,21 +5,23 @@
     <title>Go Higher - 미국주식·미국증시·중소형주식 소개</title>
     <meta name="description" content= "미국 중소형주 투자 정보 - 러셀 2000 코히런트, 로켓랩, 리커젼 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다." />
     
-    <link rel="canonical" href="https://gohigher.kr/중소형주식.html">
+    <link rel="canonical" href="https://gohigher.kr/">
 
     <link rel="icon" href="https://gohigher.kr/logo.jpg" type="image/jpeg">
 
     <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Go Higher" />
     <meta name="robots" content="index,follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap"
+      rel="stylesheet"
+    />
     <meta name="naver-site-verification" content="daa71973aba155bc2d96dfde44d8fb34b6a74ba7" />
     <meta name="google-site-verification" content="GGuWsc5cbeYC9W0nQsN7550kWcUzArKuo3zfhjN5LXE" />
     <!-- Open Graph (OG) 메타 태그: SNS 공유용 -->
     <meta property="og:title" content="Go Higher - 미국주식·미국증시·중소형주식 소개" />
     <meta property="og:description" content="미국 중소형주 투자 정보 - 러셀 2000 코히런트, 로켓랩, 리커젼 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다." />
-    <meta property="og:url" content="https://gohigher.kr/중소형주식.html" />
+    <meta property="og:url" content="https://gohigher.kr/버크셔해서웨이.html" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:image" content="https://gohigher.kr/logo.jpg" />
@@ -28,6 +30,7 @@
     <meta name="twitter:title" content="Go Higher - 미국주식·미국증시·중소형주식 소개">
     <meta name="twitter:description" content= "미국 중소형주 투자 정보 - 러셀 2000 코히런트, 로켓랩, 리커젼 등 미국 중소형주식의 최신 분석과 투자 인사이트를 무료로 제공합니다." />
     <meta name="twitter:image" content="https://gohigher.kr/logo.jpg">
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 
     <!-- JSON-LD 구조화 데이터(WebPage) -->
     <script type="application/ld+json">
@@ -44,6 +47,39 @@
         "url": "https://gohigher.kr"
       }
     }
+    </script>
+    <!-- 구조화된 데이터: BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "미국주식·미국증시·환율",
+            "item": "https://gohigher.kr"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "주식포트폴리오",
+            "item": "https://gohigher.kr/주식포트폴리오"
+          },
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "버크셔해서웨이",
+              "item": "https://gohigher.kr/버크셔해서웨이"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "중소형주식",
+            "item": "https://gohigher.kr/중소형주식"
+          }
+        ]
+      }
     </script>
 
     <style>
@@ -201,8 +237,7 @@
         }
       }
       .modal-header,
-      .modal-body,
-      .modal-footer {
+      .modal-body{
         padding: 1rem 1.5rem;
       }
       .modal-header {
@@ -211,9 +246,9 @@
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
           /* 추가 */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
       /* 모달 창 본문에 조금 더 여백 */
 .modal-body {
@@ -237,12 +272,6 @@
         padding-bottom: 0.3rem;
         font-size: 1.2rem;
         border-bottom: 1px solid var(--light-gray);
-      }
-      .modal-footer {
-        background: #fafafa;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        text-align: center;
       }
       /* 디자인 개선된 닫기 버튼 (하단) */
       .close-btn {
@@ -332,15 +361,189 @@
         content: "▼";
         font-size: 0.8rem;
       }
-            /* 섹터 이름을 표시하는 행에 스타일 부여 */
-      .sector-heading td {
-        background-color: #d3d5d9;  /* 연한 하늘색 느낌 */
-        color: #333;               /* 텍스트 색상 */
-        font-weight: bold;
-        text-align: center;
-        font-size: 1.1rem;
-      }
+      /* 섹터 이름을 표시하는 행에 스타일 부여 */
+.sector-heading td {
+  background-color: #d3d5d9;  /* 연한 하늘색 느낌 */
+  color: #333;               /* 텍스트 색상 */
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.company-name {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+  }
+  /* 모달 스타일 */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
 
+  .modal {
+    background: white;
+    width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* 탭 스타일 */
+  .modal-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #777;
+  }
+
+  .tab-btn.active {
+    color: blue;
+    border-bottom: 3px solid blue;
+  }
+
+  /* 콘텐츠 스타일 */
+  .modal-content {
+    display: none;
+  }
+
+  .modal-content.active {
+    display: block;
+  }
+  /* #overview, #diagnosis, #value, #finance, #news, #dividend, #opinion에 동일한 스타일 적용 */
+  #overview,
+  #diagnosis,
+  #value,
+  #finance,
+  #news,
+  #dividend,
+  #opinion {
+    max-width: 800px;               /* 컨테이너 최대 너비 */
+    margin: 2rem auto;              /* 상하 여백 + 가운데 정렬 */
+    padding: 2rem;                  /* 내부 여백 */
+    background-color: #ffffff;      /* 깔끔한 흰색 배경 */
+    font-family: "Noto Sans", sans-serif;
+    color: #444;                    /* 글자색 */
+    line-height: 1.7;               /* 줄 간격 */
+    border-radius: 8px;             /* 모서리 둥글게 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07); /* 그림자 */
+  }
+
+  /* 각 요소 내부 제목, 목록, 단락 등은 동일한 방식으로 지정 */
+  #overview h3,
+  #diagnosis h3,
+  #value h3,
+  #finance h3,
+  #news h3,
+  #dividend h3,
+  #opinion h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #007BFF;
+    color: #007BFF;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  #overview h4,
+  #diagnosis h4,
+  #value h4,
+  #finance h4,
+  #news h4,
+  #dividend h4,
+  #opinion h4 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    border-left: 4px solid #007BFF;
+    padding-left: 12px;
+    font-weight: 500;
+    text-align: start;
+    letter-spacing: 0.4px;
+  }
+
+  #overview ul,
+  #diagnosis ul,
+  #value ul,
+  #finance ul,
+  #news ul,
+  #dividend ul,
+  #opinion ul {
+    margin: 0 0 1.5rem 1.5rem;
+    padding: 0;
+    list-style-type: disc;
+    text-align: start;
+  }
+
+  #overview p,
+  #diagnosis p,
+  #value p,
+  #finance p,
+  #news p,
+  #dividend p,
+  #opinion p {
+    margin-bottom: 1.5rem;
+    text-align: start;
+    line-height: 1.7;
+  }
+
+  #overview a,
+  #diagnosis a,
+  #value a,
+  #finance a,
+  #news a,
+  #dividend a,
+  #opinion a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  #overview a:hover,
+  #diagnosis a:hover,
+  #value a:hover,
+  #finance a:hover,
+  #news a:hover,
+  #dividend a:hover,
+  #opinion a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  #overview img,
+  #diagnosis img,
+  #value img,
+  #finance img,
+  #news img,
+  #dividend img,
+  #opinion img {
+    margin-top: 1.5rem;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
     </style>
   </head>
   <body>
@@ -377,13 +580,33 @@
         </tbody>
       </table>
     </main>
-    <!-- 모달 영역 -->
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal">
-        <div class="modal-header">
-          <h2 id="modalTitle">상세정보</h2>
-          <p id="modalUpdateDate" class="update-date"></p>
+        <!-- 모달 영역 -->
+        <div id="modalOverlay" class="modal-overlay">
+          <div class="modal">
+            <div class="modal-header">
+              <span id="modalTitle"></span>
+              <span id="modalUpdateDate"></span>
+            </div>
+        
+            <!-- (1) 모달 내부 탭 추가 -->
+            <div class="modal-tabs">
+              <button class="tab-btn active" data-tab="overview">개요</button>
+              <button class="tab-btn" data-tab="diagnosis">진단</button>
+              <button class="tab-btn" data-tab="news">뉴스</button>
+              <button class="tab-btn" data-tab="opinion">의견</button>
+            </div>
+        
+            <!-- (2) 각 탭별 콘텐츠 -->
+            <div class="modal-content active" id="overview"></div>
+            <div class="modal-content" id="diagnosis"></div>
+            <div class="modal-content" id="value"></div>
+            <div class="modal-content" id="finance"></div>
+            <div class="modal-content" id="news"></div>
+            <div class="modal-content" id="dividend"></div>
+            <div class="modal-content" id="opinion"></div>
+          </div>
         </div>
+    
         <div class="modal-body" id="modalBody">
           <!-- Recursion Pharmaceuticals 콘텐츠 -->
           <div id="modalContentRXRX" class="modal-content">
@@ -1767,9 +1990,6 @@
             <img src="FLRMAX.png" width="100%" height="auto" alt="중소형주식 플루오르 주가 그래프">
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="close-btn" id="footerCloseBtn">닫기</button>
-        </div>
       </div>
     </div>
     <div class="bottom-info">
@@ -1794,118 +2014,505 @@
     </footer>
     <script>
       // ---------------------------------------------------------------------------------------
-      // (1) [추가] stocks 배열에 sector 정보 추가
+      // (1) 종목 배열 (stocks)
       // ---------------------------------------------------------------------------------------
       let stocks = [
-        // { id, ticker, company, updateDate, sector } 구조
         {
           id: 1,
           ticker: "RXRX",
-          company: "Recursion Pharmaceuticals / 리커젼 파마슈티컬스",
+          company: '<div class="company-name"><img src="RXRX logo.png" alt="Recursion Pharmaceuticals Logo" height="35" style="border-radius: 50%;"> Recursion Pharmaceuticals / 리커젼 파마슈티컬스</div>',
           updateDate: "2025년 2월 25일",
           sector: "헬스케어"
         },
         {
           id: 1,
           ticker: "SFM",
-          company: "Sprouts Farmers Market / 스프라우츠 파머스 마켓",
+          company: '<div class="company-name"><img src="SFM logo.png" alt="Sprouts Farmers Market Logo" height="35" style="border-radius: 50%;"> Sprouts Farmers Market / 스프라우츠 파머스 마켓</div>',
           updateDate: "2025년 2월 25일",
           sector: "소비자 필수재"
         },
         {
           id: 1,
           ticker: "RKLB",
-          company: "Rocket Lab / 로켓 랩",
+          company: '<div class="company-name"><img src="RKLB logo.png" alt="Rocket Lab Logo" height="35" style="border-radius: 50%;"> Rocket Lab / 로켓 랩</div>',
           updateDate: "2025년 2월 25일",
           sector: "산업재"
         },
         {
           id: 1,
           ticker: "COHR",
-          company: "Coherent / 코히런트",
+          company: '<div class="company-name"><img src="COHR logo.png" alt="Coherent Logo" height="35" style="border-radius: 50%;"> Coherent / 코히런트</div>',
           updateDate: "2025년 2월 25일",
           sector: "정보기술"
         },
         {
           id: 2,
           ticker: "GKOS",
-          company: "Glaukos Corp / 글라우코스",
+          company: '<div class="company-name"><img src="GKOS logo.png" alt="Glaukos Corp Logo" height="35" style="border-radius: 50%;"> Glaukos Corp / 글라우코스</div>',
           updateDate: "2025년 3월 2일",
           sector: "헬스케어"
         },
         {
           id: 2,
           ticker: "CVLT",
-          company: "Commvault Systems / 컴볼트 시스템즈",
+          company: '<div class="company-name"><img src="CVLT logo.png" alt="Commvault Systems Logo" height="35" style="border-radius: 50%;"> Commvault Systems / 컴볼트 시스템즈</div>',
           updateDate: "2025년 3월 2일",
           sector: "정보기술"
         },
         {
           id: 3,
           ticker: "CYBR",
-          company: "CyberArk Software / 사이버아크",
+          company: '<div class="company-name"><img src="CYBR logo.png" alt="CyberArk Software Logo" height="35" style="border-radius: 50%;"> CyberArk Software / 사이버아크</div>',
           updateDate: "2025년 3월 2일",
           sector: "정보기술"
         },
         {
           id: 4,
           ticker: "CRDO",
-          company: "Credo Technology / 크레도 테크놀로지",
+          company: '<div class="company-name"><img src="CRDO logo.png" alt="Credo Technology Logo" height="35" style="border-radius: 50%;"> Credo Technology / 크레도 테크놀로지</div>',
           updateDate: "2025년 3월 2일",
           sector: "정보기술"
         },
         {
           id: 3,
           ticker: "ENSG",
-          company: "Ensign Group / 엔사인 그룹",
+          company: '<div class="company-name"><img src="ENSG logo.png" alt="Ensign Group Logo" height="35" style="border-radius: 50%;"> Ensign Group / 엔사인 그룹</div>',
           updateDate: "2025년 3월 3일",
           sector: "헬스케어"
         },
         {
           id: 1,
           ticker: "UMBF",
-          company: "UMB Financial / UMB 파이낸셜",
+          company: '<div class="company-name"><img src="UMBF logo.png" alt="UMB Financial Logo" height="35" style="border-radius: 50%;"> UMB Financial / UMB 파이낸셜</div>',
           updateDate: "2025년 3월 3일",
           sector: "금융"
         },
         {
           id: 1,
           ticker: "TMHC",
-          company: "Taylor Morrison Home Corporation / 테일러 모리슨 홈 코퍼레이션",
+          company: '<div class="company-name"><img src="TMHC logo.png" alt="Taylor Morrison Home Corporation Logo" height="35" style="border-radius: 50%;"> Taylor Morrison Home Corporation / 테일러 모리슨 홈 코퍼레이션</div>',
           updateDate: "2025년 3월 3일",
           sector: "부동산"
         },
         {
           id: 4,
           ticker: "LNTH",
-          company: "Lantheus Holdings / 랜티우스 홀딩스",
+          company: '<div class="company-name"><img src="LNTH logo.png" alt="Lantheus Holdings Logo" height="35" style="border-radius: 50%;"> Lantheus Holdings / 랜티우스 홀딩스</div>',
           updateDate: "2025년 3월 3일",
           sector: "헬스케어"
         },
         {
           id: 5,
           ticker: "ACIW",
-          company: "ACI 월드와이드 / ACI Worldwide",
+          company: '<div class="company-name"><img src="ACIW logo.png" alt="ACI Worldwide Logo" height="35" style="border-radius: 50%;"> ACI 월드와이드 / ACI Worldwide</div>',
           updateDate: "2025년 3월 3일",
           sector: "정보기술"
         },
         {
           id: 2,
           ticker: "FLR",
-          company: "FLR 플루오르 / 플루오르",
+          company: '<div class="company-name"><img src="FLR logo.png" alt="FLR Logo" height="35" style="border-radius: 50%;"> FLR 플루오르 / 플루오르</div>',
           updateDate: "2025년 3월 3일",
           sector: "산업재"
         }
       ];
+    
+      // ---------------------------------------------------------------------------------------
+      // (2) 모달 탭별 콘텐츠 데이터를 저장하는 객체 (modalData)
+      // 각 종목의 티커를 키로 하여 개요, 진단, 밸류, 재무, 뉴스, 배당, 경쟁사 탭별 콘텐츠를 저장합니다.
+      // ---------------------------------------------------------------------------------------
+      const modalData = {
+        "RXRX": {
+          overview: "<p>리커젼 파마슈티컬스의 개요 내용입니다.</p>",
+          diagnosis: "<p>리커젼 파마슈티컬스의 진단 관련 내용입니다.</p>",
+          news: "<p>리커젼 파마슈티컬스의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>리커젼 파마슈티컬스의 경쟁사 정보입니다.</p>"
+        },
+        "SFM": {
+          overview: "<p>스프라우츠 파머스 마켓의 개요 내용입니다.</p>",
+          diagnosis: "<p>스프라우츠 파머스 마켓의 진단 관련 내용입니다.</p>",
+          news: "<p>스프라우츠 파머스 마켓의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>스프라우츠 파머스 마켓의 경쟁사 정보입니다.</p>"
+        },
+        "RKLB": {
+          overview: "<p>Rocket Lab의 개요 내용입니다.</p>",
+          diagnosis: "<p>Rocket Lab의 진단 관련 내용입니다.</p>",
+          news: "<p>Rocket Lab의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Rocket Lab의 경쟁사 정보입니다.</p>"
+        },
+        "COHR": {
+          overview: "<p>Coherent의 개요 내용입니다.</p>",
+          diagnosis: "<p>Coherent의 진단 관련 내용입니다.</p>",
+          news: "<p>Coherent의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Coherent의 경쟁사 정보입니다.</p>"
+        },
+        "GKOS": {
+          overview: "<p>Glaukos Corp의 개요 내용입니다.</p>",
+          diagnosis: "<p>Glaukos Corp의 진단 관련 내용입니다.</p>",
+          news: "<p>Glaukos Corp의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Glaukos Corp의 경쟁사 정보입니다.</p>"
+        },
+        "CVLT": {
+          overview: "<p>Commvault Systems의 개요 내용입니다.</p>",
+          diagnosis: "<p>Commvault Systems의 진단 관련 내용입니다.</p>",
+          news: "<p>Commvault Systems의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Commvault Systems의 경쟁사 정보입니다.</p>"
+        },
+        "CYBR": {
+          overview: "<p>CyberArk Software의 개요 내용입니다.</p>",
+          diagnosis: "<p>CyberArk Software의 진단 관련 내용입니다.</p>",
+          news: "<p>CyberArk Software의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>CyberArk Software의 경쟁사 정보입니다.</p>"
+        },
+        "CRDO": {
+          overview: "<p>Credo Technology의 개요 내용입니다.</p>",
+          diagnosis: "<p>Credo Technology의 진단 관련 내용입니다.</p>",
+          news: "<p>Credo Technology의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Credo Technology의 경쟁사 정보입니다.</p>"
+        },
+        "ENSG": {
+          overview: "<p>Ensign Group의 개요 내용입니다.</p>",
+          diagnosis: "<p>Ensign Group의 진단 관련 내용입니다.</p>",
+          news: "<p>Ensign Group의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Ensign Group의 경쟁사 정보입니다.</p>"
+        },
+       "UMBF": {
+        overview: '<h3>UMB Financial / UMB 파이낸셜 상세 정보</h3>\
+          <h4>1. 회사 개요</h4>\
+          <ul>\
+            <li><strong>설립연도:</strong> 1967</li>\
+            <li><strong>본사 위치:</strong> 미국 미주리 캔자스시티</li>\
+            <li><strong>상장시장:</strong> 나스닥 증권거래소</li>\
+            <li>\
+              <strong>웹사이트:</strong>\
+              <a href="https://www.umb.com/" target="_blank">https://www.umb.com/</a>\
+            </li>\
+          </ul>\
+          <h4>2. 핵심 사업 및 기술</h4>\
+          <ul>\
+            <li>UMB 파이낸셜은 미국의 금융 서비스 기업으로, 개인 및 상업 은행 업무, 투자 서비스, 자산 관리, 기업 금융 등 다양한 금융 서비스를 제공합니다.</li>\
+            <li>특히 상업 대출과 기업 고객 대상 금융 서비스에 강점을 보유하고 있으며, 자산 관리 및 신탁 서비스도 중요한 사업 부문입니다.</li>\
+            <li>111년 이상의 전통을 바탕으로 장기간 안정적인 경영을 유지해 왔습니다.</li>\
+          </ul>\
+          <h4>3. 현재 개발</h4>\
+          <p>\
+            UMB 파이낸셜은 사업 확장과 고객 기반 확대를 위한 전략적 인수합병을 적극 추진하고 있습니다. 2025년 1월 31일, 약 20억 달러 규모로 하트랜드 파이낸셜 USA를 인수하여 기존 8개 주에서 13개 주로 지리적 범위를 확대하였으며, 이를 통해 소매 예금 기반을 넓히고 개인 자산 관리 부문의 자산을 32% 증가시켰습니다. 또한 기존 93개 은행 지점과 235개 ATM 네트워크에 104개의 신규 지점과 115개의 ATM을 추가하여 대규모 네트워크 확장을 이루었습니다.\
+          </p>\
+          <h4>4. 파트너십</h4>\
+          <p>\
+            UMB 파이낸셜은 주요 지역 및 전국 규모의 금융 기관, 보험사, 그리고 기업 고객과 협력하여 다양한 금융 솔루션을 제공합니다. 또한, 여러 자산 운용사와 핀테크 기업과의 협력을 통해 투자 관리 및 디지털 금융 서비스 부문에서도 경쟁력을 강화하고 있으며, 하트랜드 파이낸셜 USA 인수를 통해 파트너십 네트워크를 한층 확장하였습니다.\
+          </p>\
+          <h4>5. IP 전략 및 규제·윤리 이슈</h4>\
+          <p>\
+            금융업 특성상 UMB 파이낸셜은 디지털 뱅킹, 핀테크 솔루션, 금융 데이터 분석 기술 개발에 집중하며, 고객 자산 및 금융 정보를 보호하기 위한 보안 시스템을 지속적으로 개선하고 있습니다. FDIC, SEC 등 미국 금융 규제 기관의 엄격한 기준을 준수하며, 최근 강화된 데이터 보호 및 소비자 보호 규정에도 적극 대응하고 있습니다.\
+          </p>\
+          <h4>6. 경영진 및 조직 문화</h4>\
+          <p>\
+            UMB 파이낸셜의 경영진은 오랜 금융업계 경험을 바탕으로 장기 성장과 신중한 리스크 관리를 병행하는 전략을 채택하고 있습니다. CEO 및 주요 임원들은 기업 금융과 투자 관리 분야에서 뛰어난 전문성을 보유하고 있으며, 보수적이면서도 혁신을 추구하는 조직 문화를 통해 직원들의 장기 경력 개발을 지원합니다.\
+          </p>\
+          <h4>7. 경쟁 구도</h4>\
+          <p>\
+            UMB 파이낸셜은 미국 내 중견 금융 기업들과 경쟁하고 있으며, Huntington Bancshares, Comerica, Fifth Third Bancorp 등과 더불어 JP Morgan Chase, Bank of America와도 일부 부문에서 경쟁 중입니다. 특히 지역 기반 금융 기관과의 경쟁이 치열해짐에 따라, 고객 유지와 신규 고객 확보를 위해 디지털 뱅킹 및 맞춤형 금융 서비스 강화가 필수적입니다.\
+          </p>\
+          <h4>8. 상장·주주 정보</h4>\
+          <ul>\
+            <li><strong>거래소:</strong> 나스닥 증권거래소</li>\
+            <li><strong>통화:</strong> USD</li>\
+            <li><strong>결산일:</strong> 2024-12-31</li>\
+            <li><strong>상장일:</strong> 2007-11-09</li>\
+            <li><strong>상장주식수:</strong> 57,455,374주</li>\
+            <li><strong>시가총액:</strong> $7,420,361,552 (10조 8,560억원)</li>\
+            <li>\
+              <strong>주요 주주 구성:</strong><br />\
+              BlackRock Institutional Trust Company, N.A. – 6,435,113 주 (11.20%)<br />\
+              The Vanguard Group, Inc. – 6,158,246 주 (10.72%)<br />\
+              Wasatch Global Investors Inc – 3,497,137 주 (6.09%)<br />\
+              Capital Research Global Investors – 2,244,997 주 (3.91%)<br />\
+              State Street Global Advisors (US) – 2,101,575 주 (3.66%)\
+            </li>\
+          </ul>\
+          <h4>9. 미래 전망</h4>\
+          <p>\
+            <strong>UMB 파이낸셜은 전통적 금융 서비스와 디지털 혁신을 결합하여 지속 가능한 성장을 도모하는 선도적인 금융 기관으로 평가받고 있습니다.</strong>\
+          </p>\
+          <p>\
+            최근 하트랜드 파이낸셜 USA 인수를 통해 지리적 범위와 고객 기반을 대폭 확장한 UMB 파이낸셜은 소매 예금 기반 확대, 대출 포트폴리오 다각화, 그리고 투자 서비스 영역 확장을 적극 추진하고 있습니다. 이러한 전략적 움직임은 111년 이상의 안정적인 경영 전통과 결합되어, 기존 고객의 신뢰를 더욱 공고히 하며 새로운 시장 기회를 창출하는 원동력이 되고 있습니다.\
+          </p>\
+          <p>\
+            동시에, 디지털 뱅킹과 핀테크 솔루션에 대한 지속적인 투자와 기술 혁신은 UMB 파이낸셜의 경쟁력을 한층 강화하고 있습니다. 첨단 금융 데이터 분석 및 고객 맞춤형 서비스 제공을 통해, 보다 효율적이고 안전한 금융 서비스를 실현하며, 고객 경험을 극대화하는 전략을 적극 전개 중입니다. 이를 통해 장기적인 수익성 개선과 안정적인 현금흐름 확보가 기대됩니다.\
+          </p>\
+          <p>\
+            물론, 미국 금융 시장의 금리 변동, 경제적 불확실성, 그리고 규제 강화와 같은 외부 요인들이 향후 성장에 도전 과제로 작용할 수 있으나, UMB 파이낸셜은 강력한 영업활동 현금흐름과 안정적인 재무 구조를 바탕으로 이러한 변수들을 효과적으로 관리할 것으로 전망됩니다. 향후 고객 기반 확대, 기술 혁신, 그리고 전략적 파트너십 강화 등을 통해 미국 금융 서비스 시장에서 지속 가능한 성장과 안정적인 수익 창출 구조를 구축할 것으로 기대됩니다.\
+          </p>\
+          <img src="UMBFMAX.png" width="100%" height="auto" alt="중소형주식 UMB 파이낸셜 주가 그래프">',
+          diagnosis: '<!-- 1. 재무 구조 및 지표 분석 -->\n\
+          <h3>1. 재무 구조 및 지표 분석</h3>\n\
+          \n\
+          <!-- 수익성 지표 -->\n\
+          <h4>수익성 지표</h4>\n\
+          <ul>\n\
+            <li><strong>매출액:</strong> 1,838.70억 원</li>\n\
+            <li><strong>EPS:</strong> 7.18</li>\n\
+            <li><strong>EBITDA:</strong> 601.68억 원</li>\n\
+            <li><strong>EBIT:</strong> 542.96억 원</li>\n\
+            <li><strong>ROA:</strong> 0.85%</li>\n\
+            <li><strong>ROE:</strong> 12.14%</li>\n\
+          </ul>\n\
+          <p>- ROE(12.14%)는 중견 금융기관으로서 준수한 편이며, 자기자본을 활용해 일정 수준의 이익을 창출하고 있음을 보여줍니다.</p>\n\
+          <p>- ROA(0.85%)는 업종 특성(금융사 자산 규모가 크고, 이자 수익이 주수입임)을 고려하면 평균 수준으로 평가됩니다.</p>\n\
+          \n\
+          <!-- 안정성 지표 -->\n\
+          <h4>안정성 지표</h4>\n\
+          <ul>\n\
+            <li><strong>영업활동 현금흐름:</strong> 4,274.26억 원</li>\n\
+            <li><strong>투자활동 현금흐름:</strong> -22,589.36억 원</li>\n\
+            <li><strong>재무활동 현금흐름:</strong> 43,895.75억 원</li>\n\
+            <li><strong>장기부채비율:</strong> 12.36</li>\n\
+          </ul>\n\
+          <p>- 영업활동 현금흐름이 플러스(+)로 안정적이며, 재무활동 현금흐름이 큰 폭으로 플러스(+)인 것은 최근 인수합병 자금 조달(자본 확충, 채권 발행 등)과 관련이 있을 수 있습니다.</p>\n\
+          <p>- 장기부채비율 12.36은 재무구조가 과도하게 레버리지를 일으키지 않았다는 점에서 긍정적입니다.</p>\n\
+          \n\
+          <!-- 성장성 지표 -->\n\
+          <h4>성장성 지표</h4>\n\
+          <ul>\n\
+            <li><strong>최근 분기별 순이익 변화:</strong>\n\
+              <ul>\n\
+                <li>2023.09: 96.55억</li>\n\
+                <li>2023.12: 70.92억</li>\n\
+                <li>2024.03: 110.26억</li>\n\
+                <li>2024.06: 101.34억</li>\n\
+                <li>2024.09: 109.64억</li>\n\
+              </ul>\n\
+            </li>\n\
+          </ul>\n\
+          <p>- 분기별 순이익이 다소 변동성은 있지만 전반적으로 70억~110억 원 범위를 유지하며, 2024년 03월 이후에는 100억 원 전후로 안정적인 흐름을 보이고 있습니다.</p>\n\
+          <p>- 인수합병 효과가 본격화될 경우 추가 성장 동력이 될 수 있으나, 금리 환경 및 거시경제 상황에 따라 변동이 있을 수 있습니다.</p>\n\
+          \n\
+          <!-- 주주 환원 -->\n\
+          <h4>주주 환원</h4>\n\
+          <p>배당 정책에 대한 구체적 정보는 제공되지 않았으나, 미국 금융주 특성상 안정적인 배당을 유지하는 경우가 많습니다. 최근 인수합병 과정에서 배당 정책이 어떻게 변할지 모니터링이 필요합니다.</p>\n\
+          \n\
+          <!-- 2. 사업 포트폴리오 및 시장 지위 평가 -->\n\
+          <h3>2. 사업 포트폴리오 및 시장 지위 평가</h3>\n\
+          \n\
+          <!-- 주요 사업 부문 -->\n\
+          <h4>주요 사업 부문</h4>\n\
+          <ul>\n\
+            <li>개인/상업 은행 업무, 투자 서비스, 자산 관리, 기업 금융 등 다양한 금융 서비스를 영위</li>\n\
+            <li>상업 대출과 기업 고객 대상 금융 서비스에 강점 보유</li>\n\
+            <li>자산 관리 및 신탁 서비스 역시 주요 사업 부문</li>\n\
+          </ul>\n\
+          \n\
+          <!-- M&A로 인한 사업 확장 -->\n\
+          <h4>M&A로 인한 사업 확장</h4>\n\
+          <ul>\n\
+            <li>하트랜드 파이낸셜 USA 인수 (2025년 1월 31일, 약 20억 달러 규모)</li>\n\
+            <li>기존 8개 주에서 13개 주로 지리적 범위 확대</li>\n\
+            <li>소매 예금 기반 확충, 자산 관리 부문 자산 32% 증가</li>\n\
+            <li>기존 93개 지점 + 104개 신규 지점 → 네트워크 확장</li>\n\
+          </ul>\n\
+          <p>- 인수합병 시너지가 가시화될 경우, 예금·대출 규모 확대와 더불어 수수료 수익 증대가 기대됩니다.</p>\n\
+          <p>- 다만 통합 과정에서 발생할 수 있는 비용, 리스크 관리 등을 면밀히 살펴봐야 합니다.</p>\n\
+          \n\
+          <!-- 시장 지위 -->\n\
+          <h4>시장 지위</h4>\n\
+          <ul>\n\
+            <li>미국 중견 금융기업 중 하나로, 지역 기반 금융기관들과 경쟁</li>\n\
+            <li>Huntington Bancshares, Comerica, Fifth Third Bancorp 등 중견사부터 JP Morgan Chase, Bank of America 등 대형사와도 일부 부문에서 경쟁</li>\n\
+          </ul>\n\
+          <p>- 경쟁이 치열한 미국 금융시장에서, 디지털 뱅킹 및 맞춤형 금융 서비스를 강화해야 시장 점유율을 안정적으로 확보할 수 있습니다.</p>\n\
+          \n\
+          <!-- 3. 리스크 요인 -->\n\
+          <h3>3. 리스크 요인</h3>\n\
+          \n\
+          <!-- 금리·거시경제 리스크 -->\n\
+          <h4>금리·거시경제 리스크</h4>\n\
+          <ul>\n\
+            <li>미 연준의 금리 정책, 경기 사이클에 따라 순이자마진(NIM)이 변동될 수 있음</li>\n\
+            <li>경기 침체 시 대출 부실 증가, 예금 유출 등 잠재 리스크 존재</li>\n\
+          </ul>\n\
+          \n\
+          <!-- 인수합병 통합 리스크 -->\n\
+          <h4>인수합병 통합 리스크</h4>\n\
+          <ul>\n\
+            <li>하트랜드 파이낸셜 USA 인수 후 지점·직원·IT 시스템 통합 필요</li>\n\
+            <li>예상보다 통합 비용이 커지거나 시너지가 늦춰질 경우 수익성에 부담</li>\n\
+          </ul>\n\
+          \n\
+          <!-- 규제 및 컴플라이언스 -->\n\
+          <h4>규제 및 컴플라이언스</h4>\n\
+          <ul>\n\
+            <li>FDIC, SEC 등 미국 금융 규제 기관의 엄격한 기준 준수 필요</li>\n\
+            <li>개인정보 보호, 자금세탁방지(AML) 등 규제 강화 추세</li>\n\
+          </ul>\n\
+          \n\
+          <!-- 경쟁 심화 -->\n\
+          <h4>경쟁 심화</h4>\n\
+          <ul>\n\
+            <li>대형 은행 및 핀테크 기업의 성장으로 기존 고객 확보 어려움</li>\n\
+            <li>디지털 뱅킹 투자 비용 증가 가능성</li>\n\
+          </ul>\n\
+          \n\
+          <!-- 4. 경영 전략 및 혁신 요소 -->\n\
+          <h3>4. 경영 전략 및 혁신 요소</h3>\n\
+          <ul>\n\
+            <li><strong>디지털 뱅킹 및 핀테크 솔루션:</strong> 첨단 금융 데이터 분석, 고객 맞춤형 서비스로 경쟁력 강화</li>\n\
+            <li><strong>ESG 및 규제 대응:</strong> 데이터 보호, 소비자 보호 규정 준수로 기업 이미지 제고</li>\n\
+            <li><strong>M&A 활용:</strong> 지역 확장, 자산 규모 확대를 통한 시너지 창출 기대</li>\n\
+          </ul>\n\
+          \n\
+          <!-- 5. 밸류에이션 관점 -->\n\
+          <h3>5. 밸류에이션 관점</h3>\n\
+          <ul>\n\
+            <li><strong>PBR:</strong> 1.67 (동종 업계 평균 수준으로 추정)</li>\n\
+            <li><strong>PER:</strong> 제공된 EPS(7.18)를 기준으로 산출. 중견 금융주 평균과 유사하거나 다소 높은 수준일 가능성 있음</li>\n\
+          </ul>\n\
+          <p>- 최근 인수합병에 따른 자산 확대와 수익성 개선 기대가 주가에 선반영되었는지 여부가 중요합니다.</p>\n\
+          <p>- 중장기적으로 예금·대출 포트폴리오 확대, 자산관리·신탁 부문 수익 증가가 이어진다면 밸류에이션 매력도 상승 여지가 있습니다.</p>\n\
+          \n\
+          <!-- 6. 종합 의견 -->\n\
+          <h3>6. 종합 의견</h3>\n\
+          \n\
+          <!-- 장점 -->\n\
+          <h4>장점</h4>\n\
+          <ul>\n\
+            <li>안정적인 영업활동 현금흐름과 준수한 수익성 (ROE 12.14%)</li>\n\
+            <li>하트랜드 파이낸셜 USA 인수를 통한 시장 지위 강화 및 규모 확장</li>\n\
+            <li>디지털 뱅킹 및 핀테크 솔루션 투자로 경쟁력 확보 가능</li>\n\
+          </ul>\n\
+          \n\
+          <!-- 주의점 -->\n\
+          <h4>주의점</h4>\n\
+          <ul>\n\
+            <li>미국 금리 및 거시경제 환경 변화에 따른 실적 변동 가능성</li>\n\
+            <li>인수합병 통합 과정에서 발생할 수 있는 일시적 비용 증가</li>\n\
+            <li>대형 은행 및 핀테크 기업과의 경쟁 심화</li>\n\
+          </ul>\n\
+          \n\
+          <!-- 투자 매력도 -->\n\
+          <h4>투자 매력도</h4>\n\
+          <ul>\n\
+            <li>중견 금융주로서, 배당이나 지속적 수익 창출을 선호하는 투자자에게 매력적일 수 있음</li>\n\
+            <li>디지털 전환 및 M&A 효과가 가시화될 경우 중장기 성장성 기대</li>\n\
+            <li>단, 금리 사이클이나 경기 변동에 민감하여 단기 변동성 주의 필요</li>\n\
+          </ul>\
+        </div>',
+        opinion: `<h3>UMB 파이낸셜 투자 의견</h3>
+            <p>
+              UMB 파이낸셜은 견조한 재무 기반을 바탕으로 외부 경제 불확실성에도 견딜 수 있는 안정성을 갖추고 있습니다. 
+              꾸준한 매출 성장과 수익성, 강력한 현금흐름, 그리고 낮은 부채비율은 이 회사가 어려운 경제 상황에서도 안정적인 운영을 이어갈 수 있음을 보여줍니다. 
+              또한, 최근 하트랜드 파이낸셜 USA 인수를 통해 고객 기반과 영업망을 대폭 확장함으로써 단기적으로는 비용 절감 효과를, 
+              장기적으로는 성장 동력을 확보할 수 있는 M&A 시너지를 창출할 전망입니다.
+            </p>
+            <p>
+              더불어 UMB 파이낸셜은 모바일 및 온라인 채널 강화와 핀테크 기업과의 전략적 제휴를 통해 디지털 혁신을 적극 추진하고 있습니다.
+              이러한 디지털 트랜스포메이션은 고객 경험 개선과 함께 신규 수익 창출에 크게 기여하여, 전통적인 금융 서비스의 한계를 넘어서는 경쟁력을 제공합니다. 
+              경쟁사들, 특히 대형 은행이나 선도적인 핀테크 업체들과 비교했을 때, UMB는 전문화된 서비스와 오랜 운영 경험을 바탕으로 틈새 시장에서 지속적인 우위를 확보하고 있습니다.
+            </p>
+            <p>
+              마지막으로, 현재 주가는 내재가치 대비 저평가되어 있으며, 향후 인수합병 효과와 성장 동력이 실현될 경우 주가 상승 여력이 충분한 것으로 분석됩니다. 
+              이러한 요인들을 종합하면, UMB 파이낸셜은 안정성과 성장성을 동시에 갖춘 투자 매력도가 높은 종목으로, 중장기 투자 관점에서 주목할 만한 대상이라고 할 수 있습니다.
+            </p>`
+        },
+        "TMHC": {
+          overview: "<p>Taylor Morrison Home Corporation의 개요 내용입니다.</p>",
+          diagnosis: "<p>Taylor Morrison Home Corporation의 진단 관련 내용입니다.</p>",
+          news: "<p>Taylor Morrison Home Corporation의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Taylor Morrison Home Corporation의 경쟁사 정보입니다.</p>"
+        },
+        "LNTH": {
+          overview: "<p>Lantheus Holdings의 개요 내용입니다.</p>",
+          diagnosis: "<p>Lantheus Holdings의 진단 관련 내용입니다.</p>",
+          news: "<p>Lantheus Holdings의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>Lantheus Holdings의 경쟁사 정보입니다.</p>"
+        },
+        "ACIW": {
+          overview: "<p>ACI Worldwide의 개요 내용입니다.</p>",
+          diagnosis: "<p>ACI Worldwide의 진단 관련 내용입니다.</p>",
+          news: "<p>ACI Worldwide의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>ACI Worldwide의 경쟁사 정보입니다.</p>"
+        },
+        "FLR": {
+          overview: "<p>FLR 플루오르의 개요 내용입니다.</p>",
+          diagnosis: "<p>FLR 플루오르의 진단 관련 내용입니다.</p>",
+          news: "<p>FLR 플루오르의 최신 뉴스 내용입니다.</p>",
+          opinion: "<p>FLR 플루오르의 경쟁사 정보입니다.</p>"
+        }
+        // 필요한 다른 종목에 대해서도 같은 형식으로 추가하세요.
+      };
+      // ---------------------------------------------------------------------------------------
+      // (1) 뉴스 배열 예시
+      // ---------------------------------------------------------------------------------------
+      const umbNews = [
+        {
+          date: "2025-03-05",
+          title: "UMB Financial 이사 Greg Graves, $28,124 규모 주식 매입",
+          url: "https://kr.investing.com/news/insider-trading-news/article-93CH-1389112"
+        },
+        {
+          date: " 2025-03-05",
+          title: "UMB Financial 이사 Peterman, 19,687달러 규모 주식 매입",
+          url: "https://kr.investing.com/news/insider-trading-news/article-93CH-1389118"
+        },
+        {
+          date: "2025-02-04",
+          title: "Heartland Financial, UMB Financial와의 합병 완료",
+          url: "https://kr.investing.com/news/sec-filings/article-93CH-1349269"
+        },
+        {
+          date: "2025-02-02",
+          title: "UMB 금융 Q4 2024 실적, 예상치 상회",
+          url: "https://kr.investing.com/news/transcripts/article-93CH-1347987"
+        }
+      ];
 
       // ---------------------------------------------------------------------------------------
-      // (2) [수정] 테이블 렌더링 로직을 "섹터별"로 묶어서 표시
+      // (2) HTML 문자열 생성
+      // ---------------------------------------------------------------------------------------
+      let umbNewsHtml = "<ul>";
+      umbNews.forEach(newsItem => {
+        umbNewsHtml += `
+          <li>
+            <strong>${newsItem.date}:</strong>
+            <a href="${newsItem.url}" target="_blank">
+              ${newsItem.title}
+            </a>
+          </li>
+        `;
+      });
+      umbNewsHtml += "</ul>";
+
+      // ---------------------------------------------------------------------------------------
+      // (3) modalData에 업데이트
+      // ---------------------------------------------------------------------------------------
+      modalData.UMBF.news = umbNewsHtml;
+    
+      // ---------------------------------------------------------------------------------------
+      // (B) 모달 탭 버튼 클릭 이벤트 처리
+      // ---------------------------------------------------------------------------------------
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // 모든 버튼에서 active 제거
+          document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+    
+          // 모든 콘텐츠 숨기기
+          document.querySelectorAll(".modal-content").forEach((content) => content.classList.remove("active"));
+    
+          // 선택한 탭의 콘텐츠 표시
+          const tabId = this.getAttribute("data-tab");
+          document.getElementById(tabId).classList.add("active");
+        });
+      });
+    
+      // ---------------------------------------------------------------------------------------
+      // (C) 테이블 렌더링 (섹터별 그룹화)
       // ---------------------------------------------------------------------------------------
       function renderStockTable() {
         const tbody = document.querySelector("#stockTable tbody");
         tbody.innerHTML = "";
-
-        // 2-1) 섹터별 그룹화
+    
+        // 섹터별 그룹화
         const sectorMap = {};
         stocks.forEach((stock) => {
           if (!sectorMap[stock.sector]) {
@@ -1913,113 +2520,99 @@
           }
           sectorMap[stock.sector].push(stock);
         });
-
-        // 2-2) 섹터 이름 사전순(or 원하는 순)으로 정렬
+    
+        // 섹터 이름 사전순 정렬
         const sortedSectors = Object.keys(sectorMap).sort();
-
-        // 2-3) 각 섹터별로 <tr>을 추가 (섹터명 헤더 1줄 + 종목들)
+    
+        // 각 섹터별로 헤더 행과 종목 행 추가
         sortedSectors.forEach((sectorName) => {
-          // (A) 섹터 구분행
+          // 섹터 구분행
           const sectorRow = document.createElement("tr");
           sectorRow.classList.add("sector-heading");
-          // colspan=3 → 테이블 헤더가 3개(번호, 티커, 회사명)이므로 3칸 병합
+          // 3칸 병합 (번호, 티커, 회사명)
           sectorRow.innerHTML = `<td colspan="3">${sectorName}</td>`;
           tbody.appendChild(sectorRow);
-
-          // (B) 해당 섹터 종목들
-          sectorMap[sectorName].forEach((stock, idx) => {
+    
+          // 해당 섹터 종목들 추가
+          sectorMap[sectorName].forEach((stock) => {
             const row = document.createElement("tr");
             row.innerHTML = `
               <td class="number">${stock.id}</td>
               <td>${stock.ticker}</td>
               <td>${stock.company}</td>
             `;
-            // 모달 열기 이벤트
+            // 클릭 시 모달 열기
             row.addEventListener("click", () => openModalByTicker(stock.ticker));
             tbody.appendChild(row);
           });
         });
       }
-
-      // 모달 열기 함수를 티커 기반으로 작성 (기존 ID → ticker 방식)
+    
+      // ---------------------------------------------------------------------------------------
+      // (D) 모달 열기 함수 (티커 기반) - 동적으로 탭 콘텐츠 업데이트
+      // ---------------------------------------------------------------------------------------
       function openModalByTicker(ticker) {
-        // 1) 모든 모달 콘텐츠 숨기기
-        document.querySelectorAll(".modal-content").forEach((content) => {
-          content.classList.remove("active");
-        });
-
-        // 2) 해당 주식 정보 찾아서 제목/날짜 세팅
+        // 모달 보이기
+        const modalOverlay = document.getElementById("modalOverlay");
+        modalOverlay.classList.add("active");
+    
+        // 기본 탭(개요) 활성화
+        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".modal-content").forEach((content) => content.classList.remove("active"));
+        const defaultTab = document.querySelector('.tab-btn[data-tab="overview"]');
+        const defaultContent = document.getElementById("overview");
+        if (defaultTab && defaultContent) {
+          defaultTab.classList.add("active");
+          defaultContent.classList.add("active");
+        }
+    
+        // 해당 종목 정보(업데이트 날짜 등) 설정
         const foundStock = stocks.find(s => s.ticker === ticker);
         if (foundStock) {
-          document.getElementById("modalTitle").textContent = `${foundStock.company} (${foundStock.ticker})`;
+          document.getElementById("modalTitle").textContent = ""; // 제목 필요시 설정
           document.getElementById("modalUpdateDate").textContent = `업데이트: ${foundStock.updateDate}`;
         }
-
-        // 선택한 주식에 맞는 콘텐츠 표시
-        if (ticker === "RXRX") {
-          document.getElementById("modalContentRXRX").classList.add("active");
-        } else if (ticker === "SFM") {
-          document.getElementById("modalContentSFM").classList.add("active");
-        } else if (ticker === "RKLB") {
-          document.getElementById("modalContentRKLB").classList.add("active");
-        } else if (ticker === "COHR") {
-          document.getElementById("modalContentCOHR").classList.add("active");
-        } else if (ticker === "GKOS") {
-          document.getElementById("modalContentGKOS").classList.add("active");
-        } else if (ticker === "CVLT") {
-          document.getElementById("modalContentCVLT").classList.add("active");
-        } else if (ticker === "CYBR") {
-          document.getElementById("modalContentCYBR").classList.add("active");
-        } else if (ticker === "CRDO") {
-          document.getElementById("modalContentCRDO").classList.add("active");
-        } else if (ticker === "ENSG") {
-          document.getElementById("modalContentENSG").classList.add("active");
-        } else if (ticker === "UMBF") {
-          document.getElementById("modalContentUMBF").classList.add("active");
-        } else if (ticker === "TMHC") {
-          document.getElementById("modalContentTMHC").classList.add("active");
-        } else if (ticker === "LNTH") {
-          document.getElementById("modalContentLNTH").classList.add("active");
-        } else if (ticker === "ACIW") {
-          document.getElementById("modalContentACIW").classList.add("active");
-        } else if (ticker === "FLR") {
-          document.getElementById("modalContentFLR").classList.add("active");
+    
+        // modalData 객체에서 해당 종목의 탭별 콘텐츠 가져오기
+        const data = modalData[ticker];
+        if (data) {
+          document.getElementById("overview").innerHTML = data.overview;
+          document.getElementById("diagnosis").innerHTML = data.diagnosis;
+          document.getElementById("value").innerHTML = data.value;
+          document.getElementById("finance").innerHTML = data.finance;
+          document.getElementById("news").innerHTML = data.news;
+          document.getElementById("dividend").innerHTML = data.dividend;
+          document.getElementById("opinion").innerHTML = data.opinion;
         }
-
-        // 모달 표시
-        document.getElementById("modalOverlay").classList.add("active");
       }
-
-      // 모달 닫기
+    
+      // ---------------------------------------------------------------------------------------
+      // (E) 모달 닫기 함수
+      // ---------------------------------------------------------------------------------------
       function closeModal() {
         document.getElementById("modalOverlay").classList.remove("active");
       }
-
-      document.getElementById("footerCloseBtn").addEventListener("click", closeModal);
-
-      // 모달을 흰바탕이나 esc 눌렀을 때도 닫을 수 있게
+    
+      // 모달 외부(배경) 클릭 시 닫기
       document.getElementById('modalOverlay').addEventListener('click', (event) => {
         if (event.target.id === 'modalOverlay') {
           closeModal();
         }
       });
+      // ESC 키로 모달 닫기
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
           closeModal();
         }
       });
-
-      // 페이지 로드 후 테이블 렌더링
-      renderStockTable();
-
-      // (4) 개발자 도구 차단
+    
+      // ---------------------------------------------------------------------------------------
+      // (F) 개발자 도구 차단 (옵션)
+      // ---------------------------------------------------------------------------------------
       document.addEventListener("keydown", function (event) {
         if (
           event.ctrlKey &&
-          (event.key === "u" ||
-            event.key === "U" ||
-            event.key === "s" ||
-            event.key === "S")
+          (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")
         ) {
           event.preventDefault();
         }
@@ -2031,17 +2624,20 @@
           event.preventDefault();
         }
       });
-
-      // 우클릭 차단
       document.addEventListener("contextmenu", function (event) {
         event.preventDefault();
       });
-
-      // 난독화 예시
+    
+      // ---------------------------------------------------------------------------------------
+      // (G) 페이지 로드 후 테이블 렌더링
+      // ---------------------------------------------------------------------------------------
+      renderStockTable();
+    
+      // 예시 난독화 코드
       function getSecretKey() {
         return "my-secret-key";
       }
       console.log(getSecretKey());
-    </script>
+    </script>    
   </body>
 </html>
