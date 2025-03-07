@@ -540,14 +540,14 @@
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국 증시 하락세</h3>
             <p itemprop="articleBody">
-              3월 7일 뉴욕증시의 3대 지수는 모두 하락했습니다. 다우 존스 산업평균지수는 1.0% 하락한 42,465.49포인트를 기록했으며, S&P 500 지수는 1.8% 하락한 5,757.03포인트, 나스닥 지수는 2.6% 하락한 18,235.69포인트로 마감했습니다. 이러한 하락은 AI 관련주 부진과 관세 불확실성에 대한 우려가 영향을 미쳤습니다. :contentReference[oaicite:2]{index=2}
+              3월 7일 뉴욕증시의 3대 지수는 모두 하락했습니다. 다우 존스 산업평균지수는 1.0% 하락한 42,465.49포인트를 기록했으며, S&P 500 지수는 1.8% 하락한 5,757.03포인트, 나스닥 지수는 2.6% 하락한 18,235.69포인트로 마감했습니다. 이러한 하락은 AI 관련주 부진과 관세 불확실성에 대한 우려가 영향을 미쳤습니다.
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-06">2025년 3월 6일</span>
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">아시아 증시 상승세</h3>
             <p itemprop="articleBody">
-              3월 6일 아시아 증시는 전반적인 상승세를 보였습니다. 일본 닛케이225 지수는 0.77% 상승한 37,704.93포인트로 마감했으며, 이는 트럼프 대통령의 캐나다·멕시코 자동차 관세 유예 결정과 일부 자동차주의 상승에 따른 것입니다. 중국 상하이종합지수는 1.17% 상승한 3,381.10포인트로 마감했으며, 이는 경기부양책 기대감과 인공지능(AI) 관련주 강세에 힘입은 것입니다. :contentReference[oaicite:3]{index=3}
+              3월 6일 아시아 증시는 전반적인 상승세를 보였습니다. 일본 닛케이225 지수는 0.77% 상승한 37,704.93포인트로 마감했으며, 이는 트럼프 대통령의 캐나다·멕시코 자동차 관세 유예 결정과 일부 자동차주의 상승에 따른 것입니다. 중국 상하이종합지수는 1.17% 상승한 3,381.10포인트로 마감했으며, 이는 경기부양책 기대감과 인공지능(AI) 관련주 강세에 힘입은 것입니다.
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-06">2025년 3월 7일</span>
           </article>
@@ -725,6 +725,21 @@
           document.getElementById("installContainer").style.display = "none";
         }
       });
+// 자동새로고침ㅋ
+      if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js").then((registration) => {
+        console.log("서비스 워커 등록 완료:", registration);
+        
+        // 서비스 워커 업데이트 확인
+        navigator.serviceWorker.addEventListener("message", (event) => {
+            if (event.data && event.data.type === "NEW_VERSION_AVAILABLE") {
+                console.log("새로운 버전 감지됨! 페이지를 새로고침합니다.");
+                window.location.reload();
+            }
+        });
+    });
+}
+
 
       // 개발자 도구 및 소스 보기 차단 스크립트
       document.addEventListener("keydown", function(event) {
