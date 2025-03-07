@@ -1,4 +1,4 @@
-const CACHE_NAME = "gohigher-cache-v4"; // 캐시 버전 업데이트
+const CACHE_NAME = "gohigher-cache-v5"; // 캐시 버전 업데이트
 const urlsToCache = [
     "/",
     "/index.html",
@@ -19,13 +19,13 @@ self.addEventListener("install", (event) => {
     self.skipWaiting(); // 즉시 활성화
 });
 
-// 네트워크 우선(fetch 이벤트) - 기존 방식 유지
+// 네트워크 우선(fetch 이벤트) - 로컬 데이터 저장 기능 유지
 self.addEventListener("fetch", (event) => {
     event.respondWith(
         fetch(event.request)
         .then((response) => {
             return caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, response.clone());
+                cache.put(event.request, response.clone()); // 최신 데이터 캐싱
                 return response;
             });
         })
@@ -61,18 +61,23 @@ self.addEventListener("message", (event) => {
     }
 });
 
-// 백그라운드 동기화 지원
+// 백그라운드 동기화 지원 (데이터 동기화 유지)
 self.addEventListener("sync", (event) => {
     if (event.tag === "background-sync") {
         event.waitUntil(
             fetch("/api/sync")
-            .then(() => console.log("[Service Worker] Background Sync Successful"))
-            .catch(() => console.log("[Service Worker] Background Sync Failed"))
+            .then(response => response.json())
+            .then(data => {
+                console.log("[Service Worker] Background Sync Successful", data);
+            })
+            .catch(error => {
+                console.error("[Service Worker] Background Sync Failed", error);
+            })
         );
     }
 });
 
-// 푸시 알림 수신
+// 푸시 알림 수신 (Firebase 연동 가능)
 self.addEventListener("push", (event) => {
     const data = event.data ? event.data.json() : {};
     event.waitUntil(
@@ -84,9 +89,20 @@ self.addEventListener("push", (event) => {
     );
 });
 
-// PWA 설치 감지
+// PWA 설치 감지 (유저가 설치 유도 가능)
 self.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();
     self.deferredPrompt = event;
     console.log("[Service Worker] PWA 설치 가능!");
+});
+
+// 오프라인 데이터 처리 (네트워크 없을 때 캐시 사용)
+self.addEventListener("fetch", (event) => {
+    if (!navigator.onLine) {
+        event.respondWith(
+            caches.match(event.request).then((response) => {
+                return response || fetch(event.request);
+            })
+        );
+    }
 });
