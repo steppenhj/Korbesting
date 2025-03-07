@@ -1,4 +1,4 @@
-const CACHE_NAME = "gohigher-cache-v5"; // 캐시 버전 업데이트
+const CACHE_NAME = "gohigher-cache-v6"; // 캐시 버전 업데이트
 const urlsToCache = [
     "/",
     "/index.html",
@@ -61,7 +61,7 @@ self.addEventListener("message", (event) => {
     }
 });
 
-// 백그라운드 동기화 지원 (데이터 동기화 유지)
+// **백그라운드 동기화 지원 (네트워크 연결 시 데이터 자동 동기화)**
 self.addEventListener("sync", (event) => {
     if (event.tag === "background-sync") {
         event.waitUntil(
@@ -77,26 +77,7 @@ self.addEventListener("sync", (event) => {
     }
 });
 
-// 푸시 알림 수신 (Firebase 연동 가능)
-self.addEventListener("push", (event) => {
-    const data = event.data ? event.data.json() : {};
-    event.waitUntil(
-        self.registration.showNotification(data.title || "알림", {
-            body: data.body || "새로운 알림이 도착했습니다!",
-            icon: "/icon-192x192.png",
-            badge: "/icon-192x192.png"
-        })
-    );
-});
-
-// PWA 설치 감지 (유저가 설치 유도 가능)
-self.addEventListener("beforeinstallprompt", (event) => {
-    event.preventDefault();
-    self.deferredPrompt = event;
-    console.log("[Service Worker] PWA 설치 가능!");
-});
-
-// 오프라인 데이터 처리 (네트워크 없을 때 캐시 사용)
+// **사용자가 데이터를 입력하면 로컬에 저장하고, 네트워크 복구 시 서버에 전송**
 self.addEventListener("fetch", (event) => {
     if (!navigator.onLine) {
         event.respondWith(
@@ -106,3 +87,62 @@ self.addEventListener("fetch", (event) => {
         );
     }
 });
+
+// **백그라운드에서 사용자 액션 동기화 (IndexedDB 활용)**
+self.addEventListener("sync", async (event) => {
+    if (event.tag === "sync-user-actions") {
+        event.waitUntil(
+            (async () => {
+                const db = await openDatabase();
+                const unsyncedActions = await getUnsyncedActions(db);
+
+                for (const action of unsyncedActions) {
+                    try {
+                        await fetch("/api/user-actions", {
+                            method: "POST",
+                            body: JSON.stringify(action),
+                            headers: { "Content-Type": "application/json" }
+                        });
+
+                        await markActionAsSynced(db, action.id);
+                    } catch (error) {
+                        console.error("[Service Worker] Failed to sync action", error);
+                    }
+                }
+            })()
+        );
+    }
+});
+
+// **IndexedDB를 활용한 로컬 데이터 저장 및 동기화 기능**
+function openDatabase() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open("PWA_DB", 1);
+        request.onerror = () => reject("IndexedDB open failed");
+        request.onsuccess = () => resolve(request.result);
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            db.createObjectStore("user-actions", { keyPath: "id", autoIncrement: true });
+        };
+    });
+}
+
+function getUnsyncedActions(db) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction("user-actions", "readonly");
+        const store = transaction.objectStore("user-actions");
+        const request = store.getAll();
+        request.onsuccess = () => resolve(request.result.filter(action => !action.synced));
+        request.onerror = () => reject("Failed to fetch actions");
+    });
+}
+
+function markActionAsSynced(db, id) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction("user-actions", "readwrite");
+        const store = transaction.objectStore("user-actions");
+        const request = store.put({ id, synced: true });
+        request.onsuccess = resolve;
+        request.onerror = () => reject("Failed to mark action as synced");
+    });
+}
