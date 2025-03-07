@@ -330,6 +330,20 @@
         transform: translateY(-3px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.12);
       }
+      /* full-section: 환율·달러인덱스 섹터용, 가로 꽉 채우기 */
+      .full-section {
+        width: 100%;
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-top: 1rem;
+      }
+      .full-section:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      }
       .stock-table {
         width: 100%;
         border-collapse: collapse;
@@ -410,9 +424,9 @@
         <ul>
           <li><a href="#stocks-exchange">주식 시세, 환율 정보</a></li>
           <li><a href="#global-market">글로벌 증시 동향</a></li>
-          <!-- 기존 경제, 연준, 정책 섹션을 하나로 합쳐 '주요 발표' -->
           <li><a href="#major-announcements">주요 발표</a></li>
           <li><a href="#industry-news">기업 및 산업 동향</a></li>
+          <li><a href="#coin-news">코인 뉴스</a></li>
         </ul>
       </aside>
 
@@ -429,112 +443,115 @@
         </div>
 
         <!-- 주식 시세 및 환율 정보 섹션 -->
-        <section class="news-section flex-container" id="stocks-exchange">
-          <div class="half-section">
-            <h2>매그니피센트 7 주식 시세</h2>
-            <table class="stock-table">
-              <colgroup>
-                <col style="width: 200px;">
-                <col style="width: 140px;">
-                <col style="width: 110px;">
-              </colgroup>
-              <thead>
+        <section class="news-section" id="stocks-exchange">
+          <div class="flex-container">
+            <div class="half-section">
+              <h2>매그니피센트 7 주식 시세</h2>
+              <table class="stock-table">
+                <colgroup>
+                  <col style="width: 200px;">
+                  <col style="width: 140px;">
+                  <col style="width: 110px;">
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>종목</th>
+                    <th>가격</th>
+                    <th>등락률</th>
+                  </tr>
+                </thead>
                 <tr>
-                  <th>종목</th>
-                  <th>가격</th>
-                  <th>등락률</th>
+                  <td><strong>AMZN 아마존</strong></td>
+                  <td>200.70USD</td>
+                  <td><span class="blue" style="white-space: nowrap;">3.68% 하락</span></td>
                 </tr>
-              </thead>
-              <tr>
-                <td><strong>AMZN 아마존</strong></td>
-                <td>200.70USD</td>
-                <td><span class="blue" style="white-space: nowrap;">3.68% 하락</span></td>
-              </tr>
-              <tr>
-                <td><strong>TSLA 테슬라</strong></td>
-                <td>263.45USD</td>
-                <td><span class="blue" style="white-space: nowrap;">5.61% 하락</span></td>
-              </tr>
-              <tr>
-                <td><strong>NVDA 엔비디아</strong></td>
-                <td>110.57USD</td>
-                <td><span class="blue" style="white-space: nowrap;">5.74% 하락</span></td>
-              </tr>
-              <tr>
-                <td><strong>GOOGL 구글</strong></td>
-                <td>172.35USD</td>
-                <td><span class="blue" style="white-space: nowrap;">0.39% 하락</span></td>
-              </tr>
-              <tr>
-                <td><strong>MSFT 마이크로소프트</strong></td>
-                <td>396.89USD</td>
-                <td><span class="blue" style="white-space: nowrap;">1.03% 하락</span></td>
-              </tr>
-              <tr>
-                <td><strong>AAPL 애플</strong></td>
-                <td>235.33USD</td>
-                <td><span class="blue" style="white-space: nowrap;">0.17% 하락</span></td>
-              </tr>
-              <tr>
-                <td><strong>META 메타</strong></td>
-                <td>627.93USD</td>
-                <td><span class="blue" style="white-space: nowrap;">4.35% 하락</span></td>
-              </tr>
-            </table>
-          </div>
+                <tr>
+                  <td><strong>TSLA 테슬라</strong></td>
+                  <td>263.45USD</td>
+                  <td><span class="blue" style="white-space: nowrap;">5.61% 하락</span></td>
+                </tr>
+                <tr>
+                  <td><strong>NVDA 엔비디아</strong></td>
+                  <td>110.57USD</td>
+                  <td><span class="blue" style="white-space: nowrap;">5.74% 하락</span></td>
+                </tr>
+                <tr>
+                  <td><strong>GOOGL 구글</strong></td>
+                  <td>172.35USD</td>
+                  <td><span class="blue" style="white-space: nowrap;">0.39% 하락</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MSFT 마이크로소프트</strong></td>
+                  <td>396.89USD</td>
+                  <td><span class="blue" style="white-space: nowrap;">1.03% 하락</span></td>
+                </tr>
+                <tr>
+                  <td><strong>AAPL 애플</strong></td>
+                  <td>235.33USD</td>
+                  <td><span class="blue" style="white-space: nowrap;">0.17% 하락</span></td>
+                </tr>
+                <tr>
+                  <td><strong>META 메타</strong></td>
+                  <td>627.93USD</td>
+                  <td><span class="blue" style="white-space: nowrap;">4.35% 하락</span></td>
+                </tr>
+              </table>
+            </div>
 
-          <div class="half-section">
-            <h2>주요 기업 실적 발표 일정</h2>
-            <ul class="earnings-list">
-              <li>
-                <strong>3월 10일 (월)</strong>
-                <ul>
-                  <li>🔹 오라클(ORCL) - 장 마감 후</li>
-                  <li>🔹 울타뷰티(ULTA) - 장 마감 후</li>
-                </ul>
-              </li>
-              <li>
-                <strong>3월 11일 (화)</strong>
-                <ul>
-                  <li>🔹 도큐사인(DOCU) - 장 마감 후</li>
-                  <li>🔹 JD닷컴(JD) - 장 시작 전</li>
-                </ul>
-              </li>
-              <li>
-                <strong>3월 12일 (수)</strong>
-                <ul>
-                  <li>🔹 캠벨 수프(CPB) - 장 시작 전</li>
-                  <li>🔹 크라우드스트라이크(CRWD) - 장 마감 후</li>
-                </ul>
-              </li>
-              <li>
-                <strong>3월 13일 (목)</strong>
-                <ul>
-                  <li>🔹 어도비(ADBE) - 장 마감 후</li>
-                  <li>🔹 델 테크놀로지스(DELL) - 장 마감 후</li>
-                </ul>
-              </li>
-              <li>
-                <strong>3월 14일 (금)</strong>
-                <ul>
-                  <li>🔹 브로드컴(AVGO) - 장 마감 후</li>
-                </ul>
-              </li>
-            </ul>
+            <div class="half-section">
+              <h2>주요 기업 실적 발표 일정</h2>
+              <ul class="earnings-list">
+                <li>
+                  <strong>3월 10일 (월)</strong>
+                  <ul>
+                    <li>🔹 오라클(ORCL) - 장 마감 후</li>
+                    <li>🔹 울타뷰티(ULTA) - 장 마감 후</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>3월 11일 (화)</strong>
+                  <ul>
+                    <li>🔹 도큐사인(DOCU) - 장 마감 후</li>
+                    <li>🔹 JD닷컴(JD) - 장 시작 전</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>3월 12일 (수)</strong>
+                  <ul>
+                    <li>🔹 캠벨 수프(CPB) - 장 시작 전</li>
+                    <li>🔹 크라우드스트라이크(CRWD) - 장 마감 후</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>3월 13일 (목)</strong>
+                  <ul>
+                    <li>🔹 어도비(ADBE) - 장 마감 후</li>
+                    <li>🔹 델 테크놀로지스(DELL) - 장 마감 후</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>3월 14일 (금)</strong>
+                  <ul>
+                    <li>🔹 브로드컴(AVGO) - 장 마감 후</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
-
-          <!-- 환율·달러인덱스 부분 -->
-          <h2>환율·달러인덱스</h2>
-          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-            <h3 itemprop="headline">금일 환율 및 달러인덱스</h3>
-            <p>앞으로 일본의 인플레이션으로 인해, 금리 상승과 맞물려 원/엔 환율은 추가적으로 상승할 것 같습니다.</p>
-            <p itemprop="articleBody">
-              - 원/달러 환율: 1,446.90원<br>
-              - 원/엔 환율(100엔): 979.32원<br>
-              - 달러인덱스(DXY): 104.25
-            </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
-          </article>
+          <!-- full-section: 환율·달러인덱스 (가로 꽉 차게) -->
+          <div class="full-section">
+            <h2>환율·달러인덱스</h2>
+            <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+              <h3 itemprop="headline">금일 환율 및 달러인덱스</h3>
+              <p>앞으로 일본의 인플레이션으로 인해, 금리 상승과 맞물려 원/엔 환율은 추가적으로 상승할 것 같습니다.</p>
+              <p itemprop="articleBody">
+                - 원/달러 환율: 1,446.90원<br>
+                - 원/엔 환율(100엔): 979.32원<br>
+                - 달러인덱스(DXY): 104.25
+              </p>
+              <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+            </article>
+          </div>
         </section>
 
         <!-- 글로벌 증시 동향 섹션 -->
@@ -559,7 +576,6 @@
         <!-- 주요 발표 섹션 (경제, 연준, 정책 관련 뉴스 카드 통합) -->
         <section class="news-section" id="major-announcements">
           <h2>주요 발표</h2>
-          <!-- 경제 지표 관련 뉴스 카드 -->
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국 1월 무역수지 적자 사상 최대치 기록</h3>
             <p itemprop="articleBody">
@@ -567,7 +583,6 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-06">2025년 3월 6일</span>
           </article>
-
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국 2월 비농업 고용자수 증가</h3>
             <p itemprop="articleBody">
@@ -575,8 +590,6 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
           </article>
-
-          <!-- 정책 및 국제 관계 관련 뉴스 카드 -->
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국, 멕시코·캐나다 관세 한 달 유예</h3>
             <p itemprop="articleBody">
@@ -584,7 +597,6 @@
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
           </article>
-
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국·EU, 무역 협상 타결로 관세 철폐 합의</h3>
             <p itemprop="articleBody">
@@ -617,6 +629,46 @@
               대만 TSMC가 미국 정부로부터 66억 달러 보조금을 지원받아, 애리조나에 3개의 첨단 반도체 제조 공장을 건설할 예정입니다.
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 5일</span>
+          </article>
+        </section>
+
+        <!-- 코인 뉴스 섹터 추가 -->
+        <section class="news-section" id="coin-news">
+          <h2>코인 뉴스</h2>
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">백악관 암호화폐 정상회담 개최</h3>
+            <p itemprop="articleBody">
+              도널드 트럼프 미국 대통령은 3월 7일 백악관에서 암호화폐 정상회담을 주최합니다. 이번 회담에는 마이클 세일러(MicroStrategy 회장), 브라이언 암스트롱(Coinbase CEO), 블라드 테네브(Robinhood CEO) 등 업계 주요 인사들이 참석할 예정이며, 암호화폐 규제 명확성과 디지털 자산 비축 등에 대해 논의할 것으로 보입니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+          </article>
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">미국 정부의 비트코인 전략적 비축 계획</h3>
+            <p itemprop="articleBody">
+              트럼프 대통령은 최근 비트코인 전략적 비축을 위한 행정명령에 서명했습니다. 정부는 범죄나 민사 자산 몰수를 통해 확보한 비트코인을 활용해 디지털 자산 비축을 구축하며, 이를 통해 비트코인을 국가 자산으로 인정하는 움직임을 보이고 있습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+          </article>
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">국내 암호화폐 투자 계좌 1,000만 개 돌파</h3>
+            <p itemprop="articleBody">
+              국내 5대 암호화폐 거래소가 제출한 자료에 따르면, 1월 기준 암호화폐 투자 계좌 수는 1,000만 9,377개를 기록했습니다. 이는 암호화폐 거래소 개설 12년 만에 주식 계좌의 8분의 1 수준에 달할 만큼 급성장한 수치입니다. 지난해 말에는 전년 대비 52% 급증했습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+          </article>
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">카르다노 창립자, 백악관 정상회담 초청 불발</h3>
+            <p itemprop="articleBody">
+              카르다노(ADA) 창립자 찰스 호스킨슨은 백악관 디지털 자산 정상회의 초청을 받지 못했다고 밝혔으며, 정상회담에서 실질적인 정책 논의 가능성은 낮다고 언급했습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+          </article>
+          <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+            <h3 itemprop="headline">암호화폐 시장 동향</h3>
+            <p itemprop="articleBody">
+              비트코인 가격은 9만 달러 선에서 오르내리고 있으며, 백악관 가상자산 서밋을 앞두고 시장 기대감이 형성되고 있습니다. 주요 알트코인 역시 대부분 상승세를 보이고 있습니다.
+            </p>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
           </article>
         </section>
       </main>
