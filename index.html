@@ -380,32 +380,42 @@
         position: absolute;
         left: -10px;
       }
-      /* 반응형 (옵션으로 원하는 정도만) */
-      @media (max-width: 768px) {
-        nav ul {
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-
-        .flex-container {
-          flex-direction: column;
-        }
-        .half-section {
-          width: 100%;
-        }
+    /* 반응형: 모바일(768px 이하)에서 사이드바 제거 & 모든 요소 가로 폭을 100%로 */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.5rem;
       }
 
+      /* 사이드바 숨기기 */
+      aside.sidebar {
+        display: none;
+      }
+
+      /* 레이아웃 100% 확장 */
+      .layout-container,
+      header,
       footer {
-        background-color: #004080;
-        color: #fff;
-        text-align: center;
-        font-size: 1rem;
-        box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0;
+        padding: 0.5rem;
       }
-      footer a {
-        color: #fff;
-        text-decoration: underline;
+
+      /* 메인 콘텐츠도 전폭 사용 */
+      .main-content {
+        width: 100%;
       }
+
+      /* flex-container 내부 섹션도 세로 배치 / 전폭 */
+      .flex-container {
+        flex-direction: column;
+      }
+      .half-section,
+      .full-section {
+        width: 100% !important;
+      }
+    }
     </style>
 
     </style>
