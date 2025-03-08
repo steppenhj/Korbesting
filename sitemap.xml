@@ -8,29 +8,29 @@
   <!-- 홈 페이지 -->
   <url>
     <loc>https://gohigher.kr/</loc>
-    <lastmod>2025-03-08T08:08:47</lastmod>
+    <lastmod>2025-03-08</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- 포트폴리오 페이지 -->
   <url>
-    <loc>https://gohigher.kr/주식포트폴리오.html</loc> 
-    <lastmod>2025-03-08T08:08:47</lastmod>
+    <loc>https://gohigher.kr/%EC%A3%BC%EC%8B%9D%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html</loc> 
+    <lastmod>2025-03-08</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 유명인 포트폴리오 페이지 -->
   <url>
-    <loc>https://gohigher.kr/버크셔해서웨이.html</loc> 
-    <lastmod>2025-03-08T08:08:47</lastmod>
-    <priority>0.7</priority>
+    <loc>https://gohigher.kr/%EB%B2%84%ED%81%AC%EC%85%94%ED%95%B4%EC%84%9C%EC%9B%A8%EC%9D%B4.html</loc> 
+    <lastmod>2025-03-08</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <!-- 중소형 주식 페이지 -->
   <url>
-    <loc>https://gohigher.kr/중소형주식.html</loc>
-    <lastmod>2025-03-08T08:08:47</lastmod>
-    <priority>0.8</priority> 
+    <loc>https://gohigher.kr/%EC%A4%91%EC%86%8C%ED%98%95%EC%A3%BC%EC%8B%9D.html</loc>
+    <lastmod>2025-03-08</lastmod>
+    <priority>0.85</priority> 
   </url>
 
 </urlset>
