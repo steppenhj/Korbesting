@@ -382,53 +382,114 @@
       }
 /* 모바일 전용 최적화 스타일 (화면 폭 768px 이하) */
 @media (max-width: 768px) {
-  /* 전체 레이아웃: 세로 배치 및 여백 조정 */
+  /* 전체 레이아웃: 단일 컬럼 배치, 좌우 여백 축소 */
   .layout-container {
     flex-direction: column;
-    gap: 1rem;
-    padding: 0 1rem;
+    margin: 0 auto;
+    padding: 10px;
+    gap: 20px;
   }
-  
-  /* 사이드바 숨김 처리 */
-  aside.sidebar {
-    display: none;
-  }
-  
-  /* 네비게이션 메뉴: 중앙 정렬 및 줄 바꿈 */
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  
-  /* 헤더: 패딩 및 폰트 크기 확대 */
+
+  /* 헤더: 배경, 여백, 중앙 정렬 및 확대된 폰트 */
   header {
-    padding: 2rem 1rem;
+    padding: 20px 10px;
+    text-align: center;
+    background-color: #004080;
+    color: #fff;
   }
   header h1 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
   }
   header p {
     font-size: 1.2rem;
+    line-height: 1.4;
   }
-  
-  /* 본문 기본 폰트 크기 */
-  body {
-    font-size: 16px;
+
+  /* 네비게이션: 전체 너비 버튼 스타일로 재구성 */
+  nav {
+    background-color: #0059b3;
+    padding: 10px 0;
+    margin: 10px 0;
   }
-  
-  /* 테이블: 가로 스크롤 지원 */
-  .stock-table {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  nav ul li a {
     display: block;
-    overflow-x: auto;
-    white-space: nowrap;
+    width: 90%;
+    padding: 12px 0;
+    background-color: #fff;
+    color: #004080;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+    text-decoration: none;
   }
-  
-  /* 푸터: 패딩 및 폰트 크기 확대 */
+
+  /* 사이드바: 모바일에서는 불필요하므로 숨김 처리 */
+  aside.sidebar {
+    display: none;
+  }
+
+  /* 본문 영역: 여백 및 패딩 조정 */
+  .main-content {
+    padding: 10px 0;
+  }
+
+  /* 뉴스 섹션: 박스 형태, 여백과 패딩을 확대하여 가독성 향상 */
+  .news-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .news-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  .news-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* 테이블: 모바일에서 가로 스크롤 지원 및 폰트, 여백 확대 */
+  .table-responsive,
+  .stock-table {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stock-table {
+    font-size: 1rem;
+    border-collapse: collapse;
+  }
+  .stock-table th,
+  .stock-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+
+  /* 푸터: 확대된 폰트와 여백, 중앙 정렬 */
   footer {
-    padding: 2rem 1rem;
+    padding: 20px 10px;
+    text-align: center;
     font-size: 1.2rem;
+    background-color: #004080;
+    color: #fff;
   }
 }
 
