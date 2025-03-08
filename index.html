@@ -380,24 +380,44 @@
         position: absolute;
         left: -10px;
       }
-      @media (max-width: 768px) {
-        nav ul {
-          flex-wrap: wrap;
-        }
-        .flex-container {
-          flex-direction: column;
-        }
-        .half-section {
-          width: 100%;
-          margin-bottom: 1rem;
-        }
-        .layout-container {
-          flex-direction: column;
-        }
-        aside.sidebar {
-          display: none;
-        }
-      }
+/* 모바일 전용 최적화 스타일 (화면 폭 768px 이하) */
+@media (max-width: 768px) {
+  /* 네비게이션 메뉴가 줄 바꿈되고, flex 방향을 세로로 변경 */
+  nav ul {
+    flex-wrap: wrap;
+  }
+  
+  /* 메인 레이아웃을 세로 배치 */
+  .layout-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* 사이드바 숨김 처리 */
+  aside.sidebar {
+    display: none;
+  }
+  
+  /* 헤더 폰트 크기 축소 */
+  header h1 {
+    font-size: 1.5rem;
+  }
+  header p {
+    font-size: 0.9rem;
+  }
+  
+  /* 본문 기본 폰트 크기 약간 축소 */
+  body {
+    font-size: 14px;
+  }
+  
+  /* 데스크탑에서는 고정 폭인 테이블을 모바일에서 가로 스크롤 가능하도록 변경 */
+  .stock-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
     </style>
   </head>
   <body>
