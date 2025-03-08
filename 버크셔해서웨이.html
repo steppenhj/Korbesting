@@ -15,8 +15,11 @@
     <!-- 검색엔진 크롤링 허용 -->
     <meta name="robots" content="index,follow">
 
-    <!-- 반응형 웹 설정 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- **확대/축소 불가 설정** -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"
+    />
 
     <!-- 네이버 / 구글 사이트 검증 메타 -->
     <meta name="naver-site-verification" content="daa71973aba155bc2d96dfde44d8fb34b6a74ba7" />
@@ -267,73 +270,88 @@
             text-align: center;
         }
 
-        /* 모바일 최적화를 위한 미디어 쿼리 */
         @media (max-width: 768px) {
-          /* 네비게이션: 각 메뉴 항목을 50% 너비로 하여 한 줄에 2개씩 표시 */
-          nav ul {
-            flex-wrap: wrap;
-            justify-content: center;
-          }
-          nav ul li {
-            flex: 0 0 50%;
-            max-width: 50%;
-            text-align: center;
-            margin-bottom: 10px;
-          }
-          nav ul li a {
-            padding: 0.5rem;
-            font-size: 0.95rem;
-          }
+  /* 헤더, 본문, 푸터 폭 100%로 */
+  header,
+  main,
+  footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5rem !important;
+    box-sizing: border-box;
+  }
+  /* 차트나 내용도 전폭 사용 등 원하는 스타일 추가 */
+  .chart-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5rem !important;
+  }
+  /* 네비게이션 한 줄 / 가로 스크롤 */
+  nav ul {
+    flex-wrap: nowrap;        /* 줄바꿈 대신 한 줄 유지 */
+    overflow-x: auto;         /* 화면이 좁으면 수평 스크롤 */
+    justify-content: flex-start; 
+    gap: 0.5rem;
+  }
+  nav ul li {
+    flex: 0 0 auto;
+    white-space: nowrap;     /* 버튼 텍스트 줄바꿈 방지 */
+    margin-bottom: 0;        
+  }
+  nav ul li a {
+    width: auto;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+  }
 
-          /* 차트 컨테이너: 모든 차트박스를 동일한 너비로 설정 */
-          .chart-row {
-            flex-direction: column;
-            align-items: center;
-          }
-          .chart-wrapper,
-          .chart-box {
-            width: 100%;
-            max-width: 400px; /* 모바일에서 동일하게 보일 최대 너비 */
-            margin: 0 auto 20px auto;
-          }
-          .chart-wrapper {
-            padding: 0.5rem;
-          }
-          /* 기타 패딩 및 글자 크기 조정 */
-          main, .container {
-            padding: 0 10px;
-          }
-          footer {
-            font-size: 0.9rem;
-          }
-          canvas {
-            border-radius: 5px;
-          }
-          /* 모달 내용도 모바일에 맞게 조정 */
-          .modal-content {
-            padding: 15px;
-          }
-          #modalChart {
-            width: 90% !important;
-            height: auto !important;
-          }
-        }
+
+  /* 차트 래퍼: 기존처럼 세로 스택 */
+  .chart-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .chart-wrapper,
+  .chart-box {
+    width: 100%;
+    max-width: 400px; 
+    margin: 0 auto 20px;
+    padding: 0.5rem;
+  }
+
+  /* 푸터 폰트 조금 줄이기 */
+  footer {
+    font-size: 0.9rem;
+    padding: 0.8rem !important;
+  }
+
+  /* 모달 크기 조정 예시 */
+  .modal-content {
+    padding: 15px;
+  }
+  #modalChart {
+    width: 90% !important;
+    height: auto !important;
+  }
+}
+
 
     </style>
 </head>
 <body>
-    <header>
-        <h1>Go Higher</h1>
-        <p>다른 사람들은 어떻게 투자하고 있는지 확인하자!</p>
-        <nav>
-            <ul>
-                <li><a href="index.html">투데이 뉴스</a></li>
-                <li><a href="주식포트폴리오.html">다이어리</a></li>
-                <li><a href="버크셔해서웨이.html">인기 포트폴리오</a></li>
-                <li><a href="중소형주식.html">중소형주식 추천</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Go Higher</h1>
+    <p>매일매일 업데이트되는 최신 미국 주식 뉴스를 만나보세요!</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">투데이 뉴스</a></li>
+        <li><a href="주식포트폴리오.html">다이어리</a></li>
+        <li><a href="버크셔해서웨이.html">인기 포트폴리오</a></li>
+        <li><a href="중소형주식.html">중소형주식 추천</a></li>
+      </ul>
+    </nav>
+  </header>
     <main>
         <!-- 로그인 없이 브라우저에 영구 저장 안내 -->
         <div class="save-notice">
