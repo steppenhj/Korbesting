@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <title>Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트</title>
     <meta name="description" content="Go Higher - 매일 업데이트되는 미국주식·증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요." />
-    <!-- (중요) 모바일 대응을 위한 뷰포트 설정 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link rel="canonical" href="https://gohigher.kr/" />
+    <!-- 매니페스트 -->
+    <link rel="manifest" href="/manifest.json" />
+    <!-- 키워드 -->
     <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Go Higher" />
+    <!-- 검색 엔진 크롤링 -->
     <meta name="robots" content="index,follow" />
+    <!-- 반응형 웹 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 구글 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet" />
     <!-- 사이트 검증 메타 -->
@@ -109,9 +114,8 @@
       }
     </script>
     
-    <!-- 기본 스타일 (수정 및 추가 포함) -->
+    <!-- 기본 스타일 -->
     <style>
-      /* 공통 설정 */
       html {
         font-size: 16px;
       }
@@ -132,18 +136,13 @@
         background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
         color: var(--text-color);
         padding-bottom: 60px;
-        /* 가로 스크롤 제거 */
-        overflow-x: hidden;
       }
-
-      /* 헤더 */
       header {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: #fff;
         padding: 1rem;
         text-align: center;
         box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        position: relative; /* 햄버거 버튼 위치를 위해 추가 */
       }
       header h1 {
         font-family: 'Roboto', sans-serif;
@@ -153,29 +152,16 @@
       header p {
         font-size: 1rem;
       }
-
-      /* (신규) 햄버거 버튼 */
-      #hamburgerBtn {
-        display: none; /* 데스크톱에서 안 보이게 */
-        background: transparent;
-        border: none;
-        font-size: 1.6rem;
-        cursor: pointer;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        color: #fff; /* 아이콘 색상 */
+      nav {
+        margin-top: 0.5rem;
       }
-
-      /* (수정) 상단 내비게이션: PC에서는 flex, 모바일에서는 햄버거 메뉴로 숨김 */
-      #topNav ul {
+      nav ul {
         list-style: none;
         display: flex;
         justify-content: center;
         gap: 1rem;
-        margin-top: 0.5rem;
       }
-      #topNav ul li a {
+      nav ul li a {
         display: inline-block;
         padding: 0.5rem 1rem;
         background-color: #fff;
@@ -185,11 +171,10 @@
         text-decoration: none;
         transition: background-color 0.3s, color 0.3s;
       }
-      #topNav ul li a:hover {
+      nav ul li a:hover {
         background-color: var(--primary-color);
         color: #fff;
       }
-
       /* 메인 레이아웃 컨테이너: 사이드바 + 본문 */
       .layout-container {
         display: flex;
@@ -198,17 +183,13 @@
         padding: 0 1rem;
         gap: 1rem;
         align-items: flex-start;
-        /* 가로 스크롤 방지 */
-        max-width: 100%;
       }
-
       .red {
         color: red;
       }
       .blue {
         color: blue;
       }
-
       /* 사이드바 */
       aside.sidebar {
         min-width: 200px;
@@ -245,12 +226,10 @@
         background-color: var(--primary-color);
         color: #fff;
       }
-
       /* 본문 영역 */
       .main-content {
         flex: 1;
       }
-
       /* 기존 공지 스타일 */
       .save-notice {
         background: #fff;
@@ -262,7 +241,6 @@
         box-shadow: 0 1px 4px rgba(0,0,0,0.1);
         line-height: 1.4;
       }
-
       .news-section {
         background-color: #fff;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -305,7 +283,6 @@
         font-size: 0.85rem;
         color: #777;
       }
-
       footer {
         background-color: var(--primary-color);
         color: #fff;
@@ -321,12 +298,11 @@
         color: #fff;
         text-decoration: underline;
       }
-
       /* PWA 설치 버튼 영역 */
       #installContainer {
         text-align: center;
         margin-top: 20px;
-        display: none; /* 최초에는 숨김 */
+        display: none;
       }
       #installBtn {
         padding: 10px 20px;
@@ -337,7 +313,6 @@
         border-radius: 5px;
         cursor: pointer;
       }
-
       /* 매그니피센트 7, 실적 발표 일정: flex 배치 */
       .flex-container {
         display: flex;
@@ -375,8 +350,6 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 1rem;
-        /* (중요) 가로 스크롤 방지를 위해 max-width */
-        max-width: 100%;
       }
       .stock-table th, .stock-table td {
         border-bottom: 1px solid #ddd;
@@ -387,7 +360,6 @@
         background-color: #f8f8f8;
         font-weight: bold;
       }
-
       .earnings-list {
         list-style-type: none;
         padding: 0;
@@ -408,107 +380,46 @@
         position: absolute;
         left: -10px;
       }
-
-      /* (중요) 이미지/테이블 가로 넘침 방지 */
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      /* 모바일 전용 최적화 스타일 (화면 폭 768px 이하) */
+      /* 반응형 (옵션으로 원하는 정도만) */
       @media (max-width: 768px) {
-        /* 전체 레이아웃: 세로 배치 */
-        .layout-container {
+        nav ul {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .flex-container {
           flex-direction: column;
-          gap: 1rem;
-          padding: 0 1rem;
         }
-
-        /* 사이드바: 모바일에서 숨김 */
-        aside.sidebar {
-          display: none;
-        }
-
-        /* 햄버거 버튼: 모바일에서 표시 */
-        #hamburgerBtn {
-          display: block;
-        }
-
-        /* 기존 nav ul: 기본 숨김 -> .open 상태일 때 flex로 표시 */
-        #topNav ul {
-          display: none;
-          flex-direction: column;
-          background-color: #fff;
-          border: 1px solid #ddd;
-          margin: 0;
-          padding: 0.5rem 0;
-        }
-        #topNav ul li {
-          margin: 0;
-          border-bottom: 1px solid #eee;
-        }
-        #topNav ul li a {
-          display: block;
-          padding: 0.75rem 1rem;
-          color: var(--text-color);
-          border: none;
-          border-radius: 0;
-        }
-
-        /* 햄버거 메뉴가 열렸을 때 (open 클래스) 보이게 처리 */
-        #topNav.open ul {
-          display: flex;
-        }
-
-        /* 네비게이션 버튼 hover - 모바일에서는 active 등으로도 처리 가능 */
-        #topNav ul li a:hover {
-          background-color: var(--accent-color);
-        }
-
-        /* 헤더 수정 */
-        header h1 {
-          font-size: 1.8rem;
-          margin-bottom: 0.5rem;
-        }
-        header p {
-          font-size: 1rem;
-        }
-
-        /* 테이블: 가로 스크롤 대비 */
-        .stock-table {
-          display: block;
-          overflow-x: auto;
-          white-space: nowrap;
-        }
-
-        /* 푸터 폰트 크기 약간 키움 */
-        footer {
-          padding: 1.5rem 1rem;
-          font-size: 1.1rem;
+        .half-section {
+          width: 100%;
         }
       }
+
+      footer {
+        background-color: #004080;
+        color: #fff;
+        text-align: center;
+        font-size: 1rem;
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+      }
+      footer a {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+
     </style>
   </head>
   <body>
     <header>
       <h1>Go Higher</h1>
       <p>매일매일 업데이트되는 최신 미국 주식 뉴스를 만나보세요!</p>
-      <!-- (신규) 햄버거 버튼 -->
-      <button class="hamburger" id="hamburgerBtn" aria-label="메뉴 열기/닫기">☰</button>
-
-      <!-- (수정) nav에 id 추가, sidebar의 링크도 합침 -->
-      <nav id="topNav">
+      <nav>
         <ul>
           <li><a href="index.html">투데이 뉴스</a></li>
           <li><a href="주식포트폴리오.html">다이어리</a></li>
           <li><a href="버크셔해서웨이.html">인기 포트폴리오</a></li>
           <li><a href="중소형주식.html">중소형주식 추천</a></li>
-          <!-- 사이드바에 있던 “뉴스 바로가기” 메뉴를 추가하여 모바일에서도 접근 -->
-          <li><a href="#stocks-exchange">주식 시세, 환율 정보</a></li>
-          <li><a href="#global-market">글로벌 증시 동향</a></li>
-          <li><a href="#major-announcements">주요 발표</a></li>
-          <li><a href="#industry-news">기업 및 산업 동향</a></li>
-          <li><a href="#coin-news">코인 뉴스</a></li>
         </ul>
       </nav>
     </header>
@@ -520,7 +431,6 @@
 
     <!-- 메인 레이아웃 컨테이너: 사이드바 + 본문 -->
     <div class="layout-container">
-      <!-- 사이드바: 데스크톱 전용 (768px 이상)에서만 보임 -->
       <aside class="sidebar">
         <h2>뉴스 바로가기</h2>
         <ul>
@@ -546,75 +456,76 @@
 
         <!-- 주식 시세 및 환율 정보 섹션 -->
         <section class="news-section" id="stocks-exchange">
-          <div class="flex-container">
-            <div class="half-section" id="magnificent-seven">
-              <h2>매그니피센트 7 주식 시세</h2>
-              <table class="stock-table">
-                <colgroup>
-                  <col style="width: 200px;">
-                  <col style="width: 140px;">
-                  <col style="width: 110px;">
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th>종목</th>
-                    <th>가격</th>
-                    <th>등락률</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="white-space: nowrap;">
-                      <img src="AMZN logo.png" alt="Amazon Logo" height="35" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AMZN 아마존</strong>
-                    </td>
-                    <td>199.25USD</td>
-                    <td><span class="blue" style="white-space: nowrap;">0.71% 하락</span></td>
-                  </tr>
-                  <tr>
-                    <td style="white-space: nowrap;">
-                      <img src="TSLA logo.png" alt="Tesla Logo" height="35" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>TSLA 테슬라</strong>
-                    </td>
-                    <td>262.67USD</td>
-                    <td><span class="blue" style="white-space: nowrap;">0.29% 하락</span></td>
-                  </tr>
-                  <tr>
-                    <td style="white-space: nowrap;">
-                      <img src="NVDA logo.png" alt="NVIDIA Logo" height="35" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>NVDA 엔비디아</strong>
-                    </td>
-                    <td>112.69USD</td>
-                    <td><span class="red" style="white-space: nowrap;">1.93% 상승</span></td>
-                  </tr>
-                  <tr>
-                    <td style="white-space: nowrap;">
-                      <img src="GOOGL logo.png" alt="Google Logo" height="35" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>GOOGL 구글</strong>
-                    </td>
-                    <td>173.86USD</td>
-                    <td><span class="red" style="white-space: nowrap;">0.87% 상승</span></td>
-                  </tr>
-                  <tr>
-                    <td style="white-space: nowrap;">
-                      <img src="MSFT logo.png" alt="Microsoft Logo" height="35" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>MSFT 마이크로소프트</strong>
-                    </td>
-                    <td>393.31USD</td>
-                    <td><span class="blue" style="white-space: nowrap;">0.90% 하락</span></td>
-                  </tr>
-                  <tr>
-                    <td style="white-space: nowrap;">
-                      <img src="AAPL logo.png" alt="Apple Logo" height="35" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AAPL 애플</strong>
-                    </td>
-                    <td>239.07USD</td>
-                    <td><span class="red" style="white-space: nowrap;">1.56% 상승</span></td>
-                  </tr>
-                  <tr>
-                    <td style="white-space: nowrap;">
-                      <img src="META logo.png" alt="Meta Logo" height="35" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>META 메타</strong>
-                    </td>
-                    <td>625.66USD</td>
-                    <td><span class="blue" style="white-space: nowrap;">0.41% 하락</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <div class="flex-container">
+              <div class="half-section" id="magnificent-seven">
+                <h2>매그니피센트 7 주식 시세</h2>
+                <table class="stock-table">
+                  <colgroup>
+                    <col style="width: 200px;">
+                    <col style="width: 140px;">
+                    <col style="width: 110px;">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>종목</th>
+                      <th>가격</th>
+                      <th>등락률</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                      <img src="AMZN logo.png" alt="Amazon Logo" height="35" 
+                          style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AMZN 아마존</strong></td>
+                      <td>199.25USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">0.71% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="TSLA logo.png" alt="Tesla Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>TSLA 테슬라</strong></td>
+                      <td>262.67USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">0.29% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="NVDA logo.png" alt="NVIDIA Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>NVDA 엔비디아</strong></td>
+                      <td>112.69USD</td>
+                      <td><span class="red" style="white-space: nowrap;">1.93% 상승</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="GOOGL logo.png" alt="Google Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>GOOGL 구글</strong></td>
+                      <td>173.86USD</td>
+                      <td><span class="red" style="white-space: nowrap;">0.87% 상승</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="MSFT logo.png" alt="Microsoft Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>MSFT 마이크로소프트</strong></td>
+                      <td>393.31USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">0.90% 하락</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="AAPL logo.png" alt="Apple Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AAPL 애플</strong></td>
+                      <td>239.07USD</td>
+                      <td><span class="red" style="white-space: nowrap;">1.56% 상승</span></td>
+                    </tr>
+                    <tr>
+                      <td style="white-space: nowrap;">
+                        <img src="META logo.png" alt="Meta Logo" height="35" 
+                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>META 메타</strong></td>
+                      <td>625.66USD</td>
+                      <td><span class="blue" style="white-space: nowrap;">0.41% 하락</span></td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
 
             <div class="half-section">
               <h2>주요 기업 실적 발표 일정</h2>
@@ -669,6 +580,7 @@
               </p>
               <span class="news-date" itemprop="datePublished" content="2025-03-08">2025년 3월 8일</span>
             </article>
+            
           </div>
         </section>
 
@@ -678,26 +590,28 @@
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국 증시 상승세</h3>
             <p itemprop="articleBody">
-              3월 7일 뉴욕증시의 3대 지수는 모두 상승했습니다. 다우 존스 산업평균지수는 0.52% 상승한 42,898.21포인트, S&P 500 지수는 0.6% 상승한 5,757.03포인트, 나스닥 지수는 0.7% 상승한 18,243.58포인트로 마감했습니다.
+              3월 7일 뉴욕증시의 3대 지수는 모두 상승했습니다. 다우 존스 산업평균지수는 0.52% 상승한 42,898.21포인트, S&P 500 지수는 0.6% 상승한 5,757.03포인트, 나스닥 지수는 0.7% 상승한 18,243.58포인트로 마감했습니다. :contentReference[oaicite:2]{index=2}
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 8일</span>
           </article>
+          
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">아시아 증시 하락세</h3>
             <p itemprop="articleBody">
-              3월 7일 아시아 증시는 미국 관세 불확실성과 경기 둔화 우려 등으로 일제히 하락했습니다. 일본 닛케이225 지수는 2.17% 하락한 36,887.17포인트, 중국 상하이종합지수는 0.25% 하락한 3,372.55포인트로 마감했습니다.
+              3월 7일 아시아 증시는 미국 관세 불확실성과 경기 둔화 우려 등으로 일제히 하락했습니다. 일본 닛케이225 지수는 2.17% 하락한 36,887.17포인트, 중국 상하이종합지수는 0.25% 하락한 3,372.55포인트로 마감했습니다. :contentReference[oaicite:3]{index=3}
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 8일</span>
           </article>
+          
         </section>
 
-        <!-- 주요 발표 섹션 -->
+        <!-- 주요 발표 섹션 (경제, 연준, 정책 관련 뉴스 카드 통합) -->
         <section class="news-section" id="major-announcements">
           <h2>주요 발표</h2>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">제롬 파월 연준 의장, 통화정책 신중론 강조</h3>
             <p itemprop="articleBody">
-              제롬 파월 미국 연방준비제도(Fed) 의장은 이날 뉴욕에서 열린 통화정책 포럼에서 미국 경제에 대한 낙관적인 견해를 밝혔습니다. 그는 "노동시장은 견고하고 인플레이션은 우리의 2% 장기 목표에 더 가까워졌다"며, 현재의 경제 상황이 통화정책 변경을 서두를 필요가 없음을 시사했습니다. 또한, 트럼프 행정부의 무역, 이민, 재정, 규제 정책 변화로 인한 불확실성이 존재하지만, 이러한 변화의 영향을 평가하며 신중하게 대응할 것임을 강조했습니다.
+              제롬 파월 미국 연방준비제도(Fed) 의장은 이날 뉴욕에서 열린 통화정책 포럼에서 미국 경제에 대한 낙관적인 견해를 밝혔습니다. 그는 "노동시장은 견고하고 인플레이션은 우리의 2% 장기 목표에 더 가까워졌다"며, 현재의 경제 상황이 통화정책 변경을 서두를 필요가 없음을 시사했습니다. 또한, 트럼프 행정부의 무역, 이민, 재정, 규제 정책 변화로 인한 불확실성이 존재하지만, 이러한 변화의 영향을 평가하며 신중하게 대응할 것임을 강조했습니다. 
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-06">2025년 3월 8일</span>
           </article>
@@ -730,7 +644,7 @@
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">FCC, 스타링크의 T-모바일 직접 통신 서비스 운영 승인</h3>
             <p itemprop="articleBody">
-              미국 연방통신위원회(FCC)는 스페이스X(SpaceX)의 자회사인 스타링크(Starlink)에 T-모바일(T-Mobile)과의 직접 통신 서비스를 높은 전력 수준으로 운영할 수 있도록 승인했습니다. 이는 위성 인터넷 서비스의 확장과 통신 산업의 혁신을 촉진할 것으로 기대됩니다.
+              미국 연방통신위원회(FCC)는 스페이스X(SpaceX)의 자회사인 스타링크(Starlink)에 T-모바일(T-Mobile)과의 직접 통신 서비스를 높은 전력 수준으로 운영할 수 있도록 승인했습니다. 이는 위성 인터넷 서비스의 확장과 통신 산업의 혁신을 촉진할 것으로 기대됩니다. 
             </p>
             <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 8일</span>
           </article>
@@ -750,7 +664,7 @@
           </article>
         </section>
 
-        <!-- 코인 뉴스 섹션 -->
+        <!-- 코인 뉴스 섹터 추가 -->
         <section class="news-section" id="coin-news">
           <h2>코인 뉴스</h2>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
@@ -794,7 +708,6 @@
       </p>
     </footer>
 
-    <!-- (하단) 스크립트 -->
     <script>
       // PWA 설치 관련
       let deferredPrompt;
@@ -833,15 +746,6 @@
         });
       }
 
-      // (신규) 햄버거 메뉴 열고 닫기
-      const hamburgerBtn = document.getElementById("hamburgerBtn");
-      const topNav = document.getElementById("topNav");
-
-      hamburgerBtn.addEventListener("click", () => {
-        // open 클래스를 토글하여 메뉴를 열고 닫는다
-        topNav.classList.toggle("open");
-      });
-
       // 개발자 도구 및 소스 보기 차단 스크립트
       document.addEventListener("keydown", function(event) {
         if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
@@ -854,11 +758,7 @@
       document.addEventListener("contextmenu", function(event) {
         event.preventDefault();
       });
-
-      // 예시로 콘솔에 찍는 함수 (원본 코드 유지)
-      function getSecretKey() {
-        return "my-secret-key";
-      }
+      function getSecretKey() { return "my-secret-key"; }
       console.log(getSecretKey());
     </script>
   </body>
