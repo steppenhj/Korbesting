@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트</title>
-    <meta name="description" content="Go Higher - 매일 업데이트되는 미국주식·증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요." />
+    <meta
+      name="description"
+      content="Go Higher - 매일 업데이트되는 미국주식·증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요."
+    />
     <link rel="canonical" href="https://gohigher.kr/" />
     <!-- 매니페스트 -->
     <link rel="manifest" href="/manifest.json" />
@@ -11,16 +14,32 @@
     <meta name="keywords" content="미국 주식, 증시뉴스, 테크뉴스, 글로벌 경제, Go Higher" />
     <!-- 검색 엔진 크롤링 -->
     <meta name="robots" content="index,follow" />
-    <!-- 반응형 웹 설정 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- **확대/축소 불가 설정** -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"
+    />
+
     <!-- 구글 폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Open+Sans:400,600&display=swap"
+      rel="stylesheet"
+    />
     <!-- 사이트 검증 메타 -->
     <meta name="naver-site-verification" content="daa71973aba155bc2d96dfde44d8fb34b6a74ba7" />
-    <meta name="google-site-verification" content="GGuWsc5cbeYC9W0nQsN7550kWcUzArKuo3zfhjN5LXE" />
+    <meta
+      name="google-site-verification"
+      content="GGuWsc5cbeYC9W0nQsN7550kWcUzArKuo3zfhjN5LXE"
+    />
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트" />
-    <meta property="og:description" content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요." />
+    <meta
+      property="og:title"
+      content="Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트"
+    />
+    <meta
+      property="og:description"
+      content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요."
+    />
     <meta property="og:image" content="https://gohigher.kr/logo.jpg" />
     <meta property="og:url" content="https://gohigher.kr/index.html" />
     <meta property="og:type" content="website" />
@@ -28,8 +47,14 @@
     <meta property="og:locale" content="ko_KR" />
     <!-- Twitter Card 태그 -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트" />
-    <meta name="twitter:description" content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요." />
+    <meta
+      name="twitter:title"
+      content="Go Higher - 미국주식·미국증시·환율 매일 오전 업데이트"
+    />
+    <meta
+      name="twitter:description"
+      content="Go Higher - 매일 업데이트되는 미국 주식 · 증시·환율·ETF·테슬라·엔비디아, 일론머스크, 글로벌 경제 뉴스를 확인하세요."
+    />
     <meta name="twitter:image" content="https://gohigher.kr/logo.jpg" />
     <link rel="icon" href="/logo.jpg" type="image/jpeg" />
 
@@ -113,10 +138,11 @@
         });
       }
     </script>
-    
+
     <!-- 기본 스타일 -->
     <style>
       html {
+        /* 모바일에서 폰트 크기 커지도록: rem 기준을 늘리면 전반적으로 글자 커짐 */
         font-size: 16px;
       }
       :root {
@@ -135,14 +161,20 @@
         font-family: 'Open Sans', sans-serif;
         background: linear-gradient(135deg, var(--accent-color), #cbd7e3);
         color: var(--text-color);
+        /* 화면 아래 공간 확보 */
         padding-bottom: 60px;
+        /* 데스크톱이라도 꽉 찬 화면 (max-width 제거) */
+        width: 100%;
+        margin: 0;
       }
+
       header {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: #fff;
         padding: 1rem;
         text-align: center;
         box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        width: 100%;
       }
       header h1 {
         font-family: 'Roboto', sans-serif;
@@ -160,6 +192,7 @@
         display: flex;
         justify-content: center;
         gap: 1rem;
+        flex-wrap: wrap; /* 줄바꿈이 필요할 수 있어 추가 */
       }
       nav ul li a {
         display: inline-block;
@@ -175,24 +208,27 @@
         background-color: var(--primary-color);
         color: #fff;
       }
+
       /* 메인 레이아웃 컨테이너: 사이드바 + 본문 */
       .layout-container {
         display: flex;
-        max-width: 1200px;
-        margin: 1rem auto;
+        width: 100%;
+        margin: 1rem 0;
         padding: 0 1rem;
         gap: 1rem;
         align-items: flex-start;
       }
+
       .red {
         color: red;
       }
       .blue {
         color: blue;
       }
+
       /* 사이드바 */
       aside.sidebar {
-        min-width: 200px;
+        width: 200px; /* 혹은 flex: 0 0 200px; */
         position: -webkit-sticky;
         position: sticky;
         top: 1rem;
@@ -226,11 +262,13 @@
         background-color: var(--primary-color);
         color: #fff;
       }
+
       /* 본문 영역 */
       .main-content {
         flex: 1;
       }
-      /* 기존 공지 스타일 */
+
+      /* 공지 스타일 */
       .save-notice {
         background: #fff;
         color: #444;
@@ -241,12 +279,15 @@
         box-shadow: 0 1px 4px rgba(0,0,0,0.1);
         line-height: 1.4;
       }
+
+      /* 뉴스 섹션 */
       .news-section {
         background-color: #fff;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         padding: 2rem;
         border-radius: 8px;
         margin-bottom: 2rem;
+        width: 100%;
       }
       .news-section h2 {
         font-family: 'Roboto', sans-serif;
@@ -257,6 +298,8 @@
         display: inline-block;
         padding-bottom: 0.4rem;
       }
+
+      /* 뉴스 카드 */
       .news-card {
         background: #f9f9f9;
         border-radius: 6px;
@@ -283,13 +326,13 @@
         font-size: 0.85rem;
         color: #777;
       }
+
+      /* 푸터 */
       footer {
         background-color: var(--primary-color);
         color: #fff;
         text-align: center;
         padding: 1rem;
-        position: relative;
-        bottom: 0;
         width: 100%;
         font-size: 1rem;
         box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
@@ -298,6 +341,7 @@
         color: #fff;
         text-decoration: underline;
       }
+
       /* PWA 설치 버튼 영역 */
       #installContainer {
         text-align: center;
@@ -313,11 +357,13 @@
         border-radius: 5px;
         cursor: pointer;
       }
-      /* 매그니피센트 7, 실적 발표 일정: flex 배치 */
+
+      /* 매그니피센트 7, 실적 발표 일정 */
       .flex-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        width: 100%;
       }
       .half-section {
         width: 48%;
@@ -332,7 +378,7 @@
         transform: translateY(-3px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.12);
       }
-      /* full-section: 환율·달러인덱스 섹터용, 가로 꽉 채우기 */
+      /* full-section */
       .full-section {
         width: 100%;
         background: #fff;
@@ -346,20 +392,29 @@
         transform: translateY(-3px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.12);
       }
+
+      /* 주식 시세 테이블 */
       .stock-table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 1rem;
+        /* 자동 레이아웃: 화면 폭을 넘지 않도록 */
+        table-layout: auto;
       }
-      .stock-table th, .stock-table td {
+      .stock-table th,
+      .stock-table td {
         border-bottom: 1px solid #ddd;
         padding: 8px;
         text-align: left;
+        /* 필요 시 줄바꿈 허용 */
+        white-space: normal;
       }
       .stock-table th {
         background-color: #f8f8f8;
         font-weight: bold;
       }
+
+      /* 기업 실적 발표 */
       .earnings-list {
         list-style-type: none;
         padding: 0;
@@ -380,44 +435,28 @@
         position: absolute;
         left: -10px;
       }
-    /* 반응형: 모바일(768px 이하)에서 사이드바 제거 & 모든 요소 가로 폭을 100%로 */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
 
-      /* 사이드바 숨기기 */
-      aside.sidebar {
-        display: none;
-      }
+      /* 모바일(768px 이하)에서 사이드바 숨김 + 폰트 크게 + 섹션 전폭 */
+      @media (max-width: 768px) {
+        /* 폰트 좀 더 크게 (예: 18px) */
+        body {
+          font-size: 18px;
+        }
 
-      /* 레이아웃 100% 확장 */
-      .layout-container,
-      header,
-      footer {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0;
-        padding: 0.5rem;
+        aside.sidebar {
+          display: none;
+        }
+        .layout-container {
+          flex-direction: column;
+          padding: 0 0.5rem;
+        }
+        .flex-container {
+          flex-direction: column;
+        }
+        .half-section {
+          width: 100% !important;
+        }
       }
-
-      /* 메인 콘텐츠도 전폭 사용 */
-      .main-content {
-        width: 100%;
-      }
-
-      /* flex-container 내부 섹션도 세로 배치 / 전폭 */
-      .flex-container {
-        flex-direction: column;
-      }
-      .half-section,
-      .full-section {
-        width: 100% !important;
-      }
-    }
-    </style>
-
     </style>
   </head>
   <body>
@@ -439,7 +478,7 @@
       <button id="installBtn">GoHigher 설치</button>
     </div>
 
-    <!-- 메인 레이아웃 컨테이너: 사이드바 + 본문 -->
+    <!-- 메인 레이아웃 컨테이너 -->
     <div class="layout-container">
       <aside class="sidebar">
         <h2>뉴스 바로가기</h2>
@@ -466,77 +505,112 @@
 
         <!-- 주식 시세 및 환율 정보 섹션 -->
         <section class="news-section" id="stocks-exchange">
-            <div class="flex-container">
-              <div class="half-section" id="magnificent-seven">
-                <h2>매그니피센트 7 주식 시세</h2>
-                <table class="stock-table">
-                  <colgroup>
-                    <col style="width: 200px;">
-                    <col style="width: 140px;">
-                    <col style="width: 110px;">
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th>종목</th>
-                      <th>가격</th>
-                      <th>등락률</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="white-space: nowrap;">
-                      <img src="AMZN logo.png" alt="Amazon Logo" height="35" 
-                          style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AMZN 아마존</strong></td>
-                      <td>199.25USD</td>
-                      <td><span class="blue" style="white-space: nowrap;">0.71% 하락</span></td>
-                    </tr>
-                    <tr>
-                      <td style="white-space: nowrap;">
-                        <img src="TSLA logo.png" alt="Tesla Logo" height="35" 
-                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>TSLA 테슬라</strong></td>
-                      <td>262.67USD</td>
-                      <td><span class="blue" style="white-space: nowrap;">0.29% 하락</span></td>
-                    </tr>
-                    <tr>
-                      <td style="white-space: nowrap;">
-                        <img src="NVDA logo.png" alt="NVIDIA Logo" height="35" 
-                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>NVDA 엔비디아</strong></td>
-                      <td>112.69USD</td>
-                      <td><span class="red" style="white-space: nowrap;">1.93% 상승</span></td>
-                    </tr>
-                    <tr>
-                      <td style="white-space: nowrap;">
-                        <img src="GOOGL logo.png" alt="Google Logo" height="35" 
-                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>GOOGL 구글</strong></td>
-                      <td>173.86USD</td>
-                      <td><span class="red" style="white-space: nowrap;">0.87% 상승</span></td>
-                    </tr>
-                    <tr>
-                      <td style="white-space: nowrap;">
-                        <img src="MSFT logo.png" alt="Microsoft Logo" height="35" 
-                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>MSFT 마이크로소프트</strong></td>
-                      <td>393.31USD</td>
-                      <td><span class="blue" style="white-space: nowrap;">0.90% 하락</span></td>
-                    </tr>
-                    <tr>
-                      <td style="white-space: nowrap;">
-                        <img src="AAPL logo.png" alt="Apple Logo" height="35" 
-                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>AAPL 애플</strong></td>
-                      <td>239.07USD</td>
-                      <td><span class="red" style="white-space: nowrap;">1.56% 상승</span></td>
-                    </tr>
-                    <tr>
-                      <td style="white-space: nowrap;">
-                        <img src="META logo.png" alt="Meta Logo" height="35" 
-                            style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"><strong>META 메타</strong></td>
-                      <td>625.66USD</td>
-                      <td><span class="blue" style="white-space: nowrap;">0.41% 하락</span></td>
-                    </tr>
-                  </tbody>
-
-                </table>
-              </div>
-
+          <div class="flex-container">
+            <div class="half-section" id="magnificent-seven">
+              <h2>매그니피센트 7 주식 시세</h2>
+              <table class="stock-table">
+                <thead>
+                  <tr>
+                    <th>종목</th>
+                    <th>가격</th>
+                    <th>등락률</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img
+                        src="AMZN logo.png"
+                        alt="Amazon Logo"
+                        height="35"
+                        style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"
+                      />
+                      <strong>AMZN 아마존</strong>
+                    </td>
+                    <td>199.25USD</td>
+                    <td><span class="blue">0.71% 하락</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="TSLA logo.png"
+                        alt="Tesla Logo"
+                        height="35"
+                        style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"
+                      />
+                      <strong>TSLA 테슬라</strong>
+                    </td>
+                    <td>262.67USD</td>
+                    <td><span class="blue">0.29% 하락</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="NVDA logo.png"
+                        alt="NVIDIA Logo"
+                        height="35"
+                        style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"
+                      />
+                      <strong>NVDA 엔비디아</strong>
+                    </td>
+                    <td>112.69USD</td>
+                    <td><span class="red">1.93% 상승</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="GOOGL logo.png"
+                        alt="Google Logo"
+                        height="35"
+                        style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"
+                      />
+                      <strong>GOOGL 구글</strong>
+                    </td>
+                    <td>173.86USD</td>
+                    <td><span class="red">0.87% 상승</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="MSFT logo.png"
+                        alt="Microsoft Logo"
+                        height="35"
+                        style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"
+                      />
+                      <strong>MSFT 마이크로소프트</strong>
+                    </td>
+                    <td>393.31USD</td>
+                    <td><span class="blue">0.90% 하락</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="AAPL logo.png"
+                        alt="Apple Logo"
+                        height="35"
+                        style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"
+                      />
+                      <strong>AAPL 애플</strong>
+                    </td>
+                    <td>239.07USD</td>
+                    <td><span class="red">1.56% 상승</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="META logo.png"
+                        alt="Meta Logo"
+                        height="35"
+                        style="border-radius: 50%; vertical-align: middle; margin-right: 6px;"
+                      />
+                      <strong>META 메타</strong>
+                    </td>
+                    <td>625.66USD</td>
+                    <td><span class="blue">0.41% 하락</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div class="half-section">
               <h2>주요 기업 실적 발표 일정</h2>
               <ul class="earnings-list">
@@ -577,20 +651,22 @@
               </ul>
             </div>
           </div>
-          <!-- full-section: 환율·달러인덱스 (가로 꽉 차게) -->
           <div class="full-section">
             <h2>환율·달러인덱스</h2>
             <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
               <h3 itemprop="headline">금일 환율 및 달러인덱스</h3>
-              <p>일본의 인플레이션으로 인해 금리 상승이 예상되며, 이에 따라 원/엔 환율이 추가적으로 상승할 가능성이 있습니다.</p>
+              <p>
+                일본의 인플레이션으로 인해 금리 상승이 예상되며, 이에 따라 원/엔 환율이 추가적으로 상승할 가능성이 있습니다.
+              </p>
               <p itemprop="articleBody">
-                - 원/달러 환율: 1,446.8원<br>
-                - 원/엔 환율(100엔): 980.32원<br>
+                - 원/달러 환율: 1,446.8원<br />
+                - 원/엔 환율(100엔): 980.32원<br />
                 - 달러인덱스(DXY): 103.963
               </p>
-              <span class="news-date" itemprop="datePublished" content="2025-03-08">2025년 3월 8일</span>
+              <span class="news-date" itemprop="datePublished" content="2025-03-08"
+                >2025년 3월 8일</span
+              >
             </article>
-            
           </div>
         </section>
 
@@ -600,51 +676,78 @@
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국 증시 상승세</h3>
             <p itemprop="articleBody">
-              3월 7일 뉴욕증시의 3대 지수는 모두 상승했습니다. 다우 존스 산업평균지수는 0.52% 상승한 42,898.21포인트, S&P 500 지수는 0.6% 상승한 5,757.03포인트, 나스닥 지수는 0.7% 상승한 18,243.58포인트로 마감했습니다. :contentReference[oaicite:2]{index=2}
+              3월 7일 뉴욕증시의 3대 지수는 모두 상승했습니다. 다우 존스 산업평균지수는
+              0.52% 상승한 42,898.21포인트, S&amp;P 500 지수는 0.6% 상승한 5,757.03포인트,
+              나스닥 지수는 0.7% 상승한 18,243.58포인트로 마감했습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 8일</span
+            >
           </article>
-          
+
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">아시아 증시 하락세</h3>
             <p itemprop="articleBody">
-              3월 7일 아시아 증시는 미국 관세 불확실성과 경기 둔화 우려 등으로 일제히 하락했습니다. 일본 닛케이225 지수는 2.17% 하락한 36,887.17포인트, 중국 상하이종합지수는 0.25% 하락한 3,372.55포인트로 마감했습니다. :contentReference[oaicite:3]{index=3}
+              3월 7일 아시아 증시는 미국 관세 불확실성과 경기 둔화 우려 등으로 일제히
+              하락했습니다. 일본 닛케이225 지수는 2.17% 하락한 36,887.17포인트, 중국 상하이종합지수는
+              0.25% 하락한 3,372.55포인트로 마감했습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 8일</span
+            >
           </article>
-          
         </section>
 
-        <!-- 주요 발표 섹션 (경제, 연준, 정책 관련 뉴스 카드 통합) -->
+        <!-- 주요 발표 섹션 -->
         <section class="news-section" id="major-announcements">
           <h2>주요 발표</h2>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">제롬 파월 연준 의장, 통화정책 신중론 강조</h3>
             <p itemprop="articleBody">
-              제롬 파월 미국 연방준비제도(Fed) 의장은 이날 뉴욕에서 열린 통화정책 포럼에서 미국 경제에 대한 낙관적인 견해를 밝혔습니다. 그는 "노동시장은 견고하고 인플레이션은 우리의 2% 장기 목표에 더 가까워졌다"며, 현재의 경제 상황이 통화정책 변경을 서두를 필요가 없음을 시사했습니다. 또한, 트럼프 행정부의 무역, 이민, 재정, 규제 정책 변화로 인한 불확실성이 존재하지만, 이러한 변화의 영향을 평가하며 신중하게 대응할 것임을 강조했습니다. 
+              제롬 파월 미국 연방준비제도(Fed) 의장은 이날 뉴욕에서 열린 통화정책 포럼에서 미국
+              경제에 대한 낙관적인 견해를 밝혔습니다. 그는 "노동시장은 견고하고 인플레이션은 우리의
+              2% 장기 목표에 더 가까워졌다"며, 현재의 경제 상황이 통화정책 변경을 서두를 필요가
+              없음을 시사했습니다. 또한, 트럼프 행정부의 무역, 이민, 재정, 규제 정책 변화로 인한
+              불확실성이 존재하지만, 이러한 변화의 영향을 평가하며 신중하게 대응할 것임을
+              강조했습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-06">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-06"
+              >2025년 3월 8일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">북한 해킹조직, 애플 OS 취약점 악용해 암호화폐 탈취 시도</h3>
             <p itemprop="articleBody">
-              북한의 해킹조직이 애플 컴퓨터 운영체제의 취약점을 이용해 암호화폐 해킹 공격을 시도한 정황이 포착되었습니다. 구글 산하 사이버 보안업체 맨디언트는 북한 해킹조직이 애플의 로제타2 기술의 취약점을 악용해 악성코드를 설치하고, 이를 통해 암호화폐를 탈취하려 했다고 밝혔습니다.
+              북한의 해킹조직이 애플 컴퓨터 운영체제의 취약점을 이용해 암호화폐 해킹 공격을 시도한
+              정황이 포착되었습니다. 구글 산하 사이버 보안업체 맨디언트는 북한 해킹조직이 애플의
+              로제타2 기술의 취약점을 악용해 악성코드를 설치하고, 이를 통해 암호화폐를 탈취하려
+              했다고 밝혔습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 8일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">미국, 멕시코·캐나다 관세 한 달 유예</h3>
             <p itemprop="articleBody">
-              트럼프 대통령은 멕시코와 캐나다산 철강 및 알루미늄 제품에 부과 예정이던 25% 관세를 한 달간 유예하기로 결정했습니다.
+              트럼프 대통령은 멕시코와 캐나다산 철강 및 알루미늄 제품에 부과 예정이던 25% 관세를
+              한 달간 유예하기로 결정했습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 7일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">트럼프 행정부 정책의 불확실성</h3>
             <p itemprop="articleBody">
-              파월 의장은 트럼프 행정부가 무역, 이민, 재정정책, 규제 등 네 가지 영역에서 중요한 정책 변화를 추진하고 있으며, 이러한 변화로 인해 경제 전망에 대한 불확실성이 커졌다고 지적했습니다. 그는 이러한 불확실성 속에서 통화정책을 신중하게 조정할 필요가 있다고 강조했습니다.
+              파월 의장은 트럼프 행정부가 무역, 이민, 재정정책, 규제 등 네 가지 영역에서 중요한
+              정책 변화를 추진하고 있으며, 이러한 변화로 인해 경제 전망에 대한 불확실성이 커졌다고
+              지적했습니다. 그는 이러한 불확실성 속에서 통화정책을 신중하게 조정할 필요가 있다고
+              강조했습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 8일</span
+            >
           </article>
         </section>
 
@@ -652,58 +755,86 @@
         <section class="news-section" id="industry-news">
           <h2>기업 및 산업 동향</h2>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
-            <h3 itemprop="headline">FCC, 스타링크의 T-모바일 직접 통신 서비스 운영 승인</h3>
+            <h3 itemprop="headline">
+              FCC, 스타링크의 T-모바일 직접 통신 서비스 운영 승인
+            </h3>
             <p itemprop="articleBody">
-              미국 연방통신위원회(FCC)는 스페이스X(SpaceX)의 자회사인 스타링크(Starlink)에 T-모바일(T-Mobile)과의 직접 통신 서비스를 높은 전력 수준으로 운영할 수 있도록 승인했습니다. 이는 위성 인터넷 서비스의 확장과 통신 산업의 혁신을 촉진할 것으로 기대됩니다. 
+              미국 연방통신위원회(FCC)는 스페이스X(SpaceX)의 자회사인 스타링크(Starlink)에
+              T-모바일(T-Mobile)과의 직접 통신 서비스를 높은 전력 수준으로 운영할 수 있도록
+              승인했습니다. 이는 위성 인터넷 서비스의 확장과 통신 산업의 혁신을 촉진할 것으로
+              기대됩니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02"
+              >2025년 3월 8일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">삼성전자, 갤럭시 S25 공개 예정</h3>
             <p itemprop="articleBody">
-              삼성전자는 오는 3월 22일 미국 새너제이에서 '갤럭시 언팩 2025' 행사를 개최할 예정입니다. 이번 행사에서는 갤럭시 S25 시리즈가 공개될 것으로 예상되며, 특히 슬림 모델 출시 가능성이 높아 소비자들의 기대를 모으고 있습니다. ​
+              삼성전자는 오는 3월 22일 미국 새너제이에서 '갤럭시 언팩 2025' 행사를 개최할 예정입니다.
+              이번 행사에서는 갤럭시 S25 시리즈가 공개될 것으로 예상되며, 특히 슬림 모델 출시
+              가능성이 높아 소비자들의 기대를 모으고 있습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02"
+              >2025년 3월 8일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">마이크로소프트, 클라우드 게임 서비스 확대</h3>
             <p itemprop="articleBody">
-              대만 TSMC가 미국 정부로부터 66억 달러 보조금을 지원받아, 애리조나에 3개의 첨단 반도체 제조 공장을 건설할 예정입니다.
+              대만 TSMC가 미국 정부로부터 66억 달러 보조금을 지원받아, 애리조나에 3개의 첨단
+              반도체 제조 공장을 건설할 예정입니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-02">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-02"
+              >2025년 3월 8일</span
+            >
           </article>
         </section>
 
-        <!-- 코인 뉴스 섹터 추가 -->
+        <!-- 코인 뉴스 섹션 -->
         <section class="news-section" id="coin-news">
           <h2>코인 뉴스</h2>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">백악관, 첫 암호화폐 정상회의 개최</h3>
             <p itemprop="articleBody">
-              트럼프 대통령은 연방정부가 범죄 및 민사 몰수 절차로 확보한 약 20만 개의 비트코인을 전략적 비축금으로 전환하는 행정명령에 서명했습니다. 이는 미국이 디지털 자산을 국가 전략 자산으로 인정하는 중요한 조치로 평가받고 있습니다.
+              트럼프 대통령은 연방정부가 범죄 및 민사 몰수 절차로 확보한 약 20만 개의 비트코인을
+              전략적 비축금으로 전환하는 행정명령에 서명했습니다. 이는 미국이 디지털 자산을 국가
+              전략 자산으로 인정하는 중요한 조치로 평가받고 있습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 8일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 8일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">국내 암호화폐 투자 계좌 1,000만 개 돌파</h3>
             <p itemprop="articleBody">
-              국내 5대 암호화폐 거래소가 제출한 자료에 따르면, 1월 기준 암호화폐 투자 계좌 수는 1,000만 9,377개를 기록했습니다. 이는 암호화폐 거래소 개설 12년 만에 주식 계좌의 8분의 1 수준에 달할 만큼 급성장한 수치입니다. 지난해 말에는 전년 대비 52% 급증했습니다.
+              국내 5대 암호화폐 거래소가 제출한 자료에 따르면, 1월 기준 암호화폐 투자 계좌 수는
+              1,000만 9,377개를 기록했습니다. 이는 암호화폐 거래소 개설 12년 만에 주식 계좌의 8분의
+              1 수준에 달할 만큼 급성장한 수치입니다. 지난해 말에는 전년 대비 52% 급증했습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 7일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">카르다노 창립자, 백악관 정상회담 초청 불발</h3>
             <p itemprop="articleBody">
-              카르다노(ADA) 창립자 찰스 호스킨슨은 백악관 디지털 자산 정상회의 초청을 받지 못했다고 밝혔으며, 정상회담에서 실질적인 정책 논의 가능성은 낮다고 언급했습니다.
+              카르다노(ADA) 창립자 찰스 호스킨슨은 백악관 디지털 자산 정상회의 초청을 받지 못했다고
+              밝혔으며, 정상회담에서 실질적인 정책 논의 가능성은 낮다고 언급했습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 7일</span
+            >
           </article>
           <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
             <h3 itemprop="headline">암호화폐 시장 동향</h3>
             <p itemprop="articleBody">
-              비트코인 가격은 9만 달러 선에서 오르내리고 있으며, 백악관 가상자산 서밋을 앞두고 시장 기대감이 형성되고 있습니다. 주요 알트코인 역시 대부분 상승세를 보이고 있습니다.
+              비트코인 가격은 9만 달러 선에서 오르내리고 있으며, 백악관 가상자산 서밋을 앞두고 시장
+              기대감이 형성되고 있습니다. 주요 알트코인 역시 대부분 상승세를 보이고 있습니다.
             </p>
-            <span class="news-date" itemprop="datePublished" content="2025-03-07">2025년 3월 7일</span>
+            <span class="news-date" itemprop="datePublished" content="2025-03-07"
+              >2025년 3월 7일</span
+            >
           </article>
         </section>
       </main>
@@ -711,9 +842,14 @@
 
     <footer>
       <p>
-        © 2025 Go Higher, 고하이어. All rights reserved.<br>
-        운영 지역: 대한민국 대구<br>
-        문의: <a href="mailto:hermann8hesse@gmail.com" style="color:#fff; text-decoration:underline;">hermann8hesse@gmail.com</a><br>
+        © 2025 Go Higher, 고하이어. All rights reserved.<br />
+        운영 지역: 대한민국 대구<br />
+        문의:
+        <a
+          href="mailto:hermann8hesse@gmail.com"
+          style="color:#fff; text-decoration:underline;"
+          >hermann8hesse@gmail.com</a
+        ><br />
         아이디어가 있으시면 언제든지 메일로 제안해 주세요!
       </p>
     </footer>
@@ -745,30 +881,41 @@
       // 자동새로고침
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/service-worker.js").then((registration) => {
-            console.log("서비스 워커 등록 완료:", registration);
-            // 서비스 워커 업데이트 확인
-            navigator.serviceWorker.addEventListener("message", (event) => {
-                if (event.data && event.data.type === "NEW_VERSION_AVAILABLE") {
-                    console.log("새로운 버전 감지됨! 페이지를 새로고침합니다.");
-                    window.location.reload();
-                }
-            });
+          console.log("서비스 워커 등록 완료:", registration);
+          // 서비스 워커 업데이트 확인
+          navigator.serviceWorker.addEventListener("message", (event) => {
+            if (event.data && event.data.type === "NEW_VERSION_AVAILABLE") {
+              console.log("새로운 버전 감지됨! 페이지를 새로고침합니다.");
+              window.location.reload();
+            }
+          });
         });
       }
 
       // 개발자 도구 및 소스 보기 차단 스크립트
-      document.addEventListener("keydown", function(event) {
-        if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.ctrlKey &&
+          (event.key === "u" ||
+            event.key === "U" ||
+            event.key === "s" ||
+            event.key === "S")
+        ) {
           event.preventDefault();
         }
-        if (event.key === "F12" || (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J"))) {
+        if (
+          event.key === "F12" ||
+          (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J"))
+        ) {
           event.preventDefault();
         }
       });
-      document.addEventListener("contextmenu", function(event) {
+      document.addEventListener("contextmenu", function (event) {
         event.preventDefault();
       });
-      function getSecretKey() { return "my-secret-key"; }
+      function getSecretKey() {
+        return "my-secret-key";
+      }
       console.log(getSecretKey());
     </script>
   </body>
