@@ -7,4 +7,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://gohigher.netlify.app/sitemap.xml
+Sitemap: https://gohigher.kr/sitemap.xml
