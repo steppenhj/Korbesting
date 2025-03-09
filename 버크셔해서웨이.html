@@ -726,79 +726,77 @@
 
         // 차트를 클릭 -> 모달 열기
         document.querySelectorAll('.chart-box canvas').forEach(canvas => {
-            canvas.addEventListener('click', function() {
-                const chartIndex = parseInt(this.getAttribute('data-chart-index'));
-                // 모달 내용
-                modalDescription.innerHTML = chartDetails[chartIndex];
+  canvas.addEventListener('click', function() {
+    const chartIndex = parseInt(this.getAttribute('data-chart-index'));
+    modalDescription.innerHTML = chartDetails[chartIndex];
 
-                // 모달 열기
-                modal.style.display = 'block';
+    // 모달 열기
+    modal.style.display = 'block';
 
-                // 이전 모달 차트 제거
-                if (modalChartInstance) {
-                    modalChartInstance.destroy();
-                }
+    // 배경 스크롤 막기
+    document.body.style.overflow = 'hidden';
 
-                // 큰 차트
-                const ctx = modalCanvas.getContext('2d');
-                modalChartInstance = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: chartLabels[chartIndex],
-                        datasets: [{
-                            data: chartData[chartIndex],
-                            backgroundColor: chartColors.slice(0, chartData[chartIndex].length),
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    font: { size: 14 },
-                                    boxWidth: 12
-                                }
-                            },
-                            datalabels: {
-                                color: '#fff',
-                                font: { size: 14, weight: 'bold' },
-                                formatter: (value, context) => {
-                                    let total = chartData[chartIndex].reduce((acc, v) => acc + v, 0);
-                                    let percentage = ((value / total) * 100).toFixed(1);
-                                    return `${chartLabels[chartIndex][context.dataIndex]}\n${percentage}%`;
-                                }
-                            }
-                        }
-                    },
-                    plugins: [ChartDataLabels]
-                });
-            });
-        });
+    // 이전 모달 차트 제거
+    if (modalChartInstance) {
+      modalChartInstance.destroy();
+    }
+    // 큰 차트 생성 코드...
+    const ctx = modalCanvas.getContext('2d');
+    modalChartInstance = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: chartLabels[chartIndex],
+        datasets: [{
+          data: chartData[chartIndex],
+          backgroundColor: chartColors.slice(0, chartData[chartIndex].length),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { font: { size: 14 }, boxWidth: 12 }
+          },
+          datalabels: {
+            color: '#fff',
+            font: { size: 14, weight: 'bold' },
+            formatter: (value, context) => {
+              let total = chartData[chartIndex].reduce((acc, v) => acc + v, 0);
+              let percentage = ((value / total) * 100).toFixed(1);
+              return `${chartLabels[chartIndex][context.dataIndex]}\n${percentage}%`;
+            }
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  });
+});
+
 
         // (3) 모달 닫기
         document.querySelector('.close').addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
+  modal.style.display = 'none';
+  // 스크롤 복원
+  document.body.style.overflow = 'auto';
+});
 
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+});
 
-        // 모달을 흰바탕이나 esc 눌렀을 때도 닫을 수 있게
-      document.getElementById('modalOverlay').addEventListener('click', (event) => {
-        if (event.target.id === 'modalOverlay') {
-          closeModal();
-        }
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeModal();
-        }
-      });
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+});
+
 
         // (4) 개발자 도구 차단
         document.addEventListener("keydown", function(event) {

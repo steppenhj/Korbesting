@@ -214,14 +214,14 @@
         opacity: 1;
       }
       .modal {
-        width: 90%;
-        max-width: 850px;
+        width: 95%;          /* 예: 100%로 늘리기 */
+        max-width: 1200px;   /* 예: 최대 너비 1200px로 늘리기 */
+        max-height: 98vh;    /* 높이도 조금 늘리려면 95vh 등으로 조정 가능 */
         background: var(--modal-bg);
         border-radius: 8px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         display: flex;
         flex-direction: column;
-        max-height: 90vh;
         overflow-y: auto;
         position: relative;
         animation: slideDown 0.3s ease;
@@ -251,9 +251,9 @@
         justify-content: space-between;
       }
       /* 모달 창 본문에 조금 더 여백 */
-.modal-body {
-  padding: 1rem 2rem; /* 좌우 여백 살짝 늘림 */
-}
+      .modal-body {
+        padding: 0.5rem 1rem; /* 좌우 여백 살짝 늘림 */
+      }
       .modal-header h2 {
         margin: 0;
         font-size: 1.8rem;
@@ -390,7 +390,7 @@
 
   .modal {
     background: white;
-    width: 50%;
+    width: 70%;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -542,8 +542,82 @@
     display: block;
     border: 1px solid #eee;
     border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(111, 165, 201, 0.05);
   }
+  /* 뉴스 섹션 전체 */
+#news {
+  position: relative;
+  padding: 1rem 0; /* 상하 여백 */
+}
+
+/* 뉴스 목록(박스)들을 감싸는 컨테이너 */
+#news .news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;            /* 뉴스 아이템 간 간격 */
+  max-height: 420px;    /* 세로 최대 높이 (원하는 대로 조정) */
+  overflow-y: auto;     /* 넘치면 스크롤 */
+  margin-bottom: 15px;  /* 페이지 버튼과 간격 */
+  background-color: #fafafa; 
+  padding: 1rem;        
+  border-radius: 8px;
+}
+
+/* 개별 뉴스 아이템 박스 */
+#news .news-item {
+  background-color: #ffffff;
+  border: 1px solid blue;
+  padding: 10px 16px;
+  transition: box-shadow 0.2s ease;
+}
+
+/* 날짜(또는 기타 정보) 텍스트 */
+#news .news-item strong {
+  display: block;
+  color: #555;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+/* 뉴스 링크 텍스트 */
+#news .news-item a {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* 링크 호버 시 밑줄 */
+#news .news-item a:hover {
+  text-decoration: underline;
+}
+
+/* 페이지네이션 버튼 컨테이너 */
+.news-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+/* 페이지네이션 버튼 */
+.news-pagination button {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+/* 버튼 호버 효과 */
+.news-pagination button:hover {
+  background-color: #e2e2e2;
+}
+
     </style>
   </head>
   <body>
@@ -604,6 +678,10 @@
             <div class="modal-content" id="news"></div>
             <div class="modal-content" id="dividend"></div>
             <div class="modal-content" id="opinion"></div>
+
+            <div style="text-align: center; margin-bottom: 1rem;">
+              <button class="close-btn" onclick="closeModal()">닫기</button>
+            </div>
           </div>
         </div>
     
@@ -1223,7 +1301,8 @@
             유동비율 0.99는 단기 유동성 관리에 다소 취약할 수 있음을 시사하며, 경제 불확실성에 따른 외부 충격에 대비가 필요함.
           </li>
         </ul>
-<h3>4. 경영 전략 및 혁신 요소</h3>
+
+        <h3>4. 경영 전략 및 혁신 요소</h3>
         <h4>디지털 전환 및 기술 혁신</h4>
         <ul>
           <li>
@@ -4439,11 +4518,6 @@
       "UMBF": [
         {
           date: "2025-03-05",
-          title: "UMB Financial 이사 Greg Graves, $28,124 규모 주식 매입",
-          url: "https://kr.investing.com/news/insider-trading-news/article-93CH-1389112"
-        },
-        {
-          date: "2025-03-05",
           title: "UMB Financial 이사 Peterman, 19,687달러 규모 주식 매입",
           url: "https://kr.investing.com/news/insider-trading-news/article-93CH-1389118"
         },
@@ -4972,25 +5046,50 @@
       // 다른 종목에 대한 뉴스 데이터도 추가 가능
     };
 
-    // 모든 종목의 뉴스 데이터를 modalData에 업데이트하는 코드
+    // (4) 뉴스 배열을 modalData[ticker].newsItems에 연결
     for (const ticker in stockNewsData) {
-      let newsHtml = "<ul>";
-      stockNewsData[ticker].forEach(newsItem => {
+        if (!modalData[ticker]) {
+          modalData[ticker] = {};
+        }
+        modalData[ticker].newsItems = stockNewsData[ticker];
+      }
+
+      // (5) "뉴스" 탭을 페이지 단위로 렌더링하는 함수
+      function renderNews(ticker, page = 1, pageSize = 10) {
+        const data = modalData[ticker].newsItems || [];
+        const startIndex = (page - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const pageData = data.slice(startIndex, endIndex);
+
+        // (A) 뉴스 HTML 구성
+      let newsHtml = '<div class="news-container">';
+      pageData.forEach(item => {
         newsHtml += `
-          <li>
-            <strong>${newsItem.date}:</strong>
-            <a href="${newsItem.url}" target="_blank">
-              ${newsItem.title}
-            </a>
-          </li>
+          <div class="news-item">
+            <!-- 먼저 제목을 표시하고, 그 다음 줄바꿈 후 날짜를 표시 -->
+            <a href="${item.url}" target="_blank">${item.title}</a><br />
+            <strong>${item.date}</strong>
+          </div>
         `;
       });
-      newsHtml += "</ul>";
-      if (modalData[ticker]) {
-        modalData[ticker].news = newsHtml;
-      } else {
-        modalData[ticker] = { news: newsHtml };
+      newsHtml += '</div>';
+
+      // (B) 페이지네이션 버튼 (이전/다음)
+      const totalPages = Math.ceil(data.length / pageSize);
+      if (totalPages > 1) {
+        newsHtml += '<div class="news-pagination">';
+        if (page > 1) {
+          newsHtml += `<button onclick="renderNews('${ticker}', ${page - 1}, ${pageSize})">이전</button>`;
+        }
+        newsHtml += ` 페이지 ${page} of ${totalPages} `;
+        if (page < totalPages) {
+          newsHtml += `<button onclick="renderNews('${ticker}', ${page + 1}, ${pageSize})">다음</button>`;
+        }
+        newsHtml += '</div>';
       }
+
+      // (C) 모달 내부 #news 요소에 삽입
+      document.getElementById("news").innerHTML = newsHtml;
     }
       // ---------------------------------------------------------------------------------------
       // (B) 모달 탭 버튼 클릭 이벤트 처리
@@ -5056,47 +5155,55 @@
       // ---------------------------------------------------------------------------------------
       // (D) 모달 열기 함수 (티커 기반) - 동적으로 탭 콘텐츠 업데이트
       // ---------------------------------------------------------------------------------------
+      // (6) 모달 열기 시(=openModalByTicker) : 뉴스 부분은 renderNews(ticker, 1)로 처리
       function openModalByTicker(ticker) {
-        // 모달 보이기
-        const modalOverlay = document.getElementById("modalOverlay");
-        modalOverlay.classList.add("active");
-    
-        // 기본 탭(개요) 활성화
-        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
-        document.querySelectorAll(".modal-content").forEach((content) => content.classList.remove("active"));
-        const defaultTab = document.querySelector('.tab-btn[data-tab="overview"]');
-        const defaultContent = document.getElementById("overview");
-        if (defaultTab && defaultContent) {
-          defaultTab.classList.add("active");
-          defaultContent.classList.add("active");
-        }
-    
-        // 해당 종목 정보(업데이트 날짜 등) 설정
-        const foundStock = stocks.find(s => s.ticker === ticker);
-        if (foundStock) {
-          document.getElementById("modalTitle").textContent = ""; // 제목 필요시 설정
-          document.getElementById("modalUpdateDate").textContent = `업데이트: ${foundStock.updateDate}`;
-        }
-    
-        // modalData 객체에서 해당 종목의 탭별 콘텐츠 가져오기
-        const data = modalData[ticker];
-        if (data) {
-          document.getElementById("overview").innerHTML = data.overview;
-          document.getElementById("diagnosis").innerHTML = data.diagnosis;
-          document.getElementById("value").innerHTML = data.value;
-          document.getElementById("finance").innerHTML = data.finance;
-          document.getElementById("news").innerHTML = data.news;
-          document.getElementById("dividend").innerHTML = data.dividend;
-          document.getElementById("opinion").innerHTML = data.opinion;
-        }
-      }
-    
-      // ---------------------------------------------------------------------------------------
-      // (E) 모달 닫기 함수
-      // ---------------------------------------------------------------------------------------
-      function closeModal() {
-        document.getElementById("modalOverlay").classList.remove("active");
-      }
+  // 모달 보이기
+  const modalOverlay = document.getElementById("modalOverlay");
+  modalOverlay.classList.add("active");
+
+  // 모달이 열릴 때 배경 스크롤 막기
+  document.body.style.overflow = "hidden";
+
+  // 탭 버튼/콘텐츠 초기화
+  document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+  document.querySelectorAll(".modal-content").forEach((content) => content.classList.remove("active"));
+
+  // 기본 탭(개요) 활성화
+  const defaultTab = document.querySelector('.tab-btn[data-tab="overview"]');
+  const defaultContent = document.getElementById("overview");
+  if (defaultTab && defaultContent) {
+    defaultTab.classList.add("active");
+    defaultContent.classList.add("active");
+  }
+
+  // 해당 종목 정보(업데이트 날짜 등) 설정
+  const foundStock = stocks.find(s => s.ticker === ticker);
+  if (foundStock) {
+    document.getElementById("modalTitle").textContent = ""; // 제목 필요시 설정
+    document.getElementById("modalUpdateDate").textContent = `업데이트: ${foundStock.updateDate}`;
+  }
+
+  // 탭별 콘텐츠 할당
+  const data = modalData[ticker];
+  if (data) {
+    document.getElementById("overview").innerHTML = data.overview || "";
+    document.getElementById("diagnosis").innerHTML = data.diagnosis || "";
+    document.getElementById("value").innerHTML = data.value || "";
+    document.getElementById("finance").innerHTML = data.finance || "";
+    // 뉴스는 페이지네이션 함수 호출
+    renderNews(ticker, 1);
+    document.getElementById("dividend").innerHTML = data.dividend || "";
+    document.getElementById("opinion").innerHTML = data.opinion || "";
+  }
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").classList.remove("active");
+  
+  // 모달 닫힐 때 배경 스크롤 복원
+  document.body.style.overflow = "auto";
+}
+
     
       // 모달 외부(배경) 클릭 시 닫기
       document.getElementById('modalOverlay').addEventListener('click', (event) => {
