@@ -620,7 +620,7 @@
 @media (max-width: 768px) {
   /* 기본 폰트 및 레이아웃 조정 */
   html {
-    font-size: 18px;
+    font-size: 15px;
   }
   body {
     padding: 0 10px;
@@ -634,14 +634,7 @@
     margin: 0;
   }
   /* 내비게이션: 세로 스택 및 간격 축소 */
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  nav ul li a {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
+  nav ul { flex-wrap: wrap; }
   
   /* 테이블: 반응형 스크롤 및 폰트 크기 조정 */
   table {
