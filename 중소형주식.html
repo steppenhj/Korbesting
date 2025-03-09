@@ -617,6 +617,80 @@
 .news-pagination button:hover {
   background-color: #e2e2e2;
 }
+@media (max-width: 768px) {
+  /* 기본 폰트 및 레이아웃 조정 */
+  html {
+    font-size: 14px;
+  }
+  body {
+    padding: 0 10px;
+  }
+  header,
+  main,
+  footer {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+    margin: 0;
+  }
+  /* 내비게이션: 세로 스택 및 간격 축소 */
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  nav ul li a {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* 테이블: 반응형 스크롤 및 폰트 크기 조정 */
+  table {
+    font-size: 0.9rem;
+    overflow-x: auto;
+    display: block;
+  }
+  th.number,
+  td.number {
+    width: 40px;
+  }
+  
+  /* 모달: 전체 너비 활용 및 내부 패딩 조정 */
+  .modal {
+    width: 90%;
+    max-width: 90%;
+    padding: 1rem;
+  }
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+  .modal-body {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+  /* 탭 버튼: 폰트 크기 및 간격 축소 */
+  .modal-tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tab-btn {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  /* 닫기 버튼 크기 조정 */
+  .close-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* 뉴스 섹션: 뉴스 아이템 및 페이지네이션 버튼 조정 */
+  #news .news-item a {
+    font-size: 1.2rem;
+  }
+  .news-pagination button {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
 
     </style>
   </head>
