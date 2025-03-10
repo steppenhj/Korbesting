@@ -486,8 +486,7 @@
         <button class="primary-btn" onclick="openModal('assetPortfolioModal')">열기</button>
       </div>
       <p style="font-size:0.9rem; margin-top: 10px;">
-        다양한 자산 항목(현금, 채권, 부동산, 주식 등)을 추가하고 금액을 입력하는 기능입니다.<br>
-        모달 창에서 확인하세요.
+        다양한 자산 항목(현금, 채권, 부동산, 주식 등)을 추가하고 금액을 입력하는 기능입니다.
       </p>
     </section>
 
@@ -498,8 +497,7 @@
         <button class="primary-btn" onclick="openModal('stockPortfolioModal')">열기</button>
       </div>
       <p style="font-size:0.9rem; margin-top: 10px;">
-        투자 종목과 투자 금액(원)을 입력하면, 자동으로 비중이 표시됩니다.<br>
-        모달 창에서 확인하세요.
+        투자 종목과 투자 금액(원)을 입력하면, 자동으로 비중이 표시됩니다.
       </p>
     </section>
 
@@ -817,40 +815,47 @@
     }
 
     // ===== 자산 포트폴리(Asset) =====
-    function createAssetItem(asset = {name:"", amount:0}) {
-      const div = document.createElement("div");
-      div.classList.add("asset-item");
-      
-      const nameInput = document.createElement("input");
-      nameInput.type = "text";
-      nameInput.placeholder = "자산명";
-      nameInput.value = asset.name || "";
-      nameInput.addEventListener("input", () => { updateAssetChart(); updateTargetRatioFields(); });
-      
-      const amountInput = document.createElement("input");
-      amountInput.type = "text";
-      amountInput.placeholder = "금액";
-      amountInput.value = asset.amount || 0;
-      amountInput.min = 0;
-      amountInput.addEventListener("input", updateAssetChart);
-      addCommaFormatting(amountInput);
-      
-      const removeBtn = document.createElement("button");
-      removeBtn.textContent = "삭제";
-      removeBtn.addEventListener("click", () => {
-        if(confirm("정말 삭제하시겠습니까?")) {
-          div.remove();
-          saveAssetPortfolio();
-          updateAssetChart();
-          updateTargetRatioFields();
-        }
-      });
-      
-      div.appendChild(nameInput);
-      div.appendChild(amountInput);
-      div.appendChild(removeBtn);
-      return div;
+    function createAssetItem(asset = {name: "", amount: 0}) {
+  const div = document.createElement("div");
+  div.classList.add("asset-item");
+
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.placeholder = "자산명";
+  // 1-1) 자산명 세팅
+  nameInput.value = asset.name || "";
+  nameInput.addEventListener("input", () => {
+    updateAssetChart();
+    updateTargetRatioFields(); 
+  });
+
+  const amountInput = document.createElement("input");
+  amountInput.type = "text";
+  amountInput.placeholder = "금액";
+  // 1-2) 로컬스토리지에서 불러온 `asset.amount`를 toLocaleString()으로 넣어주기
+  amountInput.value = (asset.amount || 0).toLocaleString(); 
+  amountInput.addEventListener("input", updateAssetChart);
+  
+  // 1-3) 이미 만들어둔 콤마 자동 입력 함수 사용
+  addCommaFormatting(amountInput);
+
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "삭제";
+  removeBtn.addEventListener("click", () => {
+    if (confirm("정말 삭제하시겠습니까?")) {
+      div.remove();
+      saveAssetPortfolio();
+      updateAssetChart();
+      updateTargetRatioFields();
     }
+  });
+
+  div.appendChild(nameInput);
+  div.appendChild(amountInput);
+  div.appendChild(removeBtn);
+
+  return div;
+}
     function loadAssetPortfolio() {
       const container = document.getElementById("assetItemsContainer");
       container.innerHTML = "";
@@ -925,6 +930,9 @@
       if(assetChart) {
         assetChart.destroy();
       }
+  // (A) 현재 차트 타입에 따라 데이터레이블 색상 결정
+      const dataLabelColor = (assetChartType === 'bar') ? '#000' : '#fff';
+
       assetChart = new Chart(ctx, {
         type: assetChartType,  // <--- assetChartType 활용
         data: {
@@ -940,20 +948,24 @@
           responsive: true,
           layout: { padding: 20 },
           plugins: {
-            legend: { position: 'bottom' },
-            title: { display: true, text: assetChartType === 'pie' ? '자산 포트폴리오 (원형)' : '자산 포트폴리오 (막대)' },
-            datalabels: {
-              display: true,
-              color: '#fff',
-              font: { size: labelFontSize, weight: 'bold' },
-              formatter: (value, ctx) => {
-                const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
-                const label = ctx.chart.data.labels[ctx.dataIndex];
-                return label + ': ' + percentage + '%';
-              }
-            }
-          },
+        legend: { position: 'bottom' },
+        title: { 
+          display: true, 
+          text: assetChartType === 'pie' ? '자산 포트폴리오 (원형)' : '자산 포트폴리오 (막대)' 
+        },
+        datalabels: {
+          display: true,
+          // (B) 막대 그래프일 때 검정색(#000), 원형일 때 흰색(#fff)
+          color: dataLabelColor,
+          font: { size: labelFontSize, weight: 'bold' },
+          formatter: (value, ctx) => {
+            const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+            const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
+            const label = ctx.chart.data.labels[ctx.dataIndex];
+            return label + ': ' + percentage + '%';
+          }
+        }
+      },
           scales: assetChartType === 'bar' ? {
             y: {
               beginAtZero: true,
@@ -1077,55 +1089,61 @@
     document.getElementById("saveTargetRatiosBtn").addEventListener("click", saveTargetRatios);
     document.getElementById("calcRebalancingBtn").addEventListener("click", displayRebalancingSuggestions);
 
-    // ===== 투자 포트폴리(Stock) =====
-    function createStockItem(stock = {name:"", amount:0}) {
-      const stockDiv = document.createElement("div");
-      stockDiv.classList.add("stock-item");
-      
-      const nameInput = document.createElement("input");
-      nameInput.type = "text";
-      nameInput.placeholder = "종목명 (예: AAPL)";
-      nameInput.value = stock.name || "";
-      nameInput.addEventListener("input", updateStockChart);
-      
-      const amountInput = document.createElement("input");
-      amountInput.type = "text";
-      amountInput.placeholder = "투자금액(원)";
-      amountInput.min = 0;
-      amountInput.value = stock.amount || 0;
-      amountInput.addEventListener("input", updateStockChart);
-      addCommaFormatting(amountInput);
-      
-      const removeBtn = document.createElement("button");
-      removeBtn.textContent = "삭제";
-      removeBtn.addEventListener("click", () => {
-        if(confirm("정말 삭제하시겠습니까?")) {
-          stockDiv.remove();
-          saveStockPortfolio();
-          updateStockChart();
-        }
-      });
-      
-      stockDiv.appendChild(nameInput);
-      stockDiv.appendChild(amountInput);
-      stockDiv.appendChild(removeBtn);
-      return stockDiv;
+    // ===== 투자 포트폴리오(Stock) =====
+    function createStockItem(stock = {name: "", amount: 0}) {
+  const stockDiv = document.createElement("div");
+  stockDiv.classList.add("stock-item");
+
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.placeholder = "종목명 (예: AAPL)";
+  // 2-1) 종목명 세팅
+  nameInput.value = stock.name || "";
+  nameInput.addEventListener("input", updateStockChart);
+
+  const amountInput = document.createElement("input");
+  amountInput.type = "text";
+  amountInput.placeholder = "투자금액(원)";
+  // 2-2) 로컬스토리지에서 불러온 금액 toLocaleString()
+  amountInput.value = (stock.amount || 0).toLocaleString();
+  amountInput.addEventListener("input", updateStockChart);
+  // 2-3) 콤마 포맷 적용
+  addCommaFormatting(amountInput);
+
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "삭제";
+  removeBtn.addEventListener("click", () => {
+    if(confirm("정말 삭제하시겠습니까?")) {
+      stockDiv.remove();
+      saveStockPortfolio();
+      updateStockChart();
     }
-    function loadStockPortfolio() {
-      const stockList = document.getElementById("stockList");
-      stockList.innerHTML = "";
-      const stored = localStorage.getItem("stockPortfolio");
-      let stocks = [];
-      if(stored) {
-        stocks = JSON.parse(stored);
-      } else {
-        stocks = [{name:"", amount:0}, {name:"", amount:0}];
-        localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
-      }
-      stocks.forEach(stock => {
-        stockList.appendChild(createStockItem({name: stock.name, amount: stock.amount}));
-      });
-    }
+  });
+
+  stockDiv.appendChild(nameInput);
+  stockDiv.appendChild(amountInput);
+  stockDiv.appendChild(removeBtn);
+
+  return stockDiv;
+}
+
+function loadStockPortfolio() {
+  const stockList = document.getElementById("stockList");
+  stockList.innerHTML = "";
+  const stored = localStorage.getItem("stockPortfolio");
+  let stocks = [];
+  if (stored) {
+    stocks = JSON.parse(stored);
+  } else {
+    stocks = [{ name: "", amount: 0 }, { name: "", amount: 0 }];
+    localStorage.setItem("stockPortfolio", JSON.stringify(stocks));
+  }
+  // 2-4) createStockItem()에서 콤마가 적용된 상태로 표시
+  stocks.forEach(stock => {
+    stockList.appendChild(createStockItem(stock));
+  });
+}
+
     function saveStockPortfolio() {
       const stockList = document.getElementById("stockList");
       const stockItems = stockList.querySelectorAll(".stock-item");
@@ -1178,6 +1196,9 @@
       if(stockChart) {
         stockChart.destroy();
       }
+        // (A) 현재 차트 타입에 따라 데이터레이블 색상 결정
+  const dataLabelColor = (stockChartType === 'bar') ? '#000' : '#fff';
+
       stockChart = new Chart(ctx, {
         type: stockChartType,
         data: {
@@ -1200,7 +1221,8 @@
             },
             datalabels: {
               display: true,
-              color: '#fff',
+              // (B) 막대 그래프일 때 검정색(#000), 원형일 때 흰색(#fff)
+              color: dataLabelColor,
               font: { size: labelFontSize, weight: 'bold' },
               formatter: (value, ctx) => {
                 const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
@@ -1852,6 +1874,41 @@
       // 설정
       loadCustomizationSettings();
     });
+
+    function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";  // 모달 오픈 시 스크롤 막기
+    }
+  }
+
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";        // 모달 닫기 시 스크롤 복원
+    }
+  }
+
+  // ESC 키를 눌렀을 때 모달 닫기
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const openModal = document.querySelector(".modal.active");
+      if (openModal) {
+        openModal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+  });
+
+  // 바깥 배경 클릭 시 모달 닫기
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal") && e.target.classList.contains("active")) {
+      e.target.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
 
     // 테스트용(비밀키)
     function getSecretKey() { return "my-secret-key"; }
